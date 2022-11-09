@@ -20,5 +20,7 @@ JavaScript代码可以直接嵌在网页的任何地方，不过通常我们都�
 </body>
 </html>
   ```
+
   
-  
+
+算了，去学typescript了
