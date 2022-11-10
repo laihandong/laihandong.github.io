@@ -151,13 +151,44 @@ aircv作为airtest的图像识别模块，封装了多种图像识别算法，�
   + 流程：
     + 以最大值的索引为左上角
     + 以目标图像的宽、高为识别结果的矩形框的宽、高
-    + 返回识别结果的矩形框的四个角点和中心点
+    + 返回**识别结果**的矩形框的四个角点和中心点
 
 
-#### cv2.matchTemplate
+#### 关键函数
+```python
+cv2.matchTemplate
+np.clip 
+cv2.cvtColor 
+cv2.copyMakeBorder 
+cv2.split
+```
+
+### template_matching.py
+其实就是把template.py的方法，用类封装管理起来了
+find_best_result()写的代码文档中，什么“基于kaze进行图像识别xxxx”，扯淡。一个模板匹配怎么和基于特征点混在一起，再说也没看到代码有相关内容
 
 
 ## 多尺度模板匹配
+
+### 脚本结构
+```txt
+|-class MultiScaleTemplateMatching（属性：im_source, im_search, threshold, rgb, record_pos, resolution, scale_max, scale_step）
+|--def find_all_results
+|--def find_best_result
+|--def _get_confidence_from_matrix(self, max_loc, w, h)
+|--def _get_target_rectangle(self, left_top_pos, w, h)
+|--def _resize_by_ratio(src, templ, ratio, templ_min, src_max)
+|--def _org_size(max_loc, w, h, tr, sr)
+|--def multi_scale_search(self, org_src, org_templ, templ_min, src_max, ratio_min, ratio_max, step, threshold, time_out)
+
+|-class MultiScaleTemplateMatching**Pre**（继承 MultiScaleTemplateMatching）
+|--重写 def find_best_result
+|--新增 def _get_ratio_scope(self, src, templ, resolution)
+|--新增 def get_predict_point(self, record_pos, screen_resolution)
+|--新增 def _get_area_scope(self, src, templ, record_pos, resolution)
+
+
+```
 
 ## 基于特征点的图像识别
 
