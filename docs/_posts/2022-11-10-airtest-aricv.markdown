@@ -98,7 +98,7 @@ aircv作为airtest的图像识别模块，封装了多种图像识别算法，�
     主流程-2（find_all_template）：
       和主流程-1类似，只不过将第4、第5步重复执行，获取多个匹配结果
       貌似源代码中将屏蔽已经去除的最优结果这步给注释掉了
-      同样的，
+      同样的，循环主体把匹配结果矩阵放在了外面，又不做最优结果的屏蔽，那么每次的最优结果append进临时存储列表，最终列表中会出现全部相同的值了
 """    
 ```
 #### 主流程
@@ -156,7 +156,7 @@ aircv作为airtest的图像识别模块，封装了多种图像识别算法，�
 
 #### 关键函数
 ```python
-cv2.matchTemplate
+cv2.matchTemplate 只能处理灰度图
 np.clip 
 cv2.cvtColor 
 cv2.copyMakeBorder 
@@ -169,6 +169,9 @@ find_best_result()写的代码文档中，什么“基于kaze进行图像识别x
 
 
 ## 多尺度模板匹配
+cv2的matchTemplate模板匹配应用范围很局限，多尺度的模板匹配可以考虑到图像旋转变形等多种情况，在脚本`multiscale_template_matching.py`中对此进行了实现
+
+
 
 ### 脚本结构
 ```txt
@@ -187,16 +190,70 @@ find_best_result()写的代码文档中，什么“基于kaze进行图像识别x
 |--新增 def get_predict_point(self, record_pos, screen_resolution)
 |--新增 def _get_area_scope(self, src, templ, record_pos, resolution)
 
+```
+
+```python
+""" 功能：在源图像上以多尺度模板匹配方式，求得最适合的目标图像结果
+    参数：
+      源图像：屏幕代理（默认minicap）的截图的格式
+      目标图像：cv2的图片处理格式
+      置信度阈值：float 筛选阈值，默认为0.8，即置信度超过0.8的结果会被认为是目标结果
+      彩色模式：bool 可以进行彩色权识别
+      record_pos：
+      resolution：
+      scale_max：最大尺寸
+      scale_step：步长尺寸
+    主流程-1（MultiScaleTemplateMatching.find_best_result）：
+      检验图像输入
+      计算模板匹配的结果矩阵
+      求取识别位置      
+    主流程-2（MultiScaleTemplateMatching**Pre**.find_best_result）：
+      检查截图分辨率（没有则立即返回None）（整体和主流程-1类似，不过基于分辨率做了更多处理）
+      检验图像输入
+      计算模板匹配的结果矩阵
+      求取识别位置
+"""    
+```
+### class MultiScaleTemplateMatching
+#### 主流程
+
++ 1.检验图像输入：
+  + 参数：
+    + 源图像
+    + 目标图像
+  + 流程：
+    + 对比两者的宽、高
+    + 目标图像的宽、高，均不得超过源图像 
+
+
++ 2.计算模板匹配的结果矩阵：
+  + 参数：
+    + 源图像的灰度图
+    + 目标图像的灰度图
+    + 最小比例
+    + 最大比例
+    + 最大尺寸
+    + 步长尺寸
+    + 识别阈值
+  + 流程： 
++ 3.求取识别位置
+
+#### 关键函数
+```python
 
 ```
 
-### class MultiScaleTemplateMatching
-#### 主流程
-#### 关键函数
-
 ### class MultiScaleTemplateMatching**Pre**
 #### 主流程
+
++ 1.检验图像输入
++ 2.计算模板匹配的结果矩阵
++ 3.求取识别位置
+
 #### 关键函数
+```python
+
+```
 
 
 ## 基于特征点的图像识别
