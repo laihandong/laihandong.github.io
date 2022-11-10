@@ -190,6 +190,15 @@ find_best_result()写的代码文档中，什么“基于kaze进行图像识别x
 
 ```
 
+### class MultiScaleTemplateMatching
+#### 主流程
+#### 关键函数
+
+### class MultiScaleTemplateMatching**Pre**
+#### 主流程
+#### 关键函数
+
+
 ## 基于特征点的图像识别
 
 
