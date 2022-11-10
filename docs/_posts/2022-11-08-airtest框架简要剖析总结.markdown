@@ -7,7 +7,20 @@ airtest框架是跨平台（移动端App和Windows端）的、基于opencv图像
 airtest是可以用pip install方法下载到本地进行开发的，包下面分为5个大类，分别是：aircv、cli、core、report和utils
 
 ## aircv
-这个是图像识别模块，包含11个脚本功能分别如下：
+
+### 模板匹配：
+无法跨分辨率识别
+一定有相对较佳的结果（即时不存在）
+方法名：tpl
+
+
+### 基于特征点的图像识别：
+能跨分辨率识别
+不一定有匹配结果
+方法名：kaze、brisk、akaze、orb、sift、surf、brief
+
+### 脚本功能介绍
+aircv图像识别模块包含11个脚本，功能分别如下：
 ```python
 aircv.py
 包含基于opencv封装的基本的图片处理函数，比如根据图片路径，将图片读取为cv2的图片处理格式imread()、类似的还有旋转图片、裁剪等等
