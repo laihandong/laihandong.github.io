@@ -21,6 +21,8 @@ JavaScript代码可以直接嵌在网页的任何地方，不过通常我们都�
 </html>
   ```
 
-  
-
+ 
+插曲
 算了，去学typescript了
+2022.11.10 不行，JavaScript是基础，学web就得把这个打牢。typescript只是超集，以后再学，其不能替代JavaScript
+  
