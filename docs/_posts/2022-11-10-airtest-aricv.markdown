@@ -61,7 +61,7 @@ aircv作为airtest的图像识别模块，封装了多种图像识别算法，�
 ## 模板匹配
 在`template.py`和`template_matching.py`中，airtest对模板匹配的流程进行了代码实现，两者的流程基本一致，只不过后者在前者基础上，封装成了`TemplateMatching`类
 
-### 结构
+### 脚本结构
 ```txt
 |-template.py
 |--def find_template(im_source, im_search, threshold, rgb)
@@ -80,6 +80,18 @@ aircv作为airtest的图像识别模块，封装了多种图像识别算法，�
 |----def _get_target_rectangle(self, left_top_pos, w, h)
 ```
 
+### template.py
+```python
+""" 功能：在源图像上以模板匹配方式，求得目标图像结果
+    参数：
+      源图像：cv2的图片处理格式
+      目标图像：cv2的图片处理格式
+      置信度阈值：float 筛选阈值，默认为0.8，即置信度超过0.8的结果会被认为是目标结果
+      彩色模式：bool 可以进行彩色权识别
+      
+"""
+
+```
 
 ## 多尺度模板匹配
 
