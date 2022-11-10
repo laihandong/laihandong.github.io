@@ -22,8 +22,9 @@ aircv作为airtest的图像识别模块，封装了多种图像识别算法，�
   + `error.py`：
     + 基于Exception，封装了自定义错误类
     
-  + `keypoint_base.py`：
-    + 封装了基于特征点的识别基类KeypointMatching，日志中的方法名叫KAZE
+  + `keypoint_base.py`：<font color=red size=4>重要</font>
+    + 基于KAZE算法思想
+    + 封装了基类KeypointMatching
     
   + `keypoint_matching.py`：
     + 继承KeypointMatching
@@ -35,12 +36,14 @@ aircv作为airtest的图像识别模块，封装了多种图像识别算法，�
     + 封装了3个类BRIEF/SIFT/SURF
     + 需要opencv-contrib
 
-  + `multiscale_template_matching.py`：
-    + 封装了多尺度模板匹配MultiScaleTemplateMatching
-    + 封装了基于截图预设条件的多尺度模板匹配
+  + `multiscale_template_matching.py`：<font color=red size=4>重要</font>
+    + 基于多尺度模板匹配思想
+    + 封装了基类MultiScaleTemplateMatching
+    + 继承MultiScaleTemplateMatching，封装了类MultiScaleTemplateMatching**Pre**（基于截图预设条件）
 
-  + `sift.py`：
-    + 封装了sift图像识别算法
+  + `sift.py`：<font color=red size=4>重要</font>
+    + 基于sift算法思想
+    + 封装了一系列基于特征点的图像识别算法
 
   + `template.py`：
     + 以**函数**形式封装模板匹配算法的一般流程
@@ -54,5 +57,11 @@ aircv作为airtest的图像识别模块，封装了多种图像识别算法，�
 
 # 图像识别算法剖析
 该部分将详细解析aircv图像识别模块下的算法的详细结构，以及对其进行合理评估和改进
+
+## 模板匹配
+
+## 多尺度模板匹配
+
+## 基于特征点的图像识别
 
 
