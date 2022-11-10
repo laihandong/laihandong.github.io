@@ -59,6 +59,27 @@ aircv作为airtest的图像识别模块，封装了多种图像识别算法，�
 该部分将详细解析aircv图像识别模块下的算法的详细结构，以及对其进行合理评估和改进
 
 ## 模板匹配
+在`template.py`和`template_matching.py`中，airtest对模板匹配的流程进行了代码实现，两者的流程基本一致，只不过后者在前者基础上，封装成了`TemplateMatching`类
+
+### 结构
+```txt
+|-template.py
+|--def find_template(im_source, im_search, threshold, rgb)
+|--def find_all_template(im_source, im_search, threshold, rgb, max_count)
+|--def _get_confidence_from_matrix(im_source, im_search, max_loc, max_val, w, h, rgb)
+|--def _get_template_result_matrix(im_source, im_search)
+|--def _get_target_rectangle(left_top_pos, w, h)
+
+
+|-template_matching.py
+|--class TemplateMatching(属性: im_source, im_search, threshold, rgb )
+|----def find_all_results(self)
+|----def find_best_result(self)
+|----def _get_confidence_from_matrix(self, max_loc, max_val, w, h)
+|----def _get_template_result_matrix(self)
+|----def _get_target_rectangle(self, left_top_pos, w, h)
+```
+
 
 ## 多尺度模板匹配
 
