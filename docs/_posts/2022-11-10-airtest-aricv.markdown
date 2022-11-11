@@ -351,5 +351,11 @@ TM_CCOEFF_NORMED标准计算置信度
 
 
 ## 基于特征点的图像识别
+在`keypoint_base.py`,`keypoint_matching.py`,`keypoint_matching_contrib.py`中，airtest基于KAZE的思想，用代码对其进行了基本实现，并封装成了一个`KeypointMatching`基类。在此基础上，以不同改进的迭代器，继承封装了多个方法类。
 
+### keypoint_base.py
+
+### keypoint_matching.py
+
+### keypoint_matching_contrib.py
 
