@@ -356,6 +356,17 @@ TM_CCOEFF_NORMED标准计算置信度
 ### keypoint_base.py
 
 ### keypoint_matching.py
+继承`Keypointmatching`基类，封装了四个类：
++ `KAZEMatching`：原封不动的继承Keypointmatching
++ `BRISKMatching`：仅将detector改为了`cv2.BRISK_create`
++ `AKAZEMatching`：仅将detector改为了`cv2.AKAZE_create`
++ `ORBMatching`仅将detector改为了`cv2.ORB_create`
+
 
 ### keypoint_matching_contrib.py
+继承`Keypointmatching`基类，封装了三个类（用到了opencv的拓展包，所以要对opencv做版本检查）：
++ `BRIEFMatching`：仅新增了star_detector、brief_extractor
++ `SIFTmatching`：仅修改了detector，新增了matcher
++ `SUFMatching`：仅修改了detector，新增了matcher
 
+以上总结的不是很到位，得根据算法具体原理再完善
