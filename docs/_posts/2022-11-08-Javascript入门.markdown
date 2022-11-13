@@ -300,18 +300,34 @@ JavaScript代码可以直接嵌在网页的任何地方，一种是把JavaScript
       color: 'red',
       size: '100',
       price: '1000',
-      owned: null
+      owned: null,
+      'man-own':100
   };//定义了一个对象car
   ```
-
+  
   对象是一组由键-值组成的无序集合
-
-  对象的`键都是字符串类型，值可以是任意数据类型`
-
+  
+  对象的`键都是字符串类型，值可以是任意数据类型`，但是键中含特殊的字符需要用`''`括起来，同时访问的方式也有所区别。
+  
   ```javascript
-  car.color;//'red' 访问对象属性的方式
+  car.color;//'red' 访问对象属性的方式一
+  car['man-own'];//100 方位对象属性的方式二
+  car.what;//undefined 访问不存在的对象不会报错 
   ```
-
+  
+  检测对象中是否含有某种属性，用`in`或者`hasOwnProperty()`
+  
+  ```javascript
+  'name' in car; // false 
+  car.hasOwnProperty('size'); // true 相比较下，前者还会往继承的基类中找，后者只判断自身拥有的
+  ```
+  
+  可以在外部删除对象的属性，用`delete`
+  
+  ```javascript
+  delete car.size; // 删除age属性
+  ```
+  
   
 
 ## 2.6 变量
@@ -347,6 +363,142 @@ JavaScript代码可以直接嵌在网页的任何地方，一种是把JavaScript
 
   
 
+## 2.7 条件判断
+
+JavaScript使用`if () { ... } else if{ ... } else {...}`来进行条件判断，可嵌套，`else if 和 else`不是必须的
+
+JavaScript把`null`、`undefined`、`0`、`NaN`和空字符串`''`视为`false`，其他值一概视为`true` 
+
+
+
+## 2.8 循环
+
+
+
+ 一种是`for`循环，通过初始条件、结束条件和递增条件来循环执行语句块：
+
+```javascript
+var x = 0;
+var i;
+for (i=1; i<=10000; i++) {
+    x = x + i;
+}
+```
+
+另一种是`for 和 in 组合`，循环读取`对象`的**属性**、`数组`的**索引**（*注意*，`for ... in`对`Array`的循环得到的是`String`而不是`Number`）
+
+```javascript
+var obj = {
+    name: 'Jack',
+    age: 20,
+    city: 'Beijing'
+};
+for (var key in obj) {
+    console.log(key); // 'name', 'age', 'city'
+}
+
+var a = ['A', 'B', 'C'];
+for (var i in a) {
+    console.log(i); // '0', '1', '2' 是string类型  
+    console.log(a[i]); // 'A', 'B', 'C'
+}
+
+```
+
+还有一种是`while`，以及变体`do {...} while`
+
+
+
+## 2.9 Map
+
+Map 属于 ES6新增的数据类型：键值对的集合
+
+```javascript
+var m1 = new Map();//空Map
+var m2 = new Map( ['name',1], ['size',99], ['price',10]);//初始化Map同时赋值
+
+m1.set('name',3);//添加新的键-值对，添加已存在的键-值对，会将之前的覆盖掉
+
+m1.has('name');//是否存在键：'name'
+
+m1.get('name');//获取键'name'对应的值
+
+m1.delete('name');//删除键'name'
+
+```
+
+
+
+## 2.10 Set
+
+Set 属于 ES6新增的数据类型：键的集合，键不能重复
+
+```java
+var s1 = Set();//空Set
+var s2 = Set([1,2,3]);//初始化Set同时赋值，只能用列表
+
+s1.add(4);//给Set添加元素，若已存在则没有影响
+
+s1.delete(4);//删除元素
+```
+
+
+
+
+
+## 2.11 iterable
+
+`Array`、`Map`和`Set`都属于`iterable`类型，为了统一实现循环遍历
+
+对`iterable`类统一采用`for ... of`循环遍历集合
+
+```javascript
+var a = ['A', 'B', 'C'];
+var s = new Set(['A', 'B', 'C']);
+var m = new Map([[1, 'x'], [2, 'y'], [3, 'z']]);
+for (var x of a) { // 遍历Array
+    console.log(x);
+}
+for (var x of s) { // 遍历Set
+    console.log(x);
+}
+for (var x of m) { // 遍历Map
+    console.log(x[0] + '=' + x[1]);
+}
+```
+
+<font color=red>注意，`for ... in`是存在遗留问题的，所以ES6中提出了`for ... of`</font>
+
+一个`Array`数组实际上也是一个对象，它的每个元素的索引被视为一个属性，在手动给Array添加了额外的属性后，使用`for ... in`会遍历所有的属性，不只是索引，示例如下：
+
+```javascript
+var a = ['A', 'B', 'C'];
+a.name = 'Hello';
+for (var x of a) {
+    console.log(x); // 'A', 'B', 'C'
+}
+```
+
+<font color=blue>ES5.1中提出了直接使用`iterable`内置`forEach`方法，它接收一个函数，每次迭代就自动回调该函数</font>
+
+```javascript
+a.forEach(function (element, index, array) {
+    // element: 指向当前元素的值
+    // index: 指向当前索引
+    // array: 指向Array对象本身
+    console.log(element + ', index = ' + index);
+});
+
+var s = new Set(['A', 'B', 'C']);
+s.forEach(function (element, sameElement, set) {
+    console.log(element);//Set没有索引，所以前两个参数返回的值是一样的
+});
+
+var m = new Map([[1, 'x'], [2, 'y'], [3, 'z']]);
+m.forEach(function (value, key, map) {
+    console.log(value);
+});
+```
 
 
 
@@ -358,26 +510,7 @@ JavaScript代码可以直接嵌在网页的任何地方，一种是把JavaScript
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 3. 函数
 
 
 
