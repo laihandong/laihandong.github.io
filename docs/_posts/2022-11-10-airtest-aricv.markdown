@@ -156,13 +156,32 @@ aircv作为airtest的图像识别模块，封装了多种图像识别算法，�
 
 #### 关键函数
 ```python
-cv2.matchTemplate 只能处理灰度图
+# cv2.matchTemplate 只能处理灰度图
+MatchTemplate(InputArray image, InputArray templ, OutputArray result, int method);
+
+        image：输入一个待匹配的图像，支持8U或者32F，大小(H, W)
+
+        templ：输入一个模板图像，与image相同类型，大小(h, w)
+
+        result：输出保存结果的矩阵，32F类型，大小是(H-h+1, W-w+1)
+
+        method：要使用的数据比较方法，有六种
+        
+        
+
 np.clip 
 cv2.cvtColor 
 cv2.copyMakeBorder 
 cv2.split
 ```
-+ cv2.matchTemplate
++ cv2.matchTemplate常用的数据比较方法：
+  + 方法匹配方法：TM_SQDIFF
+  + 归一化方差匹配方法：TM_SQDIFF_NORMED,
+  + 相关性匹配方法：TM_CCORR,
+  + 归一化的互相关匹配方法：TM_CCORR_NOMED,
+  + 相关系数匹配方法：TM_CCOEFF,
+  + 归一化的相关系数匹配方法：TM_CCOEFF_NORMED
+    + $R_{ccoeff\_normed}=\frac{}{\sqrt{}}$
 
 + np.clip
 + cv2.cvtColor 
