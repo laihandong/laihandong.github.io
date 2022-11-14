@@ -181,7 +181,7 @@ cv2.split
   + 归一化的互相关匹配方法：TM_CCORR_NOMED,
   + 相关系数匹配方法：TM_CCOEFF,
   + 归一化的相关系数匹配方法：TM_CCOEFF_NORMED
-    + $R_{ccoeff\_normed}=\frac{\sum_{x^',y^'}T^'(x^',y^')·I^'(x+x^',y+y^')}{\sqrt{\sum_{x^',y^'}T^'(x^',y^')^2·\sum_{x^',y^'}I^'(x+x^',y+y^')^2}}$
+$$R_{ccoeff\_normed}=\frac{\sum_{x^',y^'}T^'(x^',y^')·I^'(x+x^',y+y^')}{\sqrt{\sum_{x^',y^'}T^'(x^',y^')^2·\sum_{x^',y^'}I^'(x+x^',y+y^')^2}}$$
 
 + np.clip
 + cv2.cvtColor 
