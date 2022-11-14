@@ -162,6 +162,12 @@ cv2.cvtColor
 cv2.copyMakeBorder 
 cv2.split
 ```
++ cv2.matchTemplate
+
++ np.clip
++ cv2.cvtColor 
++ cv2.copyMakeBorder 
++ cv2.split
 
 ### template_matching.py
 其实就是把template.py的方法，用类封装管理起来了
