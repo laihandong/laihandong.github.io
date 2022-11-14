@@ -410,5 +410,12 @@ TM_CCOEFF_NORMED标准计算置信度
 |--类 SUFMatching：仅修改了detector，新增了matcher
 ```
 
-
-
+### Keypointmatching类解析
++ 类属性
+  + im_source 源图像
+  + im_search 目标图像
+  + threshold 识别阈值
+  + rgb 彩色识别模式
++ 主流程：
+  + 
++ 其他函数：
