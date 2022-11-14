@@ -382,7 +382,7 @@ TM_CCOEFF_NORMED标准计算置信度
 
 ### 脚本结构
 ```txt
-|-keypoint_base.py
+|-keypoint_base.py（对KAZE算法用代码实现，封装为类 Keypointmatching）
 |--def find_best_result(self)
 |--def show_match_image(self)
 |--def _cal_confidence(self, resize_img)
@@ -397,19 +397,17 @@ TM_CCOEFF_NORMED标准计算置信度
 |--def _find_homography(self, sch_pts, src_pts)
 |--def _target_error_check(self, w_h_range)
 
-|-keypoint_matching.py
-继承`Keypointmatching`基类，封装了四个类：
-|--类 `KAZEMatching`：原封不动的继承Keypointmatching
-|--类 `BRISKMatching`：仅将detector改为了`cv2.BRISK_create`
-|--类 `AKAZEMatching`：仅将detector改为了`cv2.AKAZE_create`
-|--类 `ORBMatching`仅将detector改为了`cv2.ORB_create`
+|-keypoint_matching.py（继承`Keypointmatching`基类，封装了四个类）
+|--类 KAZEMatching：原封不动的继承Keypointmatching
+|--类 BRISKMatching：仅将detector改为了`cv2.BRISK_create`
+|--类 AKAZEMatching：仅将detector改为了`cv2.AKAZE_create`
+|--类 ORBMatching：仅将detector改为了`cv2.ORB_create`
 
 
-|-keypoint_matching_contrib.py
-继承`Keypointmatching`基类，封装了三个类（用到了opencv的拓展包，所以要对opencv做版本检查）：
-|--类 `BRIEFMatching`：仅新增了star_detector、brief_extractor
-|--类 `SIFTmatching`：仅修改了detector，新增了matcher
-|--类 `SUFMatching`：仅修改了detector，新增了matcher
+|-keypoint_matching_contrib.py（继承`Keypointmatching`基类，封装了三个类（用到了opencv的拓展包，所以要对opencv做版本检查））
+|--类 BRIEFMatching：仅新增了star_detector、brief_extractor
+|--类 SIFTmatching：仅修改了detector，新增了matcher
+|--类 SUFMatching：仅修改了detector，新增了matcher
 ```
 
 
