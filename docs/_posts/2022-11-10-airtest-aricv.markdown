@@ -379,20 +379,38 @@ TM_CCOEFF_NORMED标准计算置信度
 ## 基于特征点的图像识别
 在`keypoint_base.py`,`keypoint_matching.py`,`keypoint_matching_contrib.py`中，airtest基于KAZE的思想，用代码对其进行了基本实现，并封装成了一个`KeypointMatching`基类。在此基础上，以不同改进的迭代器，继承封装了多个方法类。
 
-### keypoint_base.py
 
-### keypoint_matching.py
+### 脚本结构
+```txt
+|-keypoint_base.py
+|--def find_best_result(self)
+|--def show_match_image(self)
+|--def _cal_confidence(self, resize_img)
+|--def init_detector(self)
+|--def get_keypoints_and_descriptors(self, image)
+|--def match_keypoints(self, des_sch, des_src)
+|--def _get_key_points(self)
+|--def _handle_two_good_points(self, kp_sch, kp_src, good)
+|--def _handle_three_good_points(self, kp_sch, kp_src, good)
+|--def _many_good_pts(self, kp_sch, kp_src, good)
+|--def _get_origin_result_with_two_points(self, pts_sch1, pts_sch2, pts_src1, pts_src2)
+|--def _find_homography(self, sch_pts, src_pts)
+|--def _target_error_check(self, w_h_range)
+
+|-keypoint_matching.py
 继承`Keypointmatching`基类，封装了四个类：
-+ `KAZEMatching`：原封不动的继承Keypointmatching
-+ `BRISKMatching`：仅将detector改为了`cv2.BRISK_create`
-+ `AKAZEMatching`：仅将detector改为了`cv2.AKAZE_create`
-+ `ORBMatching`仅将detector改为了`cv2.ORB_create`
+|--类 `KAZEMatching`：原封不动的继承Keypointmatching
+|--类 `BRISKMatching`：仅将detector改为了`cv2.BRISK_create`
+|--类 `AKAZEMatching`：仅将detector改为了`cv2.AKAZE_create`
+|--类 `ORBMatching`仅将detector改为了`cv2.ORB_create`
 
 
-### keypoint_matching_contrib.py
+|-keypoint_matching_contrib.py
 继承`Keypointmatching`基类，封装了三个类（用到了opencv的拓展包，所以要对opencv做版本检查）：
-+ `BRIEFMatching`：仅新增了star_detector、brief_extractor
-+ `SIFTmatching`：仅修改了detector，新增了matcher
-+ `SUFMatching`：仅修改了detector，新增了matcher
+|--类 `BRIEFMatching`：仅新增了star_detector、brief_extractor
+|--类 `SIFTmatching`：仅修改了detector，新增了matcher
+|--类 `SUFMatching`：仅修改了detector，新增了matcher
+```
 
-以上总结的不是很到位，得根据算法具体原理再完善
+
+
