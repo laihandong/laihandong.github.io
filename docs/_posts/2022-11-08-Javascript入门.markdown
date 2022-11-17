@@ -511,6 +511,42 @@ m.forEach(function (value, key, map) {
 
 
 # 3. 函数
+javascript函数可以像变量一样，有很强的抽象能力。
+定义方式之一：
+```javascript
+function abs(x) {
+  if ( x >= 0) {
+    return x;
+  } else {
+    return -x;
+  }
+}
+```
+定义方式之二：<font color=red>即，将函数视为变量，去定义这个函数</font>
+```javascript
+var abs = function (x) {
+  if ( x >= 0) {
+    return x;
+  } else {
+    return -x;
+  }
+};
+```
++ return 并不是必须的，JavaScript会默认返回undefined
++ 方式二中，`function (x) { ... }`就是一个匿名函数，不过要注意**在结尾加上分号**
++ JavaScript允许传入任意个参数（即使函数没有定义）
+  + **多了**不影响返回值，不影响调用
+  + **少了**则返回NaN，因为会把当`undefined`传入，结果为`NaN`，解决方法之一是==加一个传入值的类型判断==
+    ```javascript
+    if ( typeof x !== 'number') {
+      throw 'Not a number';
+    }
+    ```
+
++ arguments：
+  + 
+
+
 
 
 
