@@ -92,7 +92,7 @@ pypi.org/account/register
 ### 3.3 本地测试使用
 
 ```python
-from testingtools.xx1.py import hello
+from testingtools.xx1 import hello
 
 hello()
 

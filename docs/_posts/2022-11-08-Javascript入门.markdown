@@ -511,8 +511,11 @@ m.forEach(function (value, key, map) {
 
 
 # 3. 函数
+## 3.1 定义第一个函数
+
 javascript函数可以像变量一样，有很强的抽象能力。
 定义方式之一：
+
 ```javascript
 function abs(x) {
   if ( x >= 0) {
@@ -534,27 +537,188 @@ var abs = function (x) {
 ```
 + return 并不是必须的，JavaScript会默认返回undefined
 + 方式二中，`function (x) { ... }`就是一个匿名函数，不过要注意**在结尾加上分号**
+
+## 3.2 调用这个函数吧
+
 + JavaScript允许传入任意个参数（即使函数没有定义）
   + **多了**不影响返回值，不影响调用
-  + **少了**则返回NaN，因为会把当`undefined`传入，结果为`NaN`，解决方法之一是==加一个传入值的类型判断==
+
+  + **少了**则返回NaN，因为会把当`undefined`传入，结果为`NaN`
+    
+    + 解决方法之一是==加一个传入值的类型判断==
+    
+    	```javascript
+        if ( typeof x !== 'number') {
+          throw 'Not a number';
+        }
+    	```
+    
+    + 另一个方法就是使用`arguments`
+  
++ arguments：
+  + ==只在函数内部==起作用的关键字
+  
+  + 永远指向当前函数的调用者传入的==所有参数==
+  
+  + 像array，但不是array
+  
     ```javascript
-    if ( typeof x !== 'number') {
-      throw 'Not a number';
+    function abs() {
+        if (arguments.length === 0) {
+            return 0;
+        }
+        var x = arguments[0];
+        return x >= 0 ? x : -x;
     }
     ```
+  
+  + 若想让函数中有可选参数，也是通过`arguments`
+  
+    ```javascript
+    function foo(a, b, c) {
+        if (arguments.length === 2) {
+            // 实际拿到的参数是a和b，c为undefined，以下操作把b处理成了默认参数，实现类似function(a[,b],c)的效果  
+            c = b; // 把b赋给c
+            b = null; // b变为默认值
+        }
+    }
+    ```
+  
+  + 获取==额外的参数==
+  
+    ```javascript
+    function foo(a, b) {
+        var i, rest = [];
+        if (arguments.length > 2) {
+            for (i = 2; i<arguments.length; i++) {
+                rest.push(arguments[i]);//获取额外的参数
+            }
+        }
+    }
+    ```
+  
+    但会显得有些别扭，ES6中引入了==`rest`==参数
+  
+    ```javascript
+    function foo(a, b, ...rest) {
+        console.log(rest);//这就是额外的参数（没有的话是个空数组，不是undefined）
+    }
+    ```
+  
+  + 注意==return==
+  
+    JavaScript引擎在行末自动添加分号的机制，使得return最好不要和返回值拆成两行写，如果要的话，记得用上`{}`
+  
+    ```javascript
+    function foo() {
+        return { // 这里不会自动加分号，因为{表示语句尚未结束
+            name: 'foo'
+        };
+    }
+    ```
+  
+    
 
-+ arguments：
-  + 
+
+
+## 3.3 变量作用域
+
++ 和大多数语言一样，变量只在声明它的函数体内有效
+
++ 嵌套函数中有同名变量，内部函数的变量会“屏蔽”外部函数的变量
+
++ JavaScript特性：==变量的声明“提升”但赋值不会==
+
+  ```javascript
+  function foo() {
+      var x = 'Hello, ' + y;//这里不会报错，只不过此时y是undefined（所以建议养成好习惯，在函数头部尽量初始化好所有变量）
+      console.log(x);
+      var y = 'Bob';
+  }
+  ```
+
++ 不在任何函数体内定义的变量，会被默认绑定到全局对象`window`，作用域为==全局作用域==
+
+  ```javascript
+  var x = 'hello';
+  alert(course); // 'hello'
+  alert(window.course); // 'hello'
+  ```
+
+  同理可推，**在将函数视为变量的JavaScript中**，会有以下情况发生：
+
+  + *顶层函数的定义也被视为全局变量*，可以用window访问，自定义的（甚至是alert）均是如此
+
+  + 类似`window.alert`可以赋值给别的变量，也可以被赋值
+
+    ```javascript
+    window.alert('调用window.alert()');  //这里还可以正常调用
+    
+    var old_alert = window.alert;  //old_alert可以实现alert的功能了，old_alert("hello world")
+    
+    window.alert = function () {}  
+    alert('无法用alert()显示了!');	//到这里，alert就用不了了（但不会报错，因为已经是个空函数了），这句代码不会有任何消息产生
+    
+    // 恢复alert:
+    window.alert = old_alert;
+    alert('又可以用alert()了!');	//这里就恢复使用了，打印出'又可以用alert()了!'
+    ```
+
++ 从以上可以发现，==JavaScript只有一个全局作用域==，任何变量都会在当前作用域查找（若没有则往上，直至全局作用域），否则报`ReferenceError`错误
+
++ 在**多个js文件**共同工作时，**很容易发生全局作用域中变量命名重复的情况**
+
+  + 解决方法之一是==命名空间==
+
+    ```javascript
+    // 唯一的全局变量MYAPP:
+    var MYAPP = {};
+    
+    // 其他变量:
+    MYAPP.name = 'myapp';
+    MYAPP.version = 1.0;
+    
+    // 其他函数:
+    MYAPP.foo = function () {
+        return 'foo';
+    };
+    ```
+
+    事实证明，这是有效的。比如jQuery、YUI等等js库
+
++ 局部作用域事实是以函数体为最小单位，从而引出了==块级作用域==，并引入`let`来区分`var`定义变量的作用
+
+  ```javascript
+  function foo1() {
+      for (var i=0; i<100; i++) {
+          //
+      }
+      i += 100; // 仍然可以引用变量i
+  }
+  function foo2() {
+      var sum = 0;
+      for (let i=0; i<100; i++) {
+          sum += i;
+      }
+      i += 1;// 这行代码会报错SyntaxError
+  }
+  ```
+
++ 有变量，自然就有==常量==
+
+  + ES6之前，一般全部大写约定这是常量
+
+    ```javascript
+    const PI = 3.14;//（“不要修改它！”）
+    ```
+
+  + ES6开始，引入`const`来定义常量，且也具有**块级定义域**（*上面的约定俗成也是好习惯*）
 
 
 
 
 
-
-
-
-
-
+## 3.4 解构赋值
 
 
 
