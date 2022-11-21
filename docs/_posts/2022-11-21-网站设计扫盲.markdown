@@ -15,9 +15,12 @@
 
 # 调研内容
 ## web服务器
-### nginx
++ nginx、apache、tomcat 这三个 可以归为一类，都是服务器.
++ nginx 是轻量级 http服务器和反向代理服务器
++ apache也是http服务器
++ nginx和apache 也都可以作为静态文件服务器来使用
++ tomcat 可以认为是apache 的一个扩展，apache如果要运行java，就需要tomcat的支持，tomcat也可以独立运行。
++ 他们都属于应用服务器
 
-### apache
 
-### lighttpd
 
