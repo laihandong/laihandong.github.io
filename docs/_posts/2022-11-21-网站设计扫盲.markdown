@@ -22,5 +22,9 @@
 + tomcat 可以认为是apache 的一个扩展，apache如果要运行java，就需要tomcat的支持，tomcat也可以独立运行。
 + 他们都属于应用服务器
 
+## web框架
++ Django 是 python 的 web 框架，它能帮助你快速开发出后端程序
++ 
+
 
 
