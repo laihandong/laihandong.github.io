@@ -24,7 +24,10 @@
 
 ## web框架
 + Django 是 python 的 web 框架，它能帮助你快速开发出后端程序
-+ 
 
+
+## Node.js
++ Javascript 原先只能在浏览器上运行
++ nodejs 利用了 Google 的 V8 引擎，做了些工作（主要写了 runtime ）使得 javascript 能在服务器端跑
 
 
