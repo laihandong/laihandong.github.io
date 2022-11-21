@@ -28,5 +28,18 @@
 
 ## Node.js
 + Javascript 原先只能在浏览器上运行，诞生于1995年，而nodejs诞生于2009年。
-+ Node.js 不是一门新的编程语言，也不是一个 JavaScript 框架，它是一套 JavaScript 运行环境，用来支持 JavaScript 代码的执行。用编程术语来讲，Node.js 是一个 JavaScript 运行时（Runtime）。
++ Node.js 不是一门新的编程语言，也不是一个 JavaScript 框架，它是一套 JavaScript 运行环境，用来支持 JavaScript 代码的执行。用编程术语来讲，Node.js 是一个 JavaScript 运行时（Runtime）
++ 所谓运行时，就是程序在运行期间需要依赖的一系列组件或者工具；把这些工具和组件打包在一起提供给程序员，程序员就能运行自己编写的代码了
++ nodejs的开发团队为了避免其被误认为是 JavaScript 框架，现在也经常简称为 Node
++ Node.js 运行时主要由 V8 引擎、标准库和本地模块组成，尤其是本地模块的多少，从底层决定了 Node.js 功能的强弱
+### V8引擎
++ V8 引擎就是 JavaScript 解释器，它负责解析和执行 JavaScript 代码
++ V8 引擎借鉴了 Java 虚拟机和 C++ 编译器的众多技术，它将 JavaScript 代码直接编译成原生机器码，并且使用了缓存机制来提高性能，这使得 JavaScript 的运行速度可以媲美二进制程序
 
+### 本地模块
++ Node.js 集成了众多高性能的开源库，它们使用 C/C++ 语言实现
++ Node.js 直接在计算机上运行 JavaScript 代码，并且要赋予 JavaScript 强大的能力，所以它的本地模块和浏览器中的运行时有很多大区别，甚至说几乎没有什么关联。Node.js 几乎完全抛弃了浏览器，自己从头构建了一套全新的 JavaScript 运行时
+
+### 标准库
++ 本地模块使用 C/C++ 编写，而 Node.js 面向 JavaScript 开发人员，所以必须要封装本地模块的 C/C++ 接口，提供一套优雅的 JavaScript 接口给开发人员，并且要保持接口在不同平台（操作系统）上的一致性
++ 这套 JavaScript 接口，就是 Node.js 标准库。标准库是否优雅和强大，决定了 Node.js 的易用性，直接影响 Node.js 的市场表现
