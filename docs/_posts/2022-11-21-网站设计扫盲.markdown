@@ -27,7 +27,6 @@
 
 
 ## Node.js
-+ Javascript 原先只能在浏览器上运行
-+ nodejs 利用了 Google 的 V8 引擎，做了些工作（主要写了 runtime ）使得 javascript 能在服务器端跑
-
++ Javascript 原先只能在浏览器上运行，诞生于1995年，而nodejs诞生于2009年。
++ Node.js 不是一门新的编程语言，也不是一个 JavaScript 框架，它是一套 JavaScript 运行环境，用来支持 JavaScript 代码的执行。用编程术语来讲，Node.js 是一个 JavaScript 运行时（Runtime）。
 
