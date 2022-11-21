@@ -13,3 +13,11 @@
 
 
 
+# 调研内容
+## web服务器
+### nginx
+
+### apache
+
+### lighttpd
+
