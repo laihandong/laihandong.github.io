@@ -23,7 +23,16 @@
 + 他们都属于应用服务器
 
 ## web框架
-+ Django 是 python 的 web 框架，它能帮助你快速开发出后端程序
++ Django 是 python 的 web 框架
++ Flask 也是 python 的 web 框架
++ Rails 是 Ruby 的 web 框架，和Django性质是一样的
++ 大多数的Web框架提供了一套开发和部署网站的方式，在进行数据缓存、数据库访问、数据安全校验等方面，不需要自己再重新实现，而是将业务逻辑相关的代码写入框架就可以。等等
++ 当然不用web框架来开发网站也是有的，比如用php在apache上开发
++ Java目前的主流开发框架是ssm(spring spring-mvc和mybatis)。相比之前的ssh(spring struts hibernate)，ssm也是比较轻量级的框架
+
+## web界面框架
++ html+css+js直接原生设计界面，但开发成本、上手难度会高一些，需求的频繁变动会大大增加维护成本
++ web界面框架应运而生，比如vue.js，react，jQuery等等
 
 
 ## Node.js
