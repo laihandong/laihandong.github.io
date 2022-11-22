@@ -865,10 +865,19 @@ js中有个关键字this（没错，跟c/c++中的作用类似），常用在方
 
   xiaoming.age(); // 25
   ```
+### apply() call()
+这两个函数属于函数本身的方法，可以起到改变this指向的作用
++ apply()
+  + 第一个参数是需要绑定的this变量
+  + 第二个参数是Array，表示函数本身的参数
 
-
-
-
++ call()
+  + 和apply几乎相同，唯一不同如下：
+    ```javascript
+    Math.max.apply(null, [3, 5, 4]); // 5
+    Math.max.call(null, 3, 5, 4); // 5 call()把参数按顺序传入
+    ```
+对于需要对this进行特殊处理的函数，使用applay或call会很有帮助，普通函数使用的话，通常让this绑定为null
 
 
 
