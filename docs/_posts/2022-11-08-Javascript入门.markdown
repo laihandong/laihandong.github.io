@@ -719,9 +719,49 @@ var abs = function (x) {
 
 
 ## 3.4 解构赋值
+ES6引入了解构赋值，能实现同时对一组变量进行赋值，具体应用举例如下：
+
+```javascript
+var [x,y,z] = ['hello', 'world', '!'] // 注意：对数组元素进行解构赋值时，多个变量要用[]括起来
+
+let [x,[y,z]] = ['hello', ['world', '!']] // 注意：若存在嵌套，嵌套层次和位置要保持一致
+
+let [, , z] = ['hello', 'world', '!'] // 注意：这样做可以忽略前两个元素，直接赋值第三个元素给z
+
+```
+除了数组元素，还能应用于`对象`
+```javascript
+var person = {
+  name : 'lhd',
+  age : 21,
+  gender : 'male'
+};
+
+var {name,gender} = person; // 注意：使用属性名来获取相应对象属性
+
+var student = {
+  name : 'xiaoming',
+  age : 18
+  class : {
+    level : 6,
+    id : 3
+  }
+};
+
+var {name, class:{level, num}} = student; //注意：有多级嵌套的对象，保证对应层次一致即可；
+                                          //注意：不存在的属性，比如num，会赋值为undefinedclass
+                                          //注意：class不是变量，而是为了让city和num获得嵌套的class对象的属性；
+                                          //注意：此时访问class，会提示Uncaught ReferenceError: class is not defined
+                                          
+var {name: myName, age: myAge} = student; //注意：如果要使用的变量名和属性名不一致，可以这样获取
+                                          //注意：name，age此时不是变量，而是让变量myName，myAge获得name，age属性；
+                                          //注意：此时访问name或age，会提示Uncaught ReferenceError: class is not defined
+                                          
+var {name, gender='male'} = student; //注意：避免获取不存在的属性而导致返回undefined，可以采取默认赋值
 
 
 
+```
 
 
 
