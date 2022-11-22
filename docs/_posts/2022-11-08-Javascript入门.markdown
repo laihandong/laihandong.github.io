@@ -879,9 +879,24 @@ js中有个关键字this（没错，跟c/c++中的作用类似），常用在方
     ```
 对于需要对this进行特殊处理的函数，使用applay或call会很有帮助，普通函数使用的话，通常让this绑定为null
 
+## 装饰器
+
+**JavaScript的所有对象都是动态的，即使内置的函数，我们也可以重新指向新的函数**
+尝试理解下面的例子：
+```javascript
+'use strict';
+
+var count = 0;
+var oldParseInt = parseInt; // 保存原函数
+
+window.parseInt = function () {
+    count += 1;
+    return oldParseInt.apply(null, arguments); // 调用原函数，apply视情况使用（主要为了避免this指向位置的问题）
+};
+```
 
 
-
+形象地说，parseInt函数被“夺舍”后，先执行我们给它的语句count+=1，再执行它自己，并返回结果
 
 
 
