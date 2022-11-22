@@ -825,7 +825,7 @@ js中有个关键字this（没错，跟c/c++中的作用类似），常用在方
   + 声明变量获取对象的方法，然后直接使用，this会指向`undefinded`
     ```javascript
     var fn = xiaoming.age; // 先拿到xiaoming的age函数方法
-                           // 注意：ES6中这句会提示报错Uncaught TypeError: Cannot read property 'birth' of undefined
+                           // 注意：ES6在strict模式下，这句会报错Uncaught TypeError: Cannot read property 'birth' of undefined
                            // 但没有解决this指向正确位置的问题
     fn(); // NaN
           
@@ -838,8 +838,8 @@ js中有个关键字this（没错，跟c/c++中的作用类似），常用在方
   var xiaoming = {
       name: '小明',
       birth: 1990,
-      age: function () {
-          function getAgeFromBirth() {
+      age: function () {// 在这一层，this会指向xiaoming，即当前对象
+          function getAgeFromBirth() {// 注意：在这一层，this又指向了`undefined`;且在非strict模式下，它重新指向全局对象`window`
               var y = new Date().getFullYear();
               return y - this.birth;
           }
@@ -848,6 +848,22 @@ js中有个关键字this（没错，跟c/c++中的作用类似），常用在方
   };
 
   xiaoming.age(); // Uncaught TypeError: Cannot read property 'birth' of undefined
+  
+  //解决方法：在方法内部一开始就捕获this
+  var xiaoming = {
+    name: '小明',
+    birth: 1990,
+    age: function () {
+        var that = this; // 在方法内部一开始就捕获this
+        function getAgeFromBirth() {
+            var y = new Date().getFullYear();
+            return y - that.birth; // 用that而不是this
+        }
+        return getAgeFromBirth();
+    }
+  };
+
+  xiaoming.age(); // 25
   ```
 
 
