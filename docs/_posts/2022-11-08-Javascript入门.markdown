@@ -802,10 +802,53 @@ js中有个关键字this（没错，跟c/c++中的作用类似），常用在方
 
 + 在**方法**中调用this，自然指向当前的对象
 + 当**函数**中调用了this，js是不会报错的，而是**视情况而定**this该指向谁（大坑）
-  + 
-+ 如果是写在对象方法里，是指向该对象，如果是全局函数里，是指向全局对象（即window）
+  ```javascript
+  function getAge() {
+    var y = new Date().getFullYear();
+    return y - this.birth;
+  }
 
-由于JavaScript默认只有一个全局对象（或是命名空间），
+  var xiaoming = {
+      name: '小明',
+      birth: 1990,
+      age: getAge
+  };
+  ```
+  + 以*对象*形式调用*方法*，this指向当前对象
+    ```javascript
+    xiaoming.age(); //返回一个正常数字
+    ```
+  + 单独调用*函数*，this指向**全局**对象（在js中也就是window）
+    ```javascript
+    getAge(); // NaN
+    ```
+  + 声明变量获取对象的方法，然后直接使用，this会指向`undefinded`
+    ```javascript
+    var fn = xiaoming.age; // 先拿到xiaoming的age函数方法
+                           // 注意：ES6中这句会提示报错Uncaught TypeError: Cannot read property 'birth' of undefined
+                           // 但没有解决this指向正确位置的问题
+    fn(); // NaN
+          
+    ```
+
++ 在对象的方法内定义的函数，this又会指向`undefined`（无语=.=）
+  ```javascript
+  'use strict';
+
+  var xiaoming = {
+      name: '小明',
+      birth: 1990,
+      age: function () {
+          function getAgeFromBirth() {
+              var y = new Date().getFullYear();
+              return y - this.birth;
+          }
+          return getAgeFromBirth();
+      }
+  };
+
+  xiaoming.age(); // Uncaught TypeError: Cannot read property 'birth' of undefined
+  ```
 
 
 
