@@ -72,3 +72,10 @@ def hello_my_django(request):
     return render(request,"hello.html",{"vaule":"hello my Django"})
 ```
 另一种是`render`方法，封装在`django.shortcuts`中，也很方便
+
+# URL
+URL 的语法格式为：`protocol://[username:password@]hostname[:port]/path[?query][#fragment]`
+
+示例：`https://www.baidu.com/movie/movieshow?id=234&number=1314#name`
+
+从中可以了解到URL基本语法，当然还有类似`%code`机制处理特殊字符的知识，可令开一篇文章总结
