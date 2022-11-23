@@ -118,3 +118,13 @@ Memcached 是 Django 支持的最快、最高效的分布式高效缓存系统�
 
 
 <font color=red size=5>至此，当新建一个Django项目后，以上内容就是默认提供的了，而不用自己再去一个个搭建</font>
+
+# 搭建Djang开发环境
++ python 解释器
++ MySql数据库（Django自带SQLite数据库，但由于是轻量级的，不太建议用在企业级应用）
++ 包管理器 `python -m pip install -U pip`
++ pycharm IDE（得找个破解的**专业版**）
++ Django（注意和python的版本关系），使用pip安装
+
+
+# Django创建第一个项目
