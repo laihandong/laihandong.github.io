@@ -1,4 +1,4 @@
-能够接收函数作为参数的函数，在js中被称为高阶函数
+能够接收函数作为参数的函数，在js中被称为高阶函数，以下函数均可接收函数作为参数，也主要讲接收函数作为参数时的用法和注意事项
 
 # map
 `map()`方法定义在js的`Array`中，它能接收函数，并根据该函数对`Array`中的**每一个元素**依次进行处理，返回结果仍是以`Array`的形式
@@ -52,11 +52,33 @@ arr.sort(function (x, y) {
 
 
 # every
-
-every()方法可以判断数组的所有元素是否满足测试条件
+every()方法可以**判断数组的所有元素是否满足测试条件**
 ```javascript
 var arr = ['Apple', 'pear', 'orange'];
 console.log(arr.every(function (s) {
     return s.length > 0;
 })); // true, 因为每个元素都满足s.length>0
+```
+
+# find
+find()方法用于**查找数组符合条件的第一个元素，如果找到了，返回这个元素，否则，返回undefined**
+```javascript
+var arr = ['Apple', 'pear', 'orange'];
+console.log(arr.every(function (s) {
+    return s.length > 0;
+})); // true, 因为每个元素都满足s.length>0
+
+console.log(arr.every(function (s) {
+    return s.toLowerCase() === s;
+})); // false, 因为不是每个元素都全部是小写
+```
+
+# findIndex
+```javascript
+
+```
+
+# for Each
+```javascript
+
 ```
