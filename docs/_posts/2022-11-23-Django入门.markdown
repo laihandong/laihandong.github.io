@@ -79,3 +79,21 @@ URL 的语法格式为：`protocol://[username:password@]hostname[:port]/path[?q
 示例：`https://www.baidu.com/movie/movieshow?id=234&number=1314#name`
 
 从中可以了解到URL基本语法，当然还有类似`%code`机制处理特殊字符的知识，可令开一篇文章总结
+
+
+# 路由系统
+Django通过ROOT_URLCONF构建**URL和视图函数的映射关系**，在`urls.py`路由配置文件中配置url
+
+urls.py 文件中定义了一个 `urlpatterns` 的列表，它是由 **url( ) 实例对象组成的列表**，Django 中 url 的定义就是在这个列表完成的
+
+```python
+from django.conf.urls import url
+urlpatterns=[
+url(r '^admin/',admin.site.urls), # 后台 Admin 管理系统的路由就定义在了列表第一个位置
+...
+]
+```
+`url(regex,view,name=None)`说明：
++ regex，匹配请求路径，用正则表达式表示；
++ view，指定 regex 匹配路径所对应的视图函数的名称；
++ name，是给 url 地址起个别名，在模板反向解析的时候使用
