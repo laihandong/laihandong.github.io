@@ -55,6 +55,7 @@ arr.sort(function (x, y) {
 every()方法可以**判断数组的所有元素是否满足测试条件**
 ```javascript
 var arr = ['Apple', 'pear', 'orange'];
+//判断数组全部都是小写
 console.log(arr.every(function (s) {
     return s.length > 0;
 })); // true, 因为每个元素都满足s.length>0
@@ -64,21 +65,25 @@ console.log(arr.every(function (s) {
 find()方法用于**查找数组符合条件的第一个元素，如果找到了，返回这个元素，否则，返回undefined**
 ```javascript
 var arr = ['Apple', 'pear', 'orange'];
-console.log(arr.every(function (s) {
-    return s.length > 0;
-})); // true, 因为每个元素都满足s.length>0
-
-console.log(arr.every(function (s) {
+//找到全是小写字母的
+console.log(arr.find(function (s) {
     return s.toLowerCase() === s;
-})); // false, 因为不是每个元素都全部是小写
+})); // 'pear', 因为pear全部是小写
 ```
 
 # findIndex
+**查找符合条件的第一个元素，不同之处在于findIndex()会返回这个元素的索引，如果没有找到，返回-1**
 ```javascript
-
+var arr = ['Apple', 'pear', 'orange'];
+//找到全是小写字母的
+console.log(arr.findIndex(function (s) {
+    return s.toLowerCase() === s;
+})); // 1, 因为'pear'的索引是1
 ```
 
-# for Each
+# forEach
+**和map()类似，但不会返回新的数组，因此传入的函数也不需要返回值**
 ```javascript
-
+var arr = ['Apple', 'pear', 'orange'];
+arr.forEach(console.log); // 依次打印每个元素
 ```
