@@ -94,6 +94,6 @@ url(r '^admin/',admin.site.urls), # 后台 Admin 管理系统的路由就定义�
 ]
 ```
 `url(regex,view,name=None)`说明：
-+ regex，匹配请求路径，用正则表达式表示；
-+ view，指定 regex 匹配路径所对应的视图函数的名称；
++ regex，匹配**请求路径**，用正则表达式表示（其用法很丰富，可以单独开一篇博客总结）
++ view，指定 regex 匹配路径所对应的**视图函数**的名称
 + name，是给 url 地址起个别名，在模板反向解析的时候使用
