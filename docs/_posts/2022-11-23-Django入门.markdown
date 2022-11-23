@@ -42,7 +42,33 @@ Django提供的 auth 模块能够快速的实现用户模块的基本功能
 
 
 
-# 视图函数
+# 视图函数（View）
++ 在 Django 中，视图函数是一个 Python 函数或者类
++ 视图函数首先接受来自浏览器或者客户端的请求，并最终返回响应
+
+```python
+from django.http import HttpResponse
+def Hello_my_django(request):
+    return HttpResponse('<html><body>Hello my Django</body></html>')
+```
+从以上我们可以了解**视图函数工作的关键三点：**
++ HttpResponse，是一种**视图响应**的类型
++ request，Django 规定了，**视图函数至少有一个参数**，第一个参数必须是 `request`
++ return，**视图函数要返回响应内容**，这里的响应内容是我们用 HTML 标签编写的，把它作为 HttpResponse 的对象返回给浏览器
 
 
-# 
+# 模板系统（Template）
+从上一小节代码中，可以看到竟然将html的代码放到了程序里，势必会有高度耦合、难以维护的隐患，而**模板系统就是将视图函数和html代码解耦的**
+
+创建好一个 Django 项目后，我们在项目的同级目录下创建一个名为 templates 文件夹，对它进行简单的配置后，这个文件夹将被 Django 自动识别
+
+在tamplates下新建hello.html，编写如下代码：
+```html
+<html><body>{{vaule}}</body></html>
+```
+视图函数调用模板，并进行“模板传参”
+```python
+from django.shortcuts import render      
+def hello_my_django(request):
+    return render(request,"hello.html",{"vaule":"hello my Django"})
+```
