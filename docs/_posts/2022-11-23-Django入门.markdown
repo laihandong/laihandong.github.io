@@ -60,15 +60,15 @@ def Hello_my_django(request):
 # 模板系统（Template）
 从上一小节代码中，可以看到竟然将html的代码放到了程序里，势必会有高度耦合、难以维护的隐患，而**模板系统就是将视图函数和html代码解耦的**
 
-创建好一个 Django 项目后，我们在项目的同级目录下创建一个名为 templates 文件夹，对它进行简单的配置后，这个文件夹将被 Django 自动识别
 
-在tamplates下新建hello.html，编写如下代码：
+在tamplates文件夹（一个项目同级目录，Django会自动识别）下新建hello.html，编写如下代码：
 ```html
 <html><body>{{vaule}}</body></html>
 ```
-视图函数调用模板，并进行“模板传参”
+**视图函数调用模板，并进行“模板传参”**
 ```python
 from django.shortcuts import render      
 def hello_my_django(request):
     return render(request,"hello.html",{"vaule":"hello my Django"})
 ```
+另一种是`render`方法，封装在`django.shortcuts`中，也很方便
