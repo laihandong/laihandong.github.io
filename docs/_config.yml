@@ -1,24 +1,22 @@
-title: My personal blog - Adam Neilson
-email: your-email@domain.com
+title: 个人博客-赖汉栋
+email: derderlhd@outlook.com
 description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  我会在这总结对将要学习的内容的调研、正在学习的内容的阶段总结和笔记、应用所学内容的尝试和实践以及不定时的学习和生活复盘。
 permalink: ':title/'
 baseurl: "/adam-blog" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Author settings
-author: Adam Neilson # add your name
-author-pic: adam-face.jpg
-about-author: My name is Adam Neilson. I’m a full-time adventure travel blogger and photographer who’s been exploring the world for over 2 years.
+author: laihandong # add your name
+author-pic: laihandong-face.jpg
+about-author: 我的名字是赖汉栋。我目前是一名工作不到半年的游戏测试工程师。
 
 # Contact links
-email: # Add your Email address
-phone: # Add your Phone number
+email: # derderlhd@outlook.com
+phone: # 18811536758
 website: # Add your website, do not add http://
 linkedin: # Add your Linkedin handle
-github: artemsheludko # Add your Github handle
+github: laihandong # Add your Github handle
 twitter: '@artemsheludko_' # Add your Twitter handle
 facebook: # Add your Facebook handle
 instagram: # Add your Instagram handle
@@ -47,3 +45,81 @@ plugins:
 
 include: [_pages]
 exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock", "package-lock.json", "assets/css/sass/"]
+
+# 添加文章分类功能
+links1:
+  - name: 所有
+    url:  /
+    type: recent
+    external: false
+  - name: 算法
+    url:  /算法
+    type: 算法
+    external: false
+  - name: 编程语言
+    url: /编程语言
+    type: 编程语言
+    external: false
+  - name: 版本管理
+    url: /版本管理
+    type: 版本管理
+    external: false
+  - name: Linux
+    url: /Linux
+    type: Linux
+    external: false
+  - name: Android
+    url: /Android
+    type: Android
+    external: false
+  - name: 集成开发环境(IDE)
+    url: /集成开发环境(IDE)
+    type: 集成开发环境(IDE)
+    external: false
+  - name: 计算机网络
+    url: /计算机网络
+    type: 计算机网络
+    external: false
+  - name: 游戏引擎
+    url: /游戏引擎
+    type: 游戏引擎
+    external: false
+  - name: 数据库
+    url: /数据库
+    type: 数据库
+    external: false
+  - name: 文档编写
+    url: /文档编写
+    type: 文档编写
+    external: false
+  - name: 网站设计
+    url: /网站设计
+    type: 网站设计
+    external: false
+  - name: 图形库
+    url: /图形库
+    type: 图形库
+    external: false
+  - name: 绘画
+    url: /绘画
+    type: 绘画
+    external: false
+  - name: 软件测试
+    url: /软件测试
+    type: 软件测试
+    external: false
+blog_0: recent
+blog_1: 算法
+blog_2: 编程语言
+blog_3: 版本管理
+blog_4: Linux
+blog_5: Android
+blog_6: 集成开发环境(IDE)
+blog_7: 计算机网络
+blog_8: 游戏引擎
+blog_9: 数据库
+blog_10: 文档编写
+blog_12: 网站设计
+blog_13: 图形库
+blog_14: 绘画
+blog_15: 软件测试
