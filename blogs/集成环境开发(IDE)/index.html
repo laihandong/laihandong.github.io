@@ -1,0 +1,13 @@
+---
+layout: home-page
+---
+{ % assign count = 0}
+<ol class="post-card-box clearfix">
+    { % for psot in site.posts %}
+    { % if post.集成环境开发(IDE) %}
+        <li>
+            <div class="post-card">
+                <a href="{{post.url | prepend: site.baseurl}}" class="post-card-image"></a>
+            </div>
+        </li>
+</ol>
