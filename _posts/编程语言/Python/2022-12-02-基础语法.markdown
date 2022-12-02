@@ -1,4 +1,18 @@
+---
+layout: post
+title:  "基础语法"
+date:   2022-11-27 20:30:00 +0800
+permalink: blog/编程语言/Python/基础语法.html
+typora-root-url: ../../
+author: handong
+tag1: 编程语言
+tag2: Python
+---
+
+
+
 # python标识符
+
 * 标识符由字母、数字、下划线组成
 * 不能以数字开头
 * 区分大小写

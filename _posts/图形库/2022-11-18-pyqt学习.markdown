@@ -1,2 +1,13 @@
+---
+layout: post
+title:  "pyqt学习"
+date:   2022-11-27 20:30:00 +0800
+permalink: blog/图形库/pyqt学习.html
+typora-root-url: ../../
+author: handong
+tag1: 图形库
+---
+
+
 
 https://zhuanlan.zhihu.com/p/162866700

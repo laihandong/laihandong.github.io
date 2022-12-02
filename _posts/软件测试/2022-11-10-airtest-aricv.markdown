@@ -1,4 +1,17 @@
+---
+layout: post
+title:  "airtest图像识别模块"
+date:   2022-11-27 20:30:00 +0800
+permalink: blog/软件测试/airtest图像识别模块.html
+typora-root-url: ../../
+author: handong
+tag1: 软件测试
+---
+
+
+
 # aircv简介
+
 aircv作为airtest的图像识别模块，封装了多种图像识别算法，可分为模板匹配和基于特征点的图像识别两类，各有优缺点，旨在根据不同场合使用不同算法。
 
 + 模板匹配：
@@ -181,7 +194,7 @@ cv2.split
   + 归一化的互相关匹配方法：TM_CCORR_NOMED,
   + 相关系数匹配方法：TM_CCOEFF,
   + 归一化的相关系数匹配方法：TM_CCOEFF_NORMED
-$$R=\frac{\sum_{x^{'},y^{'}}T^{'}(x^{'},y^{'})·I^{'}(x+x^{'},y+y^{'})}{\sqrt{\sum_{x^{'},y^{'}}T^{'}(x^{'},y^{'})^2·\sum_{x^{'},y^{'}}I^{'}(x+x^{'},y+y^{'})^2}}$$
+  $$R=\frac{\sum_{x^{'},y^{'}}T^{'}(x^{'},y^{'})·I^{'}(x+x^{'},y+y^{'})}{\sqrt{\sum_{x^{'},y^{'}}T^{'}(x^{'},y^{'})^2·\sum_{x^{'},y^{'}}I^{'}(x+x^{'},y+y^{'})^2}}$$
 
 
 + np.clip

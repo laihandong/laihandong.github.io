@@ -1,3 +1,15 @@
+---
+layout: post
+title:  "MySQL入门"
+date:   2022-11-27 20:30:00 +0800
+permalink: blog/数据库/MySQL入门.html
+typora-root-url: ../../
+author: handong
+tag1: 数据库
+---
+
+
+
 ## 一、初步了解关系数据库
 
 ### Relational Database Management System的特点：

@@ -1,3 +1,16 @@
+---
+layout: post
+title:  "Typescript学习"
+date:   2022-11-27 20:30:00 +0800
+permalink: blog/编程语言/Typescript/Typescript学习.html
+typora-root-url: ../../
+author: handong
+tag1: 编程语言
+tag2: Typescript
+---
+
+
+
 # Typescript简介
 
 + TypeScript 是 JavaScript 的一个超集，支持 ECMAScript 6 标准（[ES6 教程](https://www.runoob.com/w3cnote/es6-tutorial.html)）

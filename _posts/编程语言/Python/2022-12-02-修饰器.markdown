@@ -1,4 +1,18 @@
+---
+layout: post
+title:  "修饰器"
+date:   2022-11-27 20:30:00 +0800
+permalink: blog/编程语言/Python/修饰器.html
+typora-root-url: ../../
+author: handong
+tag1: 编程语言
+tag2: Python
+---
+
+
+
 # 在函数中定义函数
+
 python是可以在函数内定义函数的，虽然不能在外部调用，但可以在函数内调用，举个例子。
 
 ```python

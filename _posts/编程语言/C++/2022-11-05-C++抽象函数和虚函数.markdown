@@ -1,3 +1,20 @@
+---
+layout: post
+title:  "C++抽象函数和虚函数"
+date:   2022-11-27 20:30:00 +0800
+categories: 
+ - jekyll1
+ - jekyll2
+ - jekyll3
+permalink: blog/编程语言/C++/C++抽象函数和虚函数.html
+typora-root-url: ../../
+author: handong
+tag1: 编程语言
+tag2: C++
+---
+
+
+
 # 编程语言
 
 

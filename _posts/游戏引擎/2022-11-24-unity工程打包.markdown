@@ -1,3 +1,15 @@
+---
+layout: post
+title:  "unity工程打包"
+date:   2022-11-27 20:30:00 +0800
+permalink: blog/游戏引擎/unity工程打包.html
+typora-root-url: ../../
+author: handong
+tag1: 游戏引擎
+---
+
+
+
 https://juejin.cn/post/6844903473280974855
 
 以及遇到了gradle在内网总是失败，是网址依赖的问题

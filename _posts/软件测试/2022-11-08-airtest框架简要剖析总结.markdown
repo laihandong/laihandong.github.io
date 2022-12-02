@@ -1,4 +1,17 @@
+---
+layout: post
+title:  "airtest框架简要剖析总结"
+date:   2022-11-27 20:30:00 +0800
+permalink: blog/软件测试/airtest框架简要剖析总结.html
+typora-root-url: ../../
+author: handong
+tag1: 软件测试
+---
+
+
+
 # 简略介绍
+
 airtest是由网易airtest团队制作的一个**跨平台**的UI测试框架，也是他们开源的自动化测试框架之一（还有Poco框架、airtest- selenium框架、airtestIDE编辑器、deviceFarm集群方案和airlab云测平台）。
 
 airtest框架是跨平台（移动端App和Windows端）的、基于opencv图像识别的、用python开发的UI自动化测试框架，不过由于识别概率的机制和项目开发过程中UI界面频繁迭代，脚本迭代成本较高。

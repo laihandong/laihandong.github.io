@@ -1,1 +1,11 @@
+---
+layout: post
+title:  "Python总结"
+date:   2022-11-27 20:30:00 +0800
+permalink: blog/编程语言/Python/Python总结.html
+typora-root-url: ../../
+author: handong
+tag1: 编程语言
+tag2: Python
+---
 

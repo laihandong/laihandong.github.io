@@ -1,3 +1,16 @@
+---
+layout: post
+title:  "Javascript入门"
+date:   2022-11-27 20:30:00 +0800
+permalink: blog/编程语言/Javascript/Javascript入门.html
+typora-root-url: ../../
+author: handong
+tag1: 编程语言
+tag2: Javascript
+---
+
+
+
 [看廖雪峰大大的教程入门的](https://www.liaoxuefeng.com/wiki/1022910821149312)
 
 # 1. JavaScript简介
@@ -807,7 +820,7 @@ js中有个关键字this（没错，跟c/c++中的作用类似），常用在方
     var y = new Date().getFullYear();
     return y - this.birth;
   }
-
+  
   var xiaoming = {
       name: '小明',
       birth: 1990,
@@ -834,7 +847,7 @@ js中有个关键字this（没错，跟c/c++中的作用类似），常用在方
 + 在对象的方法内定义的函数，this又会指向`undefined`（无语=.=）
   ```javascript
   'use strict';
-
+  
   var xiaoming = {
       name: '小明',
       birth: 1990,
@@ -846,7 +859,7 @@ js中有个关键字this（没错，跟c/c++中的作用类似），常用在方
           return getAgeFromBirth();
       }
   };
-
+  
   xiaoming.age(); // Uncaught TypeError: Cannot read property 'birth' of undefined
   
   //解决方法：在方法内部一开始就捕获this
@@ -862,7 +875,7 @@ js中有个关键字this（没错，跟c/c++中的作用类似），常用在方
         return getAgeFromBirth();
     }
   };
-
+  
   xiaoming.age(); // 25
   ```
 ### apply() call()
@@ -877,7 +890,7 @@ js中有个关键字this（没错，跟c/c++中的作用类似），常用在方
     Math.max.apply(null, [3, 5, 4]); // 5
     Math.max.call(null, 3, 5, 4); // 5 call()把参数按顺序传入
     ```
-对于需要对this进行特殊处理的函数，使用applay或call会很有帮助，普通函数使用的话，通常让this绑定为null
+    对于需要对this进行特殊处理的函数，使用applay或call会很有帮助，普通函数使用的话，通常让this绑定为null
 
 ## 装饰器
 

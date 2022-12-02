@@ -1,4 +1,17 @@
+---
+layout: post
+title:  "Django入门"
+date:   2022-11-27 20:30:00 +0800
+permalink: blog/网站设计/Django入门.html
+typora-root-url: ../../
+author: handong
+tag1: 网站设计
+---
+
+
+
 # 概要
+
 Django 是用 Python 开发的一个免费开源的 Web 框架，几乎囊括了 Web 应用的方方面面，可以用于快速搭建高性能、优雅的网站。
 
 Django 提供了许多网站后台开发经常用到的模块，使开发者能够专注于业务部分
@@ -9,7 +22,7 @@ Web 开发领域还有另外一个非常著名的设计模式——MVC（Modle-V
 Django 的设计模式，也就是 MTV（Modle-Template-View），在 Django 是有 Controller 层的，只不过它由框架本身来实现，所以我们不用关心它
 
  
- 
+
 # ORM
 Object Realtional Mapping（对象关系映射），基于关系型数据库的程序技术。
 

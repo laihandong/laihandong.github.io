@@ -1,4 +1,17 @@
+---
+layout: post
+title:  "wampserver使用"
+date:   2022-11-27 20:30:00 +0800
+permalink: blog/网站设计/wampserver使用.html
+typora-root-url: ../../
+author: handong
+tag1: 网站设计
+---
+
+
+
 # 下载安装
+
 需要翻墙才能下载软件，否则只能浏览网页而已（下载那一步会一直失败）
 全部next就行了（最好选个好记的目录就行）
 # 配置第一个网站

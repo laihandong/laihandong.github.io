@@ -1,3 +1,15 @@
+---
+layout: post
+title:  "《软件测试》读后总结"
+date:   2022-11-27 20:30:00 +0800
+permalink: blog/软件测试/《软件测试》读后总结.html
+typora-root-url: ../../
+author: handong
+tag1: 软件测试
+---
+
+
+
 + 软件测试如何适应软件开发过程
 + 基本的和高级的软件测试技术
 + 在常见的测试任务中运用测试技能

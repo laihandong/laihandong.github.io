@@ -1,4 +1,18 @@
+---
+layout: post
+title:  "Erlang启动流程"
+date:   2022-11-27 20:30:00 +0800
+permalink: blog/编程语言/Erlang/Erlang启动流程.html
+typora-root-url: ../../
+author: handong
+tag1: 编程语言
+tag2: Erlang
+---
+
+
+
 # 启动节点
+
 erlexec.c 解析指令，启动epmd程序，启动beam.smp，调用erl_main.c（调用erl_init:erl_start进入erl主流程）
 
 # erl主流程

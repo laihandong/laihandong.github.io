@@ -1,3 +1,16 @@
+---
+layout: post
+title:  "pycharm使用"
+date:   2022-11-27 20:30:00 +0800
+permalink: blog/编程语言/pycharm/pycharm使用.html
+typora-root-url: ../../
+author: handong
+tag1: 集成环境开发(IDE)
+tag2: pycharm
+---
+
+
+
 python编辑器中王者级别的存在，怎么用怎么顺手，不过相比vscode那套机制，安装软件占的空间会大一些 
 
 推荐一篇知乎博客，简直了。[装上这14个插件，pycharm真是无敌的存在](https://zhuanlan.zhihu.com/p/339798430)

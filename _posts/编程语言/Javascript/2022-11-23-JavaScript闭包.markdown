@@ -1,3 +1,16 @@
+---
+layout: post
+title:  "Javascript闭包"
+date:   2022-11-27 20:30:00 +0800
+permalink: blog/编程语言/Javascript/Javascript闭包.html
+typora-root-url: ../../
+author: handong
+tag1: 编程语言
+tag2: Javascript
+---
+
+
+
 高阶函数除了可以接受函数作为参数外，**还可以把函数作为结果值返回**：
 **内部函数**可以引用**外部函数**的参数和局部变量，当返回函数时，**相关参数和变量都保存在返回的函数中**，这种称为**闭包（Closure）**
 

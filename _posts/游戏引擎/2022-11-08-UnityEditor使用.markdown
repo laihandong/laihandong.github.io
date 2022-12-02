@@ -1,3 +1,15 @@
+---
+layout: post
+title:  "UnityEditor使用"
+date:   2022-11-27 20:30:00 +0800
+permalink: blog/游戏引擎/UnityEditor使用.html
+typora-root-url: ../../
+author: handong
+tag1: 游戏引擎
+---
+
+
+
 # 安装Unity 
 
 17年的untiy是可以单独安装和打开的，现在（截止22年）是通过Unity hub来管理的，所以先安装hub，再下载所需要版本的unity，在hub中加载即可。  

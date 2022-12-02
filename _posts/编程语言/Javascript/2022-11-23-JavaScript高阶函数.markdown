@@ -1,3 +1,16 @@
+---
+layout: post
+title:  "Javascript高阶函数"
+date:   2022-11-27 20:30:00 +0800
+permalink: blog/编程语言/Javascript/Javascript高阶函数.html
+typora-root-url: ../../
+author: handong
+tag1: 编程语言
+tag2: Javascript
+---
+
+
+
 能够接收函数作为参数的函数，在js中被称为高阶函数，以下函数均可接收函数作为参数，也主要讲接收函数作为参数时的用法和注意事项
 
 # map

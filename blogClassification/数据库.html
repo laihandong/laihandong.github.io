@@ -1,0 +1,16 @@
+---
+layout: default
+title: Blog - 数据库
+---
+<h1>数据库</h1>
+
+<ul>
+    {% for post in site.posts %}
+        {% if post.tag1 == "数据库" %}
+            <li>
+                <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>                  
+                {{ post.excerpt }}
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>

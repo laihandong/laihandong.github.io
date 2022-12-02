@@ -1,1 +1,10 @@
+---
+layout: post
+title:  "游戏测试工作经历记录"
+date:   2022-11-27 20:30:00 +0800
+permalink: blog/软件测试/游戏测试工作经历记录.html
+typora-root-url: ../../
+author: handong
+tag1: 软件测试
+---
 

@@ -1,3 +1,15 @@
+---
+layout: post
+title:  "Linux测试常用指令"
+date:   2022-11-27 20:30:00 +0800
+permalink: blog/软件测试/Linux测试常用指令.html
+typora-root-url: ../../
+author: handong
+tag1: 软件测试
+---
+
+
+
 总结测试中常用到的linux指令（相比在linux下开发，还远远不够，移步计算机系统/linux总结文档）
 
 # 基础命令

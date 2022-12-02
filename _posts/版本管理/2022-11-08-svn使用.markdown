@@ -1,4 +1,22 @@
+---
+layout: post
+title:  "svn使用"
+date:   2022-11-27 20:30:00 +0800
+categories: 
+ - jekyll1
+ - jekyll2
+ - jekyll3
+permalink: blog/版本管理/svn/svn使用.html
+typora-root-url: ../../
+author: handong
+tag1: 版本管理
+tag2: svn
+---
+
+
+
 # 简介
+
 SVN(Apache Subversion)是一个开源的版本控制系统
 
 暂时还没总结全面，先看这篇[文章](https://zhuanlan.zhihu.com/p/349437775)

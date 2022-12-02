@@ -1,4 +1,18 @@
+---
+layout: post
+title:  "lambda"
+date:   2022-11-27 20:30:00 +0800
+permalink: blog/编程语言/Python/lambda.html
+typora-root-url: ../../
+author: handong
+tag1: 编程语言
+tag2: Python
+---
+
+
+
 # 简介
+
 + lambda 是一种小的匿名函数
 + lambda 这个函数可以接受**任意数量**的参数，但**只能有一个**表达式，形势如下：
     ```
