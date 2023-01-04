@@ -143,4 +143,12 @@ Memcached 是 Django 支持的最快、最高效的分布式高效缓存系统�
 
 
 # Django创建第一个项目
-c语言中文网django教程第14节（加油吧）好像看到后面了，但笔记是做到另一篇了？
+`pip install django`
+`cd your_dir`
+`mkdir your_dir2`
+`cd your_dir2`
+`django-admin startproject mytestsite`
+`cd mytestsite`
+`python manager.py runserver`
+进入`http://127.0.0.1:8000`，至此你看到了一个由django打造的示例网站
+
