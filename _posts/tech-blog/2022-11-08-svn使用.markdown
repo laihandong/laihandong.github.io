@@ -1,0 +1,42 @@
+---
+layout: single
+title:  "svn使用"
+tags: 版本管理 svn
+---
+
+
+
+# 简介
+
+SVN(Apache Subversion)是一个开源的版本控制系统
+
+暂时还没总结全面，先看这篇[文章](https://zhuanlan.zhihu.com/p/349437775)
+
+# Tortoise SVN
+TortoiseSVN是subversion版本控制系统的一个免费开源客户端，可以超越时间地管理**文件和目录**
+
+## 安装
+（一直next）
+## 拉取Repository到本地
++ 在你的工作目录空白处，右键选择SVN Checkout
++ 填写版本库的位置（对SVN来说，位置都是URL）
++ 填写Checkout Directory，指向你的工作目录
++ 按下OK按钮
+（综上，您就能在一个已经存在的SVN Server上面checkout其中的数据，只需要正确的SVN URL和检出目录，以及相应的权限即可）
+## 新增档案｜目录到Repository
++ 分add和commit两个操作
++ 前者是在本地新建文件｜目录后，右键Checkout直接点击OK，这时文件会被添加到（暂存区？）总之并未真正地放到Repository，只是出于就绪状态。
++ 右键空白处，选择SVN commit，在出现的窗口中勾选你想要的正式放到repository到文件｜目录，并填写说明即可
+## 更新文件｜目录
++ 空白处右键选择SVN Update 或者 选中文件｜目录右键选择TortoiseSVN->Update to reversion
+## 复制文件｜目录的分支 branch
++ 在trunk目录空白处（或者选中trunk目录）右键选择Tortoise SVN->Branch/Tag
++ 选择分支的目标路径，按下OK
++ 再到原来工作目录下空白处，右键选择SVN Update，就可以看到新增的分支内容了
+## 合并
++ 在branch分支中增｜删｜改了之后，要merge回trunk目录中，在**trunk**目录空白处，右键选择TortoiseSVN->Merge，填写参数点击确定即可
+## 制作Tag｜Release
+所谓Tag或者Release就是一个特别的版本，但在SVN的概念里也**只是一个目录**而已，所以操作和新增branch大致相同
++ 新建目录（要特别一些，比如`xx/tags/v1.0`或者`xx/release/v1.0`）
++ 在trunk目录空白处，右键选择Tortoise SVN->Branch/Tag，填写路径，**同时勾选“切换工作副本至新分支/标记”**，点击OK
++ 到新路径下，SVN Update后就可以看到内容了

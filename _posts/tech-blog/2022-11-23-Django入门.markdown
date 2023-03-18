@@ -1,0 +1,150 @@
+---
+layout: single
+title:  "Django入门"
+tags: 网站设计
+---
+
+
+
+# 概要
+
+Django 是用 Python 开发的一个免费开源的 Web 框架，几乎囊括了 Web 应用的方方面面，可以用于快速搭建高性能、优雅的网站。
+
+Django 提供了许多网站后台开发经常用到的模块，使开发者能够专注于业务部分
+
+# MTV和MVC
+Web 开发领域还有另外一个非常著名的设计模式——MVC（Modle-View-Controller）
+
+Django 的设计模式，也就是 MTV（Modle-Template-View），在 Django 是有 Controller 层的，只不过它由框架本身来实现，所以我们不用关心它
+
+ 
+
+# ORM
+Object Realtional Mapping（对象关系映射），基于关系型数据库的程序技术。
+
+ORM**使用类和对象来操作关系型数据库（MySql、Oracle等）**，避免了直接使用sql语句，底层用映射机制实现的（到一定水平我再去看看）
+
+映射机制：
++ 把**类**映射为数据库中的**表**
++ 把**类的实例**映射为数据库的**表的数据行**
++ 把**类的属性**映射为数据库的**表的字段**
+
+
+**表模型**为Model，继承自`django.db.models`的`Model`类，所有和表相关的操作，都是继承这个类
+**字段类型**用类似xxxField来描述
+
+Django提供了基本的CURD（增删改查）和其他API来对数据库表进行操作
+
+
+
+# auth模块
+Django提供的 auth 模块能够快速的实现用户模块的基本功能
++ 实现并维护了用户与用户组的增加、删除、更改功能；
++ 实现了用户权限与用户组权限的增加、删除、更改；
++ 实现了可以自定义用户权限与用户组权限功能。
++ 还提供了权限验证等功能以及一些常用的方法
+
+
+# Admin后台管理系统
+让不懂编程的人也能快速上手维护后台，配置人员权限
+
+
+
+
+# 视图函数（View）
++ 在 Django 中，视图函数是一个 Python 函数或者类
++ 视图函数首先接受来自浏览器或者客户端的请求，并最终返回响应
+
+```python
+from django.http import HttpResponse
+def Hello_my_django(request):
+    return HttpResponse('<html><body>Hello my Django</body></html>')
+```
+从以上我们可以了解**视图函数工作的关键三点：**
++ HttpResponse，是一种**视图响应**的类型
++ request，Django 规定了，**视图函数至少有一个参数**，第一个参数必须是 `request`
++ return，**视图函数要返回响应内容**，这里的响应内容是我们用 HTML 标签编写的，把它作为 HttpResponse 的对象返回给浏览器
+
+
+# 模板系统（Template）
+从上一小节代码中，可以看到竟然将html的代码放到了程序里，势必会有高度耦合、难以维护的隐患，而**模板系统就是将视图函数和html代码解耦的**
+
+
+在tamplates文件夹（一个项目同级目录，Django会自动识别）下新建hello.html，编写如下代码：
+```html
+<html><body>{{vaule}}</body></html>
+```
+**视图函数调用模板，并进行“模板传参”**
+```python
+from django.shortcuts import render      
+def hello_my_django(request):
+    return render(request,"hello.html",{"vaule":"hello my Django"})
+```
+另一种是`render`方法，封装在`django.shortcuts`中，也很方便
+
+# URL
+URL 的语法格式为：`protocol://[username:password@]hostname[:port]/path[?query][#fragment]`
+
+示例：`https://www.baidu.com/movie/movieshow?id=234&number=1314#name`
+
+从中可以了解到URL基本语法，当然还有类似`%code`机制处理特殊字符的知识，可令开一篇文章总结
+
+
+# 路由系统
+Django通过ROOT_URLCONF构建**URL和视图函数的映射关系**，在`urls.py`路由配置文件中配置url
+
+urls.py 文件中定义了一个 `urlpatterns` 的列表，它是由 **url( ) 实例对象组成的列表**，Django 中 url 的定义就是在这个列表完成的
+
+```python
+from django.conf.urls import url
+urlpatterns=[
+url(r '^admin/',admin.site.urls), # 后台 Admin 管理系统的路由就定义在了列表第一个位置
+...
+]
+```
+`url(regex,view,name=None)`说明：
++ regex，匹配**请求路径**，用正则表达式表示（其用法很丰富，可以单独开一篇博客总结）
++ view，指定 regex 匹配路径所对应的**视图函数**的名称
++ name，是给 url 地址起个别名，在模板反向解析的时候使用
+
+https://developer.mozilla.org/zh-CN/docs/Learn/Server-side/Django/Introduction
+有张图不错，可以很清晰看出MTV模式
+
+# 中间件
+中间件是介于 request 与 response 之间的一道处理过程，相对比较轻量级
+
+我们可以通过中间件来修改请求，例如，被传送到视图函数中的 HttpRequest 对象，也可以修改视图函数返回的 HttpResponse 对象
+
+中间件作为一个可插拔的组件对外提供服务，每个中间件都负责完成一些特定的功能
+
+所有中间件都是默认激活的状态。当然你可以通过代码注释，将某个中间件关闭
+
+# Cache缓存系统
+Django 提供了一个健壮的缓存系统，可以保存动态页面，这样就不必每次都把相同的请求进行重复计算。
+
+并且 Django 还提供了不同级别的缓存粒度，可以缓存特定视图的输出，或者只缓存某些特定的片段，比如网站自动跳出的咨询栏等，或者也可以缓存整个站点
+
+Memcached 是 Django 支持的最快、最高效的分布式高效缓存系统，它是一种完全基于内存的缓存服务器
+
+
+
+<font color=red size=5>至此，当新建一个Django项目后，以上内容就是默认提供的了，而不用自己再去一个个搭建</font>
+
+# 搭建Djang开发环境
++ python 解释器
++ MySql数据库（Django自带SQLite数据库，但由于是轻量级的，不太建议用在企业级应用）
++ 包管理器 `python -m pip install -U pip`
++ pycharm IDE（得找个破解的**专业版**）
++ Django（注意和python的版本关系），使用pip安装
+
+
+# Django创建第一个项目
+`pip install django`
+`cd your_dir`
+`mkdir your_dir2`
+`cd your_dir2`
+`django-admin startproject mytestsite`
+`cd mytestsite`
+`python manager.py runserver`
+进入`http://127.0.0.1:8000`，至此你看到了一个由django打造的示例网站
+

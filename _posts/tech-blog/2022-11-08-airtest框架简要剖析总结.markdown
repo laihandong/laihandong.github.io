@@ -1,0 +1,275 @@
+---
+layout: single
+title:  "airtest框架简要剖析总结"
+tags: 软件测试
+---
+
+
+
+# 简略介绍
+
+airtest是由网易airtest团队制作的一个**跨平台**的UI测试框架，也是他们开源的自动化测试框架之一（还有Poco框架、airtest- selenium框架、airtestIDE编辑器、deviceFarm集群方案和airlab云测平台）。
+
+airtest框架是跨平台（移动端App和Windows端）的、基于opencv图像识别的、用python开发的UI自动化测试框架，不过由于识别概率的机制和项目开发过程中UI界面频繁迭代，脚本迭代成本较高。
+
+# 框架梳理
+airtest是可以用pip install方法下载到本地进行开发的，包下面分为5个大类，分别是：aircv、cli、core、report和utils
+
+## aircv
+
+### 模板匹配：
+无法跨分辨率识别
+一定有相对较佳的结果（即时不存在）
+方法名：tpl
+
+
+### 基于特征点的图像识别：
+能跨分辨率识别
+不一定有匹配结果
+方法名：kaze、brisk、akaze、orb、sift、surf、brief
+
+### 脚本功能介绍
+aircv图像识别模块包含11个脚本，功能分别如下：
+```python
+aircv.py
+包含基于opencv封装的基本的图片处理函数，比如根据图片路径，将图片读取为cv2的图片处理格式imread()、类似的还有旋转图片、裁剪等等
+
+
+cal_confidence.py
+封装了两个计算2张图片相似度的函数（给其他地方调用的）
+
+
+error.py
+airtest的图像识别错误类库（基于Exception），比如FileNotExistError
+
+
+keypoint_base.py
+封装了基于特征点的识别基类KeypointMatching，日志中的方法名叫KAZE
+
+
+keypoint_matching.py
+继承KeypointMatching，继续封装了4个类KAZE/AKAZE/BRISK/ORB（基于opencv），无需opencv-contrib module
+
+
+keypoint_matching_contrib.py
+同样继承KeypointMatching，封装了3个类BRIEF/SIFT/SURF（基于opencv-contrib），需要注意的是opencv surf算法因为专利问题，需要（设置cmake 参数nonfree为true）重新编译opencv&opencv-contrib的源代码才可以引用
+
+
+multiscale_template_matching.py
+封装了多尺度模板匹配MultiScaleTemplateMatching和基于截图预设条件的多尺度模板匹配
+
+
+sift.py
+封装了sift图像识别算法
+
+
+template.py
+封装了模板匹配算法
+
+
+template_matching.py
+同样封装了模板匹配，不过是以类的形式封装
+
+
+utils.py
+图像识别的公共函数，包含打印运行时间的修饰器函数、检查图像识别的输入的函数、图片数据互转sting/cv2格式/np的函数以及压缩图片质量保存的函数
+```
+
+
+## cli
+这个是命令行模块
+```python
+__main__.py 总入口
+
+
+info.py 获取脚本信息，比如基本名、作者等
+
+ 
+parser.py 命令行参数解析（妹搞明白。加了许多自定义的命令行参数名和解析方式）
+
+
+runner.py 通过命令行运行测试，基于unitest.TestCase（还没用过，不是很清楚）
+```
+
+## core
+这个是所谓的核心模块，包含了对各大平台（win/android/linux/ios）的封装接口，以及一些通用的接口
+
+```python
+core.android 安卓模块
+    cap_methods 屏幕截图模块
+        base_cap.py 封装了屏幕截图的基类
+        adbcap.py 基于adb的屏幕截图基类，也是所有屏幕方法的基类（均将画面流转为cv2的图像对象）
+        minicap.py 基于minicap截图类（minicap是开源项目STF中的一个工具，负责屏幕显示）
+        javacap.py 通过yosemite.apk，基于socket通讯的截图类。性能比minicap差，但兼容性好。
+        screen_proxy.py 屏幕截图代理，自动选择以上截图方法中的一个
+        
+    static 静态资源文件夹
+        adb 各个系统下的adb文件（linux\linux_arm\mac\windows）
+        apks Yosemite.apk等airteset包
+        stf_libs 各个CPU框架下的libs（长知识了）
+        
+    touch_methods 触摸模块
+        base_touch.py 触摸操作的基类，基于down、up、sleep和move四个基类的各种方法
+        maxtouch.py 基于maxtouch的触摸操作（是airtest自己开发的，我目前不清楚这些概念）
+        minitouch.py 基于minitouch的触摸操作（当前设备支持openstf的minitouch时则使用minitouch，否则使用maxtouch）
+        touch_proxy.py 屏幕触摸代理
+        
+    adb.py 
+    adb类，基于adb命令封装出的各种方法（需要学习adb命令大全）
+    
+    android.py 
+    安卓设备类，封装了操作安卓的很多方法
+    
+    constant.py
+    定义各种常量，比如默认adb的服务端口地址、各adb的路径、ip的正则匹配规则等等
+    
+    ime.py
+    输入法类（没用过不了解）
+    
+    recorder.py
+    录屏类
+    
+    rotation.py
+    屏幕方向监控类
+    
+    yosemite.py
+    Yosemite类，用于javacap/录屏/yosemite输入法
+    
+core.ios IOS模块
+    iproxy 各系统（windows和mac）下的iproxy工具文件夹，iproxy能实现设备与电脑的端口映射
+    
+    constant.py
+    定义各种常量
+    
+    elements_type.py
+    只包含了一个元素类型列表（不清楚如何使用）
+    
+    instruct_cmd.py
+    用于连接iphone
+    
+    ios.py
+    IOS类，封装了很多操作IOS设备的方法
+    
+    minicap.py
+    ios-minicap截图类MinicapIOS
+    
+    relay.py
+    iphone的端口转发（高级东西，现在我还不了解）
+    
+    rotation.py
+    屏幕方向监控类
+
+    
+core.linux:
+    linux.py 
+    linux类，封装了部份操作方法（好少啊，是没写完吗？还是linux如此高效？）
+
+
+core.win:
+    ctypesinput.py
+    封装了windows鼠标、键盘输入（长见识了）
+    
+    screen.py
+    windows截图
+    
+    win.py
+    Windows类，封装了各种操作方法
+    
+api.py
+airtest的核心api（通用的），比如初始化设备、连接设备、返回设备实例、常用的手势函数（点、滑等）、对app的常用操作函数（安装、卸载等）、对设备的常用操作函数（唤醒、返回主页面等）、还有命令行
+
+
+cv.py
+Airtest封装的图像识别机制，包含Template类用于方便地调用函数、还有其他循环识别机制、日志保存和截图等等
+
+
+device.py
+封装了测试设备基类（看不懂，大受震撼）
+
+
+error.py
+airtest通用的错误类库，比如AirtestError
+
+
+helper.py
+工具文件，包含全局变量G（封装为了类）、报告的log()、引用路径增加using()等实现
+
+
+settings.py
+包含了一些全局设置，封装成Settings类。有是否debug、日志路径、日志文件名.格式、默认的识别算法、阈值（决定是否输出识别成功）、识别间隔延迟时间等等
+```
+
+## report
+这个是报告模块
+```python
+css 资源文件夹
+
+fonts 资源文件夹
+ 
+image 资源文件夹
+
+js 资源文件夹
+
+log_template.html
+报告html模板
+
+report.py
+报告实现（也是最近需要为工作准备的内容之一，前端3剑客）
+```
+
+## utils
+这个是工具模块
+```python
+apkparser apk解析https://github.com/androguard/androguard
+    apk.py 
+    封装了apk相关的方法（长知识，大受震撼）
+    
+    axmlparser.py 
+    封装了AXMLParser类，解析apk中的AndroidManifest.xml
+    
+    axmlprinter.py
+    封装了AXMLPrinter类，解析编译之后的AndroidManifest文件格式工具
+    
+    bytecode.py
+    
+    stringblock.py
+    
+    typeconstants.py
+    
+compat.py
+python2/python3兼容逻辑，路径和名称之类的
+
+logger.py
+初始化日志，基于logging
+
+logwraper.py
+封装AirtestLogger类，airtest日志和装饰类
+
+nbsp.py
+非阻塞流读取（听不懂，大受震撼）
+
+resolution.py
+用于存放一些计算函数，比如图像适配、搜索区域预测
+
+retry.py
+重试装饰器函数（函数导致致命错误，会在一定时间内重新运行该函数）
+
+safesocket.py
+封装了SafeSocket类，实现socket安全收/发通信（不懂，这也是最近要去学的--网络通信编程）
+
+selenium_proxy.py
+基于Selenium Chrome类的二次封装（不会用）
+
+snippet.py
+零散函数存放地
+
+threadsafe.py
+封装了ThreadSafeIter类，使迭代器/生成器线程安全（看不懂，如何让线程变安全的？）
+
+transform.py
+Template（airtest自己独有的一个重要概念/类）类中target_pos的实现（点击图片点9个点位中的某个--airtest的一个机制）
+
+version.py
+获取/显示airtest版本
+```
+

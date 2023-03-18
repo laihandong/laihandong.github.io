@@ -1,0 +1,13 @@
+---
+layout: single
+title:  "unity工程打包"
+tags: 游戏引擎
+---
+
+
+
+https://juejin.cn/post/6844903473280974855
+
+以及遇到了gradle在内网总是失败，是网址依赖的问题
+
+以及用别人的assets，出现curl error 51 cert verigy failed UNITYTLS_X509VERIFY_FLAG_CN_MISMATCH
