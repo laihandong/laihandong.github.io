@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "lambda"
-tags: 编程语言 Python
+tags: 编程语言 Python lambda
 ---
 
 

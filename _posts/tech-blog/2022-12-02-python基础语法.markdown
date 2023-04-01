@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "基础语法"
-tags: 编程语言 Python
+tags: 编程语言 Python 基础语法
 ---
 
 
