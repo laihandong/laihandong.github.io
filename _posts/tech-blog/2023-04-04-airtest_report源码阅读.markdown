@@ -31,4 +31,6 @@ report [script] [--outfile] [--static_root] [--log_root] [--recort] [--export] [
         self.lang = lang
         self.init_plugin_modules(plugins)
 ```
-plugins的加载是以`__import__()`方式导入的
+plugins的加载是以`__import__()`方式导入的，目前仅支持两个插件`poco.utils.airtest.report 和 airtest_selenium.report`
+
+#### report方法
