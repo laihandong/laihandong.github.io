@@ -3,18 +3,18 @@
 airtest的报告组成：
 ```dir
 大概的结构如下：
-|-sript_name_without_ext.log
+|-<sript_name_without_ext>.log
     |-log
-        |-timestamp.jpg
+        |-<timestamp>.jpg
         |-log.txt
     |-static
         |-css
         |-fonts
         |-image
         |-js
-    |-sript_name_without_ext.py
+    |-<sript_name_without_ext>.py
     |-log.html
-    |-tpl+timestamp.png
+    |-<tpl+timestamp>.png
     
 具体的例子
 |-测试购买.log
@@ -65,8 +65,7 @@ airtest的报告组成：
     2. 对参数进行检验，必要时重新赋值，传入`LogToHtml`类，进行初始化
     3. 调用`LogToHtml`类中的`report`方法，生成html报告
 + `timefmt`
-### 全局类
-+ `LogToHtml`
+### 全局类`LogToHtml`
 + `__init__`
     + `log`
     + `script_root`
@@ -96,6 +95,13 @@ airtest的报告组成：
 + `_render`
 + `copy_tree`
 + `_make_export_dir`
+    1. 设置**报告文件夹**的名字为<script name>.log
+    2. 在导出路径`export_dir`下新建这个**报告文件夹**
+    3. 无视错误，`shutil.rmtree`删除**报告文件夹**下的所有文件
+    4. 复制`script_root`下的目录树到**报告文件夹**
+    5. 复制`log_root`下的目录树到**报告文件夹**
+    6. 复制`static_root`下的css/fonts/image/js四个目录到**报告文件夹**，如果不是http开头的话
+    7. 返回**报告文件夹**路径、**报告文件夹**下的日志路径
 + `get_relative_log`
 + `get_console`
 + `readFile`
@@ -119,5 +125,6 @@ airtest的报告组成：
 
     生成报告页面，可以加入自定义数据并且重写
     根据`sript_root`拆分成路径和`sript_name`
-    `_make_export_dir`创建和复制`/staticfiles/screenshots`
+    调用方法`_make_export_dir()`创建和复制`/staticfiles/screenshots`，返回并重新赋值`script_root,log_root`
+    
     
