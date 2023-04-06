@@ -1,14 +1,38 @@
 # airtest_report源码阅读
 
-## 入口函数
-路径：`airtest/report/report.py`
-1. 
-```cmd
-report [script] [--outfile] [--static_root] [--log_root] [--recort] [--export] [--lang] [--plugins] [--report]
+airtest的报告组成：
+```dir
+大概的结构如下：
+|-sript_name_without_ext.log
+    |-log
+        |-timestamp.jpg
+        |-log.txt
+    |-static
+        |-css
+        |-fonts
+        |-image
+        |-js
+    |-sript_name_without_ext.py
+    |-log.html
+    |-tpl+timestamp.png
+    
+具体的例子
+|-测试购买.log
+    |-log                         这一部分就是完整的airtest的log日志
+        |-1674877913337.jpg
+        |-1674877913337_small.jpg   这是脚本运行时所截的图
+        |-log.txt
+    |-static                      这是html报告用到的完整的静态资源
+        |-css
+        |-fonts
+        |-image
+        |-js
+    |-测试购买.py                 这是测试脚本文件
+    |-log.html                    这是最终导出的html格式的报告
+    |-tpl1674121024.png           这是脚本内所识别的目标图
 ```
-2. 然后传入给主函数main()
 
-## 组成分析
+## report.py脚本组成分析
 ### 全局变量/常量
 + `_paragraph_re`
 + `ap`
@@ -23,6 +47,9 @@ report [script] [--outfile] [--static_root] [--log_root] [--recort] [--export] [
 + `get_parger`
     1. 接收唯一参数，类型为`argparse.ArgumentParser()`
     2. 使用python内置模块argparse，可给当前python文件添加一系列命令行可选参数，返回修改后的参数本身
+    ```shell
+    report [script] [--outfile] [--static_root] [--log_root] [--recort] [--export] [--lang] [--plugins] [--report]
+    ```
 + `main`
     1. 接收唯一参数，类型为`argparse.ArgumentParser().parse_args()`。
     2. 解析传入的命令行参数的具体的值，传入`LogToHtml`类，进行初始化
@@ -76,7 +103,7 @@ report [script] [--outfile] [--static_root] [--log_root] [--recort] [--export] [
 + `report`
     1. 接受四个参数
         1. self 类实例引用
-        2. `template_name`
+        2. `template_name` 
         3. `output_file`
         4. `record_list`
     2. 涉及5个类变量属性：
@@ -85,7 +112,12 @@ report [script] [--outfile] [--static_root] [--log_root] [--recort] [--export] [
         3. `log_root`
         4. `static_root`
         5. `export_dir`
-    4. 涉及3个类方法属性：
+    3. 涉及3个类方法属性：
         1. `_render`
         2. `_make_export_dir`
         3. `report_data`
+
+    生成报告页面，可以加入自定义数据并且重写
+    根据`sript_root`拆分成路径和`sript_name`
+    `_make_export_dir`创建和复制`/staticfiles/screenshots`
+    
