@@ -146,6 +146,7 @@ airtest的报告组成：
     2. 调用方法`_load()`，将`log_path`的日志内容存储到`log`列表中
     3. 调用方法`_analyse()`，将`log`解析为可渲染的`dict`
     4. 调用`get_script_info(script_path)`获取脚本内容
+    5. 继续
 + `report`
     + 接受四个参数
         + self 类实例引用
