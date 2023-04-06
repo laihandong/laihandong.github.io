@@ -90,8 +90,8 @@ airtest的报告组成：
         4. `depth==0`                                 -> `steps.append(log)`
         5. `depth==1`                                 -> `step['__children__'] = children_steps , steps.append(deepcopy(log)) , children_steps = []`
         6. `depth==其它`                              -> `children_steps.insert(0, log)`
-    3. 读取`steps`，调用方法`_translated_step`，将结果存入`translated_steps`
-        1. 
+    3. 读取`steps`，迭代并传入方法`_translated_step()`，将结果存入`translated_steps`列表
+    4. 校验`translated_steps`最后一个元素的调用栈属性`traceback`并修改测试状态属性`test_result`后返回该列表
 + `_translate_step`
     1. 初始化7个变量：
         1. `name`       <- `step['data']['name']`
