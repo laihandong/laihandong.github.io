@@ -103,7 +103,13 @@ airtest的报告组成：
         7. `assertion`  <- `_translate_assertion(step)`
     2. 将变量所得的值存入`translated`字典并返回
 + `_translate_title`
+    1. 维护一个`title`字典，将`name`属性转换为合适的`title`属性再返回，比如`touch` 对应 `Touch`
 + `_translate_code`
+    1. 若`step['tag'] != 'function`，立即返回`None`
+    2. 初始化最终的返回值`code` -- `{"name":step['data']['name'], "args":[]}
+    3. 充实`args`:
+        1. 将`step['data']['call_args']`的键值对全加进`args`
+        2. 
 + `_translate_desc`
 + `_translate_screen`
 + `_translate_info`
