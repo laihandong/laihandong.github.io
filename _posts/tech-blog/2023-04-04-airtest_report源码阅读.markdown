@@ -2,16 +2,12 @@
 
 ## 入口函数
 路径：`airtest/report/report.py`
-1. 使用python内置模块argparse，给当前python文件添加一系列命令行可选参数
+1. 
 ```cmd
 report [script] [--outfile] [--static_root] [--log_root] [--recort] [--export] [--lang] [--plugins] [--report]
 ```
 2. 然后传入给主函数main()
 
-
-## 主函数
-1. 解析传入的命令行参数的具体的值，传入LogToHtml类，进行初始化
-2. 调用LogToHtml类中的report方法，生成html报告
 ## 组成分析
 ### 全局变量/常量
 + `_paragraph_re`
@@ -28,6 +24,9 @@ report [script] [--outfile] [--static_root] [--log_root] [--recort] [--export] [
 + `nl2br`
 + `simple_report`
 + `main`
+    1. 接收唯一参数，类型为`argparse.ArgumentParser().parse_args()`。使用python内置模块argparse，可给当前python文件添加一系列命令行可选参数
+    2. 解析传入的命令行参数的具体的值，传入LogToHtml类，进行初始化
+    3. 调用LogToHtml类中的report方法，生成html报告
 + `timefmt`
 ### 全局类
 + `LogToHtml`
@@ -36,7 +35,7 @@ report [script] [--outfile] [--static_root] [--log_root] [--recort] [--export] [
     + `script_root`
     + `script_name`
     + `log_root`
-    + `static_root
+    + `static_root`
     + `test_result`
     + `run_start`
     + `run_end`
