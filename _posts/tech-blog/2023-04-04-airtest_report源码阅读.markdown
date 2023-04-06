@@ -121,7 +121,9 @@ airtest的报告组成：
     3. 中途视情况(`try_log_screen , _cv_match , touch , assert_exists , wait , exists , swipe`)增加多个属性`resolution, _filepath, thumbnail`，并完善`screen`
     4. 返回`screen`
 + `_translate_info`
+    + 尝试获取`step`中的`traceback , log`信息并返回
 + `_translate_assertion`
+    + 尝试获取`step['data']['call_args']['msg']`信息并返回
 + `get_thumbnail`
 + `get_small_name`
 + `is_pos`
