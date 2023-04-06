@@ -83,14 +83,25 @@ airtest的报告组成：
     + 读取`log_path`日志文件，将每行的日志文本存入`log`
 + `_analyse`
     1. 准备`steps , children_steps`两个空列表
-    2. 读取`log`，补充这两个空列表
+    2. 读取`log`，补充这两个空列表（log文件的组成详见[airtest_log源码解读]()）
         1. `log['depth']`                             -> `depth`
         2. `log['data']['start_time'] or log['time']` -> `run_start`
         3. `log['time']`                              -> `run_end`
         4. `depth==0`                                 -> `steps.append(log)`
         5. `depth==1`                                 -> `step['__children__'] = children_steps , steps.append(deepcopy(log)) , children_steps = []`
         6. `depth==其它`                              -> `children_steps.insert(0, log)`
+    3. 读取`steps`，调用方法`_translated_step`，将结果存入`translated_steps`
+        1. 
 + `_translate_step`
+    1. 初始化7个变量：
+        1. `name`       <- `step['data']['name']`
+        2. `title`      <- `_translate_title(name, step)`
+        3. `code`       <- `_translate_code(step)`
+        4. `desc`       <- `_translate_desc(step, code)`
+        5. `screen`     <- `_translate_screen(step, code)`
+        6. `info`       <- `_translate_info(step)`
+        7. `assertion`  <- `_translate_assertion(step)`
+    2. 将变量所得的值存入`translated`字典并返回
 + `_translate_title`
 + `_translate_code`
 + `_translate_desc`
