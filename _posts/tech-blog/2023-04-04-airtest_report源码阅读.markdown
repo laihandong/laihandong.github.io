@@ -122,9 +122,15 @@ airtest的报告组成：
         1. `_render`
         2. `_make_export_dir`
         3. `report_data`
-
-    生成报告页面，可以加入自定义数据并且重写
-    根据`sript_root`拆分成路径和`sript_name`
-    调用方法`_make_export_dir()`创建和复制`/staticfiles/screenshots`，返回并重新赋值`script_root,log_root`
+    代码内容：
+    1. 生成报告页面，可以加入自定义数据并且重写
+    2. 根据`sript_root`拆分成路径和`sript_name`
+    3. 如果`export_dir`不为空：
+        1. 调用方法`_make_export_dir()`准备导出的路径文件夹和相关资源
+        2. 设置`output_file`路径
+        3. `static_root`不是http开头的话，设置为"static/"
+    4. 如果`record_list`不为空，将`log_root`下的`mp4`文件的路径全部保存到列表
+    5. 调用方法`report_data`
+    
     
     
