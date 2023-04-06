@@ -32,17 +32,17 @@ report [script] [--outfile] [--static_root] [--log_root] [--recort] [--export] [
 ### 全局类
 + `LogToHtml`
 + `__init__`
-    + log
-    + script_root
-    + script_name
-    + log_root
-    + static_root
-    + test_result
-    + run_start
-    + run_end
-    + export_dir
-    + logfile
-    + lang
+    + `log`
+    + `script_root`
+    + `script_name`
+    + `log_root`
+    + `static_root
+    + `test_result`
+    + `run_start`
+    + `run_end`
+    + `export_dir`
+    + `logfile`
+    + `lang`
 + `init_plugin_modules` plugins的加载是以`__import__()`方式导入的，目前仅支持两个插件`poco.utils.airtest.report 和 airtest_selenium.report`    
 + `_load`
 + `_analyse`
