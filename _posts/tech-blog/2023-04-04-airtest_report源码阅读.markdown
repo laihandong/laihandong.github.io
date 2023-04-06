@@ -25,8 +25,8 @@ report [script] [--outfile] [--static_root] [--log_root] [--recort] [--export] [
 + `simple_report`
 + `main`
     1. 接收唯一参数，类型为`argparse.ArgumentParser().parse_args()`。使用python内置模块argparse，可给当前python文件添加一系列命令行可选参数
-    2. 解析传入的命令行参数的具体的值，传入LogToHtml类，进行初始化
-    3. 调用LogToHtml类中的report方法，生成html报告
+    2. 解析传入的命令行参数的具体的值，传入`LogToHtml`类，进行初始化
+    3. 调用`LogToHtml`类中的`report`方法，生成html报告
 + `timefmt`
 ### 全局类
 + `LogToHtml`
