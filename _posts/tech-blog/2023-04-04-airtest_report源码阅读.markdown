@@ -80,7 +80,16 @@ airtest的报告组成：
     + `lang`
 + `init_plugin_modules` plugins的加载是以`__import__()`方式导入的，目前仅支持两个插件`poco.utils.airtest.report 和 airtest_selenium.report`    
 + `_load`
+    + 读取`log_path`日志文件，将每行的日志文本存入`log`
 + `_analyse`
+    1. 准备`steps , children_steps`两个空列表
+    2. 读取`log`，补充这两个空列表
+        1. `log['depth']`                             -> `depth`
+        2. `log['data']['start_time'] or log['time']` -> `run_start`
+        3. `log['time']`                              -> `run_end`
+        4. `depth==0`                                 -> `steps.append(log)`
+        5. `depth==1`                                 -> `step['__children__'] = children_steps , steps.append(deepcopy(log)) , children_steps = []`
+        6. `depth==其它`                              -> `children_steps.insert(0, log)`
 + `_translate_step`
 + `_translate_title`
 + `_translate_code`
@@ -106,6 +115,10 @@ airtest的报告组成：
 + `get_console`
 + `readFile`
 + `report_data`
+    1. 接受两个参数`output_file , record_list`
+    2. 调用方法`_load()`，将`log_path`的日志内容存储到`log`列表中
+    3. 调用方法`_analyse()`，将`log`解析为可渲染的`dict`
+    4. 调用`get_script_info(script_path)`获取脚本内容
 + `report`
     + 接受四个参数
         + self 类实例引用
