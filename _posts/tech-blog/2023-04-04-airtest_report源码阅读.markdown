@@ -1,4 +1,5 @@
 # airtest_report源码阅读
+
 ## 入口函数
 路径：`airtest/report/report.py`
 1. 使用python内置模块argparse，给当前python文件添加一系列命令行可选参数
@@ -11,10 +12,26 @@ report [script] [--outfile] [--static_root] [--log_root] [--recort] [--export] [
 ## 主函数
 1. 解析传入的命令行参数的具体的值，传入LogToHtml类，进行初始化
 2. 调用LogToHtml类中的report方法，生成html报告
-
-### LogToHtml类
+## 组成分析
+### 全局变量/常量
++ `_paragraph_re`
++ `ap`
++ `args`
++ `DEFAULT_LOG_DIR`
++ `DEFAULT_LOG_FILE`
++ `STATIC_DIR`
++ `HTML_FILE`
++ `HTML_TPL`
++ `LOGGING`
+### 全局函数
++ `get_parger`
++ `nl2br`
++ `simple_report`
++ `main`
++ `timefmt`
+### 全局类
++ `LogToHtml`
 + `__init__`
-    内部
     + log
     + script_root
     + script_name
@@ -26,10 +43,6 @@ report [script] [--outfile] [--static_root] [--log_root] [--recort] [--export] [
     + export_dir
     + logfile
     + lang
-    外部引用
-    + DEFAULT_LOG_DIR
-    + DEFAULT_LOG_FILE
-    + STATIC_DIR
 + `init_plugin_modules` plugins的加载是以`__import__()`方式导入的，目前仅支持两个插件`poco.utils.airtest.report 和 airtest_selenium.report`    
 + `_load`
 + `_analyse`
