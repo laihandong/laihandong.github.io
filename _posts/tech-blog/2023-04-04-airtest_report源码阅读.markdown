@@ -105,7 +105,7 @@ airtest的报告组成：
 + `_translate_title`
     1. 维护一个`title`字典，将`name`属性转换为合适的`title`属性再返回，比如`touch` 对应 `Touch`
 + `_translate_code`
-    1. 若`step['tag'] != 'function`，立即返回`None`
+    1. 若`step['tag'] != 'function'`，立即返回`None`
     2. 初始化最终的返回值`code = {"name":step['data']['name'], "args":[]}`
     3. 将`step['data']['call_args']`的键值对全加进`args`
     4. `for _, arg in enumerate(args)`（`arg`须符合`arg['value']` 为 `dict`，且`arg['value'].get['__class__'] == 'Template'`）:
@@ -116,6 +116,10 @@ airtest的报告组成：
     1. 维护两个字典`desc , desc_zh`，将`name`属性转换为合适的描述文本再返回，比如`exists` 对应 `'断言目标图片不存在'`
     2. 当`step['tag'] != 'function'`时，立即返回`None`
 + `_translate_screen`
+    1. 若`step['tag'] not in ['function', 'info']`或者`step.get('__children__')`，立即返回`None`
+    2. 初始化最终的返回值`screen = { 'src':None, 'rect':[], 'pos':[], 'vector':[], 'confidence':None }`
+    3. 中途视情况(`try_log_screen , _cv_match , touch , assert_exists , wait , exists , swipe`)增加多个属性`resolution, _filepath, thumbnail`，并完善`screen`
+    4. 返回`screen`
 + `_translate_info`
 + `_translate_assertion`
 + `get_thumbnail`
