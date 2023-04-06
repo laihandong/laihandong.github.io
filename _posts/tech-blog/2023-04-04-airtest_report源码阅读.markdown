@@ -107,9 +107,10 @@ airtest的报告组成：
 + `_translate_code`
     1. 若`step['tag'] != 'function`，立即返回`None`
     2. 初始化最终的返回值`code` -- `{"name":step['data']['name'], "args":[]}
-    3. 充实`args`:
-        1. 将`step['data']['call_args']`的键值对全加进`args`
-        2. 
+    3. 将`step['data']['call_args']`的键值对全加进`args`
+    4. `for _, arg in enumerate(args)`（`arg`须符合`arg['value']` 为 `dict`，且`arg['value'].get['__class__'] == 'Template'`）:
+        1. 若`export_dir`不为空，则把`arg['value']['filename']`对应的图片复制到`script_root`下，并设置`arg['image']为该图片的路径
+        2. 尝试获取`filename`对应的图片的分辨率并赋值给'arg[resolution']`
 + `_translate_desc`
 + `_translate_screen`
 + `_translate_info`
