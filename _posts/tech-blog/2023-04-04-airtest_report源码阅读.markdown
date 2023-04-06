@@ -21,11 +21,21 @@ report [script] [--outfile] [--static_root] [--log_root] [--recort] [--export] [
 + `LOGGING`
 ### 全局函数
 + `get_parger`
-+ `nl2br`
-+ `simple_report`
+    1. 接收唯一参数，类型为`argparse.ArgumentParser()`
+    2. 使用python内置模块argparse，可给当前python文件添加一系列命令行可选参数，返回修改后的参数本身
 + `main`
-    1. 接收唯一参数，类型为`argparse.ArgumentParser().parse_args()`。使用python内置模块argparse，可给当前python文件添加一系列命令行可选参数
+    1. 接收唯一参数，类型为`argparse.ArgumentParser().parse_args()`。
     2. 解析传入的命令行参数的具体的值，传入`LogToHtml`类，进行初始化
+    3. 调用`LogToHtml`类中的`report`方法，生成html报告
+
++ `nl2br`
++ `simple_report`（重点）
+    1. 接受四个参数：
+        1. `filepath`
+        2. `logpath`
+        3. `logfile`
+        4. `output`
+    2. 对参数进行检验，必要时重新赋值，传入`LogToHtml`类，进行初始化
     3. 调用`LogToHtml`类中的`report`方法，生成html报告
 + `timefmt`
 ### 全局类
@@ -64,4 +74,18 @@ report [script] [--outfile] [--static_root] [--log_root] [--recort] [--export] [
 + `readFile`
 + `report_data`
 + `report`
-
+    1. 接受四个参数
+        1. self 类实例引用
+        2. `template_name`
+        3. `output_file`
+        4. `record_list`
+    2. 涉及5个类变量属性：
+        1. `script_root`
+        2. `script_name`
+        3. `log_root`
+        4. `static_root`
+        5. `export_dir`
+    4. 涉及3个类方法属性：
+        1. `_render`
+        2. `_make_export_dir`
+        3. `report_data`
