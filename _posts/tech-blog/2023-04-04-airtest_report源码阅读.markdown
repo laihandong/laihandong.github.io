@@ -107,21 +107,21 @@ airtest的报告组成：
 + `readFile`
 + `report_data`
 + `report`
-    1. 接受四个参数
-        1. self 类实例引用
-        2. `template_name` 
-        3. `output_file`
-        4. `record_list`
-    2. 涉及5个类变量属性：
-        1. `script_root`
-        2. `script_name`
-        3. `log_root`
-        4. `static_root`
-        5. `export_dir`
-    3. 涉及3个类方法属性：
-        1. `_render`
-        2. `_make_export_dir`
-        3. `report_data`
+    + 接受四个参数
+        + self 类实例引用
+        + `template_name` 
+        + `output_file`
+        + `record_list`
+    + 涉及5个类变量属性：
+        + `script_root`
+        + `script_name`
+        + `log_root`
+        + `static_root`
+        + `export_dir`
+    + 涉及3个类方法属性：
+        + `_render`
+        + `_make_export_dir`
+        + `report_data`
     代码内容：
     1. 生成报告页面，可以加入自定义数据并且重写
     2. 根据`sript_root`拆分成路径和`sript_name`
