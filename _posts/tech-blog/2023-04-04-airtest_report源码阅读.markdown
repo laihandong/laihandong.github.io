@@ -163,10 +163,10 @@ airtest的报告组成：
         11. `'log' : self.get_relative_log(output_file)`
         12. `'console' : self.get_console(output_file)`
         13. `'data' : json.dumps(data).replace("<", "{"),replace(">", "}")`
-    注意到`data`的`log console data`这三个键有所不同，说明如下：
-        1. `log`，日志的相对路径
-        2. `console`，尝试读取与导出报告同目录下的`console.txt`文件里的内容并返回
-        3. `data`，将以上包含12个键的字典中的`"<>"`对应替换为`"{}"`，避免被认为是特殊用法
+    > 注意到`data`的`log console data`这三个键有所不同，说明如下：
+    > 1. `log`，日志的相对路径
+    > 2. `console`，尝试读取与导出报告同目录下的`console.txt`文件里的内容并返回
+    > 3. `data`，将以上包含12个键的字典中的`"<>"`对应替换为`"{}"`，避免被认为是特殊用法
 + `report`
     + 接受四个参数
         + self 类实例引用
