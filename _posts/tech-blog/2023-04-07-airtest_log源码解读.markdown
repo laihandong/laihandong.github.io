@@ -27,9 +27,12 @@
   + 调用方法`set_logfile()`
   + 调用函数`reg_cleanup()`，将方法`handle_stacked_log`作为参数
 + `log()`
+  + 
 + `set_logfile()`
   + 尝试给`logfile logfd`赋予有效值，否则保持默认
 + `handle_stacked_log()`
+  + 尝试把`running_stack`中的所有元素**从尾到头**的顺序作为参数传入`log()`方法进行处理
+  + 每调用完一次`log()`就pop尾部元素
 + `_dumper()`
 
 ## 函数
@@ -41,3 +44,10 @@
 ### `reg_cleanup`
 这个是airtest封装的用来清空给定函数寄存器的接口
 涉及队列、主从线程等
+
+### `log()`接口参考
+https://www.cnblogs.com/AirtestProject/p/16983441.html
+https://www.cnblogs.com/AirtestProject/p/16964460.html
+https://www.cnblogs.com/AirtestProject/p/16223928.html
+
+
