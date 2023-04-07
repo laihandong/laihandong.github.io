@@ -129,6 +129,8 @@ airtest的报告组成：
 + `is_pos`
 + `div_rect`
 + `_render`
+    用`jinja2`渲染html[详见如何使用jinja2渲染html]()，并将渲染后的内容存入变量`html`并返回[详见airtest-html报告模板源码解读]()
+    
 + `copy_tree`
 + `_make_export_dir`
     1. 设置**报告文件夹**的名字为<script name>.log
@@ -145,12 +147,12 @@ airtest的报告组成：
     1. 接受两个参数`output_file , record_list`
     2. 调用方法`_load()`，将`log_path`的日志内容存储到`log`列表中
     3. 调用方法`_analyse()`，将`log`解析为可渲染的`dict`，存入变量`steps`
-    4. 调用`get_script_info(script_path)`获取脚本内容存入变量`info`[详见airtest-cli模块详解]()
+    4. 调用`get_script_info(script_path)`获取脚本内容存入变量`info`[详见airtest-cli模块源码解读]()
     5. 当录像列表不为空，视情况将录像分配给指定的导出路径或默认日志目录，并将拼接好的路径存入变量`records`
     6. 处理`static_root`的分隔符使之合法，比如`\\ --> /`、如有必要则末尾添加`/`
     7. 设置`output_file`为默认或者指定的传入参数
     8. 新建一个字典变量`data`，它包含13个键，赋值了对应的值后，`return data`
-        1. `'step' : steps`
+        1. `'steps' : steps`
         2. `'name' : self.script_root`
         3. `'scale' : self.scale`
         4. `'test_result':self.test_result`
@@ -191,8 +193,8 @@ airtest的报告组成：
         2. 设置`output_file`路径
         3. `static_root`不是http开头的话，设置为"static/"
     4. 如果`record_list`不为空，将`log_root`下的`mp4`文件的路径全部保存到列表
-    5. 调用方法`report_data()`，将返回的值存入`data`--------------------
-    6. 调用方法`_render()`，将html模板`template_name`、`output_file`和`**data`作为参数传入，返回方法返回的值--------------------
+    5. 调用方法`report_data()`，将返回的值存入`data`
+    6. 调用方法`_render()`，将html模板`template_name`、`output_file`和`**data`作为参数传入，返回方法返回的值
     
     
     
