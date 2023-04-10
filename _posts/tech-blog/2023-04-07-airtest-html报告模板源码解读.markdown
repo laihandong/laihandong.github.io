@@ -36,7 +36,9 @@ log不存在的提示语
 {% endif %}
 
 #### footer
-`{% block footer %}`
+```html
+{% block footer %}
+```
 放一些有关网易airtest的跳转链接和图标
 `{% endblock %}`
 
