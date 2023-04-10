@@ -40,7 +40,11 @@ log不存在的提示语
 左花括号百分号 block footer 百分号右花括号
 ```
 放一些有关网易airtest的跳转链接和图标
-`{% endblock %}`
+`左花括号百分号 endblock 百分号右花括号`
+> 由于liquid语法限制，block相关的语法块都会被jekkly识别到，所以采取该策略：
+> 百分号右花括号：{%
+> 百分号右花括号：%}
+
 
 ### 录屏 row gif-wrap show
 #### menu
