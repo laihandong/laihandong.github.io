@@ -7,100 +7,83 @@ tags: 编程语言 Python
 
 
 # python打包发布说明
+我们在开发中，有时会遇到需要将在本地开发的python工程代码中的一些模块分享给同事或者其它社区开发者的情况，为了让他们可以通过`pip`的方式（从本地文件或者云端）将包导入到他们`python`环境中，我们则需要将我们的模块“打包”。这不同于简单的压缩文件并让他们解压到合适的目录，然而提供了一种更加规范和统一的方式去分享你的模块。
+下面，大致介绍一下如何使用如今（2023）最流行的python打包工具`setuptools`
 
-## 1. 注册账号
+## 推荐文档
+[Setuptools 【腾讯云】](https://cloud.tencent.com/developer/article/1740830)
+[setuptools document](https://readthedocs.org/projects/setuptools/)
+[setuptools PyPI](https://pypi.org/project/setuptools/)
+[packaging python](https://packaging.python.org/en/latest/overview/)
 
-pypi.org/account/register
 
-
-
-## 2. 明确模块结构
-
+## 打包示例
+### 1. 模块的目录结构
+假设我当前有个模块为`airtest_plugin`，仅有一个`report.py`，该模块被放在`usr/myPackages/airtest_plugins/`目录下
 ```txt
-|-包
-|--模块
-|--setup.py
+|-myPackages
+  |--airtest_plugins
+    |--airtest_plugin
+      |--__init__.py
+      |--README.md
+      |--report.py
 ```
 
+### 2. 编写setup.py文件
+**在模块的同级目录建立一个`setup.py`文件**
+```txt
+|-myPackages
+  |--airtest_plugins
+    |--airtest_plugin
+      |--__init__.py
+      |--README.md
+      |--report.py
+    |--setup.py
+```
+**`setup.py`内容**
+```python
+import setuptools
 
+setuptools.setup(
+    name='airtest_plugin',	# 这时pip list显示的模块名称
+    version='0.1',
+    author='your name',
+    author_email='your email',
+    description='plugin for airtest',
+    packages=['airtest_plugin'] # 需要一起编译的子包，用.代表层级关系
+)
+```
 
-## 3. 本地打包一个模块
-
-### 3.1 模块结构编写
-
-+ 新建一个文件夹，例如名为`myModule`的文件夹
-
-+ 将自己写的py文件（包括单个py文件、包含多个py文件的子文件夹、甚至嵌套）放到这个文件夹中
-
-+ 并且在同级目录建立一个`setup.py`文件，结构快照示例如下：
-
-  ```txt
-  ├─myModule
-  │  └─setup.py
-  ├─xx1.py
-  ├─xx2.py
-  └─yyy
-     ├─xx3.py
-     └─xx4.py
-     └─zzz
-        └─xxx5.py
-  
-  ```
-
-+ 编写`setup.py`内容（==重要==）
-
-  ```python
-  import setuptools
-  
-  setuptools.setup(
-      name='',	# 这时pip list显示的模块名称
-      version='',
-      author='',
-      author_email='',
-      description='',
-      platforms='',	# 顾名思义，赋值对应参数关于包的信息
-      packages=[''] # 需要一起编译的子包，用.代表层级关系
-  )
-  ```
-
-+ 比如我的`xx1.py`中的内容如下：
-
-  ```python
-  def hello():
-      print('Hello world!')
-  ```
+假设该模块下的`report.py`中有一个函数`hello()`：
+```python
+def hello():
+    print('Hello world!')
+```
 
   
 
-### 3.2 生成模块
-
-+ 打开命令行，将路径跳转到当前模块目录，即myModule下
+### 3. 使用`setup.py`中的配置打包
 
 + 编译`python setup.py build`
 
-  编译成功的化，myModule下会多出一个build文件夹
-
 + 生成发布压缩包`python setup.py sdist`
 
-  执行完，myModule下会有一个dist文件夹，其中有一个类似`xxx.tar.gz`格式命名的压缩包
+  执行完，模块同级目录下会出现一个`dist`文件夹，其中有一个`.tar.gz`格式的压缩包
 
 + 生成网络发布包`python setup.py bdist_wheel`
 
-  执行完，dist文件夹下会有一个和压缩包同名的，但以.whl结尾的文件
-
-+ 本地直接安装`pip install ./dist/test_tool-0.1-py3-none-any.whl`（这个whl的名字以自己本地的为准）
+  执行完，`dist`文件夹下会出现一个`.whl`格式的文件（接下来我们用这个文件来安装包）
 
   ```txt
-  如果已安装，替换原来的，强制安装：
-  pip install ./dist/test_tool-0.1-py3-none-any.whl --force-reinstall
+  如有必要，带上参数`--force-reinstall`表示强制安装：
+  pip install ./dist/airtest_plugin-0.1-py3-none-any.whl 
   ```
 
   
-
-### 3.3 本地测试使用
-
+### 4. 本地测试使用
+打开另一个工程，新建一个python文件，解释器环境要和上文导入包的环境一致
 ```python
-from testingtools.xx1 import hello
+from airtest_plugin.xx1 import report
 
 hello()
 
@@ -110,8 +93,7 @@ output:Hello world!
 
 
 
-## 4. 上传到pypi里面
-
-`twine upload dist/*`
-
-按提示输入你注册的账号信息，等待片刻，登录pypi查看吧
+### 5. 上传到pypi里面
+如果想将自己的包发布到万维网，我推荐PyPI（在此之前，需要到它的官网注册一个账号）
++ 使用库`twine`，将刚才dist文件夹下的内容通过网络发布出去：`twine upload dist/*`
++ 按提示输入你注册的账号信息，等待片刻，登录pypi查看吧
