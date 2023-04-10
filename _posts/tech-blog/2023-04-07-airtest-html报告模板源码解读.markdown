@@ -17,14 +17,14 @@ airtest调用了原生jinja2模板来渲染html，下面仅讨论被jinja2模板
 **标题：**
 `{{info.title}}`
 **副标题：**
-{% if not steps %}
+`{% if not steps %}`
 log不存在的提示语
-{% endif %}
+`{% endif %}`
 **summary:**
 主要是报告抬头的一些基本信息、比如运行时间、日志链接、脚本作者等等
-涉及{{ info.desc }} {{ if console }} {{ if log }} {{ info.author }}  {{ info.name }} 
+涉及`{{ info.desc }} {{ if console }} {{ if log }} {{ info.author }}  {{ info.name }} `
 **自定义模块：**
-{{ extra_block|safe }}
+`{{ extra_block|safe }}`
 
 **steps:**
 {% if steps|length >0 % }}
@@ -44,17 +44,17 @@ log不存在的提示语
 #### menu
 三个按钮：放大、缩小和关闭
 #### col-md-6
-{% if records %}
-  {% for r in records %}
+`{% if records %}`
+  `{% for r in records %}`
     放一个按钮：在新窗口打开
     放视频本身
-  {% endfor %}
-{% endif %}
+  `{% endfor %}`
+`{% endif %}`
 
 ### mask hide
 没有jinja2控制的模板内容
 
 ## 脚本
-{{static_root}}
+`{{static_root}}`
 
 由此可看出，由模板渲染的内容仍然有限。类似点击跳转、切换列表视图等功能都写在js文件中
