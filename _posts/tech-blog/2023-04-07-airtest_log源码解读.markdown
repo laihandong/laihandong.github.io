@@ -66,7 +66,7 @@ https://www.cnblogs.com/AirtestProject/p/16223928.html
   + 作为测试函数的包装器，用于记录测试函数的执行情况，并将执行情况记录到日志文件中：
     + 这些信息都放在`data`属性，由`name`,`call_args`,`start_time`,`ret`,`end_time`组成，分辨对应函数名、参数情况、开始和结束时间以及函数返回结果
     + 然后再把`data`同`tag`,`depth`,`timestamp`的内容作为参数，调用`log()`函数
-
+  + 除此之外，该修饰器会额外判断是否含有名为`snapshot`的参数名，若有，则在函数执行完毕后调用截图函数`try_log_screen()`
 # 简要总结
 `AirtestLogger.log()`是最终实现写入文件的函数，可以在`.air`脚本中直接调用
 
