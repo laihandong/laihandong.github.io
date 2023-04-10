@@ -11,11 +11,11 @@ tags: 编程语言 Python
 下面，大致介绍一下如何使用如今（2023）最流行的python打包工具`setuptools`
 
 ## 推荐文档
-[Setuptools 【腾讯云】](https://cloud.tencent.com/developer/article/1740830)
-[setuptools document](https://readthedocs.org/projects/setuptools/)
-[setuptools PyPI](https://pypi.org/project/setuptools/)
-[packaging python](https://packaging.python.org/en/latest/overview/)
-
++ [Setuptools 【腾讯云】](https://cloud.tencent.com/developer/article/1740830)
++ [setuptools document](https://readthedocs.org/projects/setuptools/)
++ [setuptools PyPI](https://pypi.org/project/setuptools/)
++ [packaging python](https://packaging.python.org/en/latest/overview/)
++ [python打包分发工具：setuptools【知乎】](https://zhuanlan.zhihu.com/p/460233022)
 
 ## 打包示例
 ### 1. 模块的目录结构
