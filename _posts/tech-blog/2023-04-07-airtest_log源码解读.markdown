@@ -53,7 +53,7 @@ https://www.cnblogs.com/AirtestProject/p/16223928.html
   + 调用函数`reg_cleanup()`清空给定函数寄存器，将方法`handle_stacked_log`作为参数
 + `log()`
   + 用于将日志信息记录到日志文件中
-  + 记录深度`depth`、`tag`、`time`等日志信息写入文件
+  + 记录深度`depth`、`tag`、`timestamp`以及`data`等日志信息转为json后写入文件
 + `set_logfile()`
   + 用于设置日志文件的路径，并打开文件句柄
 + `handle_stacked_log()`
@@ -63,13 +63,14 @@ https://www.cnblogs.com/AirtestProject/p/16223928.html
 ## 函数
 只有一个函数`Logwrap()`，是装饰器函数，它用于装饰测试函数，以记录测试函数的执行情况。该函数包含以下属性和方法：
 + `wrapper()`方法
-  + 作为测试函数的包装器，用于记录测试函数的执行情况，并将执行情况记录到日志文件中
-  + 并提供`snapshot`和`depth`两个参数，来指定是否截图和深度
-
+  + 作为测试函数的包装器，用于记录测试函数的执行情况，并将执行情况记录到日志文件中：
+    + 这些信息都放在`data`属性，由`name`,`call_args`,`start_time`,`ret`,`end_time`组成，分辨对应函数名、参数情况、开始和结束时间以及函数返回结果
+    + 然后再把`data`同`tag`,`depth`,`timestamp`的内容作为参数，调用`log()`函数
 
 # 简要总结
 `AirtestLogger.log()`是最终实现写入文件的函数，可以在`.air`脚本中直接调用
+
 `@Logwrap()`则是负责收集所修饰的函数信息，再调用`AirtestLogger.log()`
 
-`log()`才是暴露给用户的接口
+`log()`才是专门暴露给用户的接口
 
