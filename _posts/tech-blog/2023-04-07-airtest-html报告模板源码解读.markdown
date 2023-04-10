@@ -37,7 +37,7 @@ log不存在的提示语
 
 #### footer
 ```html
-{% block footer %}
+左花括号百分号 block footer 百分号右花括号
 ```
 放一些有关网易airtest的跳转链接和图标
 `{% endblock %}`
