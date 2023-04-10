@@ -1,4 +1,28 @@
+airtest除了标准的运行日志，还有一套专门用来记录测试数据并生成报告的日志格式，主要的接口有如下几个：
+# `airtest.core.helper`
+## 类
+仅有一个类，名为`G`
+其中有一个用`AirtestLogger`实例化的成员对象，以及一些记录日志相关信息的常量成员，它们是用来记录日志的关键
 
+## 函数
+有7个函数
+### `set_logdir`
+设置日志文件路径
+### `log`
+接收的参数为:arg,timestamp,desc,snapshot。后三者顾名思义，`arg`则会被讨论是异常还是普通字符串，从而决定是否被标记为不通过。
+### `logwrap`
+基于类中的`AirtestLogger`实例，调用了`Logwrap`
+### `device_platform`
+设置类中当前设备属性
+### `using`
+将指定的路径加入`sys.path`，从而达到脚本间的互相引用
+### `import_device_cls`
+### `delay_after_operation`
+
+## `log()`接口参考
+https://www.cnblogs.com/AirtestProject/p/16983441.html
+https://www.cnblogs.com/AirtestProject/p/16964460.html
+https://www.cnblogs.com/AirtestProject/p/16223928.html
 
 # `airtest.utils.logger`
 ## 函数
@@ -22,12 +46,11 @@
 + `self.logfd`
   + 用于保存日志文件的文件句柄（默认关闭并置为None）
   
-
 ### 方法
 + `__init__()`
   + `running_stack = [], logfile = None, logfd = None`
   + 调用方法`set_logfile()`
-  + 调用函数`reg_cleanup()`，将方法`handle_stacked_log`作为参数
+  + 调用函数`reg_cleanup()`清空给定函数寄存器，将方法`handle_stacked_log`作为参数
 + `log()`
   + 用于将日志信息记录到日志文件中
   + 记录深度`depth`、`tag`、`time`等日志信息写入文件
@@ -44,17 +67,9 @@
   + 并提供`snapshot`和`depth`两个参数，来指定是否截图和深度
 
 
-## 额外说明
-### `reg_cleanup`
-这个是airtest封装的用来清空给定函数寄存器的接口
-涉及队列、主从线程等
+# 简要总结
+`AirtestLogger.log()`是最终实现写入文件的函数，可以在`.air`脚本中直接调用
+`@Logwrap()`则是负责收集所修饰的函数信息，再调用`AirtestLogger.log()`
 
+`log()`才是暴露给用户的接口
 
-### `log()`接口参考
-https://www.cnblogs.com/AirtestProject/p/16983441.html
-https://www.cnblogs.com/AirtestProject/p/16964460.html
-https://www.cnblogs.com/AirtestProject/p/16223928.html
-
-### 简要总结
-`log()`是最终实现写入文件的函数，可以在`.air`脚本中直接调用
-`@Logwrap()`则是负责收集所修饰的函数信息，再调用`log()`
