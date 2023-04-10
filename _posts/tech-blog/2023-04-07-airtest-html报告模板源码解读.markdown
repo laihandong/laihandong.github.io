@@ -2,20 +2,20 @@ airtest调用了原生jinja2模板来渲染html，下面仅讨论被jinja2模板
 
 # head部分
 ## 脚本
-{{static_root}}
+`{{static_root}}`
 ## title
-{{info.title}}
+`{{info.title}}`
 ## 数据
-{{data|safe}}
+`{{data|safe}}`
 ## 语言
-{{lang}}
+`{{lang}}`
 
 # body部分
 ## container-fluid
 ### row
 #### 主要内容 main
 **标题：**
-{{info.title}}
+`{{info.title}}`
 **副标题：**
 {% if not steps %}
 log不存在的提示语
@@ -36,9 +36,9 @@ log不存在的提示语
 {% endif %}
 
 #### footer
-{% block footer %}
+`{% block footer %}`
 放一些有关网易airtest的跳转链接和图标
-{% endblock %}
+`{% endblock %}`
 
 ### 录屏 row gif-wrap show
 #### menu
