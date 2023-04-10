@@ -83,7 +83,7 @@ def hello():
 ### 4. 本地测试使用
 打开另一个工程，新建一个python文件，解释器环境要和上文导入包的环境一致
 ```python
-from airtest_plugin.xx1 import report
+from airtest_plugin import report
 
 hello()
 
