@@ -74,3 +74,5 @@ https://www.cnblogs.com/AirtestProject/p/16223928.html
 
 `log()`才是专门暴露给用户的接口
 
++ 最终写入日志的基本格式为`{tag:, depth:, timestamp:, data:{name:, call_args:, start_time:, ret:, end_time:,}}`
+  + 若传入的值本身就为字典，那么就可能有更多层的嵌套关系
