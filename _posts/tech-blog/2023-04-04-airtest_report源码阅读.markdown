@@ -199,6 +199,16 @@ airtest任务生成的一份报告，它的目录结构大致如下：
     6. 调用方法`_render()`，将html模板`template_name`、`output_file`和`**data`作为参数传入，返回方法返回的值
     
     
+# 简要总结
+airtest将日志的每一行视为一个step，但与报告中的一个步骤却又有所不同，后者由单个或者一组step组成
+每一个step，都有`depth`属性，它代表调用先后的关系，较大值从属于较小值。
+    `depth`为0的单独视为报告中的一个步骤
+    连续的`depth`作为一组，视为报告中的一个步骤（比如`depth=3,depth=2,depth=1`的为一组，并以`depth=1`的step作为代表）
+step的数据结构和报告中的一个步骤所需要的数据结构显然不会一样：
+    通过_translate_step()方法来进行转换
+    转换后的数据结构可直接被jinja2模板所使用
+
+    
 # bug
 其中airtest.report.report.py line526
 getattr(ST,"LOG_DIR",DEFAULT_LOG_DIR)，仅仅判断ST有没有LOG_DIR属性，而没有管它的值是否为None，从而导致不能直接调用这个接口
