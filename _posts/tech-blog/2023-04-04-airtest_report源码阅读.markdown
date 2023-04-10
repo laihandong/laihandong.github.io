@@ -1,8 +1,7 @@
 # airtest_report源码阅读
 
-airtest的报告组成：
-```dir
-大概的结构如下：
+airtest任务生成的一份报告，它的目录结构大致如下：
+```txt
 |-<sript_name_without_ext>.log
     |-log
         |-<timestamp>.jpg
@@ -16,7 +15,8 @@ airtest的报告组成：
     |-log.html
     |-<tpl+timestamp>.png
     
-具体的例子
+具体的例子：
+```txt
 |-测试购买.log
     |-log                         这一部分就是完整的airtest的log日志
         |-1674877913337.jpg
@@ -33,6 +33,7 @@ airtest的报告组成：
 ```
 
 ## report.py脚本组成分析
+`airtest.report.report`作为主要的解析日志并生成报告的模块，以下尝试解读它：
 ### 全局变量/常量
 + `_paragraph_re`
 + `ap`
@@ -50,6 +51,7 @@ airtest的报告组成：
     ```shell
     report [script] [--outfile] [--static_root] [--log_root] [--recort] [--export] [--lang] [--plugins] [--report]
     ```
+    由此可见，report支持命令行直接调用，但不建议这样做。
 + `main`
     1. 接收唯一参数，类型为`argparse.ArgumentParser().parse_args()`。
     2. 解析传入的命令行参数的具体的值，传入`LogToHtml`类，进行初始化
@@ -197,4 +199,8 @@ airtest的报告组成：
     6. 调用方法`_render()`，将html模板`template_name`、`output_file`和`**data`作为参数传入，返回方法返回的值
     
     
+# bug
+其中airtest.report.report.py line526
+getattr(ST,"LOG_DIR",DEFAULT_LOG_DIR)，仅仅判断ST有没有LOG_DIR属性，而没有管它的值是否为None，从而导致不能直接调用这个接口
+否则会出现，拼接路径的报错，提示某参数不能为None
     
