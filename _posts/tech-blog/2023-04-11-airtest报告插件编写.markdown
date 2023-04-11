@@ -7,18 +7,50 @@
 {"tag": , 
 "depth": , 
 "time": , 
-"data":{"name": , 
+"data":{
+        "name": , 
         "call_args": , --可选
         "start_time": , 
         "ret": , 
         "end_time": ,
         "traceback": null, --可选
         "log":  --可选
-        }
+       }
 }
 ```
-2. 以json格式加载txt日志文件 && 解析日志之外的测试用例相关信息暂时存储起来
+2. 将统一格式的日志内容、测试用例的本身信息等资源，分别解析和转换，再整合成固定结构的信息体
+> 除了报告模板和报告生成位置，这个信息体是传给jinja2渲染的唯一变量。一个报告也仅对应一个该格式的数据体
 
-3. 将步骤2的各个变量分别进行转换，并整合成固定结构的信息体
-4. 仅对该信息体调用jinja2模板渲染html报告
+> 其中`steps`是**步骤1**中所有的`log`的整合列表，因此该列表内的数据格式也是统一的
+```json
+{"steps":[
+          {
+          "title": ,
+          "time": ,
+          "code":{
+                  "name": ,
+                  "args": ,
+                 },
+          "screen": ,
+          "desc": ,
+          "tracebak": ,
+          "log": ,
+          "assert":                 
+          },
+         ],
+ "name": ,
+ "scale": ,
+ "test_result": ,
+ "run_end": ,
+ "run_start": ,
+ "static_root": ,
+ "lang": ,
+ "records": ,
+ "info": ,
+ "log": ,
+ "console" ,
+}
+```
+3. 如何分析并整合日志数据和其他信息，是airtest报告的主要内容
+
 
