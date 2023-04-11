@@ -38,17 +38,23 @@
           "assert":                 
           },
          ],
- "name": ,
+ "name": ,        --log文件路径
  "scale": ,
- "test_result": ,
+ "test_result": (Boolean),
  "run_end": ,
  "run_start": ,
  "static_root": ,
  "lang": ,
- "records": ,
- "info": ,
- "log": ,
- "console" ,
+ "records":[],    --录屏mp4文件路径列表
+ "info":{
+        "name": , --测试用例（脚本）名称
+        "path": , --测试用例（脚本）完整路径
+        "author" ,--用例作者名称
+        "title" , 
+        "desc":
+        },
+ "log": ,        --log文件下载链接
+ "console" ,     --console.txt文本内容
 }
 ```
 3. 如何分析并整合日志数据和其他信息，是airtest报告的主要内容（也是编写插件的基础所在）
