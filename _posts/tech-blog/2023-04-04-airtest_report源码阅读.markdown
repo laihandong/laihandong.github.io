@@ -131,8 +131,9 @@ airtest任务生成的一份报告，它的目录结构大致如下：
 + `is_pos`
 + `div_rect`
 + `_render`
-    用`jinja2`渲染html[详见如何使用jinja2渲染html]()，并将渲染后的内容存入变量`html`并返回[详见airtest-html报告模板源码解读]()
-    
+    + 接受三个参数：模板位置 输出位置 数据
+    + 用`jinja2`渲染html[详见如何使用jinja2渲染html]()，并将渲染后的内容存入变量`html`并返回[详见airtest-html报告模板源码解读]()
+    + 传入的数据正是`report_data`所返回的`data`,将`**data`作为参数传给`_render()`
 + `copy_tree`
 + `_make_export_dir`
     1. 设置**报告文件夹**的名字为<script name>.log
