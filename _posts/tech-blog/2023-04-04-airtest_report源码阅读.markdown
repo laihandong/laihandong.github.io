@@ -82,7 +82,7 @@ airtest任务生成的一份报告，它的目录结构大致如下：
     + `lang`
 + `init_plugin_modules` plugins的加载是以`__import__()`方式导入的，目前仅支持两个插件`poco.utils.airtest.report 和 airtest_selenium.report`    
 + `_load`
-    + 读取`log_path`日志文件，将每行的日志文本存入`log`
+    + 读取`log_path`日志文件，将每行的日志文本以json的格式存入`log`
 + `_analyse`
     1. 准备`steps , children_steps`两个空列表
     2. 读取`log`，补充这两个空列表（log文件的组成详见[airtest_log源码解读]()）
