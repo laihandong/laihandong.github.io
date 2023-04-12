@@ -63,5 +63,7 @@
 }
 ```
 3. 如何分析并整合日志数据和其他信息，是airtest报告的主要内容（也是编写插件的基础所在）
-(但有些操作是在js中操作的）
++ airtest根据jinja2模板接受的字典数据`data`，根据jinja2相关语法和js进行渲染
++ airtest使用js对`data`进行处理后，动态生成相关的页面元素
++ airtest仅支持<extra_block>进行自定义html替换，和`block footer`的模板继承。两者的层级位置是固定的，拓展和修改的范围十分有限
 
