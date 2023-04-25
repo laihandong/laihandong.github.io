@@ -37,7 +37,7 @@
             return config;
         }
 ```
-对应着官方代码中`Assets/WX-WASM-SDK/Editor/WXEditorWindow`配置赋值部分：
+对应着官方代码中`Assets/WX-WASM-SDK/Editor/WXEditorWindow`关于配置读取和保存部分：
 ```c#
     public class WXEditorWindow : EditorWindow
     {
@@ -131,4 +131,6 @@
         }
     }
 ```
+
+
 
