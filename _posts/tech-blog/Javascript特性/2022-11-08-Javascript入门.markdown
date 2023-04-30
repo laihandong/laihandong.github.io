@@ -910,6 +910,160 @@ window.parseInt = function () {
 
 
 
+# 4. 闭包
+
+高阶函数除了可以接受函数作为参数外，**还可以把函数作为结果值返回**：
+**内部函数**可以引用**外部函数**的参数和局部变量，当返回函数时，**相关参数和变量都保存在返回的函数中**，这种称为**闭包（Closure）**
+
+
+## 4.1 函数作为返回值
+```javascript
+function lazy_sum(arr) {
+    var sum = function () {
+        return arr.reduce(function (x, y) {
+            return x + y;
+        });
+    }
+    return sum;
+}
+
+var f1 = lazy_sum([1, 2, 3, 4, 5]);
+var f2 = lazy_sum([1, 2, 3, 4, 5]);
+f1 === f2; // false
+f1(); // 15
+```
+注意：`f1()`和`f2()`的调用互不影响，即时传入的参数相同，因为每次调用`lazy_sum`返回的都是新的函数
+
+
+
+## 4.2 定义但不直接执行
+
++ **返回的函数**在其定义内部会**引用父函数传入的局部变量**，所以，其内部的局部变量还会被**新函数**引用。并且，返回的函数**不会立即执行，直到被调用**了才执行。这就会产生一个问题：
+
+  ```javascript
+  function count() {
+      var arr = [];
+      for (var i=1; i<=3; i++) {
+          arr.push(function () {
+              return i * i;
+          });
+      }
+      return arr;
+  }
+  
+  var results = count();
+  var f1 = results[0];
+  var f2 = results[1];
+  var f3 = results[2];
+  
+  f1(); // 16
+  f2(); // 16
+  f3(); // 16
+  ```
+
+  <font color = blue>返回的函数引用了变量`i`，但它并非立刻执行。等到3个函数都返回时，它们所引用的变量`i`已经变成了`4`，因此最终结果为`16`。</font>
+
+
+
+# 5. 高阶函数
+
+能够接收函数作为参数的函数，在js中被称为高阶函数，以下函数均可接收函数作为参数，也主要讲接收函数作为参数时的用法和注意事项
+
+## 5.1 map
+`map()`方法定义在js的`Array`中，它能接收函数，并根据该函数对`Array`中的**每一个元素**依次进行处理，返回结果仍是以`Array`的形式
+```javascript
+'use strict';
+
+function pow(x) {
+    return x * x;
+}
+
+//将数组中的元素全部取平方，存入新的数组
+var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+var results = arr.map(pow); // [1, 4, 9, 16, 25, 36, 49, 64, 81] 直观明了
+
+```
+
+## 5.2 reduce
+`reduce()`方法同样定义在js的`Array`中，它也能接收函数，但是必须传入两个参数，对`Array`中的**每两个元素**依次进行处理，返回结果视情况而定
+```javascript
+//把数组拼接变为整数
+var arr = [1, 3, 5, 7, 9];
+arr.reduce( function (x, y) {return x * 10 + y;} ); // 13579
+```
+注意：map**接收的是一个**参数，但传递**三个参数（数组元素，索引，数组本身）**，所以map中的函数要处理好这三个参数，否则会有bug
+
+## 5.3 filter
+`filter()`方法同样定义在js的`Array`中，它也能接收函数。和map()不同的是，filter()把传入的函数依次作用于**每一个元素**，然后**根据返回值是true还是false决定保留还是丢弃该元素**
+总的来讲，能起到**筛选过滤**的作用
+
+
+## 5.4 sort
+javascript的`sort()`函数默认先把所有元素转换为String，再根据ASCII码排序。但还好它也是一个高阶函数，**可以接收一个比较函数来实现自定义排序**
+
+由于排序的核心是**比较两个元素**，所以js规定：对于两个元素x和y，如果认为x < y，则返回-1，如果认为x == y，则返回0，如果认为x > y，则返回1。
+
+**从而编写自定义比较函数时，不需要关心排序的具体方法，只给出比较规则即可**，示例如下：
+```javascript
+var arr = [10, 20, 1, 2];
+arr.sort(function (x, y) {
+    if (x < y) {
+        return 1;
+    }
+    if (x > y) {
+        return -1;
+    }
+    return 0;
+}); // [20, 10, 2, 1]
+
+```
+注意：**js使用sort()时，是直接在原数组上修改，而不是返回新的数组**
+
+
+## 5.5 every
+every()方法可以**判断数组的所有元素是否满足测试条件**
+```javascript
+var arr = ['Apple', 'pear', 'orange'];
+//判断数组全部都是小写
+console.log(arr.every(function (s) {
+    return s.length > 0;
+})); // true, 因为每个元素都满足s.length>0
+```
+
+## 5.6 find
+find()方法用于**查找数组符合条件的第一个元素，如果找到了，返回这个元素，否则，返回undefined**
+```javascript
+var arr = ['Apple', 'pear', 'orange'];
+//找到全是小写字母的
+console.log(arr.find(function (s) {
+    return s.toLowerCase() === s;
+})); // 'pear', 因为pear全部是小写
+```
+
+## 5.7 findIndex
+**查找符合条件的第一个元素，不同之处在于findIndex()会返回这个元素的索引，如果没有找到，返回-1**
+```javascript
+var arr = ['Apple', 'pear', 'orange'];
+//找到全是小写字母的
+console.log(arr.findIndex(function (s) {
+    return s.toLowerCase() === s;
+})); // 1, 因为'pear'的索引是1
+```
+
+## 5.8 forEach
+**和map()类似，但不会返回新的数组，因此传入的函数也不需要返回值**
+```javascript
+var arr = ['Apple', 'pear', 'orange'];
+arr.forEach(console.log); // 依次打印每个元素
+```
+
+
+
+# 6 jquery
+
+jquery是js的一个库，它可以和原生js一起工作，也支持我们完全使用jquery自己定义的语法，这样做的好处是，代码变得更加简洁，同时调用起来更加方便，开发更加高效
+
+复习一下js的功能，它可以通过选择器来查找、修改、创建、删除标签，这个机制使得人和网页能够交互，jquery让这个过程变得更加方便、整洁和高效
 
 
 
@@ -928,13 +1082,4 @@ window.parseInt = function () {
 
 
 
-
-
-
-
-
-
-
-> 2022.11.09算了，去学typescript了
-> 2022.11.10 不行，JavaScript是基础，学web就得把这个打牢。typescript只是超集，以后再学，其不能替代JavaScript
 
