@@ -84,3 +84,32 @@ alter table 表名 change oldcolname newcolname int;
 修改列属性：
 
 alter table 表名 modify 列名 varchar(22);
+
+## 基本语句
+
+```mysql
+--基本语句
+--所有的语句都要以分号结尾
+exit	--退出连接
+--		--单行注释
+#		--单行注释
+/*...*/		--多行注释
+```
+
+### 数据库管理
+
+```mysql
+--创建数据库
+CREATE DATABASE [IF NOT EXISTS] 数据库名;
+
+--删除数据库
+DROP DATABASE [if EXISTS] 数据库名;
+
+--使用数据库
+--如果表名或者字段名是特殊字符，则需要带``
+use 数据库名;
+
+--查看数据库
+SHOW DATABASES;
+
+```
