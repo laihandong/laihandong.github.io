@@ -1,0 +1,665 @@
+我在阅读《重构·改善既有代码的设计》（第二版）之前，总是很随意地使用“重构”这个词。
+
+ 重构可以作为名词，也可以当作动词。前者指**对软件内部的一种调整，目的是在不改变软件可观察行为的前提下，提高其可理解性，降低其修改成本**。后者指**使用一系列手法，在不改变软件可观察行为的前提下，调整其结构。**（--均摘自书中原话）
+
+重构应该是一系列（能完美彼此组合的）小步骤构成的，是一类特定的结构调整。**重构期间不会导致代码处于不可用状态，否则就不是在进行重构。**
+
+重构vs.性能优化：
+
+两者区别在于**目的不同**，前者旨在“让代码更容易理解，更易于修改”，**但可能会造成程序运行的更慢或者更快**。后者旨在“让程序运行得更快”，**但可能会造成程序更难理解和维护**。
+
+
+
+既有代码场景：
+
+1. 客户(``customer`)**指定几出剧目(`play`)让剧团表演**
+2. 剧团根据**观众人数**(`audience`)及**剧目类型**（悲剧``tragedy`和喜剧`comedy`）来向客户**收费**
+3. 发放**账单**
+4. 剧团根据**到场观众数量**累计**积分优惠**(``volume credit`)，下次观演可使用此积分进行抵扣
+
+ 既有代码方案（以JavaScript实现为例）：
+
+`plays.json`：存放剧团已有的剧目
+
+```javascript
+{
+    "hamlet": {"name": "Hamlet","type":"tragedy"},
+    "as-like": {"name": "As You Like It","type":"comedy"},
+    "othello": {"name": "Othello","type":"tragedy"}
+}
+```
+
+
+
+`invoices.json`：存放开出的账单
+
+```javascript
+[
+    {
+        "customer": "BigCo",
+        "performances": [
+            {
+                "playID":"hamlet",
+                "audience"55
+            },
+            {
+                "playID":"as-like",
+                "audience"35   
+            },
+            {
+                "playID":"othello",
+                "audience"40   
+            }
+        ]
+    }
+]
+```
+
+既有代码：只有一个打印账单详情的函数，效果如下
+
+```
+Statement for BigCo
+  Hamlet: $650.00 (55 seats)
+  As You Like It: $580.00 (35 seats)
+  Othello: $500.00 (40 seats)
+Amount owed is $1,730.00
+You earned 47 credits
+```
+
+```javascript
+function statement (invoice,plays){
+    let totalAmount = 0;
+    let volumeCredits = 0;
+    let result = `Statement for ${invoice.customer}\n`;
+    const format = new Intl.NumberFormat("en-US",
+    {
+        style:"currency",currency:"USD",
+        minimumFractionDigits:2
+    }).format;
+    for(let perf of invoice.performances){
+        const play = plays[perf.playID];
+        let thisAmount=0;
+        
+        switch(play.type){
+            case "tragedy":
+                thisAmount = 40000;
+                if(perf.audience>30){
+                    thisAmount+=1000*(perf.audience-30);
+                }
+                break;
+            case "comedy":
+                thisAmount=30000;
+                if(perf.audience>20){
+                    thisAmount+=10000+500*(perf.audience-20);
+                }
+                thisAmount+=300*perf.audience;
+                break;
+            default:
+                throw new Error(`unknown type: ${play.type}`);
+        }
+
+        // add volume credits
+        volumeCredits += Math.max(perf.audience-30,0);
+        //add extra credit for every ten comedy attendees
+        if("comedy"===play.type)volumeCredits+=Math.floor(perf.audience/5);
+        //print line for this order
+        result += `${play.name}: ${format(thisAmount/100)} (${perf.audience} seats)\n`
+        totalAmount += thisAmount;
+    }
+    result += `Amount owed is ${format(totalAmount/100)}\n`
+    result += `You earned ${volumeCredits} credits\n`;
+    return result;
+}
+```
+
+可以看出这段代码组织的不够清晰，但也可以容忍（毕竟只是这么小的一个程序），但如果这个函数是处于一个庞大的系统中，类似这样把所有代码放在一个函数里就很难理解了。让人困惑的同时也让人难以修改和添加新功能。
+
+
+
+# 重构第一步
+
+**确保修改的代码拥有一组可靠的测试**
+
+对于这个函数，他的输入是账单（invoice）和剧目单，返回的是一个字符串。我只需要新建几个账单，并手动计算出最终字符串，然后与每次代码生成的字符串进行对比校验即可
+
+而这一步骤，可以通过测试框架来配置好
+
+
+
+接下来我们来关注代码：
+
+# 重构 -- 小步前进
+
+## 提炼函数（106）
+
+要将**我的理解**转化到代码里，得先**将这块代码抽取成一个独立的函数，按它所干的事情给它命名**，比如叫 amountFor(performance)。每次想将一块代码抽取成一个函数时，我都会遵循一个标准流程，最大程度减少犯错的可能。我把这个流程记录了下来，并将它命名为**提炼函数（106）**，以便日后可以方便地引用
+
+ **注意作用域（以JavaScript举例），子函数位于父函数作用于下，那么子函数用到父函数的参数时，不用再写进函数声明了。**
+
+第一个引起我注意的就是中间那段 **switch** 语句，以我的理解他就是计算费用的，可以提炼成一个函数
+
+```javascript
+// ================= 提炼函数（106） ================
+function amountFor(perf, play) {
+  let thisAmount = 0;
+  switch (play.type) {
+  case "tragedy":
+    thisAmount = 40000;
+    if (perf.audience > 30) {
+      thisAmount += 1000 * (perf.audience - 30);
+    }
+    break;
+  case "comedy":
+    thisAmount = 30000;
+    if (perf.audience > 20) {
+      thisAmount += 10000 + 500 * (perf.audience - 20);
+    }
+    thisAmount += 300 * perf.audience;
+    break;
+  default:
+      throw new Error(`unknown type: ${play.type}`);
+  }
+  return thisAmount;
+}
+
+// ================= statement ================
+function statement (invoice, plays) {
+  let totalAmount = 0;
+  let volumeCredits = 0;
+  let result = `Statement for ${invoice.customer}\n`;
+  const format = new Intl.NumberFormat("en-US",
+                        { style: "currency", currency: "USD",
+                          minimumFractionDigits: 2 }).format;
+  for (let perf of invoice.performances) {
+    const play = plays[perf.playID];
+    let thisAmount = amountFor(perf, play);//提炼函数（106） 
+
+    // add volume credits
+    volumeCredits += Math.max(perf.audience - 30, 0);
+    // add extra credit for every ten comedy attendees
+    if ("comedy" === play.type) volumeCredits += Math.floor(perf.audience / 5);
+
+    // print line for this order
+    result += ` ${play.name}: ${format(thisAmount/100)} (${perf.audience} seats)\n`;
+    totalAmount += thisAmount;
+  }
+  result += `Amount owed is ${format(totalAmount/100)}\n`;
+  result += `You earned ${volumeCredits} credits\n`;
+  return result;
+```
+
+**‘编译’、测试、提交代码**（建议每次重构后，都要进行一遍这个流程）
+
+
+
+### 提炼函数（106）-- 增加表达能力 -- 改名
+
+完成提炼函数（106）手法后，我会看看提炼出来的函数，看是否能进一步提升其表达能力。一般我做的第一件事就是给一些变量改名，使它们更简洁，比如将 thisAmount 重命名为 **result**。
+
+**这是我个人的编码风格：永远将函数的返回值命名为“result”，这样我一眼就能知道它的作用。**
+
+使用一门动态类型语言（如 JavaScript）时，跟踪变量的类型很有意义。**因此，我为参数取名时都默认带上其类型名。一般我会使用不定冠词修饰它，除非命名中另有解释其角色的相关信息，这是我的另一个代码风格**，这里将`perf`改为了`aPerformance`
+
+```javascript
+function amountFor(aPerformance, play) {
+  let result = 0;
+  switch (play.type) {
+  case "tragedy":
+    result = 40000;
+    if (aPerformance.audience > 30) {
+      result += 1000 * (aPerformance.audience - 30);
+    }
+    break;
+  case "comedy":
+    result = 30000;
+    if (aPerformance.audience > 20) {
+      result += 10000 + 500 * (aPerformance.audience - 20);
+    }
+    result += 300 * aPerformance.audience;
+    break;
+  default:
+      throw new Error(`unknown type: ${play.type}`);
+  }
+  return result;
+}
+```
+
+
+
+## 以查询取代临时变量（178）
+
+当我分解一个长函数时，我喜欢将` play `这样的变量移除掉，因为**它们创建了很多具有局部作用域的临时变量，这会使提炼函数更加复杂**。`play `变量是由 `performance` 变量计算得到的，因此*根本没必要将它作为参数传入*
+
+```javascript
+// ================= 以查询取代临时变量（178） ================
+function playFor(aPerformance) {
+  return plays[aPerformance.playID];
+}
+// ================= 提炼函数（106）: amountFor(aPerformance) ================
+function amountFor(aPerformance,play){...} 
+
+// ================= 以查询取代临时变量（178） ================
+function statement (invoice, plays) {
+  let totalAmount = 0;
+  let volumeCredits = 0;
+  let result = `Statement for ${invoice.customer}\n`;
+  const format = new Intl.NumberFormat("en-US",
+                        { style: "currency", currency: "USD",
+                          minimumFractionDigits: 2 }).format;
+  for (let perf of invoice.performances) {
+    const play = playFor(perf);//以查询取代临时变量（178）
+    let thisAmount = amountFor(perf, play);//提炼函数（106） 
+
+    // add volume credits
+    volumeCredits += Math.max(perf.audience - 30, 0);
+    // add extra credit for every ten comedy attendees
+    if ("comedy" === play.type) volumeCredits += Math.floor(perf.audience / 5);
+
+    // print line for this order
+    result += ` ${play.name}: ${format(thisAmount/100)} (${perf.audience} seats)\n`;
+    totalAmount += thisAmount;
+  }
+  result += `Amount owed is ${format(totalAmount/100)}\n`;
+  result += `You earned ${volumeCredits} credits\n`;
+  return result;
+```
+
+## 使用内联变量（123）
+
+```javascript
+// ================= 以查询取代临时变量（178） ================
+function playFor(aPerformance) {
+  return plays[aPerformance.playID];
+}
+// ================= 提炼函数（106）: amountFor(aPerformance)， 使用内联变量（123） ================
+function amountFor(aPerformance , play ) {
+  let result = 0;
+  switch (playFor(aPerformance).type) {// 使用内联变量（123）
+  case "tragedy":
+    result = 40000;
+    if (aPerformance.audience > 30) {
+      result += 1000 * (aPerformance.audience - 30);
+    }
+    break;
+  case "comedy":
+    result = 30000;
+    if (aPerformance.audience > 20) {
+      result += 10000 + 500 * (aPerformance.audience - 20);
+    }
+    result += 300 * aPerformance.audience;
+    break;
+  default:
+      throw new Error(`unknown type: ${playFor(aPerformance).type}`);// 使用内联变量（123）
+  }
+  return result;
+}
+
+// ================= 以查询取代临时变量（178） ================
+function statement (invoice, plays) {
+  let totalAmount = 0;
+  let volumeCredits = 0;
+  let result = `Statement for ${invoice.customer}\n`;
+  const format = new Intl.NumberFormat("en-US",
+                        { style: "currency", currency: "USD",
+                          minimumFractionDigits: 2 }).format;
+  for (let perf of invoice.performances) {
+    const play = playFor(perf);//以查询取代临时变量（178）
+    let thisAmount = amountFor(perf, playFor(perf));//提炼函数（106） 使用内联变量（123）
+
+    // add volume credits
+    volumeCredits += Math.max(perf.audience - 30, 0);
+    // add extra credit for every ten comedy attendees
+    if ("comedy" === play.type) volumeCredits += Math.floor(perf.audience / 5);
+
+    // print line for this order
+    result += ` ${play.name}: ${format(thisAmount/100)} (${perf.audience} seats)\n`;
+    totalAmount += thisAmount;
+  }
+  result += `Amount owed is ${format(totalAmount/100)}\n`;
+  result += `You earned ${volumeCredits} credits\n`;
+  return result;
+```
+
+## 改变函数声明（124）
+
+### amountFor 
+
+我可以对 amountFor 函数应用改变函数声明（124），移除 play 参数
+
+第一步是在amountFor内使用新提炼的playFor函数进行内联
+
+第二步是在statement内有关amountFor的调用点进行内联
+
+```javascript
+function statement (invoice, plays) {
+  let totalAmount = 0;
+  let volumeCredits = 0;
+  let result = `Statement for ${invoice.customer}\n`;
+  const format = new Intl.NumberFormat("en-US",
+                        { style: "currency", currency: "USD",
+                          minimumFractionDigits: 2 }).format;
+    for (let perf of invoice.performances) {
+
+    // add volume credits
+    volumeCredits += Math.max(perf.audience - 30, 0);
+    // add extra credit for every ten comedy attendees
+    if ("comedy" === playFor(perf).type) volumeCredits += Math.floor(perf.audience / 5);
+
+    // print line for this order
+    result += ` ${playFor(perf).name}: ${format(amountFor(perf)/100)} (${perf.audience} seats)\n`;//使用内联变量（123）
+    totalAmount += amountFor(perf);
+  }
+  result += `Amount owed is ${format(totalAmount/100)}\n`;
+  result += `You earned ${volumeCredits} credits\n`;
+  return result;
+```
+
+
+
+### volumeCreditsFor
+
+提炼计算观众量积分的逻辑
+
+```javascript
+function volumeCreditsFor(aPerformance) {
+  let result = 0;
+  result += Math.max(aPerformance.audience - 30, 0);
+  if ("comedy" === playFor(aPerformance).type)
+    result += Math.floor(aPerformance.audience / 5);
+  return result;
+}
+```
+
+
+
+### format
+
+移除函数变量format，改为函数声明。但是要注意函数命名，比如format 未能**清晰地描述其作用**，formatAsUSD 很表意，但又太长，特别它**仅是小范围地**被用在一个字符串模板中。
+
+我认为这里**真正需要强调的是**，它格式化的是一个货币数字，因此我选取了一个能体现此意图的命名，并应用了改变函数声明（124）手法。
+
+**即要注意，强调的重点是什么，适用范围在哪里，才能更好的命名**
+
+```javascript
+function usd(aNumber) {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+  }).format(aNumber / 100);
+}
+```
+
+## 拆分循环（227）
+
+我的下一个重构目标是 volumeCredits。处理这个变量更加微妙，因为它是在循环的迭代过程中累加得到的。第一步，就是应用拆分循环（227）**将 volumeCredits 的累加过程分离出来。**
+
+```javascript
+function statement (invoice, plays) {
+  let totalAmount = 0;
+  let volumeCredits = 0;
+  let result = `Statement for ${invoice.customer}\n`;
+
+  for (let perf of invoice.performances) {//拆分循环（227）
+
+    // print line for this order
+    result += ` ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience} seats)\n`;
+    totalAmount += amountFor(perf);
+  }
+  for (let perf of invoice.performances) {//拆分循环（227）
+    volumeCredits += volumeCreditsFor(perf);
+  }
+
+result += `Amount owed is ${usd(totalAmount)}\n`;
+result += `You earned ${volumeCredits} credits\n`;
+return result;
+```
+
+## 移动语句（223）
+
+**将变量声明挪动到紧邻循环的位置**
+
+```javascript
+function statement (invoice, plays) {
+  let totalAmount = 0;
+  let result = `Statement for ${invoice.customer}\n`;
+  for (let perf of invoice.performances) {
+
+    // print line for this order
+    result += ` ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience} seats)\n`;
+    totalAmount += amountFor(perf);
+  }
+  let volumeCredits = 0;//移动语句（223）
+  for (let perf of invoice.performances) {
+    volumeCredits += volumeCreditsFor(perf);
+  }
+  result += `Amount owed is ${usd(totalAmount)}\n`;
+  result += `You earned ${volumeCredits} credits\n`;
+  return result;
+```
+
+把与更新 volumeCredits 变量相关的代码都集中到一起，有利于以查询取代临时变量（178）手法的施展
+
+```javascript
+function totalVolumeCredits() {
+  let volumeCredits = 0;
+  for (let perf of invoice.performances) {
+    volumeCredits += volumeCreditsFor(perf);
+  }
+  return volumeCredits;
+}
+```
+
+同样是先对变量的计算过程应用提炼函数（106）手法、再以查询取代临时变量（178），然后使用内联变量（123）
+
+```javascript
+function statement (invoice, plays) {
+  let totalAmount = 0;
+  let result = `Statement for ${invoice.customer}\n`;
+  for (let perf of invoice.performances) {
+
+    // print line for this order
+    result += ` ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience} seats)\n`;
+    totalAmount += amountFor(perf);
+  }
+
+  result += `Amount owed is ${usd(totalAmount)}\n`;
+  result += `You earned ${totalVolumeCredits()} credits\n`;//使用内联变量（123）
+  return result;
+```
+
+类似的，对totalAmount进行提炼、取代临时变量、内联
+
+```javascript
+function totalAmount() {
+  let result = 0;
+  for (let perf of invoice.performances) {
+    result += amountFor(perf);
+  }
+  return result;
+}
+function totalVolumeCredits() {
+  let result = 0;
+  for (let perf of invoice.performances) {
+    result += volumeCreditsFor(perf);
+  }
+  return result;
+}
+```
+
+## 初步成果 -- 大量嵌套函数
+
+**到目前为止，我的重构主要是为原函数添加足够的结构，以便我能更好地理解它，看清它的逻辑结构。这也是重构早期的一般步骤。把复杂的代码块分解为更小的单元，与好的命名一样都很重要。**
+
+```javascript
+function statement (invoice, plays) {
+  let result = `Statement for ${invoice.customer}\n`;
+  for (let perf of invoice.performances) {
+    result += ` ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience} seats)\n`;
+  }
+  result += `Amount owed is ${usd(totalAmount())}\n`;
+  result += `You earned ${totalVolumeCredits()} credits\n`;
+  return result;
+
+  function totalAmount() {
+    let result = 0;
+    for (let perf of invoice.performances) {
+      result += amountFor(perf);
+    }
+    return result;
+  }
+  function totalVolumeCredits() {
+    let result = 0;
+    for (let perf of invoice.performances) {
+      result += volumeCreditsFor(perf);
+    }
+    return result;
+  }
+  function usd(aNumber) {
+    return new Intl.NumberFormat("en-US",
+                        { style: "currency", currency: "USD",
+                          minimumFractionDigits: 2 }).format(aNumber/100);
+  }
+  function volumeCreditsFor(aPerformance) {
+    let result = 0;
+    result += Math.max(aPerformance.audience - 30, 0);
+    if ("comedy" === playFor(aPerformance).type) result += Math.floor(aPerformance.audience / 5);
+    return result;
+  }
+  function playFor(aPerformance) {
+    return plays[aPerformance.playID];
+  }
+  function amountFor(aPerformance) {
+    let result = 0;
+    switch (playFor(aPerformance).type) {
+    case "tragedy":
+      result = 40000;
+      if (aPerformance.audience > 30) {
+        result += 1000 * (aPerformance.audience - 30);
+      }
+      break;
+    case "comedy":
+      result = 30000;
+      if (aPerformance.audience > 20) {
+        result += 10000 + 500 * (aPerformance.audience - 20);
+      }
+      result += 300 * aPerformance.audience;
+      break;
+    default:
+      throw new Error(`unknown type: ${playFor(aPerformance).type}`);
+    }
+    return result;
+  }
+}
+```
+
+# 重构 -- 拆分阶段（154）
+
+如何让这些函数能够**复用**，最常见的方法就是**拆分阶段（154）**
+
+这里我的目标是将逻辑分成两部分：一部分计算详单所需的数据，另一部分将数据渲染成文本或 HTML。第一阶段会创建一个中转数据结构，再把它传递给第二阶段。
+
+
+
+生成数据createStatementData，可单独放在另一个js文件
+
+将数据进行渲染renderPlainText、renderHtml，和statement放在同一个文件
+
+
+
+# 重构 -- 以多态取代条件表达式（272）
+
+我的设想是先建立一个继承体系，它有“喜剧”（comedy）和“悲剧”（tragedy）两个子类，子类各自包含独立的计算逻辑。
+
+调用者通过调用一个多态的 amount 函数，让语言帮你分发到不同的子类的计算过程中。volumeCredits 函数的处理也是如法炮制。
+
+为此我需要用到多种重构方法，其中最核心的一招是以多态取代条件表达式（272），将多个同样的类型码分支用多态取代。
+
+但在施展以多态取代条件表达式（272）之前，我得先创建一个基本的继承结构。我需要先创建一个类，并将价格计算函数和观众量积分计算函数放进去。
+
+
+
+
+
+我已将全部计算逻辑搬移到一个类中，是时候将它多态化了。第一步是应用**以子类取代类型码（362）引入子类**，弃用类型代码。为此，我需要为演出计算器创建子类，并在 createStatementData 中获取对应的子类。要得到正确的子类，我需要将构造函数调用替换为一个普通的函数调用，因为 JavaScript 的构造函数里无法返回子类。于是我使用**以工厂函数取代构造函数（334）**。
+
+
+
+最终成果
+
+```javascript
+  export default function createStatementData(invoice, plays) {
+  const result = {};
+  result.customer = invoice.customer;
+  result.performances = invoice.performances.map(enrichPerformance);
+  result.totalAmount = totalAmount(result);
+  result.totalVolumeCredits = totalVolumeCredits(result);
+  return result;
+
+  function enrichPerformance(aPerformance) {
+    const calculator = createPerformanceCalculator(aPerformance, playFor(aPerformance));
+    const result = Object.assign({}, aPerformance);
+    result.play = calculator.play;
+    result.amount = calculator.amount;
+    result.volumeCredits = calculator.volumeCredits;
+    return result;
+  }
+  function playFor(aPerformance) {
+    return plays[aPerformance.playID]
+  }
+  function totalAmount(data) {
+    return data.performances
+      .reduce((total, p) => total + p.amount, 0);
+  }
+  function totalVolumeCredits(data) {
+    return data.performances
+      .reduce((total, p) => total + p.volumeCredits, 0);
+  }
+}
+function createPerformanceCalculator(aPerformance, aPlay) {
+    switch(aPlay.type) {
+    case "tragedy": return new TragedyCalculator(aPerformance, aPlay);
+    case "comedy" : return new ComedyCalculator(aPerformance, aPlay);
+    default:
+        throw new Error(`unknown type: ${aPlay.type}`);
+    }
+}
+class PerformanceCalculator {
+  constructor(aPerformance, aPlay) {
+    this.performance = aPerformance;
+    this.play = aPlay;
+  }
+  get amount() {
+    throw new Error('subclass responsibility');
+  }
+  get volumeCredits() {
+    return Math.max(this.performance.audience - 30, 0);
+  }
+}
+class TragedyCalculator extends PerformanceCalculator {
+  get amount() {
+    let result = 40000;
+    if (this.performance.audience > 30) {
+      result += 1000 * (this.performance.audience - 30);
+    }
+    return result;
+  }
+}
+class ComedyCalculator extends PerformanceCalculator {
+  get amount() {
+    let result = 30000;
+    if (this.performance.audience > 20) {
+      result += 10000 + 500 * (this.performance.audience - 20);
+    }
+    result += 300 * this.performance.audience;
+    return result;
+  }
+  get volumeCredits() {
+    return super.volumeCredits + Math.floor(this.performance.audience / 5);
+  }
+}
+```
+
+代码量仍然有所增加，因为我再次整理了代码结构。新结构带来的好处是，不同戏剧种类的计算各自集中到了一处地方。如果大多数修改都涉及特定类型的计算，像这样按类型进行分离就很有意义。当添加新剧种时，只需要添加一个子类，并在创建函数中返回它。
+
+这个示例还揭示了一些关于此类继承方案何时适用的洞见。上面我将条件分支的查找从两个不同的函数（amountFor 和 volumeCreditsFor）搬移到一个集中的构造函数 createPerformanceCalculator 中。**有越多的函数依赖于同一套类型进行多态，这种继承方案就越有益处**
