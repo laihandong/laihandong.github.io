@@ -69,12 +69,14 @@ def Hello_my_django(request):
 # 模板系统（Template）
 从上一小节代码中，可以看到竟然将html的代码放到了程序里，势必会有高度耦合、难以维护的隐患，而**模板系统就是将视图函数和html代码解耦的**
 
-
 在tamplates文件夹（一个项目同级目录，Django会自动识别）下新建hello.html，编写如下代码：
-```html
-<html><body>{{vaule}}</body></html>
-```
+
+![image-20230502183834395](https://images-1258290850.cos.ap-guangzhou.myqcloud.com/blog/202305021838558.webp)
+
+
+
 **视图函数调用模板，并进行“模板传参”**
+
 ```python
 from django.shortcuts import render      
 def hello_my_django(request):
@@ -226,27 +228,9 @@ def my_views_func(request):
 	return render(request,"xxx.html",{"key1":'value1',}) 这样就可以将数据传给模板
 ```
 
-```html
-{% 语句 %}
-{{ 值 }}
 
-{% for _ in xx %} 循环
-{% endfor %}
 
-{{ my_data_list.0 }} 取数组的第一个元素（不是用[0]）
-
-{{ my_data_dict.name }} 取字典中key为name的值
-
-{% for _ in my_data_dict.keys %} 遍历字典中的键
-{% for _ in my_data_dict.values %} 遍历字典中的值
-{% for k,v in my_data_dict.items %} 遍历字典中的键值对
-
-{% if 表达式 %} 分支
-{% elif 表达式%}
-{% else %}
-{% endif %}
-```
-
+![image-20230502183556755](https://images-1258290850.cos.ap-guangzhou.myqcloud.com/blog/202305021836054.webp)
 
 由此可看出，django中通过`client -- urls.py -- views.py -- （含模板语言的）templates -- （完全纯粹的）html -- client`这样的流程来给用户展示网页
 
@@ -341,7 +325,7 @@ UserInfo.objects.filter(id=4).update(name='xxxx')
 
 #### django的模板
 
-templates目录，编写html模板（django的模板语法，继承，`{%static '相对路径' %}`
+templates目录，编写html模板（django的模板语法，继承，![image-20230502183714886](https://images-1258290850.cos.ap-guangzhou.myqcloud.com/blog/202305021837060.webp)
 
 #### django的ModelForm和Form组件
 
@@ -392,15 +376,8 @@ def user_add(request):
 	return render(request,'user_add.html',{"form":form})
 ```
 
+![image-20230502183748337](https://images-1258290850.cos.ap-guangzhou.myqcloud.com/blog/202305021837518.webp)
 
-```html
-<form method="post">
-	{% for field in form %}
-		{{ field }}
-	{% endfor %}
-	<!-- <input type="text" name="xxx" /> -->类似这种效果
-</form>
-```
 ### ModelForm
 ```python
 # ---------views.py
@@ -468,19 +445,7 @@ def user_model_form_add(request):
 
 ```
 
-```html
-<form method="POST" action="/user/model/form/add/" novalidate>  <!-- 取消浏览器自带的表单验证，这样会使django的验证生效-->
- {% csrf_token %}  
- {% for field in form %}  
-  <div class="form-group">  
-   <label for="user_id">{{ field.label }}</label>  
-   {{ field }}  
-   {{ field.errors.0 }}  <!-- 同时显示返回的错误（如果有的话）-->
-  </div>  
- {% endfor %}  
- <button type="submit" class="btn btn-primary">Submit</button>  
-</form>
-```
+![image-20230502183814573](https://images-1258290850.cos.ap-guangzhou.myqcloud.com/blog/202305021838796.webp)
 
 ## django的静态资源管理系统--Media
 
