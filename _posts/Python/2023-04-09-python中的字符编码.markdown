@@ -1,0 +1,228 @@
+---
+title: Python中的字符编码
+date: 2023-04-09 08:00:00
+categories: 
+- [Python,字符编码]
+---
+
+
+
+## 字符区别
+
+**Python2 中字符的类型：**
+
+- **str：** 已经编码后的字节序列
+- **unicode：** 编码前的文本字符
+
++ str 和 unicode 都是 basestring 的子类，所以两者可以直接进行拼接操作。
+
+**Python3 中字符的类型：**
+
+- **str：** 编码过的 unicode 文本字符
+- **bytes：** 编码前的字节序列
+- bytes 和 str 是两个独立的类型，两者不能进行拼接
+
+我们可以认为字符串有两种状态，即文本状态和字节（二进制）状态。Python2 和 Python3 中的两种字符类型都分别对应这两种状态，然后相互之间进行编解码转化。**编码就是将字符串转换成字节码，涉及到字符串的内部表示；解码就是将字节码转换为字符串，将比特位显示成字符**。
+
+
+
+## 编码和解码
+
+在 Python2 中，str 和 unicode 都有 encode 和 decode 方法。但是**不建议对 str 使用 encode，对 unicode 使用 decode**, 这是 Python2 设计上的缺陷。
+
+Python3 则进行了优化，str 只有一个 encode 方法将字符串转化为一个字节码，而且 bytes 也只有一个 decode 方法将字节码转化为一个文本字符串。
+
+```
+python2中：
+Str To Unicode 使用decode(), 解码
+Unicode To Str 使用encode(), 编码
+　　
+python3中：
+Str To Bytes 使用 encode(), 编码
+Bytes To Str 使用 decode(), 解码
+```
+
+
+
+## 变量声明
+
+Python2 中，普通的，用引号括起来的字符，就是 str；此时字符串的编码类型，对应着你的 Python 文件本身保存为何种编码有关，最常见的 Windows 平台中，默认用的是 GBK。
+
+Python2默认情况下 字符串 的类型是 str 类型, 如果需要得到 unicode 类型的字符串, 需要使用下面的方式进行声明
+
+```python 
+my_str = u"lowmanisbusy" # 在变量前面加上 u
+```
+
+
+
+Python3 中，被单引号或双引号括起来的字符串，就已经是 Unicode 类型的 str 了。对于 str 为何种编码，有一些前提：
+
+- Python 文件开始已经声明对应的编码
+- Python 文件本身的确是使用该编码保存的
+- 两者的编码类型要一样（比如都是 UTF-8 或者都是 GBK 等）
+
+这样 Python 解析器才能正确的把文本解析为对应编码的 str。
+
+
+
+## 经验教训
+
+ 想要不乱码，记住以下5点法则：
+
+**（1）python文件存储为utf-8格式，编码声明为utf-8**
+
+>  编码声明注释写成`# -*- coding: utf-8 -*-`也是可以的，只要满足正则表达式`^[ \t\v]*#.*?coding[:=][ \t]*([-_.a-zA-Z0-9]+)`就OK
+
+**（2）出现汉字的地方前面加 u**
+
+**（3）不同编码之间不能直接转换，要经过unicode中间跳转**
+
+**（4）cmd 下不支持utf-8编码**
+
+> windows cmd 窗口下不支持utf-8，想要显示中文必须转换为gbk或者unicode
+>
+> 而 Python idle 中这三种编码都支持
+>
+> 中文乱码的出现都是由于编码不一致导致的，存储的是用utf-8，打印的时候用gbk就会乱码了，所有要保证不乱码尽量保持统一，建议全部使用unicode
+
+**（5）raw_input提示字符串只能为gbk编码**
+
+> raw_input 是获取用户输入值的，获取到的用户输入值和当前运行环境编码有关，比如 cmd 下默认编码是 `gbk`，那么输入的汉字就是以`gbk`编码，而不管 python 文件编码格式和编码声明
+
+**（6）python2.x编码建议**
+
+- 请尽量在Linux系统上编程，综上我们可以知道linux下较windows，编码问题良好很多。
+- python代码内部请全部使用unicode编码，在获取外部内容时，先decode为unicode，向外输出时再encode为Str
+- 在定义变量或者正则时，也定义unicode字符，如a=u”中文”；res=r””+u”正则”。
+
+
+
+
+
+## 系统、文件、控制台IO、网页和源代码编码(python2)
+
+python3请跳过这一小节
+
+```python
+print sys.getdefaultencoding()    #系统默认编码
+print sys.getfilesystemencoding() #文件系统编码
+print locale.getdefaultlocale()   #系统当前编码
+print sys.stdin.encoding          #终端输入编码
+print sys.stdout.encoding         #终端输出编码
+```
+
+将以上这段代码在windows与linux系统下分别运行，查看输出结果。
+windows终端结果:
+
+```
+ascii
+mbcs
+('zh_CN', 'cp936')
+cp936
+cp936
+```
+
+Linux终端结果：
+
+```
+ascii
+UTF-8
+('zh_CN', 'UTF-8')
+UTF-8
+UTF-8
+```
+
+必要的时候，需要各种情况设置合适的编码
+
+### 设置系统编码
+
+```
+import sys
+reload(sys)
+sys.setdefaultencoding('gbk')
+```
+
+说明：在windows下将其设置为gbk，在linux在设置为utf-8.
+
+### 控制台输出
+
+```
+#! -*- coding:utf-8 -*-
+a='你好'
+b=a.decode("utf-8").encode("gbk")
+print b
+```
+
+将变量a从utf-8编码转换为gbk编码。
+
+### 源代码编码
+
+源代码编码指的是python程序本身的编码，默认为ascii
+
+> python程序本身要被解释器解析执行，需要先被转化为二进制代码。而在这过程中容易引发异常，原因同样是ascii不支持中文，因此当python程序中出现中文时，哪怕是注释，也会引发ascii异常。
+
+**python程序开头加上这句代码`#! -*- coding:utf-8 -*-`，指定python源代码编码格式为utf-8**
+
+### 文件编码
+
+文件编码指的是，python程序从文件中获取的内容的编码格式。可以用sys.getfilesystemencoding()函数获取，windows下为mbcs，linux下为utf-8。
+
+#### 读取文件
+
+当python程序从文件中获取内容，并输出时，容易触发异常。
+
+在windows下，最好将文件内容转为unicode，可以使用codecs：
+
+```python
+f=codecs.open("test.txt", encoding='gbk').read()
+```
+
+也可以直接使用`open(“”,”r”).read().decode(“gbk”)`
+
+#### 写入文件
+
+参考操作系统编码触发异常点，即将中文unicode字符写入文件时，容易触发异常，可以手动将unicode编码转换为str编码
+
+```
+#! -*- coding:utf-8 -*-
+a=u"中文"  #a为unicode格式编码
+f=open("test.txt","w")
+f.write(a.encode("gbk"))
+```
+
+### 网页编码
+
+网页编码常见格式：utf-8，gbk，gb2312，经常出现网页中获取的源码编码与终端编码，甚至python内部编码不一致的情况，实例证明：
+
+```python
+#!coding=utf-8
+import urllib2
+body=urllib2.urlopen('http://thief.one').read()
+print type(body)
+print body
+```
+
+运行结果：
+
+```
+<type 'str'>
+body中文显示乱码
+```
+
+说明：这个网站的编码是utf-8，而且python从网页上爬取的内容都为Str格式，在windows控制台下输出会乱码。
+
+**解决方案**
+
+先将其转化为unicode。而相应的正则也可以为unicode编码，如：res=r’’+u”新成员”。可以通过chardet模块判断网页编码类型，返回的是一个带概率的字典
+
+```python
+# 判断字符串编码
+isinstance(obj, (str, unicode))
+
+# 判断网页编码
+import chardet
+import urllib2
+body=urllib2.urlopen("http://thief.one").read()
+chardet.detect(body)
+```

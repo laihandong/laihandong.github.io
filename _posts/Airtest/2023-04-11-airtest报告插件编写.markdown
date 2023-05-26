@@ -1,0 +1,81 @@
+---
+title: airtest 编写报告插件
+date: 2023-04-11 08:00:00
+categories:
+- [Python,第三方库,airtest]
+tags: 
+- 插件编写
+---
+
+
+
+# airtest的报告生成机制：
+
+1. 写入指定格式的日志到txt文本
+> 可选部分是指，不同`tag`的日志，其`data`所包含的信息会有差异。比如函数的日志就会有返回结果`ret`和参数`call_args`，而普通文本打印就不会有这个
+
+> 其次，该基本格式下可能会有个更深的层次嵌套，这个取决于写入的变量类型。比如返回结果`ret`可能只是一个数字，但也可能是一个复杂的`dict`数据
+```json
+{"tag": , 
+"depth": , 
+"time": , 
+"data":{
+        "name": , 
+        "call_args": , --可选
+        "start_time": , 
+        "ret": , 
+        "end_time": ,
+        "traceback": null, --可选
+        "log":  --可选
+       }
+}
+```
+2. 将统一格式的日志内容、测试用例的本身信息等资源，分别解析和转换，再整合成固定结构的信息体
+> 除了报告模板和报告生成位置，这个信息体是传给jinja2渲染的唯一变量。一个报告也仅对应一个该格式的数据体
+
+> 其中`steps`是**步骤1**中所有的`log`的整合列表，因此该列表内的数据格式也是统一的
+```json
+{"steps":[
+          {
+          "title": ,
+          "time": ,
+          "code":{
+                  "name": ,
+                  "args":[
+                          {
+                           "key": ,
+                           "value": 
+                          },
+                         ]
+                 },
+          "screen": ,
+          "desc": ,
+          "traceback": ,
+          "log": ,
+          "assert":                 
+          },
+         ],
+ "name": ,        --log文件路径
+ "scale": ,
+ "test_result": (Boolean),
+ "run_end": ,
+ "run_start": ,
+ "static_root": ,
+ "lang": ,
+ "records":[],    --录屏mp4文件路径列表
+ "info":{
+        "name": , --测试用例（脚本）名称
+        "path": , --测试用例（脚本）完整路径
+        "author" ,--用例作者名称
+        "title" , 
+        "desc":
+        },
+ "log": ,        --log文件下载链接
+ "console" ,     --console.txt文本内容
+}
+```
+3. 如何分析并整合日志数据和其他信息，是airtest报告的主要内容（也是编写插件的基础所在）
++ airtest根据jinja2模板接受的字典数据`data`，根据jinja2相关语法和js进行渲染
++ airtest使用js对`data`进行处理后，动态生成相关的页面元素
++ airtest仅支持<extra_block>进行自定义html替换，和`block footer`的模板继承。两者的层级位置是固定的，拓展和修改的范围十分有限
+

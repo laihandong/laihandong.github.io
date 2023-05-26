@@ -1,0 +1,475 @@
+---
+title: Django 入门篇
+date: 2022-11-23 08:00:00
+categories: 
+- [Django]
+---
+
+
+
+# 概要
+
+Django 是用 Python 开发的一个免费开源的 Web 框架，几乎囊括了 Web 应用的方方面面，可以用于快速搭建高性能、优雅的网站。
+
+Django 提供了许多网站后台开发经常用到的模块，使开发者能够专注于业务部分
+
+# MTV和MVC
+Web 开发领域还有另外一个非常著名的设计模式——MVC（Modle-View-Controller）
+
+Django 的设计模式，也就是 MTV（Modle-Template-View），在 Django 是有 Controller 层的，只不过它由框架本身来实现，所以我们不用关心它
+
+ 
+
+# ORM
+Object Realtional Mapping（对象关系映射），基于关系型数据库的程序技术。
+
+ORM**使用类和对象来操作关系型数据库（MySql、Oracle等）**，避免了直接使用sql语句，底层用映射机制实现的（到一定水平我再去看看）
+
+映射机制：
++ 把**类**映射为数据库中的**表**
++ 把**类的实例**映射为数据库的**表的数据行**
++ 把**类的属性**映射为数据库的**表的字段**
+
+
+**表模型**为Model，继承自`django.db.models`的`Model`类，所有和表相关的操作，都是继承这个类
+**字段类型**用类似xxxField来描述
+
+Django提供了基本的CURD（增删改查）和其他API来对数据库表进行操作
+
+
+
+# auth模块
+Django提供的 auth 模块能够快速的实现用户模块的基本功能
++ 实现并维护了用户与用户组的增加、删除、更改功能；
++ 实现了用户权限与用户组权限的增加、删除、更改；
++ 实现了可以自定义用户权限与用户组权限功能。
++ 还提供了权限验证等功能以及一些常用的方法
+
+
+# Admin后台管理系统
+让不懂编程的人也能快速上手维护后台，配置人员权限
+
+
+
+
+# 视图函数（View）
++ 在 Django 中，视图函数是一个 Python 函数或者类
++ 视图函数首先接受来自浏览器或者客户端的请求，并最终返回响应
+
+```python
+from django.http import HttpResponse
+def Hello_my_django(request):
+    return HttpResponse('<html><body>Hello my Django</body></html>')
+```
+从以上我们可以了解**视图函数工作的关键三点：**
++ HttpResponse，是一种**视图响应**的类型
++ request，Django 规定了，**视图函数至少有一个参数**，第一个参数必须是 `request`
++ return，**视图函数要返回响应内容**，这里的响应内容是我们用 HTML 标签编写的，把它作为 HttpResponse 的对象返回给浏览器
+
+
+# 模板系统（Template）
+从上一小节代码中，可以看到竟然将html的代码放到了程序里，势必会有高度耦合、难以维护的隐患，而**模板系统就是将视图函数和html代码解耦的**
+
+在tamplates文件夹（一个项目同级目录，Django会自动识别）下新建hello.html，编写如下代码：
+
+![image-20230502183834395](https://images-1258290850.cos.ap-guangzhou.myqcloud.com/blog/202305021838558.webp)
+
+
+
+**视图函数调用模板，并进行“模板传参”**
+
+```python
+from django.shortcuts import render      
+def hello_my_django(request):
+    return render(request,"hello.html",{"vaule":"hello my Django"})
+```
+另一种是`render`方法，封装在`django.shortcuts`中，也很方便
+
+# URL
+URL 的语法格式为：`protocol://[username:password@]hostname[:port]/path[?query][#fragment]`
+
+示例：`https://www.baidu.com/movie/movieshow?id=234&number=1314#name`
+
+从中可以了解到URL基本语法，当然还有类似`%code`机制处理特殊字符的知识，可令开一篇文章总结
+
+
+# 路由系统
+Django通过ROOT_URLCONF构建**URL和视图函数的映射关系**，在`urls.py`路由配置文件中配置url
+
+urls.py 文件中定义了一个 `urlpatterns` 的列表，它是由 **url( ) 实例对象组成的列表**，Django 中 url 的定义就是在这个列表完成的
+
+```python
+from django.conf.urls import url
+urlpatterns=[
+url(r '^admin/',admin.site.urls), # 后台 Admin 管理系统的路由就定义在了列表第一个位置
+...
+]
+```
+`url(regex,view,name=None)`说明：
++ regex，匹配**请求路径**，用正则表达式表示（其用法很丰富，可以单独开一篇博客总结）
++ view，指定 regex 匹配路径所对应的**视图函数**的名称
++ name，是给 url 地址起个别名，在模板反向解析的时候使用
+
+https://developer.mozilla.org/zh-CN/docs/Learn/Server-side/Django/Introduction
+有张图不错，可以很清晰看出MTV模式
+
+# 中间件
+中间件是介于 request 与 response 之间的一道处理过程，相对比较轻量级
+
+我们可以通过中间件来修改请求，例如，被传送到视图函数中的 HttpRequest 对象，也可以修改视图函数返回的 HttpResponse 对象
+
+中间件作为一个可插拔的组件对外提供服务，每个中间件都负责完成一些特定的功能
+
+所有中间件都是默认激活的状态。当然你可以通过代码注释，将某个中间件关闭
+
+# Cache缓存系统
+Django 提供了一个健壮的缓存系统，可以保存动态页面，这样就不必每次都把相同的请求进行重复计算。
+
+并且 Django 还提供了不同级别的缓存粒度，可以缓存特定视图的输出，或者只缓存某些特定的片段，比如网站自动跳出的咨询栏等，或者也可以缓存整个站点
+
+Memcached 是 Django 支持的最快、最高效的分布式高效缓存系统，它是一种完全基于内存的缓存服务器
+
+
+
+<font color=red size=5>至此，当新建一个Django项目后，以上内容就是默认提供的了，而不用自己再去一个个搭建</font>
+
+# 搭建Djang开发环境
++ python 解释器
++ MySql数据库（Django自带SQLite数据库，但由于是轻量级的，不太建议用在企业级应用）
++ 包管理器 `python -m pip install -U pip`
++ pycharm IDE（得找个破解的**专业版**）
++ Django（注意和python的版本关系），使用pip安装
+
+
+# Django创建第一个项目
+`pip install django`
+`cd your_dir`
+`mkdir your_dir2`
+`cd your_dir2`
+`django-admin startproject mytestsite`
+`cd mytestsite`
+`python manager.py runserver`
+进入`http://127.0.0.1:8000`，至此你看到了一个由django打造的示例网站
+
+
+
+# 概述
+
+我们再来捋一捋django它的整个主要逻辑：
+
+MTV分别代表模型、模板和视图，分别负责数据库、网页整体框架和动态数据更新
+
+除此之外
+  + url路由表负责将客户端的请求连接到相应的视图
+  + app应用负责划分功能逻辑上的模块（比如同一网站的博客、wiki、主页等等）
+  + 每个应用需要分配指定url，而且还需要在工程中注册
+  + 每次更改模型后都需要执行migrate相关命令
+
+#### 安装django
+django是可以以pip的方式安装的，但不能就此认为它的结构很简单
+
+安装好后，除了sitepackage下的源码，还有↓
+`python安装目录/Scripts/django-admin.exe`
+它提供了一系列的指令集，帮助我们从创建django项目等等
+
+
+django的项目也较为复杂，不是flask那种，一个python文件就可以了，所以了解django项目的基本结构很必要
+```txt
+myProject
+|--manage.py      【项目管理、启动项目、创建app、数据管理等】【一般不要手动修改】【但很常用】
+|--myProject
+   |--__init__.py 
+   |--settings.py 【项目配置】            【会经常手动修改】【很常用】
+   |--urls.py     【url和函数的对应关系】 【会经常手动修改】【很常用】
+   |--asgi.py     【接受网络请求】        【一般不要手动修改】
+   |--wsgi.py     【接受网络请求】        【一般不要手动修改】
+```
+
+
+
+除此之外，django中app的概念也是很重要的，进入到我的django目录下执行`python manage.py startapp myapp`，会生成一个app，它的基本结构也是很重要的
+
+```txt
+myProject
+|--manage.py 
+|--myProject
+   |--...(折叠)
+|--myApp
+   |--__init__.py
+   |--admin.py        【一般不要手动修改】django默认提供的admin后台管理
+   |--apps.py         【一般不要手动修改】app启动类
+   |--migrations      【一般不要手动修改】数据库的变更记录
+      |--__init__.py
+   |--models.py       【频繁修改】【**重要**】对数据库的操作
+   |--tests.py        【不常用】单元测试
+   |--views.py        【**重要**】函数
+```
+
+从以上的基本结构中，不难看出，需要开发自己的功能，则需要：
++ 创建app
++ 注册app
++ 编写views（自定义的视图函数）
++ 绑定url
+
+# 快速实践
+
+- [x] 新建一个django项目
+- [x] 新建一个app
+- [x] 新建一个template
++ `settings.py`中的可以设置template的路径
++ 默认是按照app的注册顺序，依次到他们的文件夹下找template html文件
++ 在app文件下新建`templates`文件夹，下面写自己的html文件
+- [x] 新建静态资源的存储位置（app文件夹下新建`static`文件夹）
+- 之所以这样做，得看`settings.py`中设置的静态文件的路径具体是什么，默认的`/static/`
+
+
+#### django的模板语言的语法
+```python
+def my_views_func(request):
+	return render(request,"xxx.html",{"key1":'value1',}) 这样就可以将数据传给模板
+```
+
+
+
+![image-20230502183556755](https://images-1258290850.cos.ap-guangzhou.myqcloud.com/blog/202305021836054.webp)
+
+由此可看出，django中通过`client -- urls.py -- views.py -- （含模板语言的）templates -- （完全纯粹的）html -- client`这样的流程来给用户展示网页
+
+
+#### django的相应和请求
+
+请求-request 是客户端的发来的所有数据，发送数据的方式分为GET和POST
+```python
+在django语法的判断中，是要大写的
+request.method == "GET"
+request.method == "POST"
+```
+
+响应-response 则是服务端返回给客户端的所有东西
+```python
+HttpResponse("xxx字符串")    # 返回字符串
+render(request，"xxx.html")  # 返回渲染后的html
+redirect("xxx-url")          # 返回一个重定向网址：告诉客户端你该去访问另一个地方了
+```
+
+
+#### django操作数据库
+操作数据库，使用pymysql对于所有python程序都是可行的，django也不例外，但是django提供了orm框架使我们更方便的去操作数据库
+由于最新版本的django对pymysql存在底层编码的bug，所以还需要安装mysqlclient
+
+```
+pip install mysqlclient
+```
+
+在当前mysql服务中创建好我们的数据库后
+```sql
+create database web_demo_django default charset utf8 collate utf8_general_ci;
+```
+
+在`settings.py`设置我们的数据库
+```python
+DATABASES = {  
+    'default': {  
+        'ENGINE': 'django.db.backends.mysql',  
+        'NAME': 'web_demo_django',  
+        'USER': 'root',  
+        'PASSWORD': '123456',  
+        'HOST': '127.0.0.1',  
+        'PORT': 3306  
+    }  
+}
+```
+
+创建表，在`models.py`写一个类----和数据库表对应，比如建立一张表`UserInfo`
+```python
+from django.db import models
+class UserInfo(models.Model):  
+    name = models.CharField(max_length=32)  
+    password = models.CharField(max_length=64)  
+    age = models.IntegerField()
+```
+然后，在项目的根目录依次执行两个命令↓：
+```command
+python manage.py makemigrations
+python manage.py migrate
+```
+如果是第一次执行，django会将当前注册的所有app它们默认有的表也一起创建了
+
+之后如果对这些与数据表对应的类进行新建、修改、注释、删除等操作，都需要再次执行↑  这两个指令
+
+
+之后如果要对表操作，需要先把对应的类import之后，再根据django的语法去执行，下面是几个基本的语法示例
+```python
+from myApp.models import UserInfo
+
+# 1.新增数据
+UserInfo.objects.create(name='xxx',password='xxx',age='xxx')
+
+# 2.删除数据
+UserInfo.objects.filter(id=4).delete()
+
+# 3.获取数据
+data_obj_list = UserInfo.objects.all() # data_obj是QuerySet类型
+for data_obj in data_obj_list:
+	print(data_obj.name,data_obj.password,data_obj.password)
+
+# 4.更新数据
+UserInfo.objects.filter(id=4).update(name='xxxx')
+```
+
+
+#### django的路由
+
+在urls.py 配置路由：url和函数的关系
+
+在views.py，写（视图）函数，编写业务逻辑，可以在urls.py与某个url相关联
+
+#### django的模板
+
+templates目录，编写html模板（django的模板语法，继承，![image-20230502183714886](https://images-1258290850.cos.ap-guangzhou.myqcloud.com/blog/202305021837060.webp)
+
+#### django的ModelForm和Form组件
+
++ 自动生成HTMl标签（默认属性可以自行修改）
++ 支持数据进行校验
++ 支持保存到数据库（ModelForm）
++ 支持错误信息
+
+#### django的Cookie和Session
+
+将用户的登录信息保存起来
+
+#### django的中间件
+基于 process_request，实现用户认证
+
+#### ORM操作
+```python
+models.User.objects.filter(id="xxx")
+```
+
+## django的组件系统--Form
+
+```python
+queryset = models.UserInfo.objects.all() # UserInfo表的外键department_id是department表的id
+query_object.get_gender_display() # 直接拿限定范围的字段对应的值
+query_object.department.title # 直接拿所外联的表中对应的值
+```
+
+数据处理设计思路参考
++ 用户提交数据没有校验
++ 用户输入的错误，页面应该有错误提示
++ 页面上，每一个字段都需要我们在前后端手动重新写一遍
++ 关联的数据，需要一个一个手动去获取并循环展示在页面
+因此，学会用组件Form，可以事半功倍
+
+
+### Form
+```python
+# ---------views.py
+from django.forms import Form  
+from django import forms
+
+class UserForm(Form):  
+    user_name = forms.CharField(widget=forms.TextInput)
+
+def user_add(request):
+	form = UserForm()
+	return render(request,'user_add.html',{"form":form})
+```
+
+![image-20230502183748337](https://images-1258290850.cos.ap-guangzhou.myqcloud.com/blog/202305021837518.webp)
+
+### ModelForm
+```python
+# ---------views.py
+from django.forms import ModelForm
+from django import forms
+
+
+
+class MyForm(ModelForm):  
+    xx = forms.CharField("xxx")  
+  
+    class Meta:  
+        model = app01.models.UserInfo  
+        fields = ["name", "password", "age"]
+
+# ---------models.py
+class UserInfo(models.Model):  
+    """员工表"""
+	xx = forms.CharField("xxx")  
+
+
+# 
+```
+
+### 修改源码增加需求粒度
+
+```python
+# ---------models.py
+class Department(models.Model):  
+    """部门表"""  
+    title = models.CharField(verbose_name="标题", max_length=32)  
+
+	# 前端显示的时候，类的输出打印
+    def __str__(self):  
+        return self.title
+
+# ---------views.py
+class UserModelForm(forms.ModelForm):  
+    class Meta:  
+        model = models.UserInfo  
+        fields = ["name", "password", "age", "department"]  
+
+	# 遍历所有插件，都增加一个属性class:form-control
+    def __init__(self, *args, **kwargs):  
+        super().__init__(*args, **kwargs)  
+  
+        for name, field in self.fields.items():  
+            print(name, field)  
+            field.widget.attrs = {"class": "form-control"}
+
+
+def user_model_form_add(request):
+    if request.method == "GET":
+        form = UserModelForm()
+        return render(request, "user_model_form_add.html", {"form": form})
+
+    form = UserModelForm(data=request.POST)
+    if form.is_valid():
+        form.save()
+        return redirect("/user/show/")
+    else:
+        return render(request, "user_model_form_add.html", {"form": form}) # 发生错误时，把用户数据返回，同时form中也有错误返回
+
+
+
+```
+
+![image-20230502183814573](https://images-1258290850.cos.ap-guangzhou.myqcloud.com/blog/202305021838796.webp)
+
+## django的静态资源管理系统--Media
+
+![Pasted image 20230311201608](https://images-1258290850.cos.ap-guangzhou.myqcloud.com/blog/202304301153168.webp)
+
+```python
+# ---------------urls.py
+from django.urls import path,re_path  
+from django.views.static import serve  
+from django.conf import settings
+
+re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}, name="media"),
+
+# ---------------settings.py
+import os
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")  
+MEDIA_URL = "/media/"
+```
+手动上传：手动去声明file对象，拿到file对象，任意处理（具体文件操作还是手动）
+
+form组件：有表单验证，拿到file对象，任意处理（具体文件操作还是手动）
+
+ModelForm组件：有表单验证，file对象自动保存，同名自动处理
++ 要求配置media文件夹
++ 定义model时，声明类型为FileField，填写upload_to参数

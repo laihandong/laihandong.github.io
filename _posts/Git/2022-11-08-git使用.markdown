@@ -1,0 +1,156 @@
+---
+title: git 入门篇
+date: 2022-11-08 08:00:00
+categories: 
+- [Git]
+---
+
+
+
+## 简介
+
+git是一个开源的分布式版本控制系统，用于敏捷高效地处理任何大小的项目，是Linux Torvalds为了帮助管理Linux内核开发的一个开放源码的版本控制系统，来源颇有趣味，建议上网查看[版本控制工具简介](https://cloud.tencent.com/developer/article/1184654)
+
+## git和svn的区别
++ git不仅是版本控制系统，也是内容管理系统（CMS），工作管理系统等
++ git是分布式的，不需要联网也能工作，任意一台开发者的电脑就是“服务器”，这么理解的话github也只不过是“另一台电脑”而已！而svn是非分布式的
++ git分支和svn分支不同，分支在svn中就是版本库中另一个目录
++ git没有一个全局的版本号，而svn有
++ git的内容完整性要优于svn，原因之一git的内容存储用的是[SHA-1哈希算法](https://zhuanlan.zhihu.com/p/404396915)
+
+## 安装git
+git目前支持Linux/Unix、Solaris、Mac和Windows平台上运行，[git各平台安装包下载地址为](http://git-scm.com/downloads)
+
+
+## 创建版本库 git init/git clone
+版本库又名仓库（repository），可以简单立即为一个目录，这个目录下的所有文件都可以被git管理起来，每个文件的修改、删除，git都能跟踪，即可回溯历史记录也可还原历史记录。
+创建你的第一个库吧！很简单！
++ 在合适的地方，新建一个空目录
++ 在当前目录下执行`git init`，或者`git init 你指定的目录`，就能在当前目录/你指定的目录下生成一个.git目录，所有git需要的数据和资源都存放在这个目录中，通过.git来追踪和管理这个目录下的所有文件。
+
+这样也就不难理解git clone的使用场景了
++ `git clone <repo> <directory>`可以将现成的仓库克隆到指定的目录，repo：Git仓库，deretory：本地目录（不填的话默认当前目录）
+
+### 配置仓库信息
+`git config`命令：
++ git config -e  # 针对当前仓库
++ git config -e --global  # 针对系统上所有的仓库
++ git config -e --global user.name "laihandong"  # 设置提交代码时的用户信息
+
+至于配置中还有那些参数，可使用`git config --list`查看，更详细的请看[git config命令使用](https://zhuanlan.zhihu.com/p/6467410)
+
+
+
+## git基本操作
+创建版本库的操作上文讲了，梳理一个逻辑图如下（方便理解下文介绍的git操作）：
+![](assets/images/git流程图解.png)
+workspace：工作区（可以理解为当前电脑目录？）
+staging area：暂存区/缓存区（至于缓存什么？什么时候缓存？什么时候清空？可能要再开篇专题总结）
+local repository：版本库或本地仓库
+remote repository：远程仓库（就是**他人视角的本地仓库**)
+
+### <font color=red>git add</font>
+`git add`命令可将文件添加到暂存区（要搭配参数使用，例子如下）
++ `git add [file1] [file2] [file3]` 以此类推，实现添加一个或多个文件到暂存区
++ `git add [dir]` 添加指定目录到暂存区，包括子目录
++ `git add .` 添加当前目录下的所有文件到暂存区
+
+### git status
+`git status`命令用于查看在你<font color=blue>上次提交之后</font>是否对文件进行<font color=blue>再次修改</font>
++ `git status` 可以直接使用
++ `git status -s` 获得更简短的输出结果
+### git diff
+`git diff`命令用于比较文件的不同，比较<font color=blue>文件在暂存区和工作区的差异</font>，比git status显示的信息更多（一行行显示不同）
++ `git diff [file]` 尚未缓存的改动，显示暂存区和工作区的差异
++ `git diff --cached [file]` 或 `git diff --staged [file]`查看已缓存的改动，显示暂存区和上一次提交（commit）的差异
++ `git diff HEAD` 查看已缓存的与未缓存的所有改动
++ `git diff --stat` 显示摘要而非整个diff
+
+### <font color=red>git commit</font>
+`git commit`命令将暂存区内容添加到本地仓库中
++ `git commit -m [message]`，message可以是一些备注信息
++ `git commit [file1] [file2] -m [message]`，指定文件提交
++ `git commit -a`，-a参数设置修改文件后不需要执行git add命令直接来提交
+<font color=blue>在提交前，我们需要设置提交的用户的信息，包括用户名和邮箱</font>
+```
+git config --global user.name "laihandong"
+git config --global user.email "laihandong@example.com"，如果去掉--global参数，只对当前仓库有效
+```
+<font color=grey>如果上次提交后，本地工作目录没有做任何修改，下一次提交时，没有设置-m选项填写配置信息的话，git会尝试为你打开一个编辑器以填写提交信息，编辑器默认vim（编辑器可以自己选择）</font>
+### git reset
+`git reset`命令用于回退版本，可以指定退回某一次提交的版本
++ `git reset [--soft | --mixed | --hard] [HEAD]`
+    + --mixed为默认，可以不用带该参数，用于重制暂存区的文件与上一次的提交（commit）保持一致，工作区文件内容保持不变
+    + 实例如下：
+    ```
+    git reset HEAD^     # 回退所有内容到上一版本
+    git reset HEAD^ xx.cpp  # 回退具体某个文件到上一版本
+    git reset 052e    # 回退到指定版本
+    ```
+    + --soft 参数用于回退到某个版本
+    + git reset --soft HEAD
+    ```
+    git reset --soft HEAD^3 # 回退上上上一个版本
+    ```
+    + --hard <font color=blue>参数撤销工作区中所有未提交的修改内容</font>，将暂存区与工作区都回到上一次版本，并删除之前的所有信息提交<font color=red>谨慎使用！</font>
+    ```
+    git reset --hard HEAD~3     # 回退上上上一个版本
+    git reset --hard bae12      # 回退到某个版本回退点之前的所有信息
+    git reset --hard origin/master  # 将本地的状态回退到和远程的一样
+    ```
+    + 另一个场景：**取消文件的缓存**
+    ```
+    git reset HEAD xx.cpp   # 如果xx.cpp已经被夹在到缓存区了，执行这个指令是可以消除缓存区关于xx.cpp的记录了，提交时也不会把xx.cpp的修改信息提交
+    ```
+### git rm
+`git rm`命令用于删除文件（手动从工作目录里删除文件，git会提示`Changes not staged for commit`
++ `git rm <file>` 将文件从暂存区和工作区中删除
++ `git rm -f <file>` 将文件从暂存区和工作区中**强制**删除
++ `git rm --cached <file>` 将文件**仅**从暂存区中删除
+
+### git mv
+`git mv`命令用于移动或重命名一个文件、目录或软连接
++ `git mv [file] [newfile]`
++ `git mv -f [file] [newfile]` 如果file文件名已经存在了，但还要重命名它，使用`-f`参数
++ 
+
+---
+### git log
++ `git log` 查看历史提交记录
++ `git log --oneline` 查看历史记录的**简洁版本**
++ `git log --graph` 查看项目的开发历史中什么时候出现了分支、合并 
++ `git log --reverse` 逆向查看历史提交记录
++ `git log --author==laihandong` 查看laihandong历史提交记录
++ `git log --befor={3.weeks.ago} --after={2022-05-26}` 查看**指定时间段**历史提交记录，或者--until --after配套、--since --before配套使用
+
+
+
+### git blame `<file>`
++ 以列表形式查看指定文件的历史修改记录
+
+### git remote
+`git remote`命令用于在远程仓库的操作
++ `git remote -v` 显示所有远程仓库，现在第一个远程仓库默认名origin
++ `git remote show [remote]` 显示某个远程仓库的信息，这条命令里的remote可以是库名，也可以是库的网络地址链接
++ `git remote add [shortname] [url]` 添加某个远程版本库
++ `git remote rm name` 删除远程仓库
+
+### git fetch & git merge
+`git fetch`命令用于从远程获取代码库，**该命令执行后需要执行git merge远程分支到你所在的分支**
++ `git merge` 从远端仓库提取数据并尝试合并到当前分支，要紧接着gei fetch执行
++ `git fetch [alias]` 提取远程仓库更新的数据
+    + `git merge [alias]/[branch]` 如果远程仓库alias有更新的话，会显示是哪条分支上更新了，然后执行这条指令，将那条分支合并到本地当前分支里
+### <font color=red>git pull</font>
+`git pull`命令用于从远程获取代码<font color=red>并</font>合并本地的版本，其实就是`git fetch` 和 `git merge FETCH_HEAD`的简写
++ 若是和当前分支合并，冒号以及后面分支名可以省略
+### <font color=red>git push</font>
+`git push`命令用于将本地分支版本上传到远程并合并
++ `git push <远程主机名> <本地分支名>:<远程分支名>` 本地分支名和远程分支名相同则可以省略冒号以及后面的内容
++ `git push --force origin master` 强制推送
++ --delete 删除远程的分支？
+
+
+## git分支管理
+https://zhuanlan.zhihu.com/p/123370920
+
+https://juejin.cn/post/6872020320333594637

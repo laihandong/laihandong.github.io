@@ -1,0 +1,27 @@
+---
+title: Docker 概念篇
+date: 2023-05-24 08:00:00
+categories: 
+- [Docker]
+---
+
+
+
++ **Docker是什么？**
+
+  Docker是由镜像、容器、仓库组成的，本质是**进程**（这是和虚拟机的本质区别）
+
+
+
++ **Docker的优势？**
+  + 轻量
+  + 部署高效
+  
++ **如何获取Docker？**
+  + 官网
+  
++ **Docker-->"Hello World!"?**
+  + 编写`Dockerfile`
+  + 启动容器
+  
+  
