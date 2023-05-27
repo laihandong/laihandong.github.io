@@ -1,25 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>不管几岁 快乐万岁</title>
+  <title></title>
   
-  <subtitle>--行勉</subtitle>
+  
   <link href="https://laihandong.github.io/atom.xml" rel="self"/>
   
   <link href="https://laihandong.github.io/"/>
   <updated>2023-05-26T17:41:49.331Z</updated>
   <id>https://laihandong.github.io/</id>
   
-  <author>
-    <name>行勉</name>
-    
-  </author>
-  
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
     <title>hexo部署后页面资源加载失败</title>
-    <link href="https://laihandong.github.io/2023/05/27/Practices-solved-2023-05-27-hexo%E9%83%A8%E7%BD%B2%E5%90%8E%E9%A1%B5%E9%9D%A2%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD%E5%A4%B1%E8%B4%A5/"/>
-    <id>https://laihandong.github.io/2023/05/27/Practices-solved-2023-05-27-hexo%E9%83%A8%E7%BD%B2%E5%90%8E%E9%A1%B5%E9%9D%A2%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD%E5%A4%B1%E8%B4%A5/</id>
+    <link href="https://laihandong.github.io/2023/05/27/Practices/solved/hexo%E9%83%A8%E7%BD%B2%E5%90%8E%E9%A1%B5%E9%9D%A2%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD%E5%A4%B1%E8%B4%A5/"/>
+    <id>https://laihandong.github.io/2023/05/27/Practices/solved/hexo%E9%83%A8%E7%BD%B2%E5%90%8E%E9%A1%B5%E9%9D%A2%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD%E5%A4%B1%E8%B4%A5/</id>
     <published>2023-05-26T17:21:41.000Z</published>
     <updated>2023-05-26T17:41:49.331Z</updated>
     
@@ -41,8 +36,8 @@
   
   <entry>
     <title>Git提交时提示换行符转换问题</title>
-    <link href="https://laihandong.github.io/2023/05/27/Practices-solved-2023-05-27-Git%E6%8F%90%E4%BA%A4%E6%97%B6%E6%8F%90%E7%A4%BA%E6%8D%A2%E8%A1%8C%E7%AC%A6%E8%BD%AC%E6%8D%A2%E9%97%AE%E9%A2%98/"/>
-    <id>https://laihandong.github.io/2023/05/27/Practices-solved-2023-05-27-Git%E6%8F%90%E4%BA%A4%E6%97%B6%E6%8F%90%E7%A4%BA%E6%8D%A2%E8%A1%8C%E7%AC%A6%E8%BD%AC%E6%8D%A2%E9%97%AE%E9%A2%98/</id>
+    <link href="https://laihandong.github.io/2023/05/27/Practices/solved/Git%E6%8F%90%E4%BA%A4%E6%97%B6%E6%8F%90%E7%A4%BA%E6%8D%A2%E8%A1%8C%E7%AC%A6%E8%BD%AC%E6%8D%A2%E9%97%AE%E9%A2%98/"/>
+    <id>https://laihandong.github.io/2023/05/27/Practices/solved/Git%E6%8F%90%E4%BA%A4%E6%97%B6%E6%8F%90%E7%A4%BA%E6%8D%A2%E8%A1%8C%E7%AC%A6%E8%BD%AC%E6%8D%A2%E9%97%AE%E9%A2%98/</id>
     <published>2023-05-26T17:12:15.000Z</published>
     <updated>2023-05-26T17:19:12.953Z</updated>
     
@@ -64,8 +59,8 @@
   
   <entry>
     <title>Docker 概念篇</title>
-    <link href="https://laihandong.github.io/2023/05/24/Docker-2023-05-24-Dockert%E6%98%AF%E4%BB%80%E4%B9%88/"/>
-    <id>https://laihandong.github.io/2023/05/24/Docker-2023-05-24-Dockert%E6%98%AF%E4%BB%80%E4%B9%88/</id>
+    <link href="https://laihandong.github.io/2023/05/24/Docker/Dockert%E6%98%AF%E4%BB%80%E4%B9%88/"/>
+    <id>https://laihandong.github.io/2023/05/24/Docker/Dockert%E6%98%AF%E4%BB%80%E4%B9%88/</id>
     <published>2023-05-24T00:00:00.000Z</published>
     <updated>2023-05-26T09:06:49.616Z</updated>
     
@@ -90,8 +85,8 @@
   
   <entry>
     <title>TS + React 实现一个简易 TodoList</title>
-    <link href="https://laihandong.github.io/2023/05/21/Typescript-2023-05-21-%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E5%9C%A8React%E4%B8%AD%E4%BD%BF%E7%94%A8TypeScript/"/>
-    <id>https://laihandong.github.io/2023/05/21/Typescript-2023-05-21-%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E5%9C%A8React%E4%B8%AD%E4%BD%BF%E7%94%A8TypeScript/</id>
+    <link href="https://laihandong.github.io/2023/05/21/Typescript/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E5%9C%A8React%E4%B8%AD%E4%BD%BF%E7%94%A8TypeScript/"/>
+    <id>https://laihandong.github.io/2023/05/21/Typescript/%EF%BC%88%E7%BB%83%E4%B9%A0%EF%BC%89%E5%9C%A8React%E4%B8%AD%E4%BD%BF%E7%94%A8TypeScript/</id>
     <published>2023-05-21T00:00:00.000Z</published>
     <updated>2023-05-26T08:53:36.617Z</updated>
     
@@ -114,9 +109,31 @@
   </entry>
   
   <entry>
+    <title>微信开发者工具--cli命令行进程“卡住”</title>
+    <link href="https://laihandong.github.io/2023/05/18/Practices/solved/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7--cli%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9B%E7%A8%8B%E2%80%9C%E5%8D%A1%E4%BD%8F%E2%80%9D/"/>
+    <id>https://laihandong.github.io/2023/05/18/Practices/solved/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7--cli%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9B%E7%A8%8B%E2%80%9C%E5%8D%A1%E4%BD%8F%E2%80%9D/</id>
+    <published>2023-05-18T00:00:00.000Z</published>
+    <updated>2023-05-26T09:37:51.079Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用<code>python</code>第三方库<code>subprocess</code> 调用微信开发者工具的命令行接口<code>cli login</code>时，进程疑似卡死，总会在<code>p.communicate</code>或者<code>p.wait</code><strong>卡住</strong></p><p>问题分析：</p><p>1.<code>cli login</code> 该命令属于<strong>需要交互的命令</strong>，即正常在<code>cmd</code>中运行时，它会先输出二维码，等待用户扫码，<strong>扫码确认登陆后进程才会结束</strong>。</p><p>2.微信开发者命令行工具 <code>cli </code>本质是启用<strong>集成在软件安装目录下的node环境调用js脚本来实现的</strong></p><p>3.<code>js</code>又默认把输出缓存在内存中，而<strong>不会立即把输出传回给调用调用命令的python脚本</strong>。导致<code>python</code>脚本<strong>捕捉不到</strong>包含二维码信息的<strong>输出</strong>，且<strong>一直等待用户登录，进程就不会结束</strong></p><p>4.通过任务管理器关闭 微信开发者工具 的进程，该命令的进程仍不会结束，依然卡住。猜测就是，使用命令行调起的进程，和双击 微信开发者工具 调起的进程，两者互不影响？</p><p>验证：同时启动<code> 微信开发者工具.exe</code> 和 <code>cli login</code>，两者都会弹出登录二维码。扫描登录后者的二维码进行登录，<code>cli login</code> 进程结束的同时，微信开发者工具也会跳转到项目配置页面。但是扫描前者的二维码进行登陆后，<code>cli login</code>仍然卡在<code>“\ waiting for scan and login”</code>，不会结束</p><p>事实证明：<strong>想将微信开发者工具集成到自己的测试工具中，不推荐使用类似cli login等需要交互的命令行</strong></p><p>其他尝试：</p><p>有尝试过新建两个<code>streamReader</code>，并为它们各自新建一个进程，实时读取<code>cli login</code>的输出，这样就不会等待该进程结束后才拿得到二维码</p><p>但是事实上发现拿到的二维码是不连续的，中间会被其它输出隔断。大致描述就是，输出一半的二维码，然后有几行字，再出现一半的二维码</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;使用&lt;code&gt;python&lt;/code&gt;第三方库&lt;code&gt;subprocess&lt;/code&gt; 调用微信开发者工具的命令行接口&lt;code&gt;cli login&lt;/code&gt;时，进程疑似卡死，总会在&lt;code&gt;p.communicate&lt;/code&gt;或者&lt;code&gt;p.wai</summary>
+      
+    
+    
+    
+    <category term="Practices" scheme="https://laihandong.github.io/categories/Practices/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>微信开发者工具--登陆二维码加载失败</title>
-    <link href="https://laihandong.github.io/2023/05/18/Practices-solved-2023-05-18-%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7-%E7%99%BB%E9%99%86%E4%BA%8C%E7%BB%B4%E7%A0%81%E5%8A%A0%E8%BD%BD%E5%A4%B1%E8%B4%A5/"/>
-    <id>https://laihandong.github.io/2023/05/18/Practices-solved-2023-05-18-%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7-%E7%99%BB%E9%99%86%E4%BA%8C%E7%BB%B4%E7%A0%81%E5%8A%A0%E8%BD%BD%E5%A4%B1%E8%B4%A5/</id>
+    <link href="https://laihandong.github.io/2023/05/18/Practices/solved/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7--%E7%99%BB%E9%99%86%E4%BA%8C%E7%BB%B4%E7%A0%81%E5%8A%A0%E8%BD%BD%E5%A4%B1%E8%B4%A5/"/>
+    <id>https://laihandong.github.io/2023/05/18/Practices/solved/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7--%E7%99%BB%E9%99%86%E4%BA%8C%E7%BB%B4%E7%A0%81%E5%8A%A0%E8%BD%BD%E5%A4%B1%E8%B4%A5/</id>
     <published>2023-05-18T00:00:00.000Z</published>
     <updated>2023-05-26T09:37:46.520Z</updated>
     
@@ -138,31 +155,9 @@
   </entry>
   
   <entry>
-    <title>微信开发者工具--cli命令行进程“卡住”</title>
-    <link href="https://laihandong.github.io/2023/05/18/Practices-solved-2023-05-19-%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7-cli%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9B%E7%A8%8B%E2%80%9C%E5%8D%A1%E4%BD%8F%E2%80%9D/"/>
-    <id>https://laihandong.github.io/2023/05/18/Practices-solved-2023-05-19-%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7-cli%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%9B%E7%A8%8B%E2%80%9C%E5%8D%A1%E4%BD%8F%E2%80%9D/</id>
-    <published>2023-05-18T00:00:00.000Z</published>
-    <updated>2023-05-26T09:37:51.079Z</updated>
-    
-    <content type="html"><![CDATA[<p>使用<code>python</code>第三方库<code>subprocess</code> 调用微信开发者工具的命令行接口<code>cli login</code>时，进程疑似卡死，总会在<code>p.communicate</code>或者<code>p.wait</code><strong>卡住</strong></p><p>问题分析：</p><p>1.<code>cli login</code> 该命令属于<strong>需要交互的命令</strong>，即正常在<code>cmd</code>中运行时，它会先输出二维码，等待用户扫码，<strong>扫码确认登陆后进程才会结束</strong>。</p><p>2.微信开发者命令行工具 <code>cli </code>本质是启用<strong>集成在软件安装目录下的node环境调用js脚本来实现的</strong></p><p>3.<code>js</code>又默认把输出缓存在内存中，而<strong>不会立即把输出传回给调用调用命令的python脚本</strong>。导致<code>python</code>脚本<strong>捕捉不到</strong>包含二维码信息的<strong>输出</strong>，且<strong>一直等待用户登录，进程就不会结束</strong></p><p>4.通过任务管理器关闭 微信开发者工具 的进程，该命令的进程仍不会结束，依然卡住。猜测就是，使用命令行调起的进程，和双击 微信开发者工具 调起的进程，两者互不影响？</p><p>验证：同时启动<code> 微信开发者工具.exe</code> 和 <code>cli login</code>，两者都会弹出登录二维码。扫描登录后者的二维码进行登录，<code>cli login</code> 进程结束的同时，微信开发者工具也会跳转到项目配置页面。但是扫描前者的二维码进行登陆后，<code>cli login</code>仍然卡在<code>“\ waiting for scan and login”</code>，不会结束</p><p>事实证明：<strong>想将微信开发者工具集成到自己的测试工具中，不推荐使用类似cli login等需要交互的命令行</strong></p><p>其他尝试：</p><p>有尝试过新建两个<code>streamReader</code>，并为它们各自新建一个进程，实时读取<code>cli login</code>的输出，这样就不会等待该进程结束后才拿得到二维码</p><p>但是事实上发现拿到的二维码是不连续的，中间会被其它输出隔断。大致描述就是，输出一半的二维码，然后有几行字，再出现一半的二维码</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;使用&lt;code&gt;python&lt;/code&gt;第三方库&lt;code&gt;subprocess&lt;/code&gt; 调用微信开发者工具的命令行接口&lt;code&gt;cli login&lt;/code&gt;时，进程疑似卡死，总会在&lt;code&gt;p.communicate&lt;/code&gt;或者&lt;code&gt;p.wai</summary>
-      
-    
-    
-    
-    <category term="Practices" scheme="https://laihandong.github.io/categories/Practices/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>Typescript 入门篇</title>
-    <link href="https://laihandong.github.io/2023/05/16/Typescript-2023-05-16-Typescript%E5%85%A5%E9%97%A8/"/>
-    <id>https://laihandong.github.io/2023/05/16/Typescript-2023-05-16-Typescript%E5%85%A5%E9%97%A8/</id>
+    <link href="https://laihandong.github.io/2023/05/16/Typescript/Typescript%E5%85%A5%E9%97%A8/"/>
+    <id>https://laihandong.github.io/2023/05/16/Typescript/Typescript%E5%85%A5%E9%97%A8/</id>
     <published>2023-05-16T00:00:00.000Z</published>
     <updated>2023-05-26T08:52:17.386Z</updated>
     
@@ -183,8 +178,8 @@
   
   <entry>
     <title>vscode终端--此系统上禁止运行脚本</title>
-    <link href="https://laihandong.github.io/2023/05/16/Practices-solved-2023-05-16-vscode%E7%BB%88%E7%AB%AF-%E6%AD%A4%E7%B3%BB%E7%BB%9F%E4%B8%8A%E7%A6%81%E6%AD%A2%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/"/>
-    <id>https://laihandong.github.io/2023/05/16/Practices-solved-2023-05-16-vscode%E7%BB%88%E7%AB%AF-%E6%AD%A4%E7%B3%BB%E7%BB%9F%E4%B8%8A%E7%A6%81%E6%AD%A2%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/</id>
+    <link href="https://laihandong.github.io/2023/05/16/Practices/solved/vscode%E7%BB%88%E7%AB%AF--%E6%AD%A4%E7%B3%BB%E7%BB%9F%E4%B8%8A%E7%A6%81%E6%AD%A2%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/"/>
+    <id>https://laihandong.github.io/2023/05/16/Practices/solved/vscode%E7%BB%88%E7%AB%AF--%E6%AD%A4%E7%B3%BB%E7%BB%9F%E4%B8%8A%E7%A6%81%E6%AD%A2%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/</id>
     <published>2023-05-16T00:00:00.000Z</published>
     <updated>2023-05-26T09:37:41.808Z</updated>
     
@@ -206,8 +201,8 @@
   
   <entry>
     <title>Nodejs 概念篇</title>
-    <link href="https://laihandong.github.io/2023/05/13/Javascript-2023-05-13-NodeJs%E6%98%AF%E4%BB%80%E4%B9%88/"/>
-    <id>https://laihandong.github.io/2023/05/13/Javascript-2023-05-13-NodeJs%E6%98%AF%E4%BB%80%E4%B9%88/</id>
+    <link href="https://laihandong.github.io/2023/05/13/Javascript/NodeJs%E6%98%AF%E4%BB%80%E4%B9%88/"/>
+    <id>https://laihandong.github.io/2023/05/13/Javascript/NodeJs%E6%98%AF%E4%BB%80%E4%B9%88/</id>
     <published>2023-05-13T00:00:00.000Z</published>
     <updated>2023-05-26T09:03:31.646Z</updated>
     
@@ -230,8 +225,8 @@
   
   <entry>
     <title>Typescript 概念篇</title>
-    <link href="https://laihandong.github.io/2023/05/13/Typescript-2023-05-13-TypeScript%E6%98%AF%E4%BB%80%E4%B9%88/"/>
-    <id>https://laihandong.github.io/2023/05/13/Typescript-2023-05-13-TypeScript%E6%98%AF%E4%BB%80%E4%B9%88/</id>
+    <link href="https://laihandong.github.io/2023/05/13/Typescript/TypeScript%E6%98%AF%E4%BB%80%E4%B9%88/"/>
+    <id>https://laihandong.github.io/2023/05/13/Typescript/TypeScript%E6%98%AF%E4%BB%80%E4%B9%88/</id>
     <published>2023-05-13T00:00:00.000Z</published>
     <updated>2023-05-26T09:02:00.379Z</updated>
     
@@ -256,8 +251,8 @@
   
   <entry>
     <title>Javascript 进阶篇</title>
-    <link href="https://laihandong.github.io/2023/05/11/Javascript-2023-05-11-JavaScript-%E5%85%A5%E9%97%A8%E7%AF%87/"/>
-    <id>https://laihandong.github.io/2023/05/11/Javascript-2023-05-11-JavaScript-%E5%85%A5%E9%97%A8%E7%AF%87/</id>
+    <link href="https://laihandong.github.io/2023/05/11/Javascript/JavaScript%20%E5%85%A5%E9%97%A8%E7%AF%87/"/>
+    <id>https://laihandong.github.io/2023/05/11/Javascript/JavaScript%20%E5%85%A5%E9%97%A8%E7%AF%87/</id>
     <published>2023-05-11T00:00:00.000Z</published>
     <updated>2023-05-26T08:45:30.988Z</updated>
     
@@ -278,8 +273,8 @@
   
   <entry>
     <title>Laya 概念篇</title>
-    <link href="https://laihandong.github.io/2023/05/02/Laya-2023-05-02-laya%E5%BC%95%E6%93%8E%E6%98%AF%E4%BB%80%E4%B9%88/"/>
-    <id>https://laihandong.github.io/2023/05/02/Laya-2023-05-02-laya%E5%BC%95%E6%93%8E%E6%98%AF%E4%BB%80%E4%B9%88/</id>
+    <link href="https://laihandong.github.io/2023/05/02/Laya/laya%E5%BC%95%E6%93%8E%E6%98%AF%E4%BB%80%E4%B9%88/"/>
+    <id>https://laihandong.github.io/2023/05/02/Laya/laya%E5%BC%95%E6%93%8E%E6%98%AF%E4%BB%80%E4%B9%88/</id>
     <published>2023-05-02T00:00:00.000Z</published>
     <updated>2023-05-26T09:08:06.251Z</updated>
     
@@ -301,8 +296,8 @@
   
   <entry>
     <title>重构 概念篇</title>
-    <link href="https://laihandong.github.io/2023/05/01/%E4%BB%A3%E7%A0%81%E8%AE%BE%E8%AE%A1%E8%89%BA%E6%9C%AF-2023-05-01-%E9%87%8D%E6%9E%84%E6%98%AF%E4%BB%80%E4%B9%88/"/>
-    <id>https://laihandong.github.io/2023/05/01/%E4%BB%A3%E7%A0%81%E8%AE%BE%E8%AE%A1%E8%89%BA%E6%9C%AF-2023-05-01-%E9%87%8D%E6%9E%84%E6%98%AF%E4%BB%80%E4%B9%88/</id>
+    <link href="https://laihandong.github.io/2023/05/01/%E4%BB%A3%E7%A0%81%E8%AE%BE%E8%AE%A1%E8%89%BA%E6%9C%AF/%E9%87%8D%E6%9E%84%E6%98%AF%E4%BB%80%E4%B9%88/"/>
+    <id>https://laihandong.github.io/2023/05/01/%E4%BB%A3%E7%A0%81%E8%AE%BE%E8%AE%A1%E8%89%BA%E6%9C%AF/%E9%87%8D%E6%9E%84%E6%98%AF%E4%BB%80%E4%B9%88/</id>
     <published>2023-05-01T00:00:00.000Z</published>
     <updated>2023-05-26T09:31:02.090Z</updated>
     
@@ -324,8 +319,8 @@
   
   <entry>
     <title>Bootstrap</title>
-    <link href="https://laihandong.github.io/2023/04/30/Bootstrap-2023-04-30-Bootstrap%E6%98%AF%E4%BB%80%E4%B9%88/"/>
-    <id>https://laihandong.github.io/2023/04/30/Bootstrap-2023-04-30-Bootstrap%E6%98%AF%E4%BB%80%E4%B9%88/</id>
+    <link href="https://laihandong.github.io/2023/04/30/Bootstrap/Bootstrap%E6%98%AF%E4%BB%80%E4%B9%88/"/>
+    <id>https://laihandong.github.io/2023/04/30/Bootstrap/Bootstrap%E6%98%AF%E4%BB%80%E4%B9%88/</id>
     <published>2023-04-30T00:00:00.000Z</published>
     <updated>2023-05-26T09:22:00.571Z</updated>
     
@@ -348,8 +343,8 @@
   
   <entry>
     <title>CSS 概念篇</title>
-    <link href="https://laihandong.github.io/2023/04/30/CSS-2023-04-30-Css%E6%98%AF%E4%BB%80%E4%B9%88/"/>
-    <id>https://laihandong.github.io/2023/04/30/CSS-2023-04-30-Css%E6%98%AF%E4%BB%80%E4%B9%88/</id>
+    <link href="https://laihandong.github.io/2023/04/30/CSS/Css%E6%98%AF%E4%BB%80%E4%B9%88/"/>
+    <id>https://laihandong.github.io/2023/04/30/CSS/Css%E6%98%AF%E4%BB%80%E4%B9%88/</id>
     <published>2023-04-30T00:00:00.000Z</published>
     <updated>2023-05-26T09:21:22.382Z</updated>
     
@@ -371,8 +366,8 @@
   
   <entry>
     <title>Flask 概念篇</title>
-    <link href="https://laihandong.github.io/2023/04/30/Flask-2023-04-30-Flask%E6%98%AF%E4%BB%80%E4%B9%88/"/>
-    <id>https://laihandong.github.io/2023/04/30/Flask-2023-04-30-Flask%E6%98%AF%E4%BB%80%E4%B9%88/</id>
+    <link href="https://laihandong.github.io/2023/04/30/Flask/Flask%E6%98%AF%E4%BB%80%E4%B9%88/"/>
+    <id>https://laihandong.github.io/2023/04/30/Flask/Flask%E6%98%AF%E4%BB%80%E4%B9%88/</id>
     <published>2023-04-30T00:00:00.000Z</published>
     <updated>2023-05-26T09:12:01.154Z</updated>
     
@@ -394,8 +389,8 @@
   
   <entry>
     <title>Ajax 概念篇</title>
-    <link href="https://laihandong.github.io/2023/04/30/Javascript-2023-04-30-ajax%E6%98%AF%E4%BB%80%E4%B9%88/"/>
-    <id>https://laihandong.github.io/2023/04/30/Javascript-2023-04-30-ajax%E6%98%AF%E4%BB%80%E4%B9%88/</id>
+    <link href="https://laihandong.github.io/2023/04/30/Javascript/ajax%E6%98%AF%E4%BB%80%E4%B9%88/"/>
+    <id>https://laihandong.github.io/2023/04/30/Javascript/ajax%E6%98%AF%E4%BB%80%E4%B9%88/</id>
     <published>2023-04-30T00:00:00.000Z</published>
     <updated>2023-05-26T09:23:47.662Z</updated>
     
@@ -422,8 +417,8 @@
   
   <entry>
     <title>10 Regular Expression Matching</title>
-    <link href="https://laihandong.github.io/2023/04/30/Leetcode-2023-04-30-Leetcode-10-Regular-Expression-Matching/"/>
-    <id>https://laihandong.github.io/2023/04/30/Leetcode-2023-04-30-Leetcode-10-Regular-Expression-Matching/</id>
+    <link href="https://laihandong.github.io/2023/04/30/Leetcode/Leetcode_10_Regular%20Expression%20Matching/"/>
+    <id>https://laihandong.github.io/2023/04/30/Leetcode/Leetcode_10_Regular%20Expression%20Matching/</id>
     <published>2023-04-30T00:00:00.000Z</published>
     <updated>2023-05-26T08:25:12.206Z</updated>
     
@@ -446,19 +441,18 @@
   </entry>
   
   <entry>
-    <title>12 Integer to Roman</title>
-    <link href="https://laihandong.github.io/2023/04/30/Leetcode-2023-04-30-Leetcode-12-Integer-to-Roman/"/>
-    <id>https://laihandong.github.io/2023/04/30/Leetcode-2023-04-30-Leetcode-12-Integer-to-Roman/</id>
+    <title>11 Container With Most Water</title>
+    <link href="https://laihandong.github.io/2023/04/30/Leetcode/Leetcode_11_Container%20With%20Most%20Water/"/>
+    <id>https://laihandong.github.io/2023/04/30/Leetcode/Leetcode_11_Container%20With%20Most%20Water/</id>
     <published>2023-04-30T00:00:00.000Z</published>
-    <updated>2023-05-26T08:25:50.533Z</updated>
+    <updated>2023-05-26T08:25:31.807Z</updated>
     
-    <content type="html"><![CDATA[<p>罗马数字包含以下七种字符： <code>I</code>， <code>V</code>， <code>X</code>， <code>L</code>，<code>C</code>，<code>D</code> 和 <code>M</code>。</p><p><strong>字符</strong>          <strong>数值</strong><br>I             1<br>V             5<br>X             10<br>L             50<br>C             100<br>D             500<br>M             1000</p><p>例如， 罗马数字 2 写做 <code>II</code> ，即为两个并列的 1。12 写做 <code>XII</code> ，即为 <code>X</code> + <code>II</code> 。 27 写做  <code>XXVII</code>, 即为 <code>XX</code> + <code>V</code> + <code>II</code> 。</p><p>通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 <code>IIII</code>，而是 <code>IV</code>。数字 1 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 <code>IX</code>。这个特殊的规则只适用于以下六种情况：</p><ul><li><code>I</code> 可以放在 <code>V</code> (5) 和 <code>X</code> (10) 的左边，来表示 4 和 9。</li><li><code>X</code> 可以放在 <code>L</code> (50) 和 <code>C</code> (100) 的左边，来表示 40 和 90。 </li><li><code>C</code> 可以放在 <code>D</code> (500) 和 <code>M</code> (1000) 的左边，来表示 400 和 900。</li></ul><p>给你一个整数，将其转为罗马数字。</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="思路一（已验证：超出时间限制）"><a href="#思路一（已验证：超出时间限制）" class="headerlink" title="思路一（已验证：超出时间限制）"></a>思路一（已验证：超出时间限制）</h3><p>双重循环，遍历所有组合，保存最大值，然后返回</p><h3 id="官方题解（双指针之短板移动策略）"><a href="#官方题解（双指针之短板移动策略）" class="headerlink" title="官方题解（双指针之短板移动策略）"></a>官方题解（双指针之短板移动策略）</h3><p>由题意可得，面积公式：<code>S(i,j)=min(h[i],h[j])×(j−i)</code></p><p>其中，i，j为两指针，初始设置为数组的两端，相向遍历直至相遇</p><p>相向遍历的过程中，有两点是确定的，一是水槽宽度是递减的；二是长板指针的向内移动只会导致水槽的短板变得更小了或者不变，而且水槽面积一定变小了；三是短板指针的向内移动如果导致短板增大，那么面积可能增大</p><p>确定了这三点，那么中间很多状态是可以跳过的，直至将保存的最大面积返回</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxArea</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; height)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> i = <span class="number">0</span>, j = height.<span class="built_in">size</span>() - <span class="number">1</span>, res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; j) &#123;</span><br><span class="line">            res = height[i] &lt; height[j] ? </span><br><span class="line">                <span class="built_in">max</span>(res, (j - i) * height[i++]): </span><br><span class="line">                <span class="built_in">max</span>(res, (j - i) * height[j--]); </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">作者：Krahets</span><br><span class="line">链接：https:<span class="comment">//leetcode.cn/problems/container-with-most-water/solutions/11491/container-with-most-water-shuang-zhi-zhen-fa-yi-do/</span></span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;罗马数字包含以下七种字符： &lt;code&gt;I&lt;/code&gt;， &lt;code&gt;V&lt;/code&gt;， &lt;code&gt;X&lt;/code&gt;， &lt;code&gt;L&lt;/code&gt;，&lt;code&gt;C&lt;/code&gt;，&lt;code&gt;D&lt;/code&gt; 和 &lt;code&gt;M&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;stro</summary>
+    <summary type="html">&lt;h3 id=&quot;思路一（已验证：超出时间限制）&quot;&gt;&lt;a href=&quot;#思路一（已验证：超出时间限制）&quot; class=&quot;headerlink&quot; title=&quot;思路一（已验证：超出时间限制）&quot;&gt;&lt;/a&gt;思路一（已验证：超出时间限制）&lt;/h3&gt;&lt;p&gt;双重循环，遍历所有组合，保存最大值，</summary>
       
     
     
@@ -471,18 +465,19 @@
   </entry>
   
   <entry>
-    <title>11 Container With Most Water</title>
-    <link href="https://laihandong.github.io/2023/04/30/Leetcode-2023-04-30-Leetcode-11-Container-With-Most-Water/"/>
-    <id>https://laihandong.github.io/2023/04/30/Leetcode-2023-04-30-Leetcode-11-Container-With-Most-Water/</id>
+    <title>12 Integer to Roman</title>
+    <link href="https://laihandong.github.io/2023/04/30/Leetcode/Leetcode_12_Integer%20to%20Roman/"/>
+    <id>https://laihandong.github.io/2023/04/30/Leetcode/Leetcode_12_Integer%20to%20Roman/</id>
     <published>2023-04-30T00:00:00.000Z</published>
-    <updated>2023-05-26T08:25:31.807Z</updated>
+    <updated>2023-05-26T08:25:50.533Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="思路一（已验证：超出时间限制）"><a href="#思路一（已验证：超出时间限制）" class="headerlink" title="思路一（已验证：超出时间限制）"></a>思路一（已验证：超出时间限制）</h3><p>双重循环，遍历所有组合，保存最大值，然后返回</p><h3 id="官方题解（双指针之短板移动策略）"><a href="#官方题解（双指针之短板移动策略）" class="headerlink" title="官方题解（双指针之短板移动策略）"></a>官方题解（双指针之短板移动策略）</h3><p>由题意可得，面积公式：<code>S(i,j)=min(h[i],h[j])×(j−i)</code></p><p>其中，i，j为两指针，初始设置为数组的两端，相向遍历直至相遇</p><p>相向遍历的过程中，有两点是确定的，一是水槽宽度是递减的；二是长板指针的向内移动只会导致水槽的短板变得更小了或者不变，而且水槽面积一定变小了；三是短板指针的向内移动如果导致短板增大，那么面积可能增大</p><p>确定了这三点，那么中间很多状态是可以跳过的，直至将保存的最大面积返回</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxArea</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; height)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> i = <span class="number">0</span>, j = height.<span class="built_in">size</span>() - <span class="number">1</span>, res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; j) &#123;</span><br><span class="line">            res = height[i] &lt; height[j] ? </span><br><span class="line">                <span class="built_in">max</span>(res, (j - i) * height[i++]): </span><br><span class="line">                <span class="built_in">max</span>(res, (j - i) * height[j--]); </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">作者：Krahets</span><br><span class="line">链接：https:<span class="comment">//leetcode.cn/problems/container-with-most-water/solutions/11491/container-with-most-water-shuang-zhi-zhen-fa-yi-do/</span></span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>罗马数字包含以下七种字符： <code>I</code>， <code>V</code>， <code>X</code>， <code>L</code>，<code>C</code>，<code>D</code> 和 <code>M</code>。</p><p><strong>字符</strong>          <strong>数值</strong><br>I             1<br>V             5<br>X             10<br>L             50<br>C             100<br>D             500<br>M             1000</p><p>例如， 罗马数字 2 写做 <code>II</code> ，即为两个并列的 1。12 写做 <code>XII</code> ，即为 <code>X</code> + <code>II</code> 。 27 写做  <code>XXVII</code>, 即为 <code>XX</code> + <code>V</code> + <code>II</code> 。</p><p>通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 <code>IIII</code>，而是 <code>IV</code>。数字 1 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 <code>IX</code>。这个特殊的规则只适用于以下六种情况：</p><ul><li><code>I</code> 可以放在 <code>V</code> (5) 和 <code>X</code> (10) 的左边，来表示 4 和 9。</li><li><code>X</code> 可以放在 <code>L</code> (50) 和 <code>C</code> (100) 的左边，来表示 40 和 90。 </li><li><code>C</code> 可以放在 <code>D</code> (500) 和 <code>M</code> (1000) 的左边，来表示 400 和 900。</li></ul><p>给你一个整数，将其转为罗马数字。</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;h3 id=&quot;思路一（已验证：超出时间限制）&quot;&gt;&lt;a href=&quot;#思路一（已验证：超出时间限制）&quot; class=&quot;headerlink&quot; title=&quot;思路一（已验证：超出时间限制）&quot;&gt;&lt;/a&gt;思路一（已验证：超出时间限制）&lt;/h3&gt;&lt;p&gt;双重循环，遍历所有组合，保存最大值，</summary>
+    <summary type="html">&lt;p&gt;罗马数字包含以下七种字符： &lt;code&gt;I&lt;/code&gt;， &lt;code&gt;V&lt;/code&gt;， &lt;code&gt;X&lt;/code&gt;， &lt;code&gt;L&lt;/code&gt;，&lt;code&gt;C&lt;/code&gt;，&lt;code&gt;D&lt;/code&gt; 和 &lt;code&gt;M&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;stro</summary>
       
     
     
