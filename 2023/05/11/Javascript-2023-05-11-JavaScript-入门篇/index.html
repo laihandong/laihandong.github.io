@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="这是一个立志成为技术大佬但现在还是小菜鸡用来记录成长过程中的点点滴滴的博客小站">
+    <meta name="author" content="行勉">
+    
+    <title>
+        
+            Javascript 进阶篇 |
+        
+        Lai HanDong&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/favicon.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"laihandong.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#FF99CC","logo":"/images/logo.svg","favicon":"/images/favicon.svg","avatar":"/images/avatar.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"The world is beautiful I want to see || Reach the furthest in a limited life","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"laihandong","github_admins":null,"repository":"use-gitalk-laihandong.github.io","client_id":"73356f8dae5794d51f59","client_secret":"e32e2ef05ae5ab4fd7678ac3f0cc17ba965c97a7","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["小白","小萌新","小菜鸡","实习生","打工人","小工程师","老油条","大法师","巨佬","老萌新"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="不管几岁 快乐万岁" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Lai HanDong&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">Javascript 进阶篇</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">行勉</span>
+                            
+                                <span class="author-label">打工人</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-05-11 08:00:00</span>
+        <span class="mobile">2023-05-11 08:00</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-05-26 16:45:30</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/Javascript/">Javascript</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>6.9k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>27 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a><strong>1 简介</strong></h1><p>JavaScript是一门高级、动态、解释型编程语言<br>JavaScript是Netscape在web诞生初期创造的，后来移交给Ecma International进行标准化，更名为ECMAScript（由于很拗口，大家仍称其为JavaScript），不过在正式场合一般仍使用该名称（缩写为ES）<br>JavaScript早期的宿主环境是浏览器，后来node赋予了JavaScript访问整个操作系统的权限</p>
+<h1 id="2-词法结构"><a href="#2-词法结构" class="headerlink" title="2 词法结构"></a><strong>2 词法结构</strong></h1><p>类的定义：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">x,y</span>)&#123;  <span class="comment">//构造函数，不需要return</span></span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">x</span> = x;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">y</span> = y;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">myFunc</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">x</span> + <span class="variable language_">this</span>.<span class="property">y</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = <span class="title class_">MyClass</span>(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">c.<span class="title function_">myFunc</span>();  <span class="comment">//=&gt; 3</span></span><br></pre></td></tr></table></figure>
+<p>ES6之后，定义函数的简介方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fun1</span> = x =&gt; x+<span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">fun2</span> = x =&gt; x**<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="title function_">fun1</span>(<span class="number">3</span>);  <span class="comment">//=&gt; 4</span></span><br><span class="line"><span class="title function_">fun2</span>(<span class="number">4</span>);  <span class="comment">//=&gt; 16</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>JavaScript除了常规空格<code>\u0020</code>，其将制表符、各种ASCII控制符和Unicode间隔识别为<strong>空格</strong></p>
+<p>JavaScript使用Unicode字符集编写，天然支持unicode</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> é = <span class="number">1</span>;<span class="comment">//   法语字母 é 作为变量名</span></span><br><span class="line">\u00e9    <span class="comment">//=&gt; 1</span></span><br><span class="line">\u&#123;<span class="variable constant_">E9</span>&#125;    <span class="comment">//=&gt; 1 等同于\u00e9</span></span><br><span class="line">\u&#123;1F600&#125; <span class="comment">//=&gt; 1 打印一个笑脸符号， \u&#123;&#125; 是ES6推出的，为了兼容16位以上的unicode</span></span><br></pre></td></tr></table></figure>
+<p>关于unicode，一个相同的字符可以对应多种unicode编码：<br>法语字母 é 既可以编码为<code>\u00e9</code>，也可以编码为一个常规ASCII字符<code>e</code>再加上一个重音组合标记<code>\u0301</code><br>但是<strong>不同的编码方式对应的二进制却是不同的</strong>，所以在用任何文本编辑器或相关工具处理自己的JavaScript源代码时，务必注意执行Unicode归一化（Unicode标准为所有字符规定了首选编码和归一化例程）</p>
+<p>JavaScript的分号<code>;</code>不像<code>C C++</code>那样严格，但也要避免由缺失分号带来歧义的情况（见《JavaScript权威指南 李松峰译 原书第七版》p22）</p>
+<h1 id="3-类型、值和变量"><a href="#3-类型、值和变量" class="headerlink" title="3 类型、值和变量"></a><strong>3 类型、值和变量</strong></h1><p>–《JavaScript权威指南–李松峰译–书第七版》</p>
+<p>JavaScript的类型可以分为<strong>原始类型和对象类型</strong>：<br>原始类型：数值、字符串、布尔值、unll、undefined、symbol<br>对象类型：任何不是原始类型的值<br>原始类型的是不可变的immutable，对象类型是可变的mutable</p>
+<p>数值：<br>全称数值字面量<code>number literal</code>，分整数字面量、浮点字面量</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">123</span>              <span class="comment">//=&gt; 123</span></span><br><span class="line"><span class="number">0xff</span>             <span class="comment">//=&gt; 255 (15*(16**1) + 16*(16**0))</span></span><br><span class="line"><span class="number">0o377</span>            <span class="comment">//=&gt; 255 (3*(8**2) + 7*(8**1) + 7*(8**0))</span></span><br><span class="line"><span class="number">0b10101</span>          <span class="comment">//=&gt;21 (1*(2**4) + 0 + 1*(2**2) + 0 + 1*(2**0))</span></span><br><span class="line"></span><br><span class="line"><span class="number">3.14</span>             <span class="comment">//=&gt; 3.14</span></span><br><span class="line"><span class="number">.33</span>              <span class="comment">//=&gt; 0.33</span></span><br><span class="line"><span class="number">6.02e23</span>          <span class="comment">//=&gt; 6.02 x 10^23</span></span><br><span class="line"><span class="number">1.43E-12</span>         <span class="comment">//=&gt; 1.43 x 10^(-12)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//分隔符的使用，将字面量分隔以容易看清</span></span><br><span class="line"><span class="keyword">let</span> number = <span class="number">1_000_000_000</span></span><br><span class="line"><span class="keyword">let</span> bytes = <span class="number">0x3a_38_9f</span></span><br><span class="line"><span class="keyword">let</span> bits = <span class="number">0b0001_1101_0111</span></span><br><span class="line"><span class="keyword">let</span> fraction = <span class="number">0.123_345_353</span>   <span class="comment">// 每隔三位分隔一次只是约定俗成</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">NaN</span>              <span class="comment">//=&gt; Not a number 非数值</span></span><br><span class="line"><span class="title class_">Infinity</span>         <span class="comment">//=&gt; 无穷值 （上溢出）</span></span><br><span class="line">-<span class="number">0</span>               <span class="comment">//=&gt; 负零值 比最小可表示数值 更为 接近0 （下溢出）</span></span><br><span class="line"><span class="number">0</span>                <span class="comment">//=&gt; 常规的0</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 负零值和正零值（严格）相等，即 0 === -0 为 true，除了作为除数使用，几乎无法区分这两个值</span></span><br><span class="line"><span class="comment"> * NaN与任何值比较都不相等，包括它自己</span></span><br><span class="line"><span class="comment"> * 不能通过 x === NaN 的方式判断是否为NaN</span></span><br><span class="line"><span class="comment"> * Number.isNaN() 可以用于判断数值是否为NaN，也适用于参数为NaN（返回True）</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> x = <span class="number">.3</span> - <span class="number">.2</span>;</span><br><span class="line"><span class="keyword">let</span> y = <span class="number">.3</span> - <span class="number">.2</span>;</span><br><span class="line">x === y;         <span class="comment">//=&gt; false JavaScript中也存在这种问题，所以尽量避免去比较类似的情况</span></span><br><span class="line"></span><br><span class="line"><span class="number">1234n</span>            </span><br><span class="line"><span class="number">0b111111n</span></span><br><span class="line"><span class="number">0o723n</span>           <span class="comment">//   在字面量后跟小写字母n，表示BigInt字面量(ES2020新增)</span></span><br><span class="line"><span class="number">1000n</span> / <span class="number">330n</span>     <span class="comment">//=&gt; 3n 只有 / 运算会舍弃余数并向下取商，其它运算和常规JavaScript类似</span></span><br><span class="line"><span class="number">1000n</span> + <span class="number">123</span>      <span class="comment">//   JavaScript不允许BigInt操作数和常规JavaScript操作数混用，</span></span><br><span class="line"><span class="number">0</span> === <span class="number">0n</span>         <span class="comment">//=&gt; false 但比较远运算符例外</span></span><br></pre></td></tr></table></figure>
+
+<p>字符串：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 字符串是 16位值的 不可修改的 有序序列</span></span><br><span class="line"><span class="comment"> * 字符串的length属性是它包含16位值的个数</span></span><br><span class="line"><span class="comment"> * 有些超出16位范围的Unicode字符（surrogate pair “代理对”），就需要长度为2的JavaScript字符串来表示了</span></span><br><span class="line"><span class="comment"> * 以此类推，JavaScript字符串的操作方法，一般操作的都是16位值，而不是字符</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="string">`abc`</span></span><br><span class="line"><span class="string">&quot;abc&quot;</span></span><br><span class="line"><span class="string">&#x27;abc&#x27;</span>        <span class="comment">//   JavaScript中单引号、双引号和反引号(ES6新增)，都可以用来包含字符串字面量</span></span><br><span class="line"></span><br><span class="line">             <span class="comment">//   JavaScript将换行符、回车和回车 `/`换行序列识别为行终止符</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> name = <span class="string">&quot;handong&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> s = <span class="string">`hi! <span class="subst">$&#123;name&#125;</span>`</span>;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 模板字面量 </span></span><br><span class="line"><span class="comment"> * $&#123;表达式&#125; </span></span><br><span class="line"><span class="comment"> /</span></span><br><span class="line"><span class="comment">String.raw`\n`.length  //=&gt; 2 非常特殊的情况下，反引号`可以充当函数括号</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 一对斜杠之间的文本构成正则表达式字面量（RegExp）</span></span><br><span class="line"><span class="comment"> * 这对斜杠的第二个后面还可以跟一个或多个字母，用于修改模式的含义</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="regexp">/^HTML/</span>;      <span class="comment">//   匹配字符串开头的字母HTML</span></span><br></pre></td></tr></table></figure>
+
+<p>布尔值：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * JavaScript中的任何值都可以转换为布尔值，或者当成布尔值使用，称为假性值falsy、真性值truthy</span></span><br><span class="line"><span class="comment"> * false: undefined null 0 -0 NaN 空字符串</span></span><br><span class="line"><span class="comment"> * true: 除了false的所有其他值</span></span><br><span class="line"><span class="comment"> * 唯一的API: toString() 将自己转换为字符串&quot;true&quot;或&quot;false&quot;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>null和undefined:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">null</span>         <span class="comment">// 语言关键字，可以看成该特殊类型的唯一成员，类似的由python的None</span></span><br><span class="line"><span class="literal">undefined</span>    <span class="comment">// 预定义的全局常量，表示更深层次的不存在，也视为该特殊类型的唯一成员</span></span><br><span class="line">             <span class="comment">// 它们没有API可调用</span></span><br><span class="line"></span><br><span class="line">&gt; <span class="keyword">typeof</span> <span class="literal">undefined</span></span><br><span class="line"><span class="string">&#x27;undefined&#x27;</span></span><br><span class="line">&gt; <span class="keyword">typeof</span> <span class="literal">null</span></span><br><span class="line"><span class="string">&#x27;object&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>符号：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 符号 是ES6新增的 原始类型</span></span><br><span class="line"><span class="comment"> * 符号 没有字面量，只能通过 Symbol()函数 创建，其接受一个 字符串参数，返回一个唯一的符号值</span></span><br><span class="line"><span class="comment"> * 实践中，通常作为一种语言拓展机制，之后再了解</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<p>对象：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 全局对象：</span></span><br><span class="line"><span class="comment"> * 全局对象的属性是全局性定义的标识符，可以在JavaScript程序的任何地方使用</span></span><br><span class="line"><span class="comment"> * JavaScript解释器启动后（或每次浏览器加载页面），都会创建一个新的全局对象并初始化一组属性</span></span><br><span class="line"><span class="comment"> * ES2020最终定义了globalThis来作为引用全局对象的标准方式</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 对象有时候被称为引用类型（reference type），以区别于JavaScript的原始类型</span></span><br><span class="line"><span class="comment"> * 对象值就是引用，对象的比较就是按引用比较的，引用同一个底层对象才视为相等</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>类型转换：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * JavaScript会根据需要把你提供的值转为布尔值，但有时也会转换为字符串、数字或NaN</span></span><br><span class="line"><span class="comment"> * | 你提供的值 | 转换为字符串 | 转换为数值 | 转换为布尔值 |</span></span><br><span class="line"><span class="comment"> * 更多内容见《JavaScript权威指南 李松峰译 原书第七版》p44</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * == 会在比较之前按需进行类型转换，但绝不会将操作数转换为布尔值 </span></span><br><span class="line"><span class="comment"> * 可以用函数显示转换，比如Boolean() Number() String() 等等</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 对象转换为原始类型：p49（比较繁琐和细节） </span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<p>变量的声明与赋值：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * JavaScript的标识符的命名：首字母必须以字母、`_`或`$`开头，后续字符可以是字母、数字、下划线或美元符号</span></span><br><span class="line"><span class="comment"> * 常量用`const`声明，变量用`let`声明</span></span><br><span class="line"><span class="comment"> * const 必须在声明时初始化常量，前后续不可更改（否则引起TypeError）</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 解构赋值：let [x,y] = [1,2];  //=&gt; x = 1, y = 2 </span></span><br><span class="line"><span class="comment"> *          两侧的变量和值数量不等时，要么被忽略，要么被设置为undefined</span></span><br><span class="line"><span class="comment"> *          左侧的变量列表中，可以包含额外的逗号，以跳过右侧的某些值</span></span><br><span class="line"><span class="comment"> *          把右侧未使用或剩余的收集，就在左侧的最后一变量名前加上三个点...</span></span><br><span class="line"><span class="comment"> *          支持嵌套解构</span></span><br><span class="line"><span class="comment"> *          右侧值的类型数组、字符串、对象都适用</span></span><br><span class="line"><span class="comment"> *          当右侧为对象时，左侧的变量名则会自动和对象的属性名对应（否则被设置为undefined）。当然，这样就局限了变量的命名，所以可以在属性名后加上冒号，填写自定义的变量名</span></span><br><span class="line"><span class="comment"> *          </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="keyword">const</span> &#123;<span class="attr">cos</span>: myCos, <span class="attr">sin</span>: mySin&#125; = <span class="title class_">Math</span>; <span class="comment">//=&gt;const myCos = Math.cos, mySin = Math.sin;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="4-表达式与操作符"><a href="#4-表达式与操作符" class="headerlink" title="4 表达式与操作符"></a><strong>4 表达式与操作符</strong></h1><p>–《JavaScript权威指南–李松峰译–书第七版》</p>
+<p>主表达式（primary expression）：独立存在，不再包含更简单的表达式的表达式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.23</span></span><br><span class="line"><span class="string">&quot;abc&quot;</span></span><br><span class="line">/^some/      <span class="comment">// 字面量</span></span><br><span class="line"></span><br><span class="line"><span class="literal">true</span></span><br><span class="line"><span class="literal">false</span></span><br><span class="line"><span class="literal">null</span></span><br><span class="line"><span class="variable language_">this</span>         <span class="comment">// 保留字</span></span><br><span class="line"></span><br><span class="line">i</span><br><span class="line">sum</span><br><span class="line"><span class="literal">undefined</span>    <span class="comment">// 变量、常量、全局对象属性的引用</span></span><br></pre></td></tr></table></figure>
+
+<p>对象和数组 初始化程序 也属于表达式，但不是主表达式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[]</span><br><span class="line">[<span class="number">1</span>,<span class="number">3</span>]</span><br><span class="line">[[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,,<span class="number">3</span>]]</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = &#123;<span class="attr">x</span>:<span class="number">1</span>,<span class="attr">y</span>:<span class="number">3</span>&#125;</span><br><span class="line"><span class="keyword">let</span> b = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这些初始化程序，有时也称 数组字面量、对象字面量</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>函数定义 表达式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> f = <span class="keyword">function</span>(<span class="params">x</span>)&#123;<span class="keyword">return</span> x*x;&#125;;    <span class="comment">// 关键字function 参数列表 函数体 （匿名函数例外）</span></span><br></pre></td></tr></table></figure>
+
+<p>属性访问 表达式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment"> * expression . identifier</span></span><br><span class="line"><span class="comment"> * expression [ identifier ]</span></span><br><span class="line"><span class="comment"> * 句点 中括号 前面的表达式都会先求值，若为null | undefined，则抛出TypeError</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">x.<span class="property">pos</span></span><br><span class="line">arr[<span class="number">0</span>]</span><br><span class="line">dic[<span class="string">&quot;name&quot;</span>]    </span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * ES2020 新增两种属性访问表达式</span></span><br><span class="line"><span class="comment"> * expression ?.  identifier</span></span><br><span class="line"><span class="comment"> * expression ?.[ identifier ]</span></span><br><span class="line"><span class="comment"> * 这两种表达式，当前面的表达式为null | undefined 时，返回undefined</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<p>调用表达式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment"> * expression([args,,,])    中括号部分为可选内容</span></span><br><span class="line"><span class="comment"> * 括号前面的表达式都会先求值，若不为函数（包括null undefined的情况），则抛出TypeError</span></span><br><span class="line"><span class="comment"> * 要么为函数体return的值，要么为undefined</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="title function_">f</span>(<span class="number">3</span>)</span><br><span class="line"><span class="title class_">Math</span>.<span class="title function_">max</span>(<span class="number">5</span>,<span class="number">9</span>,<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * ES2020 新增条件式调用表达式</span></span><br><span class="line"><span class="comment"> * expression ?.()</span></span><br><span class="line"><span class="comment"> * 仅当 前面的表达式为null | undefined 时，不执行函数，返回undefined</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>对象创建 表达式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Object</span>()</span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Pos</span>(<span class="number">3</span>,<span class="number">3</span>)    <span class="comment">// 自动执行对象的构造函数来初始化</span></span><br></pre></td></tr></table></figure>
+
+<p>操作符：<br>具体表格见《JavaScript权威指南–李松峰译–书第七版》p66<br>左值：一个可以合法地出现在赋值表达式左侧的表达式<br>JavaScript中，变量、对象属性和数组元素都是“左值”</p>
+<p>算术表达式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//《JavaScript权威指南--李松峰译--书第七版》p70</span></span><br><span class="line"><span class="comment">// 相关细节很多，建议看书</span></span><br></pre></td></tr></table></figure>
+
+<p>关系表达式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 严格相等 ===</span></span><br><span class="line"><span class="comment"> * 两个值类型不同                               =&gt; false</span></span><br><span class="line"><span class="comment"> * 两个值都为null，或都为undefined              =&gt; true</span></span><br><span class="line"><span class="comment"> * 两个值中有NaN(1或2个)                        =&gt; false</span></span><br><span class="line"><span class="comment"> * 两个值都是数值且值相等                       =&gt; true</span></span><br><span class="line"><span class="comment"> * 0 = -0                                      =&gt; true</span></span><br><span class="line"><span class="comment"> * 两个值都是字符串且相同位置的16位值完全相同    =&gt; true</span></span><br><span class="line"><span class="comment"> * 两个值都是引用的同一对象、数组或函数          =&gt; true</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 不满足的严格相等的， !== 就为true</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 基于类型转换的相等 ==</span></span><br><span class="line"><span class="comment"> * 如果两个值的 类型不同，它会尝试做类型转换</span></span><br><span class="line"><span class="comment"> * 如果两个值的 类型相同（本来就相同 或 转换后相同），它会按照严格相等来进行比较</span></span><br><span class="line"><span class="comment"> * 类型转换细则(下面的?表示代指，无意义)：</span></span><br><span class="line"><span class="comment"> *     特殊：null == undefined   =&gt; true</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> *     ?  == 字符串   --&gt;  ? == 数值</span></span><br><span class="line"><span class="comment"> *     ?  == true     --&gt;  ? == 1</span></span><br><span class="line"><span class="comment"> *     ?  == false    --&gt;  ? == 0</span></span><br><span class="line"><span class="comment"> *     ?  == 对象     --&gt;  ? == 原始值</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 关于对象如何转换为原始值：</span></span><br><span class="line"><span class="comment"> *     JavaScript会尝试使用对象内的toString()方法，或者使用valueOf()方法</span></span><br><span class="line"><span class="comment"> *     通常一般的对象都会优先使用valueOf()，但Date类是例外，它优先执行toString()</span></span><br><span class="line"><span class="comment"> *     前者失败（或不存在该方法）后，再考虑toString() | valueOf()</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 不满足基于类型转换的相等的， != 就为true</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 比较操作符</span></span><br><span class="line"><span class="comment"> * 只能比较数值和字符串（若不是则会进行转换，再比较</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * JavaScript字符串是16位整数值的序列，而字符串比较是比较两个字符串的数值序列</span></span><br><span class="line"><span class="comment"> * Unicode定义的数值编码顺序会受不同地区和特定语言使用的传统 校正顺序（collation order）匹配</span></span><br><span class="line"><span class="comment"> * 不同地区比如不同国家</span></span><br><span class="line"><span class="comment"> * 特定语言，比如ASCII，它的 大写字母的数值 排在 小写字母前（这样的话 Z &gt; a 反而成立）</span></span><br><span class="line"><span class="comment"> * 可以考虑String.localeCompare()</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * = 和 &lt;= 不依赖于之前的等于比较符，仅代表 &gt; 或 &lt; 相反情况的</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * in 操作符</span></span><br><span class="line"><span class="comment"> * in期待左侧是可以转换成字符串的任何值，右侧是对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> data = [<span class="number">1</span>,<span class="number">3</span>]</span><br><span class="line"><span class="string">&quot;0&quot;</span> <span class="keyword">in</span> data        <span class="comment">//=&gt; true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> pos = &#123;<span class="attr">x</span>:<span class="number">1</span>,<span class="attr">y</span>:<span class="number">2</span>&#125;</span><br><span class="line">x <span class="keyword">in</span> pos           <span class="comment">//=&gt; true</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * instanceof 操作符</span></span><br><span class="line"><span class="comment"> * 左侧操作数为对象，右侧操作数是对象类的标识</span></span><br><span class="line"><span class="comment"> * 当左侧的对象 是 右侧类 的 实例 时，返回true，否则为false</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="keyword">let</span> d = <span class="title class_">Date</span>()</span><br><span class="line"> d <span class="keyword">instanceof</span> <span class="title class_">Date</span>    <span class="comment">//=&gt; true</span></span><br></pre></td></tr></table></figure>
+
+<p>逻辑表达式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * &amp;&amp;</span></span><br><span class="line"><span class="comment"> * 总是返回真值或假值（注意，这个范围很大）</span></span><br><span class="line"><span class="comment"> * 它不要求左右两侧操作数为布尔值（比如真/假性值），也并不总是返回true或false</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 当左侧操作数为假值，右侧操作数不会被求值，返回左侧的操作数的值</span></span><br><span class="line"><span class="comment"> * 当左侧操作数为真值，返回右侧操作数</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * || 同上（相反）</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="string">&quot;a&quot;</span> &amp;&amp; <span class="string">&quot;b&quot;</span>    <span class="comment">//=&gt; &quot;b&quot;</span></span><br><span class="line"> <span class="string">&quot;a&quot;</span> &amp;&amp; <span class="number">0</span>      <span class="comment">//=&gt; 0</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * ! 逻辑非</span></span><br><span class="line"><span class="comment"> * 总是返回布尔值：true或false</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<p>赋值表达式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1</span>         <span class="comment">// 普遍情况</span></span><br><span class="line">a = b = c = <span class="number">1</span> <span class="comment">// 连续赋值的简写</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 拼接操作符</span></span><br><span class="line"><span class="comment"> * += -= **= 等等</span></span><br><span class="line"><span class="comment"> * 唯一不同的是，拼接后，左操作数只会被求值一次，而原来会被求值两次</span></span><br><span class="line"><span class="comment"> * 这可能会带来负效应</span></span><br><span class="line"><span class="comment"> */</span> </span><br><span class="line"></span><br><span class="line">a[i++] += <span class="number">1</span>        </span><br><span class="line">a[i++]  = a[i++] + <span class="number">1</span> </span><br></pre></td></tr></table></figure>
+
+<p>eval操作符（也是函数）：<br>相关细节见p84</p>
+<p>其它操作符：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment"> * 条件操作符： </span></span><br><span class="line"><span class="comment"> * ?: </span></span><br><span class="line"><span class="comment"> * expr1 ? expr2 : expr3</span></span><br><span class="line"><span class="comment"> * expr1 为true时，返回expr3，否则返回expr3</span></span><br><span class="line"><span class="comment"> */</span> </span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> s = <span class="string">&quot;hi,&quot;</span> + (name ? name : <span class="string">&quot;there&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment"> * 先定义（first-defined）操作符</span></span><br><span class="line"><span class="comment"> * ES2020新增，正式名为缺值合并（nullish coalescing）操作符</span></span><br><span class="line"><span class="comment"> * ??</span></span><br><span class="line"><span class="comment"> * expr1 ?? expr2</span></span><br><span class="line"><span class="comment"> * 只有在expr1 为null或undefined时 才会返回第二个操作数</span></span><br><span class="line"><span class="comment"> */</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment"> * typeof 操作符，总是返回如下值</span></span><br><span class="line"><span class="comment"> *     &quot;undefined&quot; </span></span><br><span class="line"><span class="comment"> *     &quot;object&quot;</span></span><br><span class="line"><span class="comment"> *     &quot;boolean&quot;</span></span><br><span class="line"><span class="comment"> *     &quot;number&quot;</span></span><br><span class="line"><span class="comment"> *     &quot;bigint&quot;</span></span><br><span class="line"><span class="comment"> *     &quot;string&quot;</span></span><br><span class="line"><span class="comment"> *     &quot;symbol&quot;</span></span><br><span class="line"><span class="comment"> *     &quot;function&quot;</span></span><br><span class="line"><span class="comment"> */</span> </span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span>    <span class="comment">//=&gt; &quot;object&quot;: 所以要区分对象和null，需要显式测试</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * delete 操作符</span></span><br><span class="line"><span class="comment"> * 删除对象属性（包括数组元素），将属性设置为undefined的同时，该属性也不存在了</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="keyword">let</span> a=[<span class="number">1</span>,<span class="number">3</span>,<span class="number">3</span>]</span><br><span class="line"> <span class="keyword">delete</span> a[<span class="number">2</span>]    <span class="comment">// 删除数组最后一个元素</span></span><br><span class="line"> a.<span class="property">length</span>       <span class="comment">//=&gt; 3:长度不变</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * await 操作符</span></span><br><span class="line"><span class="comment"> * ES2017新增，期待一个Promise对象作为唯一操作数</span></span><br><span class="line"><span class="comment"> * 只能出现在已经通过async关键字声明为异步的函数中</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * void 操作符</span></span><br><span class="line"><span class="comment"> * 它可以放在任意类型的操作数前面，求值这个操作数，返回undefined</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line"> <span class="keyword">const</span> <span class="title function_">f</span> = (<span class="params"></span>) =&gt; <span class="keyword">void</span> i++;</span><br><span class="line"> <span class="title function_">f</span>();    <span class="comment">//=&gt; undefined</span></span><br><span class="line"> i       <span class="comment">//=&gt; 1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * , 逗号操作符</span></span><br><span class="line"><span class="comment"> * 求值左侧操作数然后丢弃，再求值右侧操作数并返回</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="5-语句"><a href="#5-语句" class="headerlink" title="5 语句"></a><strong>5 语句</strong></h1><p>JavaScript程序就是一系列语句，以分号分隔</p>
+<p>表达式语句：有副效应的表达式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">i++;      <span class="comment">// 赋值表达式</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">myFun</span>();  <span class="comment">// 调用表达式</span></span><br></pre></td></tr></table></figure>
+
+<p>复合语句和空语句</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">i++,j++,c++;    <span class="comment">// 复合语句</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  i++;</span><br><span class="line">  j++;</span><br><span class="line">  c++;          <span class="comment">// 语句块，也是复合语句</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">;               <span class="comment">// 空语句</span></span><br></pre></td></tr></table></figure>
+
+<p>分支语句：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(expr) </span><br><span class="line">	statement;    <span class="comment">// expr为真值，则执行statement；反之</span></span><br><span class="line"><span class="comment">// 可选</span></span><br><span class="line"><span class="comment">// else if (expr2) &#123;statement1;statement2;&#125;</span></span><br><span class="line"><span class="comment">// else &#123;statement3;statement4;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">switch</span>(expr)&#123;</span><br><span class="line">	statement;</span><br><span class="line">	<span class="comment">// 可选</span></span><br><span class="line">	<span class="comment">// case expr1:</span></span><br><span class="line">	<span class="comment">//     statement2;</span></span><br><span class="line">	<span class="comment">//     break;</span></span><br><span class="line">	<span class="comment">// default:</span></span><br><span class="line">	<span class="comment">//     statement3;</span></span><br><span class="line">	<span class="comment">//     break;</span></span><br><span class="line">&#125;                 <span class="comment">// 其中case的使用，是以===来判断相等的，这个例子里是比较expr===expr1</span></span><br></pre></td></tr></table></figure>
+
+<p>循环语句：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(expr)&#123;</span><br><span class="line">	statement;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">	statement;</span><br><span class="line"><span class="keyword">while</span>(expr)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(init; test; increment)</span><br><span class="line">	statement;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6新增 for/of 专门用于可迭代对象（与for关键字完全不同）</span></span><br><span class="line"><span class="keyword">let</span> myArr = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> element <span class="keyword">of</span> myArr)</span><br><span class="line">	statement;                  <span class="comment">// 数组属于可迭代对象</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> myStr = <span class="string">&quot;abcdefg&quot;</span>;          <span class="comment">// 字符串是按 码点 迭代的，而不是16位值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> myObj = &#123;<span class="attr">x</span>:<span class="number">1</span>,<span class="attr">y</span>:<span class="number">2</span>,<span class="attr">z</span>:<span class="number">3</span>&#125;;      <span class="comment">// 对象默认不可迭代</span></span><br><span class="line">							    <span class="comment">// 需要用Object.keys()、Object.values()或Object.entries()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> mySet = <span class="keyword">new</span> <span class="title class_">Set</span>([<span class="string">&quot;1&quot;</span>,<span class="string">&quot;2&quot;</span>,<span class="string">&quot;3&quot;</span>]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> myMap = <span class="keyword">new</span> <span class="title class_">Map</span>([[<span class="number">1</span>,<span class="string">&quot;one&quot;</span>],[<span class="number">2</span>,<span class="string">&quot;two&quot;</span>]]);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// ES2018新增 异步迭代器 和 异步迭代器的for/await循环</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">myFun</span>(<span class="params">str</span>)&#123;</span><br><span class="line">	<span class="keyword">for</span> <span class="title function_">await</span>(<span class="params"><span class="keyword">let</span> s <span class="keyword">in</span> str</span>)&#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(s);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// for/in循环 适用于任意对象，循环指定对象的属性名</span></span><br><span class="line"><span class="keyword">for</span>(variable <span class="keyword">in</span> object)</span><br><span class="line">	statement;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * javascript首先对object求值，若为null 或 undefined则会跳过循环，执行下文语句</span></span><br><span class="line"><span class="comment"> * 但并不会枚举对象中的所有属性，比如符号类的不可枚举等等</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<p>跳转语句：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 常见的continue break return throw yield </span></span><br><span class="line"><span class="comment"> * 它们都具有跳转功能，让JavaScript解释器跳转到新的代码位置</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 语句标签，给语句起个名字，可以在程序的其它地方通过这个名字引用它</span></span><br><span class="line"><span class="comment">// 标签 和 变量与函数 不在同一个命名空间</span></span><br><span class="line"><span class="attr">identifier</span>: statement;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// break 只在循环和switch中使用，达到跳出的作用，</span></span><br><span class="line"><span class="comment">// break 后可以接语句标签，达到跳出后，跳转到该语句标签的作用</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// return 只在函数体中使用，返回的值作为函数的值，若没有则为undefined</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// yield 之用在ES6新增的生成器函数中</span></span><br><span class="line"><span class="comment">// 它非常类似return，详见第12章（迭代器和生成器）</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// throw 抛出异常，可用try/catch/finally捕获</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// try/catch/finally JavaScript的异常处理机制</span></span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">catch</span>(e)&#123;<span class="comment">// ES2019 可以省略 (e)</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">finally</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其他语句：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// with 用于创建临时作用域</span></span><br><span class="line"><span class="comment">// 基本被废弃，不推荐使用</span></span><br><span class="line"><span class="title function_">with</span>(object)</span><br><span class="line">	statement;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// debugger 像一个断点，执行时JavaScript会停止，我们可以查看调用栈等信息</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&#x27;use strict&#x27;</span>    <span class="comment">// 属于 指令（和语句很相近）</span></span><br><span class="line">				<span class="comment">// 具体作用见p115</span></span><br></pre></td></tr></table></figure>
+
+
+<p>声明（看起来很像语句，一并介绍）：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * const let var function class import export 这些关键严格来讲都是声明</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span>     <span class="comment">// 声明常量</span></span><br><span class="line"><span class="keyword">let</span>       <span class="comment">// 声明变量</span></span><br><span class="line"><span class="keyword">var</span>       <span class="comment">// ES6之前唯一的声明变量方式</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span>  <span class="comment">// 用于定义函数</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * class 用于创建一个新类</span></span><br><span class="line"><span class="comment"> * 注意，类不会被“提升”，不能在类被声明之前使用它</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">myClass</span>&#123;</span><br><span class="line">	<span class="title function_">constructor</span>(<span class="params">init1</span>)&#123;<span class="variable language_">this</span>.<span class="property">init1</span>=init1&#125;  <span class="comment">// 构造函数</span></span><br><span class="line">	statement;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * import </span></span><br><span class="line"><span class="comment"> * 每一个js文件都是一个模块，之间完全无关，</span></span><br><span class="line"><span class="comment"> * import可以将其他模块的值导入，从而可以使用其他模块的值</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * export</span></span><br><span class="line"><span class="comment"> * 每一个js文件中的值都是 私有的，除非被显式导出，否则其他模块无法导入</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">import</span> &#123;xx,yy&#125; <span class="keyword">from</span> <span class="string">&#x27;./xyz.js&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// xyz.js</span></span><br><span class="line"><span class="keyword">const</span> xx = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> yy = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">export</span> &#123;xx,yy&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="6-对象"><a href="#6-对象" class="headerlink" title="6 对象"></a><strong>6 对象</strong></h1><p>对象是一个 属性的无序集合，每个属性都有名字和值 和 三个属性特性（property attribute）</p>
+<ul>
+<li>可写（writable）</li>
+<li>可枚举（enumerable）</li>
+<li>可配置（configurable）</li>
+</ul>
+<p>创建对象：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myDict = &#123;&#125;                         <span class="comment">// 通过字面量创建 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> o = <span class="keyword">new</span> <span class="title class_">Object</span>()                    <span class="comment">// 通过new关键字创建</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 几乎所有对象都有 原型，但只有少数对象有prototype属性。</span></span><br><span class="line"><span class="comment"> * 正是这些有prototype属性的对象为所有其他对象定义了 原型</span></span><br><span class="line"><span class="comment"> * Object.prototype是为数不多的没有原型的对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> o1 = <span class="title class_">Object</span>.<span class="title function_">create</span>(&#123;<span class="attr">x</span>:<span class="number">1</span>,<span class="attr">y</span>:<span class="number">2</span>,<span class="attr">z</span>:<span class="number">3</span>&#125;)   <span class="comment">// 通过Object.create()创建</span></span><br></pre></td></tr></table></figure>
+
+<p>查询和设置属性：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">o.<span class="property">property</span></span><br><span class="line">o.[<span class="string">&quot;property&quot;</span>]   <span class="comment">// 要求方括号中是字符串或可以转换成字符串的值</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * JavaScript的对象可以视为 关联数组，可以动态添加属性</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * JavaScript的对象支持继承，参考“原型链”的概念</span></span><br><span class="line"><span class="comment"> * 同时，JavaScript只在查询时会用到原型链，而设置属性时不影响原型链</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> myName = <span class="keyword">class</span>?.<span class="property">student</span>?.<span class="property">name</span>    <span class="comment">// 访问属性时，</span></span><br><span class="line">                                     <span class="comment">// 对象为null或undefined时，报错TypeError</span></span><br><span class="line">                                     <span class="comment">// 属性不存在时，返回undefined</span></span><br><span class="line">                                     </span><br><span class="line">                                     <span class="comment">// 同理，设置属性时，</span></span><br><span class="line">                                     <span class="comment">// 对象为null或undefined时，报错TypeError</span></span><br><span class="line">                                     <span class="comment">// 以及对象不允许添加新属性时，也会报错</span></span><br><span class="line">                                     <span class="comment">// 还有其他较复杂的情况，参考p128</span></span><br></pre></td></tr></table></figure>
+
+
+<p>删除属性：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// delete 情况同上 见p128</span></span><br></pre></td></tr></table></figure>
+
+<p>测试属性：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">in</span> </span><br><span class="line"><span class="title function_">hasOwnProperty</span>()</span><br><span class="line"><span class="title function_">propertyIsEnumerable</span>()</span><br><span class="line">!= <span class="literal">undefined</span>                    <span class="comment">// 都可以用来判断某对象是否含有某属性</span></span><br></pre></td></tr></table></figure>
+
+<p>枚举类型：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>/<span class="keyword">in</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">keys</span>() + <span class="keyword">for</span>/<span class="keyword">of</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">getOwnPropertyNames</span>()</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">getOwnPropertySymbols</span>()</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">ownKeys</span>()                <span class="comment">// 都可以用来枚举对象的属性</span></span><br></pre></td></tr></table></figure>
+
+<p>拓展对象：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方式一：手动设置属性</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 方式二：ES6新增 Object.assign()</span></span><br></pre></td></tr></table></figure>
+
+
+<p>序列化对象(serialization)：把对象转为字符串，之后可以从中恢复对象的过程</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">JSON</span>.<span class="title function_">stringify</span>()  <span class="comment">// 序列化</span></span><br><span class="line"><span class="title class_">JSON</span>.<span class="title function_">parse</span>()      <span class="comment">// 恢复</span></span><br><span class="line">                  <span class="comment">// JSON是Javascript语法的子集，有些对象是不支持的</span></span><br></pre></td></tr></table></figure>
+
+<p>对象方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">toString</span>()</span><br><span class="line"><span class="title function_">valueOf</span>()</span><br><span class="line"><span class="title function_">toLocaleString</span>()</span><br><span class="line"><span class="title function_">toJson</span>()           <span class="comment">// 可以由JavaScript本身提供，也可以自己去重写或新增</span></span><br></pre></td></tr></table></figure>
+
+<p>对象字面量拓展语法（ES6新增）：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 属性名和变量名一样，可以简写</span></span><br><span class="line"><span class="keyword">let</span> x=<span class="number">1</span>,y=<span class="number">2</span></span><br><span class="line"><span class="keyword">let</span> o = &#123;x,y&#125;   <span class="comment">// o.x=1 o.y=2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 计算的属性名 动态的计算出属性名 以下是一个通过代码来设置版本的例子</span></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">PROPERTY_NAME</span>=<span class="string">&quot;version&quot;</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">computePropertyName</span>(<span class="params">s</span>)&#123;<span class="keyword">return</span> s + <span class="string">&quot; &quot;</span> + <span class="variable constant_">PROPERTY_NAME</span>&#125;</span><br><span class="line"><span class="keyword">let</span> o = &#123;</span><br><span class="line">	[<span class="variable constant_">PROPERTY_NAME</span>]:<span class="number">0.1</span>,</span><br><span class="line">	[<span class="title function_">computePropertyName</span>(<span class="string">&quot;dev&quot;</span>)]:<span class="number">0.2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>符号作为属性名：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 接上，该拓展语法也可用于符号类属性</span></span><br><span class="line"><span class="keyword">const</span> extensionProperty = <span class="title class_">Symbol</span>(<span class="string">&quot;my extension symbol property&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> o = &#123;</span><br><span class="line">	[extensionProperty]: &#123;<span class="comment">/*你的数据*/</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line">o[extensionProperty].<span class="property">x</span> = <span class="comment">/*你的值*/</span> <span class="comment">// 这样的话，这种属性就不会和当前的任何属性冲突了</span></span><br></pre></td></tr></table></figure>
+
+<p>拓展操作符：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ... 三个点，当用于字面的对象时，可以起到这样的作用，所以称为“拓展操作符”</span></span><br><span class="line"><span class="comment">// 但放在其它场景的作用会完全不同</span></span><br><span class="line"><span class="keyword">let</span> o1 = &#123;<span class="attr">x</span>:<span class="number">1</span>,<span class="attr">y</span>:<span class="number">2</span>&#125;</span><br><span class="line"><span class="keyword">let</span> o2 = &#123;<span class="attr">z</span>:<span class="number">3</span>,<span class="attr">p</span>:<span class="number">5</span>&#125;</span><br><span class="line"><span class="keyword">let</span> o3 = &#123;...o1, ...o2&#125; <span class="comment">//=&gt; o3 = &#123;x:1,y:2,z:3,p:5&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意性能，单次拓展属性O(n)，循环则是O(n^2) !!!</span></span><br></pre></td></tr></table></figure>
+
+<p>简写方法（属性）：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> o = &#123;</span><br><span class="line">	<span class="attr">area</span>: <span class="keyword">function</span>(<span class="params"></span>)&#123;<span class="keyword">return</span> <span class="number">0</span>;&#125;, <span class="comment">// 简写 area()&#123;return 0;&#125;</span></span><br><span class="line">&#125;</span><br><span class="line">o.<span class="title function_">area</span>() <span class="comment">//=&gt; 0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 支持符号、计算的属性名</span></span><br><span class="line"><span class="keyword">const</span> extensionProperty = <span class="title class_">Symbol</span>(<span class="string">&quot;my extension symbol property&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> o2 = &#123;</span><br><span class="line">	[extensionProperty]()&#123;<span class="comment">/*你的函数体*/</span>&#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>属性的 获取方法 和 设置方法（ES5引入，ES6支持字面量拓展）：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * JavaScript还支持为对象定义 访问器属性（accessor property）</span></span><br><span class="line"><span class="comment"> * 这种属性不是值，而是多个访问器方法</span></span><br><span class="line"><span class="comment"> * 获取方法：getter</span></span><br><span class="line"><span class="comment"> * 设置方法：setter</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 当访问一个对象的属性时，就会调用对应的获取方法；对应的，设置属性值，调用设置方法</span></span><br><span class="line"><span class="comment"> * 若没有设置方法，则该属性不可写；对应的，若没有读取方法，则该属性不可读；都有，则可读写</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 只需要在属性前加上set 或 get，然后跟定义方法属性一样</span></span><br><span class="line"><span class="comment"> * 支持符号和计算的属性名</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> o = &#123;</span><br><span class="line">	<span class="attr">x</span>:<span class="number">1</span>,</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">get</span> <span class="title function_">p1</span>()&#123;<span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">x</span>&#125;,</span><br><span class="line">	<span class="keyword">set</span> <span class="title function_">p1</span>(<span class="params">x</span>)&#123;<span class="variable language_">this</span>.<span class="property">x</span> = x;&#125;,</span><br><span class="line"></span><br><span class="line">	<span class="keyword">get</span> <span class="title function_">p2</span>()&#123;<span class="comment">/**/</span>&#125;,</span><br><span class="line">	<span class="comment">// 可以有多个，也可以没有</span></span><br><span class="line">&#125;;</span><br><span class="line">o.<span class="property">p1</span>      <span class="comment">//=&gt; 1</span></span><br><span class="line">o.<span class="title function_">p1</span>(<span class="number">5</span>)   <span class="comment">//=&gt; o.p1 = 5</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="7-数组"><a href="#7-数组" class="headerlink" title="7 数组"></a><strong>7 数组</strong></h1><p>数组可以看成特殊的对象，只不过属性名刚好是整数，也正是该特性让其访问起来效率比一般的对象更高<br>ES6推出了定型数组（typed Array），要求固定长度和固定数值元素类型。它性能极高，支持二进制可访问字节级的数据</p>
+<p>创建数组：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 数组字面量</span></span><br><span class="line"><span class="comment"> * 逗号之间没有元素，就是稀疏数组，访问该位置返回undefined</span></span><br><span class="line"><span class="comment"> * 可以嵌套</span></span><br><span class="line"><span class="comment"> * 元素类型可以不一样，甚至可以是表达式</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,,,<span class="number">3</span>,]</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 对可迭代对象使用...拓展符(ES6新增)</span></span><br><span class="line"><span class="comment"> * 用来包含另一个数组（字符串或集合等可迭代对象）的所有元素</span></span><br><span class="line"><span class="comment"> * 实质是使用for/of，迭代元素并创建（浅）副本</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> *  (忽略该数组最后一个元素后的逗号）当包含[1,2,]或[1,2]效果是一样的</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> b = [<span class="number">5</span>,...a,<span class="number">7</span>]      <span class="comment">// =&gt; b = [5,1,,,3,7]</span></span><br><span class="line"><span class="keyword">let</span> c = [...<span class="keyword">new</span> <span class="title class_">Set</span>([...<span class="string">&quot;hahaha&quot;</span>])]  <span class="comment">// =&gt; c = [&#x27;h&#x27;,&#x27;a&#x27;]：包含了字符串、集合以及去重等示例</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Array()构造函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> d = <span class="keyword">new</span> <span class="title class_">Array</span>()</span><br><span class="line"><span class="keyword">let</span> e = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">10</span>)       <span class="comment">// 指定长度为10的数组（此时，甚至索引0,1,2等都没有定义）</span></span><br><span class="line"><span class="keyword">let</span> f = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="string">&quot;1&quot;</span>,<span class="string">&quot;2&quot;</span>,<span class="string">&quot;a&quot;</span>,<span class="number">1</span>,<span class="number">4</span>)</span><br><span class="line"><span class="keyword">let</span> g = <span class="keyword">new</span> <span class="title class_">Array</span>(...<span class="string">&quot;abc&quot;</span>) <span class="comment">// =&gt; g = [&#x27;a&#x27;,&#x27;b&#x27;,&#x27;c&#x27;]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 工厂方法Array.of()</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> h = <span class="title class_">Array</span>.<span class="title function_">of</span>(<span class="number">1</span>)         <span class="comment">// =&gt; h = [1]:</span></span><br><span class="line">						    <span class="comment">// 弥补了Array()不能创建只含有一个数值元素的数组的缺陷</span></span><br><span class="line">						    <span class="comment">// 其余功能和Array()构造函数一样</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 工厂方法Array.from()</span></span><br><span class="line"><span class="comment"> * 第一个参数：可迭代对象 或 类数组对象</span></span><br><span class="line"><span class="comment"> *     当为可迭代对象时，同...</span></span><br><span class="line"><span class="comment"> *     当为类数组对象（有length属性，每个属性的键也是整数），作用是创建真正的数组副本</span></span><br><span class="line"><span class="comment"> * 第二个参数：函数</span></span><br><span class="line"><span class="comment"> *     把前者的每一元素传给这个函数，函数的返回值为新数组的元素</span></span><br><span class="line"><span class="comment"> *     （推荐在构建数组时就处理好，而不是用这个函数）</span></span><br><span class="line"><span class="comment"> */</span>						    </span><br><span class="line"><span class="keyword">let</span> i = <span class="title class_">Array</span>.<span class="title function_">from</span>(h)       <span class="comment">// =&gt; i = [1] </span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>读写数组元素：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 使用 [] 访问数组元素，方括号左侧是数组的引用，方括号中是非负整数</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 数组是一种特殊的对象，用方括号访问数组元素和用方括号访问对象属性是类似的</span></span><br><span class="line"><span class="comment"> * JavaScript会把数组索引（整数）转为字符串，作为属性名</span></span><br><span class="line"><span class="comment"> * 数组所有索引都是属性名，但只有介于0~2^32-2之间的整数属性名才是索引</span></span><br><span class="line"><span class="comment"> * 可以给数组新建不属于索引范围内的属性名，比如a[-10]=9 =&gt; &#123;&quot;-10&quot;:9&#125;</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 数组长度由JavaScript内部自动维护，只对索引有效，其他属性名不会被统计在内</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> a = [...<span class="string">&quot;abc&quot;</span>]</span><br><span class="line">a[<span class="number">1</span>]                  <span class="comment">// =&gt; &#x27;b&#x27;</span></span><br><span class="line">a[<span class="number">1</span>] = <span class="number">3</span></span><br><span class="line">a[<span class="number">1</span>]                  <span class="comment">// =&gt; 3</span></span><br></pre></td></tr></table></figure>
+
+<p>稀疏数组（包含undefined的非稀疏数组）：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 即时中间含有多个undefined元素，长度仍以最高索引为准</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> a = [,]         <span class="comment">// =&gt; a没有元素，但a.length=1，且此时索引都没有被定义 0 in a = false</span></span><br><span class="line"><span class="keyword">let</span> b = [<span class="literal">undefined</span>] <span class="comment">// =&gt; a有一个元素undefined，且a.length=1，索引被定义了 0 in b = true</span></span><br></pre></td></tr></table></figure>
+
+<p>数组长度：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 任何情况，数组索引都不会大于或等于数组长度</span></span><br><span class="line"><span class="comment"> * 可以修改数组length属性：</span></span><br><span class="line"><span class="comment"> *     要么删除所有等于或大于length的索引对应的数组元素</span></span><br><span class="line"><span class="comment"> *     要么在末尾增加一堆的undefined</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<p>增加&#x2F;删除数组元素</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 主要注意，是否会修改length，以及元素的值和索引的变化</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> a = []</span><br><span class="line"></span><br><span class="line">a[<span class="number">0</span>] = <span class="number">1</span>         <span class="comment">// =&gt; a = [1]</span></span><br><span class="line">                 <span class="comment">//    a.length=1</span></span><br><span class="line">a.<span class="title function_">push</span>(<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>)  <span class="comment">// =&gt; a = [1,&#x27;a&#x27;,&#x27;b&#x27;]</span></span><br><span class="line">                 <span class="comment">//    a.length=3</span></span><br><span class="line">a.<span class="title function_">pop</span>()          <span class="comment">// =&gt; 返回&#x27;b&#x27;</span></span><br><span class="line">                 <span class="comment">//    a=[1,&#x27;a&#x27;]</span></span><br><span class="line">                 <span class="comment">//    a.length=2</span></span><br><span class="line"></span><br><span class="line">a.<span class="title function_">unshift</span>(<span class="string">&quot;c&quot;</span>)   <span class="comment">// =&gt; a = [&#x27;c&#x27;,1,&#x27;a&#x27;]</span></span><br><span class="line">                 <span class="comment">//    a.length=3</span></span><br><span class="line">a.<span class="title function_">shift</span>()        <span class="comment">// =&gt; 返回&#x27;c&#x27;</span></span><br><span class="line">                 <span class="comment">//    a=[1,&#x27;a&#x27;]</span></span><br><span class="line">                 <span class="comment">//    a.length=2</span></span><br><span class="line"> <span class="keyword">delete</span> a[<span class="number">1</span>]     <span class="comment">// 删除索引2（也意味着删除了数组元素）</span></span><br><span class="line">                 <span class="comment">// a=[1,undefined]</span></span><br><span class="line">                 <span class="comment">// a.length=2 不影响数组长度</span></span><br></pre></td></tr></table></figure>
+
+<p>迭代数组：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [...<span class="string">&quot;abc&quot;</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * for/of</span></span><br><span class="line"><span class="comment"> * forEach()</span></span><br><span class="line"><span class="comment"> * 除了用法不一致，两者对稀疏数组的处理不一样：</span></span><br><span class="line"><span class="comment"> *     前者对稀疏数组无感，若不存在便会得到undefined，后者则不会对undefined调用函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">of</span> arr) <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组提供的一种用于自身迭代的函数式方法：forEach</span></span><br><span class="line"><span class="comment">// 它接收一个函数作为参数，数组的每一个元素都会调用这个函数</span></span><br><span class="line">arr.<span class="title function_">forEach</span>(<span class="function"><span class="params">i</span> =&gt;</span> &#123;<span class="variable language_">console</span>.<span class="title function_">log</span>(i);&#125;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="8-函数"><a href="#8-函数" class="headerlink" title="8 函数"></a>8 函数</h1><p><strong>定义函数</strong>有多种方式：</p>
+<ol>
+<li><p>通过<code>function</code>关键字定义函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//打印对象o的每个属性的名字和值。返回undefined</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">myFunc</span>(<span class="params">o</span>)&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> p <span class="keyword">in</span> o)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;p&#125;</span>:<span class="subst">$&#123;o[p]&#125;</span>\n`</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>箭头函数，很适合<strong>将函数作为参数传给另一函数</strong>的场景</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">sum</span>=(<span class="params">x,y</span>)=&gt;&#123;<span class="keyword">return</span> x+y;<span class="number">0</span>&#125;;  </span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>（特殊情况）对象字面量+类定义的快捷语法</p>
+</li>
+<li><p>（特殊情况）get和set定义的特殊<strong>获取和设置方法</strong></p>
+</li>
+<li><p>（特殊情况）函数表达式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不带函数名</span></span><br><span class="line"><span class="keyword">const</span> square = <span class="keyword">function</span>(<span class="params">x</span>)&#123;<span class="keyword">return</span> x*x;&#125;;</span><br><span class="line"><span class="comment">//带函数名--适用于需要使用到函数的情况，比如递归</span></span><br><span class="line"><span class="keyword">const</span> square = <span class="keyword">function</span> <span class="title function_">fact</span>(<span class="params">x</span>)&#123;<span class="keyword">if</span>(x&lt;=<span class="number">1</span>)<span class="keyword">return</span> <span class="number">1</span>;<span class="keyword">else</span> <span class="keyword">return</span> x*<span class="title function_">fact</span>(x-<span class="number">1</span>);&#125;;</span><br><span class="line"><span class="comment">//直接作为参数</span></span><br><span class="line">[<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>].<span class="title function_">sort</span>(<span class="keyword">function</span>(<span class="params">a,b</span>)&#123;<span class="keyword">return</span> a-<span class="number">1</span>;&#125;)</span><br><span class="line"><span class="comment">//定义并立即调用</span></span><br><span class="line"><span class="keyword">let</span> sq = (<span class="keyword">function</span>(<span class="params">x</span>)&#123;<span class="keyword">return</span> x*x;&#125;(<span class="number">10</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//以上，带函数名只是可选项。 </span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>要注意函数声明，一是函数的名字变味了一个变量，其值就是函数本身；二是函数声明语句会被“提升”到包含脚本、函数或代码块的顶部   </p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">Javascript 进阶篇</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">行勉</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-05-11 08:00:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/05/11/Javascript-2023-05-11-JavaScript-入门篇/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/05/13/Typescript-2023-05-13-TypeScript%E6%98%AF%E4%BB%80%E4%B9%88/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">Typescript 概念篇</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/05/02/Laya-2023-05-02-laya%E5%BC%95%E6%93%8E%E6%98%AF%E4%BB%80%E4%B9%88/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Laya 概念篇</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+                <div class="comment-container">
+                    
+<div class="comments-container">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script data-pjax>
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: '73356f8dae5794d51f59',
+                clientSecret: 'e32e2ef05ae5ab4fd7678ac3f0cc17ba965c97a7',
+                repo: 'use-gitalk-laihandong.github.io',
+                owner: 'laihandong',
+                admin: 'laihandong',
+                id: __gitalk__pathname,
+                proxy: '',
+                language: 'zh-CN'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('true' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">1 简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E8%AF%8D%E6%B3%95%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">2 词法结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E7%B1%BB%E5%9E%8B%E3%80%81%E5%80%BC%E5%92%8C%E5%8F%98%E9%87%8F"><span class="nav-number">3.</span> <span class="nav-text">3 类型、值和变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">4.</span> <span class="nav-text">4 表达式与操作符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-%E8%AF%AD%E5%8F%A5"><span class="nav-number">5.</span> <span class="nav-text">5 语句</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-%E5%AF%B9%E8%B1%A1"><span class="nav-number">6.</span> <span class="nav-text">6 对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-%E6%95%B0%E7%BB%84"><span class="nav-number">7.</span> <span class="nav-text">7 数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-%E5%87%BD%E6%95%B0"><span class="nav-number">8.</span> <span class="nav-text">8 函数</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">行勉</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://pages.github.com/">
+                
+                    本站由 <span class="tooltip" data-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
