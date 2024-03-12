@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="maxL">
+    
+    <title>
+        
+            【源码】airtest log模块 |
+        
+        Infinite
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"laihandong.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#003366","logo":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","favicon":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","avatar":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"以有涯随无涯，殆已！","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"twikoo","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":"blog-comments-7g8rgfsf1481a6f9","region":"ap-guangzhou","version":"1.6.16"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["追梦人"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Infinite
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >
+                                更新日志
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog">更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">【源码】airtest log模块</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">maxL</span>
+                            
+                                <span class="author-label">追梦人</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-04-07 08:00:00</span>
+        <span class="mobile">2023-04-07 08:00</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2024-03-13 00:18:44</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E6%BA%90%E7%A0%81/">源码</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/airtest/">airtest</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/">源码解读</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%97%A5%E5%BF%97/">日志</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>835 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>3 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <p>airtest除了标准的运行日志，还有一套专门用来记录测试数据并生成报告的日志格式，主要的接口有如下几个：</p>
+<h1 id="airtest-core-helper"><a href="#airtest-core-helper" class="headerlink" title="airtest.core.helper"></a><code>airtest.core.helper</code></h1><h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>仅有一个类，名为<code>G</code><br>其中有一个用<code>AirtestLogger</code>实例化的成员对象，以及一些记录日志相关信息的常量成员，它们是用来记录日志的关键</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>有7个函数</p>
+<h3 id="set-logdir"><a href="#set-logdir" class="headerlink" title="set_logdir"></a><code>set_logdir</code></h3><p>设置日志文件路径</p>
+<h3 id="log"><a href="#log" class="headerlink" title="log"></a><code>log</code></h3><p>接收的参数为:arg,timestamp,desc,snapshot。后三者顾名思义，<code>arg</code>则会被讨论是异常还是普通字符串，从而决定是否被标记为不通过。</p>
+<h3 id="logwrap"><a href="#logwrap" class="headerlink" title="logwrap"></a><code>logwrap</code></h3><p>基于类中的<code>AirtestLogger</code>实例，调用了<code>Logwrap</code></p>
+<h3 id="device-platform"><a href="#device-platform" class="headerlink" title="device_platform"></a><code>device_platform</code></h3><p>设置类中当前设备属性</p>
+<h3 id="using"><a href="#using" class="headerlink" title="using"></a><code>using</code></h3><p>将指定的路径加入<code>sys.path</code>，从而达到脚本间的互相引用</p>
+<h3 id="import-device-cls"><a href="#import-device-cls" class="headerlink" title="import_device_cls"></a><code>import_device_cls</code></h3><h3 id="delay-after-operation"><a href="#delay-after-operation" class="headerlink" title="delay_after_operation"></a><code>delay_after_operation</code></h3><h2 id="log-接口参考"><a href="#log-接口参考" class="headerlink" title="log()接口参考"></a><code>log()</code>接口参考</h2><p><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/AirtestProject/p/16983441.html" >https://www.cnblogs.com/AirtestProject/p/16983441.html<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/AirtestProject/p/16964460.html" >https://www.cnblogs.com/AirtestProject/p/16964460.html<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/AirtestProject/p/16223928.html" >https://www.cnblogs.com/AirtestProject/p/16223928.html<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="airtest-utils-logger"><a href="#airtest-utils-logger" class="headerlink" title="airtest.utils.logger"></a><code>airtest.utils.logger</code></h1><h2 id="函数-1"><a href="#函数-1" class="headerlink" title="函数"></a>函数</h2><p>仅含两个函数，如下：</p>
+<ul>
+<li><code>init_logging()</code><br>基于库<code>logging</code>，设置日志的样式和等级</li>
+<li><code>get_logger(name)</code><br>供外部调用，获取日志对象实例</li>
+</ul>
+<h1 id="airtest-utils-logwraper"><a href="#airtest-utils-logwraper" class="headerlink" title="airtest.utils.logwraper"></a><code>airtest.utils.logwraper</code></h1><h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p><code>LOGGING</code>，从<code>airtest.utils.logger.get_logger(__name__)</code>获取的日志对象实例</p>
+<h2 id="类-1"><a href="#类-1" class="headerlink" title="类"></a>类</h2><p>只有一个类<code>AirtestLogger</code>，继承自<code>object</code>。该对象生成的实例，也被叫做“logger”</p>
+<h3 id="变量属性"><a href="#变量属性" class="headerlink" title="变量属性"></a>变量属性</h3><ul>
+<li><code>self.running_stack</code><ul>
+<li>用于保存正在运行的测试函数的信息，以便在测试结束时将其记录到日志文件中</li>
+</ul>
+</li>
+<li><code>self.logfile</code><ul>
+<li>日志文件的路径（默认为None）</li>
+</ul>
+</li>
+<li><code>self.logfd</code><ul>
+<li>用于保存日志文件的文件句柄（默认关闭并置为None）</li>
+</ul>
+</li>
+</ul>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ul>
+<li><code>__init__()</code><ul>
+<li><code>running_stack = [], logfile = None, logfd = None</code></li>
+<li>调用方法<code>set_logfile()</code></li>
+<li>调用函数<code>reg_cleanup()</code>清空给定函数寄存器，将方法<code>handle_stacked_log</code>作为参数</li>
+</ul>
+</li>
+<li><code>log()</code><ul>
+<li>用于将日志信息记录到日志文件中</li>
+<li>记录深度<code>depth</code>、<code>tag</code>、<code>timestamp</code>以及<code>data</code>等日志信息转为json后写入文件</li>
+</ul>
+</li>
+<li><code>set_logfile()</code><ul>
+<li>用于设置日志文件的路径，并打开文件句柄</li>
+</ul>
+</li>
+<li><code>handle_stacked_log()</code><ul>
+<li>用于处理 running_stack 中的测试函数信息，并将其记录到日志文件中</li>
+</ul>
+</li>
+<li><code>_dumper()</code><ul>
+<li>用于将对象转换为 JSON 格式的字符串</li>
+</ul>
+</li>
+</ul>
+<h2 id="函数-2"><a href="#函数-2" class="headerlink" title="函数"></a>函数</h2><p>只有一个函数<code>Logwrap()</code>，是装饰器函数，它用于装饰测试函数，以记录测试函数的执行情况。该函数包含以下属性和方法：</p>
+<ul>
+<li><code>wrapper()</code>方法<ul>
+<li>作为测试函数的包装器，用于记录测试函数的执行情况，并将执行情况记录到日志文件中：<ul>
+<li>这些信息都放在<code>data</code>属性，由<code>name</code>,<code>call_args</code>,<code>start_time</code>,<code>ret</code>,<code>end_time</code>组成，分辨对应函数名、参数情况、开始和结束时间以及函数返回结果</li>
+<li>然后再把<code>data</code>同<code>tag</code>,<code>depth</code>,<code>timestamp</code>的内容作为参数，调用<code>log()</code>函数</li>
+</ul>
+</li>
+<li>除此之外，该修饰器会额外判断是否含有名为<code>snapshot</code>的参数名，若有，则在函数执行完毕后调用截图函数<code>try_log_screen()</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="简要总结"><a href="#简要总结" class="headerlink" title="简要总结"></a>简要总结</h1><p><code>AirtestLogger.log()</code>是最终实现写入文件的函数，可以在<code>.air</code>脚本中直接调用</p>
+<p><code>@Logwrap()</code>则是负责收集所修饰的函数信息，再调用<code>AirtestLogger.log()</code></p>
+<p><code>log()</code>才是专门暴露给用户的接口</p>
+<ul>
+<li>最终写入日志的基本格式为<code>&#123;tag:, depth:, timestamp:, data:&#123;name:, call_args:, start_time:, ret:, end_time:,&#125;&#125;</code><ul>
+<li>若传入的值本身就为字典，那么就可能有更多层的嵌套关系</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">【源码】airtest log模块</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">maxL</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-04-07 08:00:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/04/07/Airtest/【源码】airtest log模块/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/airtest/">#airtest</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/">#源码解读</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E6%97%A5%E5%BF%97/">#日志</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/04/07/Airtest/%E3%80%90%E6%BA%90%E7%A0%81%E3%80%91airtest%20%20%E6%8A%A5%E5%91%8A%E6%A8%A1%E5%9D%97/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">【源码】airtest  报告模块</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/04/04/Airtest/%E3%80%90%E6%BA%90%E7%A0%81%E3%80%91airtest%20%20report%E6%A8%A1%E5%9D%97/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">【源码】airtest  report模块</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+                <div class="comment-container">
+                    
+<div class="comments-container">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="twikoo-container">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/twikoo@1.6.16/dist/twikoo.all.min.js"></script>
+        <div id="twikoo-comment"></div>
+        <script data-pjax>
+          function loadTwikoo() {
+            twikoo.init({
+              el: '#twikoo-comment',
+              envId: 'blog-comments-7g8rgfsf1481a6f9',
+              region: 'ap-guangzhou',
+              lang: 'zh-CN' || 'zh-CN'
+            });
+          }
+
+          if ('true' === 'true') {
+            const loadTwikooTimeout = setTimeout(() => {
+              loadTwikoo();
+              clearTimeout(loadTwikooTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadTwikoo);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#airtest-core-helper"><span class="nav-number">1.</span> <span class="nav-text">airtest.core.helper</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB"><span class="nav-number">1.1.</span> <span class="nav-text">类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#set-logdir"><span class="nav-number">1.2.1.</span> <span class="nav-text">set_logdir</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#log"><span class="nav-number">1.2.2.</span> <span class="nav-text">log</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#logwrap"><span class="nav-number">1.2.3.</span> <span class="nav-text">logwrap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#device-platform"><span class="nav-number">1.2.4.</span> <span class="nav-text">device_platform</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#using"><span class="nav-number">1.2.5.</span> <span class="nav-text">using</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#import-device-cls"><span class="nav-number">1.2.6.</span> <span class="nav-text">import_device_cls</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delay-after-operation"><span class="nav-number">1.2.7.</span> <span class="nav-text">delay_after_operation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#log-%E6%8E%A5%E5%8F%A3%E5%8F%82%E8%80%83"><span class="nav-number">1.3.</span> <span class="nav-text">log()接口参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#airtest-utils-logger"><span class="nav-number">2.</span> <span class="nav-text">airtest.utils.logger</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0-1"><span class="nav-number">2.1.</span> <span class="nav-text">函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#airtest-utils-logwraper"><span class="nav-number">3.</span> <span class="nav-text">airtest.utils.logwraper</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F"><span class="nav-number">3.1.</span> <span class="nav-text">常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB-1"><span class="nav-number">3.2.</span> <span class="nav-text">类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E5%B1%9E%E6%80%A7"><span class="nav-number">3.2.1.</span> <span class="nav-text">变量属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.2.</span> <span class="nav-text">方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0-2"><span class="nav-number">3.3.</span> <span class="nav-text">函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E8%A6%81%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">简要总结</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2024
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">maxL</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://pages.github.com/">
+                
+                    本站由 <span class="tooltip" data-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

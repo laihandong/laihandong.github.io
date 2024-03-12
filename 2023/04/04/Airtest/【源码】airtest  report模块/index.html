@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="maxL">
+    
+    <title>
+        
+            【源码】airtest  report模块 |
+        
+        Infinite
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"laihandong.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#003366","logo":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","favicon":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","avatar":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"以有涯随无涯，殆已！","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"twikoo","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":"blog-comments-7g8rgfsf1481a6f9","region":"ap-guangzhou","version":"1.6.16"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["追梦人"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Infinite
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >
+                                更新日志
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog">更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">【源码】airtest  report模块</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">maxL</span>
+                            
+                                <span class="author-label">追梦人</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-04-04 08:00:00</span>
+        <span class="mobile">2023-04-04 08:00</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2024-03-13 00:18:44</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E6%BA%90%E7%A0%81/">源码</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/airtest/">airtest</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/">源码解读</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%8A%A5%E5%91%8A%E7%94%9F%E6%88%90/">报告生成</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>2k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>8 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h1 id="airtest-report源码阅读"><a href="#airtest-report源码阅读" class="headerlink" title="airtest_report源码阅读"></a>airtest_report源码阅读</h1><p>airtest任务生成的一份报告，它的目录结构大致如下：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">|-&lt;sript_name_without_ext&gt;.log</span><br><span class="line">    |-log</span><br><span class="line">        |-&lt;timestamp&gt;.jpg</span><br><span class="line">        |-log.txt</span><br><span class="line">    |-static</span><br><span class="line">        |-css</span><br><span class="line">        |-fonts</span><br><span class="line">        |-image</span><br><span class="line">        |-js</span><br><span class="line">    |-&lt;sript_name_without_ext&gt;.py</span><br><span class="line">    |-log.html</span><br><span class="line">    |-&lt;tpl+timestamp&gt;.png</span><br><span class="line">    </span><br><span class="line">具体的例子：</span><br><span class="line">```txt</span><br><span class="line">|-测试购买.log</span><br><span class="line">    |-log                         这一部分就是完整的airtest的log日志</span><br><span class="line">        |-1674877913337.jpg</span><br><span class="line">        |-1674877913337_small.jpg   这是脚本运行时所截的图</span><br><span class="line">        |-log.txt</span><br><span class="line">    |-static                      这是html报告用到的完整的静态资源</span><br><span class="line">        |-css</span><br><span class="line">        |-fonts</span><br><span class="line">        |-image</span><br><span class="line">        |-js</span><br><span class="line">    |-测试购买.py                 这是测试脚本文件</span><br><span class="line">    |-log.html                    这是最终导出的html格式的报告</span><br><span class="line">    |-tpl1674121024.png           这是脚本内所识别的目标图</span><br></pre></td></tr></table></figure>
+
+<h2 id="report-py脚本组成分析"><a href="#report-py脚本组成分析" class="headerlink" title="report.py脚本组成分析"></a>report.py脚本组成分析</h2><p><code>airtest.report.report</code>作为主要的解析日志并生成报告的模块，以下尝试解读它：</p>
+<h3 id="全局变量-x2F-常量"><a href="#全局变量-x2F-常量" class="headerlink" title="全局变量&#x2F;常量"></a>全局变量&#x2F;常量</h3><ul>
+<li><code>_paragraph_re</code></li>
+<li><code>ap</code></li>
+<li><code>args</code></li>
+<li><code>DEFAULT_LOG_DIR</code></li>
+<li><code>DEFAULT_LOG_FILE</code></li>
+<li><code>STATIC_DIR</code></li>
+<li><code>HTML_FILE</code></li>
+<li><code>HTML_TPL</code></li>
+<li><code>LOGGING</code></li>
+</ul>
+<h3 id="全局函数"><a href="#全局函数" class="headerlink" title="全局函数"></a>全局函数</h3><ul>
+<li><p><code>get_parger</code></p>
+<ol>
+<li>接收唯一参数，类型为<code>argparse.ArgumentParser()</code></li>
+<li>使用python内置模块argparse，可给当前python文件添加一系列命令行可选参数，返回修改后的参数本身  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">report [script] [--outfile] [--static_root] [--log_root] [--recort] [--export] [--lang] [--plugins] [--report]</span><br></pre></td></tr></table></figure>
+  由此可见，report支持命令行直接调用，但不建议这样做。</li>
+</ol>
+</li>
+<li><p><code>main</code></p>
+<ol>
+<li>接收唯一参数，类型为<code>argparse.ArgumentParser().parse_args()</code>。</li>
+<li>解析传入的命令行参数的具体的值，传入<code>LogToHtml</code>类，进行初始化</li>
+<li>调用<code>LogToHtml</code>类中的<code>report</code>方法，生成html报告</li>
+</ol>
+</li>
+<li><p><code>nl2br</code></p>
+</li>
+<li><p><code>simple_report</code>（重点）</p>
+<ol>
+<li>接受四个参数：<ol>
+<li><code>filepath</code></li>
+<li><code>logpath</code></li>
+<li><code>logfile</code></li>
+<li><code>output</code></li>
+</ol>
+</li>
+<li>对参数进行检验，必要时重新赋值，传入<code>LogToHtml</code>类，进行初始化</li>
+<li>调用<code>LogToHtml</code>类中的<code>report</code>方法，生成html报告</li>
+</ol>
+</li>
+<li><p><code>timefmt</code></p>
+</li>
+</ul>
+<h3 id="全局类LogToHtml"><a href="#全局类LogToHtml" class="headerlink" title="全局类LogToHtml"></a>全局类<code>LogToHtml</code></h3><ul>
+<li><code>__init__</code><ul>
+<li><code>log</code></li>
+<li><code>script_root</code></li>
+<li><code>script_name</code></li>
+<li><code>log_root</code></li>
+<li><code>static_root</code></li>
+<li><code>test_result</code></li>
+<li><code>run_start</code></li>
+<li><code>run_end</code></li>
+<li><code>export_dir</code></li>
+<li><code>logfile</code></li>
+<li><code>lang</code></li>
+</ul>
+</li>
+<li><code>init_plugin_modules</code> plugins的加载是以<code>__import__()</code>方式导入的，目前仅支持两个插件<code>poco.utils.airtest.report 和 airtest_selenium.report</code>    </li>
+<li><code>_load</code><ul>
+<li>读取<code>log_path</code>日志文件，将每行的日志文本以json的格式存入<code>log</code></li>
+</ul>
+</li>
+<li><code>_analyse</code><ol>
+<li>准备<code>steps , children_steps</code>两个空列表</li>
+<li>读取<code>log</code>，补充这两个空列表（log文件的组成详见<a href="">airtest_log源码解读</a>）<ol>
+<li><code>log[&#39;depth&#39;]</code>                             -&gt; <code>depth</code></li>
+<li><code>log[&#39;data&#39;][&#39;start_time&#39;] or log[&#39;time&#39;]</code> -&gt; <code>run_start</code></li>
+<li><code>log[&#39;time&#39;]</code>                              -&gt; <code>run_end</code></li>
+<li><code>depth==0</code>                                 -&gt; <code>steps.append(log)</code></li>
+<li><code>depth==1</code>                                 -&gt; <code>step[&#39;__children__&#39;] = children_steps , steps.append(deepcopy(log)) , children_steps = []</code></li>
+<li><code>depth==其它</code>                              -&gt; <code>children_steps.insert(0, log)</code></li>
+</ol>
+</li>
+<li>读取<code>steps</code>，迭代并传入方法<code>_translated_step()</code>，将结果存入<code>translated_steps</code>列表</li>
+<li>校验<code>translated_steps</code>最后一个元素的调用栈属性<code>traceback</code>并修改测试状态属性<code>test_result</code>后返回该列表</li>
+</ol>
+</li>
+<li><code>_translate_step</code><ol>
+<li>初始化7个变量：<ol>
+<li><code>name</code>       &lt;- <code>step[&#39;data&#39;][&#39;name&#39;]</code></li>
+<li><code>title</code>      &lt;- <code>_translate_title(name, step)</code></li>
+<li><code>code</code>       &lt;- <code>_translate_code(step)</code></li>
+<li><code>desc</code>       &lt;- <code>_translate_desc(step, code)</code></li>
+<li><code>screen</code>     &lt;- <code>_translate_screen(step, code)</code></li>
+<li><code>info</code>       &lt;- <code>_translate_info(step)</code></li>
+<li><code>assertion</code>  &lt;- <code>_translate_assertion(step)</code></li>
+</ol>
+</li>
+<li>将变量所得的值存入<code>translated</code>字典并返回</li>
+</ol>
+</li>
+<li><code>_translate_title</code><ol>
+<li>维护一个<code>title</code>字典，将<code>name</code>属性转换为合适的<code>title</code>属性再返回，比如<code>touch</code> 对应 <code>Touch</code></li>
+</ol>
+</li>
+<li><code>_translate_code</code><ol>
+<li>若<code>step[&#39;tag&#39;] != &#39;function&#39;</code>，立即返回<code>None</code></li>
+<li>初始化最终的返回值<code>code = &#123;&quot;name&quot;:step[&#39;data&#39;][&#39;name&#39;], &quot;args&quot;:[]&#125;</code></li>
+<li>将<code>step[&#39;data&#39;][&#39;call_args&#39;]</code>的键值对全加进<code>args</code></li>
+<li><code>for _, arg in enumerate(args)</code>（<code>arg</code>须符合<code>arg[&#39;value&#39;]</code> 为 <code>dict</code>，且<code>arg[&#39;value&#39;].get[&#39;__class__&#39;] == &#39;Template&#39;</code>）:<ol>
+<li>若<code>export_dir</code>不为空，则把<code>arg[&#39;value&#39;][&#39;filename&#39;]</code>对应的图片复制到<code>script_root</code>下，并设置&#96;arg[‘image’]为该图片的路径</li>
+<li>尝试获取<code>filename</code>对应的图片的分辨率并赋值给’arg[resolution’]&#96;</li>
+</ol>
+</li>
+<li>返回<code>code</code></li>
+</ol>
+</li>
+<li><code>_translate_desc</code><ol>
+<li>维护两个字典<code>desc , desc_zh</code>，将<code>name</code>属性转换为合适的描述文本再返回，比如<code>exists</code> 对应 <code>&#39;断言目标图片不存在&#39;</code></li>
+<li>当<code>step[&#39;tag&#39;] != &#39;function&#39;</code>时，立即返回<code>None</code></li>
+</ol>
+</li>
+<li><code>_translate_screen</code><ol>
+<li>若<code>step[&#39;tag&#39;] not in [&#39;function&#39;, &#39;info&#39;]</code>或者<code>step.get(&#39;__children__&#39;)</code>，立即返回<code>None</code></li>
+<li>初始化最终的返回值<code>screen = &#123; &#39;src&#39;:None, &#39;rect&#39;:[], &#39;pos&#39;:[], &#39;vector&#39;:[], &#39;confidence&#39;:None &#125;</code></li>
+<li>中途视情况(<code>try_log_screen , _cv_match , touch , assert_exists , wait , exists , swipe</code>)增加多个属性<code>resolution, _filepath, thumbnail</code>，并完善<code>screen</code></li>
+<li>返回<code>screen</code></li>
+</ol>
+</li>
+<li><code>_translate_info</code><ul>
+<li>尝试获取<code>step</code>中的<code>traceback , log</code>信息并返回</li>
+</ul>
+</li>
+<li><code>_translate_assertion</code><ul>
+<li>尝试获取<code>step[&#39;data&#39;][&#39;call_args&#39;][&#39;msg&#39;]</code>信息并返回</li>
+</ul>
+</li>
+<li><code>get_thumbnail</code></li>
+<li><code>get_small_name</code></li>
+<li><code>is_pos</code></li>
+<li><code>div_rect</code></li>
+<li><code>_render</code><ul>
+<li>接受三个参数：模板位置 输出位置 数据</li>
+<li>用<code>jinja2</code>渲染html<a href="">详见如何使用jinja2渲染html</a>，并将渲染后的内容存入变量<code>html</code>并返回<a href="">详见airtest-html报告模板源码解读</a></li>
+<li>传入的数据正是<code>report_data</code>所返回的<code>data</code>,将<code>**data</code>作为参数传给<code>_render()</code></li>
+</ul>
+</li>
+<li><code>copy_tree</code></li>
+<li><code>_make_export_dir</code><ol>
+<li>设置<strong>报告文件夹</strong>的名字为<script name>.log</li>
+<li>在导出路径<code>export_dir</code>下新建这个<strong>报告文件夹</strong></li>
+<li>无视错误，<code>shutil.rmtree</code>删除<strong>报告文件夹</strong>下的所有文件</li>
+<li>复制<code>script_root</code>下的目录树到<strong>报告文件夹</strong></li>
+<li>复制<code>log_root</code>下的目录树到<strong>报告文件夹</strong></li>
+<li>复制<code>static_root</code>下的css/fonts/image/js四个目录到<strong>报告文件夹</strong>，如果不是http开头的话</li>
+<li>返回<strong>报告文件夹</strong>路径、<strong>报告文件夹</strong>下的日志路径</li>
+</ol>
+</li>
+<li><code>get_relative_log</code></li>
+<li><code>get_console</code></li>
+<li><code>readFile</code></li>
+<li><code>report_data</code><ol>
+<li>接受两个参数<code>output_file , record_list</code></li>
+<li>调用方法<code>_load()</code>，将<code>log_path</code>的日志内容存储到<code>log</code>列表中</li>
+<li>调用方法<code>_analyse()</code>，将<code>log</code>解析为可渲染的<code>dict</code>，存入变量<code>steps</code></li>
+<li>调用<code>get_script_info(script_path)</code>获取脚本内容存入变量<code>info</code><a href="">详见airtest-cli模块源码解读</a></li>
+<li>当录像列表不为空，视情况将录像分配给指定的导出路径或默认日志目录，并将拼接好的路径存入变量<code>records</code></li>
+<li>处理<code>static_root</code>的分隔符使之合法，比如<code>\\ --&gt; /</code>、如有必要则末尾添加<code>/</code></li>
+<li>设置<code>output_file</code>为默认或者指定的传入参数</li>
+<li>新建一个字典变量<code>data</code>，它包含13个键，赋值了对应的值后，<code>return data</code><ol>
+<li><code>&#39;steps&#39; : steps</code></li>
+<li><code>&#39;name&#39; : self.script_root</code></li>
+<li><code>&#39;scale&#39; : self.scale</code></li>
+<li><code>&#39;test_result&#39;:self.test_result</code></li>
+<li><code>&#39;run_end&#39; : self.run_end</code></li>
+<li><code>&#39;run_start&#39; : self.run_start</code></li>
+<li><code>&#39;static_root&#39; : self.static_root</code></li>
+<li><code>&#39;lang&#39; : self.lang</code></li>
+<li><code>&#39;records&#39; : records</code></li>
+<li><code>&#39;info&#39; : info</code></li>
+<li><code>&#39;log&#39; : self.get_relative_log(output_file)</code></li>
+<li><code>&#39;console&#39; : self.get_console(output_file)</code></li>
+<li><code>&#39;data&#39; : json.dumps(data).replace(&quot;&lt;&quot;, &quot;&#123;&quot;),replace(&quot;&gt;&quot;, &quot;&#125;&quot;)</code><blockquote>
+<p>注意到<code>data</code>的<code>log console data</code>这三个键有所不同，说明如下：</p>
+<ol>
+<li><code>log</code>，日志的相对路径</li>
+<li><code>console</code>，尝试读取与导出报告同目录下的<code>console.txt</code>文件里的内容并返回</li>
+<li><code>data</code>，将以上包含12个键的字典中的<code>&quot;&lt;&gt;&quot;</code>对应替换为<code>&quot;&#123;&#125;&quot;</code>，避免被认为是特殊用法</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><code>report</code><ul>
+<li>接受四个参数<ul>
+<li>self 类实例引用</li>
+<li><code>template_name</code> </li>
+<li><code>output_file</code></li>
+<li><code>record_list</code></li>
+</ul>
+</li>
+<li>涉及5个类变量属性：<ul>
+<li><code>script_root</code></li>
+<li><code>script_name</code></li>
+<li><code>log_root</code></li>
+<li><code>static_root</code></li>
+<li><code>export_dir</code></li>
+</ul>
+</li>
+<li>涉及3个类方法属性：<ul>
+<li><code>_render</code></li>
+<li><code>_make_export_dir</code></li>
+<li><code>report_data</code><br>  代码内容：</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>生成报告页面，可以加入自定义数据并且重写</li>
+<li>根据<code>sript_root</code>拆分成路径和<code>sript_name</code></li>
+<li>如果<code>export_dir</code>不为空：<ol>
+<li>调用方法<code>_make_export_dir()</code>准备导出的路径文件夹和相关资源</li>
+<li>设置<code>output_file</code>路径</li>
+<li><code>static_root</code>不是http开头的话，设置为"static/"</li>
+</ol>
+</li>
+<li>如果<code>record_list</code>不为空，将<code>log_root</code>下的<code>mp4</code>文件的路径全部保存到列表</li>
+<li>调用方法<code>report_data()</code>，将返回的值存入<code>data</code></li>
+<li>调用方法<code>_render()</code>，将html模板<code>template_name</code>、<code>output_file</code>和<code>**data</code>作为参数传入，返回方法返回的值</li>
+</ol>
+</li>
+</ul>
+<h1 id="简要总结"><a href="#简要总结" class="headerlink" title="简要总结"></a>简要总结</h1><ul>
+<li>airtest将日志的每一行视为一个step，但与报告中的一个步骤却又有所不同，后者由单个或者一组step组成</li>
+<li>每一个step，都有<code>depth</code>属性，它代表调用先后的关系，较大值从属于较小值。<ul>
+<li><code>depth</code>为0的单独视为报告中的一个步骤</li>
+<li>连续的<code>depth</code>作为一组，视为报告中的一个步骤（比如<code>depth=3,depth=2,depth=1</code>的为一组，并以<code>depth=1</code>的step作为代表）</li>
+</ul>
+</li>
+<li>step的数据结构和报告中的一个步骤所需要的数据结构显然不会一样：<ul>
+<li>通过_translate_step()方法来进行转换</li>
+<li>转换后的数据结构可直接被jinja2模板所使用</li>
+</ul>
+</li>
+</ul>
+<h1 id="bug"><a href="#bug" class="headerlink" title="bug"></a>bug</h1><p>其中airtest.report.report.py line526<br>getattr(ST,"LOG_DIR",DEFAULT_LOG_DIR)，仅仅判断ST有没有LOG_DIR属性，而没有管它的值是否为None，从而导致不能直接调用这个接口<br>否则会出现，拼接路径的报错，提示某参数不能为None</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">【源码】airtest  report模块</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">maxL</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-04-04 08:00:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/04/04/Airtest/【源码】airtest  report模块/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/airtest/">#airtest</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/">#源码解读</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E6%8A%A5%E5%91%8A%E7%94%9F%E6%88%90/">#报告生成</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/04/07/Airtest/%E3%80%90%E6%BA%90%E7%A0%81%E3%80%91airtest%20log%E6%A8%A1%E5%9D%97/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">【源码】airtest log模块</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/01/02/Web%E5%BC%80%E5%8F%91/%E3%80%90%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E3%80%91jekyll/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">【学习记录】jekyll</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+                <div class="comment-container">
+                    
+<div class="comments-container">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="twikoo-container">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/twikoo@1.6.16/dist/twikoo.all.min.js"></script>
+        <div id="twikoo-comment"></div>
+        <script data-pjax>
+          function loadTwikoo() {
+            twikoo.init({
+              el: '#twikoo-comment',
+              envId: 'blog-comments-7g8rgfsf1481a6f9',
+              region: 'ap-guangzhou',
+              lang: 'zh-CN' || 'zh-CN'
+            });
+          }
+
+          if ('true' === 'true') {
+            const loadTwikooTimeout = setTimeout(() => {
+              loadTwikoo();
+              clearTimeout(loadTwikooTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadTwikoo);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#airtest-report%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB"><span class="nav-number">1.</span> <span class="nav-text">airtest_report源码阅读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#report-py%E8%84%9A%E6%9C%AC%E7%BB%84%E6%88%90%E5%88%86%E6%9E%90"><span class="nav-number">1.1.</span> <span class="nav-text">report.py脚本组成分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F-x2F-%E5%B8%B8%E9%87%8F"><span class="nav-number">1.1.1.</span> <span class="nav-text">全局变量&#x2F;常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.2.</span> <span class="nav-text">全局函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E7%B1%BBLogToHtml"><span class="nav-number">1.1.3.</span> <span class="nav-text">全局类LogToHtml</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2024
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">maxL</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://pages.github.com/">
+                
+                    本站由 <span class="tooltip" data-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

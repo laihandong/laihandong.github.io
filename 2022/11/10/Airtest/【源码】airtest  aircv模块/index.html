@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="maxL">
+    
+    <title>
+        
+            【源码】airtest  aircv模块 |
+        
+        Infinite
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"laihandong.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#003366","logo":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","favicon":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","avatar":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"以有涯随无涯，殆已！","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"twikoo","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":"blog-comments-7g8rgfsf1481a6f9","region":"ap-guangzhou","version":"1.6.16"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["追梦人"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Infinite
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >
+                                更新日志
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog">更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">【源码】airtest  aircv模块</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">maxL</span>
+                            
+                                <span class="author-label">追梦人</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2022-11-10 08:00:00</span>
+        <span class="mobile">2022-11-10 08:00</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2024-03-13 00:18:44</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E6%BA%90%E7%A0%81/">源码</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/python/">python</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/airtest/">airtest</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/">源码解读</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/">图像识别</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>3.9k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>14 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h1 id="aircv简介"><a href="#aircv简介" class="headerlink" title="aircv简介"></a>aircv简介</h1><p>aircv作为airtest的图像识别模块，封装了多种图像识别算法，可分为模板匹配和基于特征点的图像识别两类，各有优缺点，旨在根据不同场合使用不同算法。</p>
+<ul>
+<li><p>模板匹配：</p>
+<ul>
+<li>无法跨分辨率识别 </li>
+<li>一定有相对较佳的结果（即使目标不存在） </li>
+<li>方法名：tpl</li>
+</ul>
+</li>
+<li><p>基于特征点的图像识别：</p>
+<ul>
+<li>能跨分辨率识别 </li>
+<li>不一定有匹配结果 （特征点过少时）</li>
+<li>方法名：kaze、brisk、akaze、orb、sift、surf、brief</li>
+</ul>
+</li>
+<li><p>aircv图像识别模块下包含11个脚本：</p>
+<ul>
+<li><p><code>aircv.py</code>：</p>
+<ul>
+<li>包含基于opencv封装的基本的图片处理函数</li>
+</ul>
+</li>
+<li><p><code>cal_confidence.py</code>：</p>
+<ul>
+<li>封装了两个计算2张图片相似度的通用函数</li>
+</ul>
+</li>
+<li><p><code>error.py</code>：</p>
+<ul>
+<li>基于Exception，封装了自定义错误类</li>
+</ul>
+</li>
+<li><p><code>keypoint_base.py</code>：<font color=red size=4>重要</font></p>
+<ul>
+<li>基于KAZE算法思想</li>
+<li>封装了基类KeypointMatching</li>
+</ul>
+</li>
+<li><p><code>keypoint_matching.py</code>：</p>
+<ul>
+<li>继承KeypointMatching</li>
+<li>继续封装了4个类KAZE&#x2F;AKAZE&#x2F;BRISK&#x2F;ORB</li>
+<li>基于opencv，无需opencv-contrib module</li>
+</ul>
+</li>
+<li><p><code>keypoint_matching_contrib.py</code>：</p>
+<ul>
+<li>继承KeypointMatching</li>
+<li>封装了3个类BRIEF&#x2F;SIFT&#x2F;SURF</li>
+<li>需要opencv-contrib</li>
+</ul>
+</li>
+<li><p><code>multiscale_template_matching.py</code>：<font color=red size=4>重要</font></p>
+<ul>
+<li>基于多尺度模板匹配思想</li>
+<li>封装了基类MultiScaleTemplateMatching</li>
+<li>继承MultiScaleTemplateMatching，封装了类MultiScaleTemplateMatching<strong>Pre</strong>（基于截图预设条件）</li>
+</ul>
+</li>
+<li><p><code>sift.py</code>：<font color=red size=4>重要</font></p>
+<ul>
+<li>基于sift算法思想</li>
+<li>封装了一系列基于特征点的图像识别算法</li>
+</ul>
+</li>
+<li><p><code>template.py</code>：</p>
+<ul>
+<li>以<strong>函数</strong>形式封装模板匹配算法的一般流程</li>
+</ul>
+</li>
+<li><p><code>template_matching.py</code>：</p>
+<ul>
+<li>以<strong>类</strong>的形式封装模板匹配算法的一般流程</li>
+</ul>
+</li>
+<li><p><code>utils.py</code>：</p>
+<ul>
+<li>封装了图像预处理和工具类的公共函数</li>
+<li>包含打印运行时间的修饰器函数、检查图像识别的输入的函数、图片数据互转sting&#x2F;cv2格式&#x2F;np的函数以及压缩图片质量保存的函数</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="图像识别算法剖析"><a href="#图像识别算法剖析" class="headerlink" title="图像识别算法剖析"></a>图像识别算法剖析</h1><p>该部分将详细解析aircv图像识别模块下的算法的详细结构，以及对其进行合理评估和改进</p>
+<h2 id="模板匹配"><a href="#模板匹配" class="headerlink" title="模板匹配"></a>模板匹配</h2><p>在<code>template.py</code>和<code>template_matching.py</code>中，airtest对模板匹配的流程进行了代码实现，两者的流程基本一致，只不过后者在前者基础上，封装成了<code>TemplateMatching</code>类</p>
+<h3 id="脚本结构"><a href="#脚本结构" class="headerlink" title="脚本结构"></a>脚本结构</h3><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">|-template.py</span><br><span class="line">|--def find_template(im_source, im_search, threshold, rgb)</span><br><span class="line">|--def find_all_template(im_source, im_search, threshold, rgb, max_count)</span><br><span class="line">|--def _get_confidence_from_matrix(im_source, im_search, max_loc, max_val, w, h, rgb)</span><br><span class="line">|--def _get_template_result_matrix(im_source, im_search)</span><br><span class="line">|--def _get_target_rectangle(left_top_pos, w, h)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">|-template_matching.py</span><br><span class="line">|--class TemplateMatching(属性: im_source, im_search, threshold, rgb )</span><br><span class="line">|----def find_all_results(self)</span><br><span class="line">|----def find_best_result(self)</span><br><span class="line">|----def _get_confidence_from_matrix(self, max_loc, max_val, w, h)</span><br><span class="line">|----def _get_template_result_matrix(self)</span><br><span class="line">|----def _get_target_rectangle(self, left_top_pos, w, h)</span><br></pre></td></tr></table></figure>
+
+<h3 id="template-py"><a href="#template-py" class="headerlink" title="template.py"></a>template.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot; 功能：在源图像上以模板匹配方式，求得目标图像结果</span></span><br><span class="line"><span class="string">    参数：</span></span><br><span class="line"><span class="string">      源图像：屏幕代理（默认minicap）的截图的格式</span></span><br><span class="line"><span class="string">      目标图像：cv2的图片处理格式</span></span><br><span class="line"><span class="string">      置信度阈值：float 筛选阈值，默认为0.8，即置信度超过0.8的结果会被认为是目标结果</span></span><br><span class="line"><span class="string">      彩色模式：bool 可以进行彩色权识别</span></span><br><span class="line"><span class="string">    主流程-1（find_template）：</span></span><br><span class="line"><span class="string">      检验图像输入</span></span><br><span class="line"><span class="string">      计算模板匹配的结果矩阵</span></span><br><span class="line"><span class="string">      依次获取匹配结果</span></span><br><span class="line"><span class="string">      求取可信度</span></span><br><span class="line"><span class="string">      求取识别位置      </span></span><br><span class="line"><span class="string">    主流程-2（find_all_template）：</span></span><br><span class="line"><span class="string">      和主流程-1类似，只不过将第4、第5步重复执行，获取多个匹配结果</span></span><br><span class="line"><span class="string">      貌似源代码中将屏蔽已经去除的最优结果这步给注释掉了</span></span><br><span class="line"><span class="string">      同样的，循环主体把匹配结果矩阵放在了外面，又不做最优结果的屏蔽，那么每次的最优结果append进临时存储列表，最终列表中会出现全部相同的值了</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>    </span><br></pre></td></tr></table></figure>
+<h4 id="主流程"><a href="#主流程" class="headerlink" title="主流程"></a>主流程</h4><ul>
+<li><p>1.检验图像输入</p>
+<ul>
+<li>参数：<ul>
+<li>源图像</li>
+<li>目标图像</li>
+</ul>
+</li>
+<li>流程：<ul>
+<li>对比两者的宽、高</li>
+<li>目标图像的宽、高，均不得超过源图像</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>2.计算模板匹配的结果矩阵</p>
+<ul>
+<li>参数：<ul>
+<li>源图像</li>
+<li>目标图像</li>
+</ul>
+</li>
+<li>流程：<ul>
+<li>断言源、目标图像为np.ndarray格式</li>
+<li>将源、目标图像的颜色空间由BGR转为GRAY</li>
+<li>使用<strong>cv2.matchTemplate</strong>进行模板匹配</li>
+<li>返回模板匹配的结果矩阵</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>3.依次获取匹配结果</p>
+<ul>
+<li>参数：<ul>
+<li>上一步的结果矩阵</li>
+</ul>
+</li>
+<li>流程：<ul>
+<li>使用<strong>cv2.minMaxLoc</strong>获取 最值以及最值的索引</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>4.求取可信度</p>
+<ul>
+<li>参数：<ul>
+<li>源图像</li>
+<li>目标图像</li>
+<li>结果矩阵的最大值</li>
+<li>结果矩阵的最大值的索引</li>
+<li>目标图像的宽</li>
+<li>目标图像的高</li>
+<li>彩色模式</li>
+</ul>
+</li>
+<li>流程：<ul>
+<li>若开启彩色模式：<ul>
+<li>以最大值的索引为左上角，在源图像上裁取和目标图像同大小的矩阵</li>
+<li>使用<strong>np.clip cv2.cvtColor cv2.copyMakeBorder cv2.split</strong>对图像进行预处理，得到三张不同通道的图片</li>
+<li>分别使用<strong>cv2.matchTemplate</strong>进行模板匹配，比较三个结果矩阵中的最大值，返回最小值</li>
+</ul>
+</li>
+<li>若不开启：<ul>
+<li>返回结果矩阵的最大值（没错，直接返回了传进来的参数&#x2F;笑哭）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>5.求取识别位置  </p>
+<ul>
+<li>参数：<ul>
+<li>结果矩阵的最大值的索引</li>
+<li>目标图像的宽</li>
+<li>目标图像的高</li>
+</ul>
+</li>
+<li>流程：<ul>
+<li>以最大值的索引为左上角</li>
+<li>以目标图像的宽、高为识别结果的矩形框的宽、高</li>
+<li>返回<strong>识别结果</strong>的矩形框的四个角点和中心点</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="关键函数"><a href="#关键函数" class="headerlink" title="关键函数"></a>关键函数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cv2.matchTemplate 只能处理灰度图</span></span><br><span class="line">MatchTemplate(InputArray image, InputArray templ, OutputArray result, <span class="built_in">int</span> method);</span><br><span class="line"></span><br><span class="line">        image：输入一个待匹配的图像，支持8U或者32F，大小(H, W)，用I表示</span><br><span class="line"></span><br><span class="line">        templ：输入一个模板图像，与image相同类型，大小(h, w)，用T表示</span><br><span class="line"></span><br><span class="line">        result：输出保存结果的矩阵，32F类型，大小是(H-h+<span class="number">1</span>, W-w+<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        method：要使用的数据比较方法，有六种</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">np.clip </span><br><span class="line">cv2.cvtColor </span><br><span class="line">cv2.copyMakeBorder </span><br><span class="line">cv2.split</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>cv2.matchTemplate常用的数据比较方法：</p>
+<ul>
+<li>方法匹配方法：TM_SQDIFF</li>
+<li>归一化方差匹配方法：TM_SQDIFF_NORMED,</li>
+<li>相关性匹配方法：TM_CCORR,</li>
+<li>归一化的互相关匹配方法：TM_CCORR_NOMED,</li>
+<li>相关系数匹配方法：TM_CCOEFF,</li>
+<li>归一化的相关系数匹配方法：TM_CCOEFF_NORMED<br>$$R&#x3D;\frac{\sum_{x^{‘},y^{‘}}T^{‘}(x^{‘},y^{‘})·I^{‘}(x+x^{‘},y+y^{‘})}{\sqrt{\sum_{x^{‘},y^{‘}}T^{‘}(x^{‘},y^{‘})^2·\sum_{x^{‘},y^{‘}}I^{‘}(x+x^{‘},y+y^{‘})^2}}$$</li>
+</ul>
+</li>
+<li><p>np.clip</p>
+</li>
+<li><p>cv2.cvtColor </p>
+</li>
+<li><p>cv2.copyMakeBorder </p>
+</li>
+<li><p>cv2.split</p>
+</li>
+</ul>
+<h3 id="template-matching-py"><a href="#template-matching-py" class="headerlink" title="template_matching.py"></a>template_matching.py</h3><p>其实就是把template.py的方法，用类封装管理起来了<br>find_best_result()写的代码文档中，什么“基于kaze进行图像识别xxxx”，扯淡。一个模板匹配怎么和基于特征点混在一起，再说也没看到代码有相关内容</p>
+<h2 id="多尺度模板匹配"><a href="#多尺度模板匹配" class="headerlink" title="多尺度模板匹配"></a>多尺度模板匹配</h2><p>cv2的matchTemplate模板匹配应用范围很局限，多尺度的模板匹配可以考虑到图像旋转变形等多种情况，在脚本<code>multiscale_template_matching.py</code>中对此进行了实现</p>
+<h3 id="脚本结构-1"><a href="#脚本结构-1" class="headerlink" title="脚本结构"></a>脚本结构</h3><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">|-class MultiScaleTemplateMatching（属性：im_source, im_search, threshold, rgb, record_pos, resolution, scale_max, scale_step）</span><br><span class="line">|--def find_all_results</span><br><span class="line">|--def find_best_result</span><br><span class="line">|--def _get_confidence_from_matrix(self, max_loc, w, h)</span><br><span class="line">|--def _get_target_rectangle(self, left_top_pos, w, h)</span><br><span class="line">|--def _resize_by_ratio(src, templ, ratio, templ_min, src_max)</span><br><span class="line">|--def _org_size(max_loc, w, h, tr, sr)</span><br><span class="line">|--def multi_scale_search(self, org_src, org_templ, templ_min, src_max, ratio_min, ratio_max, step, threshold, time_out)</span><br><span class="line"></span><br><span class="line">|-class MultiScaleTemplateMatching**Pre**（继承 MultiScaleTemplateMatching）</span><br><span class="line">|--重写 def find_best_result</span><br><span class="line">|--新增 def _get_ratio_scope(self, src, templ, resolution)</span><br><span class="line">|--新增 def get_predict_point(self, record_pos, screen_resolution)</span><br><span class="line">|--新增 def _get_area_scope(self, src, templ, record_pos, resolution)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot; 功能：在源图像上以多尺度模板匹配方式，求得最适合的目标图像结果</span></span><br><span class="line"><span class="string">    参数：</span></span><br><span class="line"><span class="string">      源图像：屏幕代理（默认minicap）的截图的格式</span></span><br><span class="line"><span class="string">      目标图像：cv2的图片处理格式</span></span><br><span class="line"><span class="string">      置信度阈值：float 筛选阈值，默认为0.8，即置信度超过0.8的结果会被认为是目标结果</span></span><br><span class="line"><span class="string">      彩色模式：bool 可以进行彩色权识别</span></span><br><span class="line"><span class="string">      record_pos：记录点</span></span><br><span class="line"><span class="string">      resolution：分辨率 基于分辨率的多尺度</span></span><br><span class="line"><span class="string">      scale_max：源图像的预设最大尺寸</span></span><br><span class="line"><span class="string">      scale_step：步长</span></span><br><span class="line"><span class="string">    主流程-1（MultiScaleTemplateMatching.find_best_result）：</span></span><br><span class="line"><span class="string">      检验图像输入</span></span><br><span class="line"><span class="string">      计算模板匹配的结果矩阵</span></span><br><span class="line"><span class="string">      求取识别位置      </span></span><br><span class="line"><span class="string">    主流程-2（MultiScaleTemplateMatching**Pre**.find_best_result）：</span></span><br><span class="line"><span class="string">      检查截图分辨率（没有则立即返回None）（整体和主流程-1类似，不过基于分辨率做了更多处理）</span></span><br><span class="line"><span class="string">      检验图像输入</span></span><br><span class="line"><span class="string">      计算模板匹配的结果矩阵</span></span><br><span class="line"><span class="string">      求取识别位置</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>    </span><br></pre></td></tr></table></figure>
+<h3 id="class-MultiScaleTemplateMatching"><a href="#class-MultiScaleTemplateMatching" class="headerlink" title="class MultiScaleTemplateMatching"></a>class MultiScaleTemplateMatching</h3><h4 id="主流程-1"><a href="#主流程-1" class="headerlink" title="主流程"></a>主流程</h4><ul>
+<li><p>1.检验图像输入：</p>
+<ul>
+<li>参数：<ul>
+<li>源图像</li>
+<li>目标图像</li>
+</ul>
+</li>
+<li>流程：<ul>
+<li>对比两者的宽、高</li>
+<li>目标图像的宽、高，均不得超过源图像</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>2.计算模板匹配的结果矩阵：</p>
+<ul>
+<li>参数：<ul>
+<li>源图像</li>
+<li>目标图像</li>
+<li>最小比例</li>
+<li>最大比例</li>
+<li>目标图像最小尺寸  </li>
+<li>源图像预设最大尺寸</li>
+<li>步长</li>
+<li>识别阈值</li>
+<li>最大等待时间</li>
+</ul>
+</li>
+<li>流程：<ul>
+<li>将源图像、目标图像处理成灰度图</li>
+<li>进行多尺度搜索（参数：源图像的灰度图，目标图像的灰度图，最小比例，最大比例，目标图像预设最小尺寸，源图像预设最大尺寸，步长，识别阈值，等待时间上限）  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">主流程：</span><br><span class="line">  新建临时存储变量（最大值、最大值对应的信息、初始化比例=最小比例、开始时间）</span><br><span class="line">  </span><br><span class="line">  循环（当前比例 &lt; 最大比例）：</span><br><span class="line">    <span class="number">1.</span>按比例缩放源、目标图像：</span><br><span class="line">        根据源图像预设最大尺寸求`源图像的缩放比例` = <span class="built_in">min</span>(预设最大尺寸/源图像尺寸的长边, <span class="number">1.0</span>) ，使用**cv2.resize**缩放源图像</span><br><span class="line">        获取缩放后的源图像、目标图像的高、宽</span><br><span class="line">        比较对应边的比例 （目标图像的高/源图像的高 &gt; 目标图像的宽/源图像的宽 ？）</span><br><span class="line">        根据 传入参数`比例`和上一步的比较结果，求取目标图像的缩放比例 = （源图像的高或宽*比例）/目标图像的高或宽，使用**cv2.resize**缩放目标图像</span><br><span class="line">        返回（缩放后的源图像、缩放后的目标图像、源图像的缩放比例、目标图像的缩放比例）</span><br><span class="line">    <span class="number">2.</span>如果缩放后的目标图像的短边 &gt; 目标图像预设最小尺寸：</span><br><span class="line">        使用cv2.TM_CCOEFF_NORMED标准和cv2.resize在源图像进行模板匹配</span><br><span class="line">        更新临时存储变量：最大值 = 匹配结果矩阵中的最大值、 最大值对应的信息 = （当前比例， 结果矩阵最大值， 结果矩阵最大值的索引， 当前目标图像的宽和高，当前源图像的缩放比例，当前目标图像的缩放比例）</span><br><span class="line">        如果 （达到时间上限） 并且 （当前结果矩阵最大值 &gt; 识别阈值）：</span><br><span class="line">          根据源图像缩放的比例，获取结果矩阵最大值对应原来的索引，以及源图像原来的宽、高 </span><br><span class="line">          根据TM_CCOEFF_NORMED标准，求取置信度</span><br><span class="line">          如果（置信度 &gt; 识别阈值），返回（置信度，最大值的索引，源图像的原始宽和高，当前比例）</span><br><span class="line">    <span class="number">3.</span>比例 = 比例 + 步长</span><br><span class="line">  </span><br><span class="line">  如果 （临时存储变量的信息仍为空）：</span><br><span class="line">    返回 空空空（代表无结果）</span><br><span class="line">  重复循环主题步骤<span class="number">2.</span>最后条件分支里的所有内容</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>3.求取识别位置</p>
+<ul>
+<li>参数：<ul>
+<li>结果矩阵的最大值的索引</li>
+<li>源图像的宽</li>
+<li>源图像的高</li>
+<li>置信度</li>
+</ul>
+</li>
+<li>流程：<ul>
+<li>获取目标区域（矩形框）</li>
+<li>拼接返回匹配结果的格式（矩形框中心坐标，矩形框（4个角点），置信度）</li>
+<li>比较置信度和识别阈值，决定返回None或结果</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="关键函数-1"><a href="#关键函数-1" class="headerlink" title="关键函数"></a>关键函数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cv2.resize</span><br><span class="line">TM_CCOEFF_NORMED标准计算置信度</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="class-MultiScaleTemplateMatchingPre"><a href="#class-MultiScaleTemplateMatchingPre" class="headerlink" title="class MultiScaleTemplateMatchingPre"></a>class MultiScaleTemplateMatching<strong>Pre</strong></h3><p>与基类区别在于，针对源图像的分辨率做了特殊处理</p>
+<h4 id="主流程-2"><a href="#主流程-2" class="headerlink" title="主流程"></a>主流程</h4><ul>
+<li><p>1.检验图像输入</p>
+<ul>
+<li>参数：<ul>
+<li>源图像</li>
+<li>目标图像</li>
+<li>分辨率</li>
+</ul>
+</li>
+<li>流程：<ul>
+<li>获取源图像、目标图像的宽高</li>
+<li>对应比较两者的宽、高，目标图像的宽、高均不能超过源图像</li>
+<li>比较分辨率、目标图像的宽、高</li>
+<li>对应比较两者的宽、高，分辨率的宽、高均不能小于目标图像</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>2.计算模板匹配的结果矩阵</p>
+<ul>
+<li>参数：<ul>
+<li>源图像</li>
+<li>目标图像</li>
+<li>记录点</li>
+<li>分辨率</li>
+</ul>
+</li>
+<li>流程： <ul>
+<li>设置临时变量 偏差量</li>
+<li>预测搜索区域：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">流程：</span><br><span class="line">  获取源图像、目标图像、分辨率的宽、高</span><br><span class="line">  获取 预测的目标点：</span><br><span class="line">    依据 记录点 和 分辨率，获得预测的目标点（策略是个一元一次方程，系数为记录点，自变量为分辨率，因变量就是预测点）</span><br><span class="line">  以预测的目标点为圆心，获取 预测的范围：</span><br><span class="line">    策略是 范围半径 = （源图像宽、高 乘以 目标图像宽、高）/分辨率宽、高</span><br><span class="line">          范围半径 = 预设的偏差量</span><br><span class="line">          以两者最大的为准</span><br><span class="line">    依据范围半径，返回预测范围的左上角点、右下角点、预测范围的分辨率</span><br></pre></td></tr></table></figure></li>
+<li>裁剪源图像的预测区域：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">流程：</span><br><span class="line">  获取源图像的高、宽</span><br><span class="line">  获取在源图像中实际的有效区域：没有负数、源图像有足够空间</span><br><span class="line">  返回剪切后的图像（函数代码文档里写了还要返回截取偏移，但没有）</span><br></pre></td></tr></table></figure></li>
+<li>再次检查裁剪后的源图像的尺寸是否大于目标图像</li>
+<li>获取预测缩放比的范围<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">流程：</span><br><span class="line">  获取源图像、目标图像、分辨率的高、宽</span><br><span class="line">  策略：</span><br><span class="line">    比例<span class="number">1</span>： 取最值 = 裁剪的源图像的宽、高 / 预测范围的分辨率的宽、高</span><br><span class="line">    比例<span class="number">2</span>： 取最大值 = 目标图像的宽、高 / 裁剪的源图像的宽、高</span><br><span class="line">    最终缩放范围 = 比例<span class="number">1</span> 乘以 比例<span class="number">2</span></span><br><span class="line">    返回 最终范围 与 [步长, <span class="number">0.99</span>] 的交集</span><br></pre></td></tr></table></figure></li>
+<li>将裁剪后的源图像、目标图转为灰度图</li>
+<li>多尺度匹配搜索（裁剪后的源图像的灰度图，目标图的灰度图，缩放范围，步长，阈值，等待时间&#x3D;1s），对返回的最大值的索引加上预测区域的左上角点坐标</li>
+<li>获取最终识别区域框</li>
+<li>拼接识别结果</li>
+<li>比较置信度和识别阈值，返回None或结果</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>3.求取识别位置</p>
+</li>
+</ul>
+<h4 id="关键函数-2"><a href="#关键函数-2" class="headerlink" title="关键函数"></a>关键函数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">分辨率：宽x高</span><br><span class="line">图像：高，宽，[通道]</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="基于特征点的图像识别"><a href="#基于特征点的图像识别" class="headerlink" title="基于特征点的图像识别"></a>基于特征点的图像识别</h2><p>在<code>keypoint_base.py</code>,<code>keypoint_matching.py</code>,<code>keypoint_matching_contrib.py</code>中，airtest基于KAZE的思想，用代码对其进行了基本实现，并封装成了一个<code>KeypointMatching</code>基类。在此基础上，以不同改进的迭代器，继承封装了多个方法类。</p>
+<h3 id="脚本结构-2"><a href="#脚本结构-2" class="headerlink" title="脚本结构"></a>脚本结构</h3><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">|-keypoint_base.py（对KAZE算法用代码实现，封装为类 Keypointmatching）</span><br><span class="line">|--def find_best_result(self)</span><br><span class="line">|--def show_match_image(self)</span><br><span class="line">|--def _cal_confidence(self, resize_img)</span><br><span class="line">|--def init_detector(self)</span><br><span class="line">|--def get_keypoints_and_descriptors(self, image)</span><br><span class="line">|--def match_keypoints(self, des_sch, des_src)</span><br><span class="line">|--def _get_key_points(self)</span><br><span class="line">|--def _handle_two_good_points(self, kp_sch, kp_src, good)</span><br><span class="line">|--def _handle_three_good_points(self, kp_sch, kp_src, good)</span><br><span class="line">|--def _many_good_pts(self, kp_sch, kp_src, good)</span><br><span class="line">|--def _get_origin_result_with_two_points(self, pts_sch1, pts_sch2, pts_src1, pts_src2)</span><br><span class="line">|--def _find_homography(self, sch_pts, src_pts)</span><br><span class="line">|--def _target_error_check(self, w_h_range)</span><br><span class="line"></span><br><span class="line">|-keypoint_matching.py（继承`Keypointmatching`基类，封装了四个类）</span><br><span class="line">|--类 KAZEMatching：原封不动的继承Keypointmatching</span><br><span class="line">|--类 BRISKMatching：仅将detector改为了`cv2.BRISK_create`</span><br><span class="line">|--类 AKAZEMatching：仅将detector改为了`cv2.AKAZE_create`</span><br><span class="line">|--类 ORBMatching：仅将detector改为了`cv2.ORB_create`</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">|-keypoint_matching_contrib.py（继承`Keypointmatching`基类，封装了三个类（用到了opencv的拓展包，所以要对opencv做版本检查））</span><br><span class="line">|--类 BRIEFMatching：仅新增了star_detector、brief_extractor</span><br><span class="line">|--类 SIFTmatching：仅修改了detector，新增了matcher</span><br><span class="line">|--类 SUFMatching：仅修改了detector，新增了matcher</span><br></pre></td></tr></table></figure>
+
+<h3 id="Keypointmatching类解析"><a href="#Keypointmatching类解析" class="headerlink" title="Keypointmatching类解析"></a>Keypointmatching类解析</h3><ul>
+<li><p>类属性</p>
+<ul>
+<li>im_source 源图像</li>
+<li>im_search 目标图像</li>
+<li>threshold 识别阈值</li>
+<li>rgb 彩色识别模式</li>
+</ul>
+</li>
+<li><p>主流程：</p>
+<ul>
+<li>检查图像是否正常<ul>
+<li>参数：<ul>
+<li>源图像</li>
+<li>目标图像</li>
+</ul>
+</li>
+<li>流程：<ul>
+<li>判断源图像、目标图像不为空、且.any()返回True，来确定图像有效性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>获取特征点集合<ul>
+<li>参数：</li>
+<li>流程：</li>
+</ul>
+</li>
+<li>匹配特征点对</li>
+<li>提取识别区域</li>
+<li>计算识别区域的可信度</li>
+</ul>
+</li>
+<li><p>其他函数:</p>
+<ul>
+<li>show_match_image：将主流程走了一遍之后，把特征点连线渲染出来，生成一张图片</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">【源码】airtest  aircv模块</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">maxL</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2022-11-10 08:00:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2022/11/10/Airtest/【源码】airtest  aircv模块/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/python/">#python</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/airtest/">#airtest</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/">#源码解读</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/">#图像识别</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2022/11/10/%E3%80%90%E8%B8%A9%E5%9D%91%EF%BC%88%E8%A7%A3%E5%86%B3%EF%BC%89%E3%80%91%E9%87%8D%E7%BC%96%E8%AF%91OpenCV/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">【踩坑（解决）】重编译OpenCV</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2022/11/08/%E3%80%90%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E3%80%91git/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">【学习记录】git</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+                <div class="comment-container">
+                    
+<div class="comments-container">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="twikoo-container">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/twikoo@1.6.16/dist/twikoo.all.min.js"></script>
+        <div id="twikoo-comment"></div>
+        <script data-pjax>
+          function loadTwikoo() {
+            twikoo.init({
+              el: '#twikoo-comment',
+              envId: 'blog-comments-7g8rgfsf1481a6f9',
+              region: 'ap-guangzhou',
+              lang: 'zh-CN' || 'zh-CN'
+            });
+          }
+
+          if ('true' === 'true') {
+            const loadTwikooTimeout = setTimeout(() => {
+              loadTwikoo();
+              clearTimeout(loadTwikooTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadTwikoo);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#aircv%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">aircv简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB%E7%AE%97%E6%B3%95%E5%89%96%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">图像识别算法剖析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E5%8C%B9%E9%85%8D"><span class="nav-number">2.1.</span> <span class="nav-text">模板匹配</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="nav-number">2.1.1.</span> <span class="nav-text">脚本结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#template-py"><span class="nav-number">2.1.2.</span> <span class="nav-text">template.py</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E6%B5%81%E7%A8%8B"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">主流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">关键函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#template-matching-py"><span class="nav-number">2.1.3.</span> <span class="nav-text">template_matching.py</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%B0%BA%E5%BA%A6%E6%A8%A1%E6%9D%BF%E5%8C%B9%E9%85%8D"><span class="nav-number">2.2.</span> <span class="nav-text">多尺度模板匹配</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC%E7%BB%93%E6%9E%84-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">脚本结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#class-MultiScaleTemplateMatching"><span class="nav-number">2.2.2.</span> <span class="nav-text">class MultiScaleTemplateMatching</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E6%B5%81%E7%A8%8B-1"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">主流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%87%BD%E6%95%B0-1"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">关键函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#class-MultiScaleTemplateMatchingPre"><span class="nav-number">2.2.3.</span> <span class="nav-text">class MultiScaleTemplateMatchingPre</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E6%B5%81%E7%A8%8B-2"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">主流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%87%BD%E6%95%B0-2"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">关键函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%89%B9%E5%BE%81%E7%82%B9%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB"><span class="nav-number">2.3.</span> <span class="nav-text">基于特征点的图像识别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC%E7%BB%93%E6%9E%84-2"><span class="nav-number">2.3.1.</span> <span class="nav-text">脚本结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Keypointmatching%E7%B1%BB%E8%A7%A3%E6%9E%90"><span class="nav-number">2.3.2.</span> <span class="nav-text">Keypointmatching类解析</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2024
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">maxL</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://pages.github.com/">
+                
+                    本站由 <span class="tooltip" data-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="maxL">
+    
+    <title>
+        
+            【源码】airtest整体框架总结 |
+        
+        Infinite
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"laihandong.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#003366","logo":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","favicon":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","avatar":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"以有涯随无涯，殆已！","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"twikoo","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":"blog-comments-7g8rgfsf1481a6f9","region":"ap-guangzhou","version":"1.6.16"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["追梦人"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Infinite
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >
+                                更新日志
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog">更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">【源码】airtest整体框架总结</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">maxL</span>
+                            
+                                <span class="author-label">追梦人</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2022-11-08 08:00:00</span>
+        <span class="mobile">2022-11-08 08:00</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2024-03-13 00:18:44</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E6%BA%90%E7%A0%81/">源码</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/airtest/">airtest</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/UI%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/">UI测试框架</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.9k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>7 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h1 id="简略介绍"><a href="#简略介绍" class="headerlink" title="简略介绍"></a>简略介绍</h1><p>airtest是由网易airtest团队制作的一个<strong>跨平台</strong>的UI测试框架，也是他们开源的自动化测试框架之一（还有Poco框架、airtest- selenium框架、airtestIDE编辑器、deviceFarm集群方案和airlab云测平台）。</p>
+<p>airtest框架是跨平台（移动端App和Windows端）的、基于opencv图像识别的、用python开发的UI自动化测试框架，不过由于识别概率的机制和项目开发过程中UI界面频繁迭代，脚本迭代成本较高。</p>
+<h1 id="框架梳理"><a href="#框架梳理" class="headerlink" title="框架梳理"></a>框架梳理</h1><p>airtest是可以用pip install方法下载到本地进行开发的，包下面分为5个大类，分别是：aircv、cli、core、report和utils</p>
+<h2 id="aircv"><a href="#aircv" class="headerlink" title="aircv"></a>aircv</h2><h3 id="模板匹配："><a href="#模板匹配：" class="headerlink" title="模板匹配："></a>模板匹配：</h3><p>无法跨分辨率识别<br>一定有相对较佳的结果（即时不存在）<br>方法名：tpl</p>
+<h3 id="基于特征点的图像识别："><a href="#基于特征点的图像识别：" class="headerlink" title="基于特征点的图像识别："></a>基于特征点的图像识别：</h3><p>能跨分辨率识别<br>不一定有匹配结果<br>方法名：kaze、brisk、akaze、orb、sift、surf、brief</p>
+<h3 id="脚本功能介绍"><a href="#脚本功能介绍" class="headerlink" title="脚本功能介绍"></a>脚本功能介绍</h3><p>aircv图像识别模块包含11个脚本，功能分别如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">aircv.py</span><br><span class="line">包含基于opencv封装的基本的图片处理函数，比如根据图片路径，将图片读取为cv2的图片处理格式imread()、类似的还有旋转图片、裁剪等等</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cal_confidence.py</span><br><span class="line">封装了两个计算<span class="number">2</span>张图片相似度的函数（给其他地方调用的）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">error.py</span><br><span class="line">airtest的图像识别错误类库（基于Exception），比如FileNotExistError</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">keypoint_base.py</span><br><span class="line">封装了基于特征点的识别基类KeypointMatching，日志中的方法名叫KAZE</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">keypoint_matching.py</span><br><span class="line">继承KeypointMatching，继续封装了<span class="number">4</span>个类KAZE/AKAZE/BRISK/ORB（基于opencv），无需opencv-contrib module</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">keypoint_matching_contrib.py</span><br><span class="line">同样继承KeypointMatching，封装了<span class="number">3</span>个类BRIEF/SIFT/SURF（基于opencv-contrib），需要注意的是opencv surf算法因为专利问题，需要（设置cmake 参数nonfree为true）重新编译opencv&amp;opencv-contrib的源代码才可以引用</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">multiscale_template_matching.py</span><br><span class="line">封装了多尺度模板匹配MultiScaleTemplateMatching和基于截图预设条件的多尺度模板匹配</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sift.py</span><br><span class="line">封装了sift图像识别算法</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">template.py</span><br><span class="line">封装了模板匹配算法</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">template_matching.py</span><br><span class="line">同样封装了模板匹配，不过是以类的形式封装</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">utils.py</span><br><span class="line">图像识别的公共函数，包含打印运行时间的修饰器函数、检查图像识别的输入的函数、图片数据互转sting/cv2格式/np的函数以及压缩图片质量保存的函数</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="cli"><a href="#cli" class="headerlink" title="cli"></a>cli</h2><p>这个是命令行模块</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">__main__.py 总入口</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">info.py 获取脚本信息，比如基本名、作者等</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">parser.py 命令行参数解析（妹搞明白。加了许多自定义的命令行参数名和解析方式）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">runner.py 通过命令行运行测试，基于unitest.TestCase（还没用过，不是很清楚）</span><br></pre></td></tr></table></figure>
+
+<h2 id="core"><a href="#core" class="headerlink" title="core"></a>core</h2><p>这个是所谓的核心模块，包含了对各大平台（win&#x2F;android&#x2F;linux&#x2F;ios）的封装接口，以及一些通用的接口</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line">core.android 安卓模块</span><br><span class="line">    cap_methods 屏幕截图模块</span><br><span class="line">        base_cap.py 封装了屏幕截图的基类</span><br><span class="line">        adbcap.py 基于adb的屏幕截图基类，也是所有屏幕方法的基类（均将画面流转为cv2的图像对象）</span><br><span class="line">        minicap.py 基于minicap截图类（minicap是开源项目STF中的一个工具，负责屏幕显示）</span><br><span class="line">        javacap.py 通过yosemite.apk，基于socket通讯的截图类。性能比minicap差，但兼容性好。</span><br><span class="line">        screen_proxy.py 屏幕截图代理，自动选择以上截图方法中的一个</span><br><span class="line">        </span><br><span class="line">    static 静态资源文件夹</span><br><span class="line">        adb 各个系统下的adb文件（linux\linux_arm\mac\windows）</span><br><span class="line">        apks Yosemite.apk等airteset包</span><br><span class="line">        stf_libs 各个CPU框架下的libs（长知识了）</span><br><span class="line">        </span><br><span class="line">    touch_methods 触摸模块</span><br><span class="line">        base_touch.py 触摸操作的基类，基于down、up、sleep和move四个基类的各种方法</span><br><span class="line">        maxtouch.py 基于maxtouch的触摸操作（是airtest自己开发的，我目前不清楚这些概念）</span><br><span class="line">        minitouch.py 基于minitouch的触摸操作（当前设备支持openstf的minitouch时则使用minitouch，否则使用maxtouch）</span><br><span class="line">        touch_proxy.py 屏幕触摸代理</span><br><span class="line">        </span><br><span class="line">    adb.py </span><br><span class="line">    adb类，基于adb命令封装出的各种方法（需要学习adb命令大全）</span><br><span class="line">    </span><br><span class="line">    android.py </span><br><span class="line">    安卓设备类，封装了操作安卓的很多方法</span><br><span class="line">    </span><br><span class="line">    constant.py</span><br><span class="line">    定义各种常量，比如默认adb的服务端口地址、各adb的路径、ip的正则匹配规则等等</span><br><span class="line">    </span><br><span class="line">    ime.py</span><br><span class="line">    输入法类（没用过不了解）</span><br><span class="line">    </span><br><span class="line">    recorder.py</span><br><span class="line">    录屏类</span><br><span class="line">    </span><br><span class="line">    rotation.py</span><br><span class="line">    屏幕方向监控类</span><br><span class="line">    </span><br><span class="line">    yosemite.py</span><br><span class="line">    Yosemite类，用于javacap/录屏/yosemite输入法</span><br><span class="line">    </span><br><span class="line">core.ios IOS模块</span><br><span class="line">    iproxy 各系统（windows和mac）下的iproxy工具文件夹，iproxy能实现设备与电脑的端口映射</span><br><span class="line">    </span><br><span class="line">    constant.py</span><br><span class="line">    定义各种常量</span><br><span class="line">    </span><br><span class="line">    elements_type.py</span><br><span class="line">    只包含了一个元素类型列表（不清楚如何使用）</span><br><span class="line">    </span><br><span class="line">    instruct_cmd.py</span><br><span class="line">    用于连接iphone</span><br><span class="line">    </span><br><span class="line">    ios.py</span><br><span class="line">    IOS类，封装了很多操作IOS设备的方法</span><br><span class="line">    </span><br><span class="line">    minicap.py</span><br><span class="line">    ios-minicap截图类MinicapIOS</span><br><span class="line">    </span><br><span class="line">    relay.py</span><br><span class="line">    iphone的端口转发（高级东西，现在我还不了解）</span><br><span class="line">    </span><br><span class="line">    rotation.py</span><br><span class="line">    屏幕方向监控类</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">core.linux:</span><br><span class="line">    linux.py </span><br><span class="line">    linux类，封装了部份操作方法（好少啊，是没写完吗？还是linux如此高效？）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">core.win:</span><br><span class="line">    ctypesinput.py</span><br><span class="line">    封装了windows鼠标、键盘输入（长见识了）</span><br><span class="line">    </span><br><span class="line">    screen.py</span><br><span class="line">    windows截图</span><br><span class="line">    </span><br><span class="line">    win.py</span><br><span class="line">    Windows类，封装了各种操作方法</span><br><span class="line">    </span><br><span class="line">api.py</span><br><span class="line">airtest的核心api（通用的），比如初始化设备、连接设备、返回设备实例、常用的手势函数（点、滑等）、对app的常用操作函数（安装、卸载等）、对设备的常用操作函数（唤醒、返回主页面等）、还有命令行</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cv.py</span><br><span class="line">Airtest封装的图像识别机制，包含Template类用于方便地调用函数、还有其他循环识别机制、日志保存和截图等等</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">device.py</span><br><span class="line">封装了测试设备基类（看不懂，大受震撼）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">error.py</span><br><span class="line">airtest通用的错误类库，比如AirtestError</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">helper.py</span><br><span class="line">工具文件，包含全局变量G（封装为了类）、报告的log()、引用路径增加using()等实现</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">settings.py</span><br><span class="line">包含了一些全局设置，封装成Settings类。有是否debug、日志路径、日志文件名.格式、默认的识别算法、阈值（决定是否输出识别成功）、识别间隔延迟时间等等</span><br></pre></td></tr></table></figure>
+
+<h2 id="report"><a href="#report" class="headerlink" title="report"></a>report</h2><p>这个是报告模块</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">css 资源文件夹</span><br><span class="line"></span><br><span class="line">fonts 资源文件夹</span><br><span class="line"> </span><br><span class="line">image 资源文件夹</span><br><span class="line"></span><br><span class="line">js 资源文件夹</span><br><span class="line"></span><br><span class="line">log_template.html</span><br><span class="line">报告html模板</span><br><span class="line"></span><br><span class="line">report.py</span><br><span class="line">报告实现（也是最近需要为工作准备的内容之一，前端<span class="number">3</span>剑客）</span><br></pre></td></tr></table></figure>
+
+<h2 id="utils"><a href="#utils" class="headerlink" title="utils"></a>utils</h2><p>这个是工具模块</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">apkparser apk解析https://github.com/androguard/androguard</span><br><span class="line">    apk.py </span><br><span class="line">    封装了apk相关的方法（长知识，大受震撼）</span><br><span class="line">    </span><br><span class="line">    axmlparser.py </span><br><span class="line">    封装了AXMLParser类，解析apk中的AndroidManifest.xml</span><br><span class="line">    </span><br><span class="line">    axmlprinter.py</span><br><span class="line">    封装了AXMLPrinter类，解析编译之后的AndroidManifest文件格式工具</span><br><span class="line">    </span><br><span class="line">    bytecode.py</span><br><span class="line">    </span><br><span class="line">    stringblock.py</span><br><span class="line">    </span><br><span class="line">    typeconstants.py</span><br><span class="line">    </span><br><span class="line">compat.py</span><br><span class="line">python2/python3兼容逻辑，路径和名称之类的</span><br><span class="line"></span><br><span class="line">logger.py</span><br><span class="line">初始化日志，基于logging</span><br><span class="line"></span><br><span class="line">logwraper.py</span><br><span class="line">封装AirtestLogger类，airtest日志和装饰类</span><br><span class="line"></span><br><span class="line">nbsp.py</span><br><span class="line">非阻塞流读取（听不懂，大受震撼）</span><br><span class="line"></span><br><span class="line">resolution.py</span><br><span class="line">用于存放一些计算函数，比如图像适配、搜索区域预测</span><br><span class="line"></span><br><span class="line">retry.py</span><br><span class="line">重试装饰器函数（函数导致致命错误，会在一定时间内重新运行该函数）</span><br><span class="line"></span><br><span class="line">safesocket.py</span><br><span class="line">封装了SafeSocket类，实现socket安全收/发通信（不懂，这也是最近要去学的--网络通信编程）</span><br><span class="line"></span><br><span class="line">selenium_proxy.py</span><br><span class="line">基于Selenium Chrome类的二次封装（不会用）</span><br><span class="line"></span><br><span class="line">snippet.py</span><br><span class="line">零散函数存放地</span><br><span class="line"></span><br><span class="line">threadsafe.py</span><br><span class="line">封装了ThreadSafeIter类，使迭代器/生成器线程安全（看不懂，如何让线程变安全的？）</span><br><span class="line"></span><br><span class="line">transform.py</span><br><span class="line">Template（airtest自己独有的一个重要概念/类）类中target_pos的实现（点击图片点<span class="number">9</span>个点位中的某个--airtest的一个机制）</span><br><span class="line"></span><br><span class="line">version.py</span><br><span class="line">获取/显示airtest版本</span><br></pre></td></tr></table></figure>
+
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">【源码】airtest整体框架总结</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">maxL</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2022-11-08 08:00:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2022/11/08/Airtest/【源码】airtest 整体框架总结/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/airtest/">#airtest</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/UI%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/">#UI测试框架</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2022/11/08/%E3%80%90%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E3%80%91svn/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">【学习记录】svn</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2022/11/08/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/%E3%80%90%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5%E3%80%91%20Unity/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">【工程实践】Unity使用</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+                <div class="comment-container">
+                    
+<div class="comments-container">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="twikoo-container">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/twikoo@1.6.16/dist/twikoo.all.min.js"></script>
+        <div id="twikoo-comment"></div>
+        <script data-pjax>
+          function loadTwikoo() {
+            twikoo.init({
+              el: '#twikoo-comment',
+              envId: 'blog-comments-7g8rgfsf1481a6f9',
+              region: 'ap-guangzhou',
+              lang: 'zh-CN' || 'zh-CN'
+            });
+          }
+
+          if ('true' === 'true') {
+            const loadTwikooTimeout = setTimeout(() => {
+              loadTwikoo();
+              clearTimeout(loadTwikooTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadTwikoo);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E7%95%A5%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">简略介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A1%86%E6%9E%B6%E6%A2%B3%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">框架梳理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#aircv"><span class="nav-number">2.1.</span> <span class="nav-text">aircv</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E5%8C%B9%E9%85%8D%EF%BC%9A"><span class="nav-number">2.1.1.</span> <span class="nav-text">模板匹配：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%89%B9%E5%BE%81%E7%82%B9%E7%9A%84%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB%EF%BC%9A"><span class="nav-number">2.1.2.</span> <span class="nav-text">基于特征点的图像识别：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.1.3.</span> <span class="nav-text">脚本功能介绍</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cli"><span class="nav-number">2.2.</span> <span class="nav-text">cli</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#core"><span class="nav-number">2.3.</span> <span class="nav-text">core</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#report"><span class="nav-number">2.4.</span> <span class="nav-text">report</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#utils"><span class="nav-number">2.5.</span> <span class="nav-text">utils</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2024
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">maxL</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://pages.github.com/">
+                
+                    本站由 <span class="tooltip" data-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

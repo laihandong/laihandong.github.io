@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="maxL">
+    
+    <title>
+        
+            【学习记录】移动WEB学开发 |
+        
+        Infinite
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"laihandong.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#003366","logo":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","favicon":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","avatar":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"以有涯随无涯，殆已！","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"twikoo","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":"blog-comments-7g8rgfsf1481a6f9","region":"ap-guangzhou","version":"1.6.16"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["追梦人"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Infinite
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >
+                                更新日志
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog">更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">【学习记录】移动WEB学开发</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">maxL</span>
+                            
+                                <span class="author-label">追梦人</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-06-17 09:05:04</span>
+        <span class="mobile">2023-06-17 09:05</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2024-03-13 00:18:02</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E7%A7%BB%E5%8A%A8WEB/">移动WEB</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>3.1k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>11 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h1 id="平面转换"><a href="#平面转换" class="headerlink" title="平面转换"></a>平面转换</h1><p>属性名：<code>transform</code></p>
+<p>作用：为元素<strong>添加动态</strong>效果，一般与<strong>过渡</strong><code>transition</code>配合使用</p>
+<p>概念：改变盒子在<strong>平面</strong>内的<strong>形态</strong>（位移、旋转、缩放、倾斜）</p>
+<blockquote>
+<p>平面转换又叫<code>2D</code>转换</p>
+</blockquote>
+<h2 id="平移"><a href="#平移" class="headerlink" title="平移"></a>平移</h2><p>属性：<code>transform: translate(X轴移动距离,Y轴移动距离)</code></p>
+<p>取值：</p>
+<ul>
+<li>像素单位数值</li>
+<li>百分比（参照<strong>盒子自身</strong>尺寸计算结果）</li>
+<li>正负均可</li>
+</ul>
+<p>技巧：</p>
+<ul>
+<li><code>translate()</code>只写<strong>一个值</strong>，表示沿着<strong>X</strong>轴移动</li>
+<li><strong>单独</strong>设置某个轴，可以使用<code>translateX() / translateY()</code></li>
+</ul>
+<h2 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h2><p>属性：<code>transform: rotate(旋转角度)</code></p>
+<p>角度单位：<code>deg</code></p>
+<p>技巧：</p>
+<ul>
+<li>正负均可</li>
+<li>取正代表顺时针；反之同理</li>
+</ul>
+<h2 id="缩放"><a href="#缩放" class="headerlink" title="缩放"></a>缩放</h2><p>属性：</p>
+<ul>
+<li><code>transform: scale(缩放倍数)</code></li>
+<li><code>transform: scale(X轴缩放倍数, Y轴缩放倍数)</code></li>
+</ul>
+<p>技巧：</p>
+<ul>
+<li>通常，只为<code>scale()</code>设置<strong>一个</strong>值，表示X轴和Y轴<strong>等比例</strong>缩放</li>
+<li>取值<strong>大于1</strong>表示<strong>放大</strong>，取值小于1表示缩小</li>
+</ul>
+<blockquote>
+<p>给<code>width height</code>添加过渡变化，达不到<strong>从中心</strong>等比例缩放的效果</p>
+</blockquote>
+<h2 id="倾斜"><a href="#倾斜" class="headerlink" title="倾斜"></a>倾斜</h2><p>属性：<code>transform: skew(角度度数)</code></p>
+<h2 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h2><p>渐变是<strong>多个颜色</strong>逐渐变化的效果，一般用于设置<strong>盒子背景</strong></p>
+<p>分类：</p>
+<ul>
+<li><strong>线性</strong>渐变</li>
+<li><strong>径向</strong>渐变</li>
+</ul>
+<p><strong>线性渐变</strong>：</p>
+<p>属性：<code>background-image: linear-gradient(渐变方向, 颜色1 终点位置, 颜色2 终点位置, ...)</code></p>
+<p>取值：</p>
+<ul>
+<li>渐变方向：<strong>可选</strong><ul>
+<li><code>to 方位名词</code></li>
+<li>角度度数</li>
+</ul>
+</li>
+<li>终点位置：<strong>可选</strong><ul>
+<li>百分比</li>
+</ul>
+</li>
+</ul>
+<p><strong>径向渐变</strong>：</p>
+<p>属性：<code>background-image: radial-gradient(半径 at 圆心位置, 颜色1 终点位置, 颜色2 终点位置, ...)</code></p>
+<p>取值：</p>
+<ul>
+<li>半径可以是<strong>2</strong>个，代表<strong>椭圆</strong></li>
+<li>圆心位置取值：像素单位数值 &#x2F; 百分比 &#x2F; 方位名词</li>
+</ul>
+<p>常用场景：给按钮添加高光效果</p>
+<h2 id="特殊转换"><a href="#特殊转换" class="headerlink" title="特殊转换"></a>特殊转换</h2><h3 id="改变转换原点"><a href="#改变转换原点" class="headerlink" title="改变转换原点"></a>改变转换原点</h3><p>默认情况下，转换原点是盒子中心点</p>
+<p>属性：<code>transform-origin: 水平原点位置 垂直原点位置</code></p>
+<p>取值：</p>
+<ul>
+<li>方位名词（<code>left top right bottom center</code>）</li>
+<li>像素单位数值</li>
+<li>百分比</li>
+</ul>
+<h3 id="多重转换"><a href="#多重转换" class="headerlink" title="多重转换"></a>多重转换</h3><p>旋转会<strong>改变坐标轴向</strong></p>
+<p>多重转换时，以<strong>第一种</strong>转换形态的坐标轴为准</p>
+<p>具有<strong>层叠性</strong>，以最后写的<code>transform</code>属性为准</p>
+<blockquote>
+<p>类似轮子在平地滚动的效果：先平移再旋转–<code>transform: translate() rotate()</code></p>
+</blockquote>
+<h1 id="空间转换"><a href="#空间转换" class="headerlink" title="空间转换"></a>空间转换</h1><p>空间：是从坐标轴角度定义的<strong>X、Y和Z</strong>三条坐标轴构成了一个立体空间，Z轴位置与视线方向相同</p>
+<h2 id="平移-1"><a href="#平移-1" class="headerlink" title="平移"></a>平移</h2><p>属性名：<code>transform:</code>	</p>
+<p>属性值：</p>
+<ul>
+<li><code>translate3d(x,y,z)</code></li>
+<li><code>translateX()</code></li>
+<li><code>translateY()</code></li>
+<li><code>translateZ()</code></li>
+</ul>
+<h2 id="视距"><a href="#视距" class="headerlink" title="视距"></a>视距</h2><p>作用：指定了观察者与z&#x3D;0平面的距离，为元素添加透视效果（近大远小、近实远虚）</p>
+<p>属性名：<code>perspective</code></p>
+<p>属性值：（添加给<strong>直接父级</strong>，取值范围800<code>px</code>-1200<code>px</code>）</p>
+<blockquote>
+<p><code>translate3d()</code>必须有三个值，否则<strong>不生效</strong></p>
+<p>空间转换也叫<code>3D</code>转换</p>
+<p>电脑默认是平面，无法观察 Z 轴<strong>平移</strong>效果，没有则可以不设置视距</p>
+</blockquote>
+<h2 id="旋转-1"><a href="#旋转-1" class="headerlink" title="旋转"></a>旋转</h2><p>属性：</p>
+<ul>
+<li><p><code>transform: rotateX(角度度数)</code>  </p>
+</li>
+<li><p><code>transform: rotateY(角度度数)</code>  </p>
+</li>
+<li><p><code>transform: rotateZ(角度度数)</code>  </p>
+</li>
+<li><p><code>transform: rotate3d(x, y, z, 角度读书)</code>：用来设置<strong>自定义旋转轴</strong>的位置即旋转的角度  ，<code>x, y, z 属于 [0~1]</code></p>
+</li>
+</ul>
+<blockquote>
+<p>左手法则 - 根据旋转方向确定取值正负</p>
+</blockquote>
+<h2 id="立体呈现"><a href="#立体呈现" class="headerlink" title="立体呈现"></a>立体呈现</h2><p>作用：设置元素的<strong>子</strong>元素是位于**<code>3D</code>**空间还是平面中</p>
+<p>属性名：<code>transform-style</code></p>
+<p>属性值：（添加给<strong>直接父级</strong>）</p>
+<ul>
+<li><code>flat</code>（子级处于平面中）</li>
+<li><code>preserve-3d</code>（子级处于空间中）</li>
+</ul>
+<p>使用步骤：</p>
+<ol>
+<li>直接<strong>父</strong>元素添加<code>transform-style: preserve-3d</code></li>
+<li><strong>子</strong>级添加<code>position</code>定位，并<strong>统一参照</strong>位置</li>
+<li>调整子盒子的位置（位移或平移）</li>
+</ol>
+<blockquote>
+<p>立方体的每个面都有独立的坐标轴，互不影响</p>
+</blockquote>
+<h2 id="缩放-1"><a href="#缩放-1" class="headerlink" title="缩放"></a>缩放</h2><p>作用：让<code>3D</code>盒子<strong>本身</strong>进行缩放</p>
+<p>属性名：<code>transform</code></p>
+<p>属性值：</p>
+<ul>
+<li><code>scaleX(值)</code></li>
+<li><code>scaleY(值)</code></li>
+<li><code>scaleZ(值)</code></li>
+<li><code>scale3d(值, 值, 值)</code></li>
+</ul>
+<h1 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h1><p>定义：实现<strong>多个</strong>状态间的变化过程，且<strong>过程可控</strong>（重复播放、最终画面、是否暂停）</p>
+<p>属性名：<code>animation</code></p>
+<p>属性值：<code>动画名称 动画时长 速度曲线 延迟时间 重复次数 动画方向 执行完毕时状态</code>（复合属性）</p>
+<p>注意：</p>
+<ul>
+<li>动画名称和动画时长<strong>必须</strong>赋值</li>
+<li>取值<strong>不分先后</strong>顺序</li>
+<li>如果有两个时间值，第一个时间值表示动画时长，第二个时间表示延迟时间</li>
+</ul>
+<p><strong>速度曲线</strong>：</p>
+<ul>
+<li><code>linear</code>（匀速）</li>
+<li><code>steps(整数)</code>（分步&#x2F;逐帧动画–配合精灵图实现<em>精灵动画</em>）</li>
+<li>加速、减速等<strong>不常用</strong></li>
+</ul>
+<p><strong>延迟时间</strong>：</p>
+<ul>
+<li>数字+<code>s</code>（表示动画不会立即开始，延迟一定时间后开始）</li>
+</ul>
+<p>重复次数：</p>
+<ul>
+<li>整数（表示动画的重放播放次数）</li>
+<li><code>infinite</code>（表示无限循环播放）</li>
+</ul>
+<p><strong>动画方向</strong>：</p>
+<ul>
+<li><code>alternate</code>（表示反向播放动画–从最终状态开始，到开始状态结束）</li>
+</ul>
+<p><strong>执行完毕时状态</strong>：</p>
+<ul>
+<li><code>forwards</code>（完毕时停在<strong>最终</strong>状态）</li>
+<li><code>backwards</code>（完毕时停在开始状态–默认）</li>
+</ul>
+<p><strong>实现步骤</strong>：</p>
+<ol>
+<li><p>定义动画（两种方式）：</p>
+<ul>
+<li><pre><code class="css">@keyframes 动画名称 &#123;
+    form &#123;&#125;
+    to &#123;&#125;
+&#125;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">+ ```css</span><br><span class="line">  @keyframes 动画名称 &#123;</span><br><span class="line">      0% &#123;&#125;</span><br><span class="line">      10% &#123;&#125;</span><br><span class="line">      ...</span><br><span class="line">      100% &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">  /* 百分比表示动画时长的占比 */</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>使用动画</p>
+<p><code>animation: 动画名称 动画持续时长;</code></p>
+</li>
+</ol>
+<p><strong>拆分属性</strong>：</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://images-1258290850.cos.ap-guangzhou.myqcloud.com/blog/202306172107639.webp"
+                      alt="image-20230617210742231"
+                ></p>
+<blockquote>
+<p>动画属性支持<strong>同时设置多组</strong>，用逗号隔开即可</p>
+<p>动画属性支持省略动画初始状态（即<code>to</code>、<code>0%</code>的部分代码）</p>
+</blockquote>
+<h1 id="移动适配"><a href="#移动适配" class="headerlink" title="移动适配"></a>移动适配</h1><p>分辨率分为<strong>硬件分辨率</strong>和逻辑分辨率，做<strong>适配</strong>是以<strong>逻辑分辨率</strong>（设备屏幕<strong>缩放后</strong>的分辨率）为<strong>基础</strong></p>
+<h2 id="视口"><a href="#视口" class="headerlink" title="视口"></a>视口</h2><p>作用：显示HTML网页的区域，用来约束HTML尺寸</p>
+<p>标签：<code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></p>
+<p>属性值：</p>
+<ul>
+<li><code>width=device-width</code>（表示视口宽度 &#x3D; 设备宽度）</li>
+<li><code>initial-scale=1.0</code>（不缩放）</li>
+</ul>
+<blockquote>
+<p>手机屏幕尺寸不同，网页宽度均为100%；网页的宽度和逻辑分辨率的尺寸相同</p>
+</blockquote>
+<h2 id="二倍图"><a href="#二倍图" class="headerlink" title="二倍图"></a>二倍图</h2><p>概念：设计稿里面每个元素的尺寸的倍数</p>
+<p>作用：防止图片在高分辨率屏幕下模糊失真</p>
+<blockquote>
+<p><strong>现阶段</strong>设计稿**参考<code>iPhone6/7/8</code><strong>，设备宽度</strong>375<code>px</code>**产出设计稿，二倍图设计稿尺寸：750<code>px</code></p>
+<p>使用二倍图时，需要将设计稿切换到<code>2x</code>模式</p>
+</blockquote>
+<h2 id="适配方案"><a href="#适配方案" class="headerlink" title="适配方案"></a>适配方案</h2><p>宽度适配：宽度自适应</p>
+<ul>
+<li>百分比布局</li>
+<li><code>Flex</code>布局</li>
+</ul>
+<p>等比适配：宽高等比缩放</p>
+<ul>
+<li><code>rem</code></li>
+<li><code>vm</code></li>
+</ul>
+<blockquote>
+<p>百分比布局、<code>flex</code>布局只能做到宽度适配，适合PC端；移动端适配则使用<code>rem</code>或<code>vm</code></p>
+</blockquote>
+<h2 id="rem适配方案"><a href="#rem适配方案" class="headerlink" title="rem适配方案"></a>rem适配方案</h2><p>定义：<code>rem</code>是相对单位，相对于**<code>HTML</code>标签的字号**计算结果，1<code>rem</code>&#x3D;1<code>HTML</code>字号大小</p>
+<p>使用步骤：</p>
+<ol>
+<li>设置<code>HTML</code>标签字号大小</li>
+<li>使用<code>rem</code>给标签设置尺寸</li>
+</ol>
+<p><strong><code>HTML</code>字号如何设置</strong>：</p>
+<ul>
+<li><p>考虑到手机屏幕大小不同、分辨率不同、设备宽度不同，<code>HTML</code>标签字号<strong>不</strong>应该设置为**<code>px</code>绝对尺寸**，否则没有适配效果</p>
+</li>
+<li><p><strong>媒体查询</strong>能够<strong>检测视口的宽度</strong>，然后编写<strong>差异化</strong>的<code>CSS</code>样式，当某个<strong>条件成立，执行对应的<code>CSS</code>样式</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> (媒体特性) &#123;</span><br><span class="line">    选择器 &#123;</span><br><span class="line">        CSS属性</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 例子：视口宽度为375px时，设置背景颜色为绿色（但是会被屏幕缩放比例影响，导致条件不通过） */</span></span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">width</span>:<span class="number">375px</span>) &#123;</span><br><span class="line">    <span class="selector-tag">body</span> &#123;</span><br><span class="line">        <span class="attribute">background-color</span>: green;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>目前<code>rem</code>布局方案中，将网页<strong>等分为10份</strong>，<code>HTML</code>标签的<strong>字号</strong>为视口宽度的<strong>1&#x2F;10</strong><font color=red>（重要）</font></p>
+</li>
+</ul>
+<p>**<code>flexible.js</code>**：</p>
+<p>定义：它是手淘开发的一个用来适配移动端的<code>js</code>库</p>
+<p>核心原理：根据不同的视口宽度给网页中<code>html</code>根节点设置不同的<code>font-size</code></p>
+<p><strong><code>rem</code>单位尺寸</strong>：</p>
+<ol>
+<li>确定基准根字号<ul>
+<li>查看设计稿宽度 → 确定参考<strong>设备宽度（视口宽度）</strong> → 确定基准根字号（1&#x2F;10视口宽度）</li>
+</ul>
+</li>
+<li><code>rem</code>单位尺寸<ul>
+<li><code>rem</code>单位的尺寸 &#x3D; <code>px</code>单位数值 &#x2F; 基准根字号</li>
+</ul>
+</li>
+</ol>
+<h2 id="Less"><a href="#Less" class="headerlink" title="Less"></a>Less</h2><p>定义：它是一个<code>CSS</code>预处理器，<code>less</code>文件后缀是<code>.less</code>。</p>
+<p>作用：扩充了<code>CSS</code>语言，使<code>CSS</code>具备一定的<strong>逻辑性、计算能力</strong></p>
+<p>注意：浏览器<strong>不识别</strong><code>Less</code>代码，目前阶段，网页要引入对应的<code>CSS</code>文件</p>
+<p>VS Code 插件：<code>Easy LESS</code>，保存<code>less</code>文件后自动生成对应的<code>CSS</code>文件</p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>单行：<code>//</code>（<code>ctrl+/</code>）</p>
+<p>块：<code>/* */</code>（<code>shift + alt + a</code>）</p>
+<blockquote>
+<p>单行注释无法转换到对应的<code>css</code>文件中</p>
+</blockquote>
+<h3 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h3><p>加减乘除直接书写计算表达式，<strong>除</strong>法需要添加<strong>小括号或<code>.</code></strong>–<code>width: (100 / 4px); height: 100 ./ 4px </code></p>
+<blockquote>
+<p>如果计算表达式中有多个单位，转换为<code>CSS</code>代码时以<strong>最后一个单位</strong>为准</p>
+</blockquote>
+<h3 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h3><p>作用：快速生成后代选择器</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.父级选择器 &#123;</span><br><span class="line">    <span class="selector-tag">CSS</span>属性</span><br><span class="line">    .子级选择器 &#123; </span><br><span class="line">        <span class="selector-tag">CSS</span>属性</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>转换为<code>CSS</code>后如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.父级选择器 &#123;</span><br><span class="line">    CSS属性</span><br><span class="line">&#125;</span><br><span class="line">.父级选择器 .子级选择器 &#123;</span><br><span class="line">    CSS属性</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>嵌套但**不生成后代<code>&amp;</code>**：</p>
+<p>用法：<code>&amp;</code>表示当前选择器（写到谁的大括号中就表示谁），并且不会生成后代选择器</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//举例：a标签和a:hover标签放到一个整体中</span></span><br><span class="line"><span class="selector-tag">a</span>&#123;</span><br><span class="line">    <span class="selector-tag">CSS</span>属性</span><br><span class="line">    <span class="selector-tag">&amp;</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">        <span class="selector-tag">CSS</span>属性</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>概念：容器，存储数据</p>
+<p>作用：存储数据，方便使用和修改</p>
+<p>语法：</p>
+<ul>
+<li><p>定义变量：<code>@变量名: 数据;</code></p>
+</li>
+<li><p>使用变量：<code>CSS属性: @变量名;</code></p>
+</li>
+</ul>
+<h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><p>作用：导入<code>less</code>公共样式文件</p>
+<p>语法： <code>@import &quot;文件路径&quot;;</code></p>
+<p>提示：如果是less文件可以省略后缀</p>
+<h3 id="导出"><a href="#导出" class="headerlink" title="导出"></a>导出</h3><p>作用：将当前<code>less</code>文件导出为<strong>指定<code>css</code>名称和存储路径</strong></p>
+<p>写法：在<code>less</code>文件的<strong>第一行</strong>添加<code>// out: 存储URL</code></p>
+<blockquote>
+<p>文件夹名称后面添加<code>/</code></p>
+<p>禁止导出：<code>// out: false</code></p>
+</blockquote>
+<h2 id="vw适配方案"><a href="#vw适配方案" class="headerlink" title="vw适配方案"></a>vw适配方案</h2><p>定义：它时一种相对单位，相对<strong>视口</strong>的尺寸计算结果，<code>1vw = 1/100视口宽度</code></p>
+<p><strong><code>vm</code>单位尺寸</strong>：</p>
+<ol>
+<li>确定设计稿对应的<code>vm</code>尺寸（1&#x2F;100视口宽度或高度）<ul>
+<li><strong>一般</strong>是查看设计稿宽度 → 确定参考<strong>设备宽度（视口宽度）</strong> → 确定<code>vm</code>尺寸</li>
+</ul>
+</li>
+<li><code>vm单位尺寸 = px单位数值 / （1/100视口宽度或高度）</code></li>
+</ol>
+<blockquote>
+<p>拓展：和<code>vw</code>对应有<code>1vh = 1/100视口高度</code>，但是<strong>不能</strong>将两者<strong>混用</strong>，否则某些场景（比如全面屏）导致<strong>盒子变形</strong></p>
+<p><strong>区别</strong>：<code>vm</code>不需要搭配<strong>媒体查询</strong>使用；<code>vm</code>相当于<strong>百分率机制</strong>进行适配，而<code>rem</code>默认十分制</p>
+</blockquote>
+<h2 id="响应式网页"><a href="#响应式网页" class="headerlink" title="响应式网页"></a>响应式网页</h2><p>定义：<strong>一</strong>套代码适配<strong>所有</strong>屏幕设备</p>
+<p>业界主流方案：</p>
+<ul>
+<li>媒体查询</li>
+<li><code>Bootstrap</code></li>
+</ul>
+<h1 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h1><p>作用：根据条件是否成立，差异化设置<code>CSS</code>属性</p>
+<h2 id="完整写法"><a href="#完整写法" class="headerlink" title="完整写法"></a>完整写法</h2><p><code>@media 关键词 媒体类型 and (媒体特性) &#123; CSS代码 &#125;</code></p>
+<blockquote>
+<p>可以简写为<code>@media (媒体类型:媒体特性) &#123; CSS代码 &#125;</code></p>
+</blockquote>
+<h2 id="关键词-x2F-逻辑操作符"><a href="#关键词-x2F-逻辑操作符" class="headerlink" title="关键词&#x2F;逻辑操作符"></a>关键词&#x2F;逻辑操作符</h2><ul>
+<li><code>and</code></li>
+<li><code>only</code></li>
+<li><code>not</code></li>
+</ul>
+<h2 id="媒体类型"><a href="#媒体类型" class="headerlink" title="媒体类型"></a>媒体类型</h2><p>定义用来区分设备类型的，如屏幕设备、打印设备，其中手机、电脑、平板都属于屏幕设备</p>
+<h2 id="媒体特性"><a href="#媒体特性" class="headerlink" title="媒体特性"></a>媒体特性</h2><p>定义：用来<strong>描述媒体类型</strong>的具体特征，如当前屏幕的宽高、分辨率、横竖屏等</p>
+<ul>
+<li><code>max-width</code>（最大宽度）</li>
+<li><code>min-width</code>（最小宽度）</li>
+<li><code>width</code>（宽度）</li>
+<li><code>height</code>（高度）</li>
+<li><code>orientation</code><ul>
+<li><code>portrait</code>（竖屏）</li>
+<li><code>landscape</code>（横屏）</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>书写顺序</strong>要考虑<code>CSS</code>属性的<strong>层叠性</strong></p>
+</blockquote>
+<h2 id="外部CSS"><a href="#外部CSS" class="headerlink" title="外部CSS"></a>外部<code>CSS</code></h2><p>媒体查询可以配合单独<code>CSS</code>文件使用，只需要在<code>link</code>标签内设置<code>media</code>属性，如下：</p>
+<p><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;xx.css&quot; media=&quot;逻辑符 媒体类型 and (媒体特性)&gt;&quot;</code></p>
+<blockquote>
+<p>可以简写为<code>&lt;link rel=&quot;stylesheet&quot; href=&quot;xx.css&quot; media=&quot;(媒体类型:媒体特性)&gt;&quot;</code></p>
+</blockquote>
+<h2 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a><code>Bootstrap</code></h2><p>由<code>Twitter</code>开发维护的前端<code>UI</code>框架，提供了大量编写好的<code>CSS</code>，允许用户结合一定<code>HTML / JavaScript</code>，快速开发网页，附<a class="link"   target="_blank" rel="noopener" href="https://www.bootcss.com/" >Bootstrap中文网 <i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>栅格</strong>系统：将网页宽度分为<strong>12等份</strong>，每个盒子占用的对应的<strong>份数</strong>，以下是<code>bootstrap</code>的响应式断点（<strong>共6个响应区间</strong>），需要配合版心<code>class=container</code>使用</p>
+<table>
+<thead>
+<tr>
+<th>区分名</th>
+<th>缩写</th>
+<th>维度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Extra small</td>
+<td>None</td>
+<td><code>&lt;576px</code></td>
+</tr>
+<tr>
+<td>Small</td>
+<td><code>se</code></td>
+<td>&#96;&#96;&gt;&#x3D;576px&#96;</td>
+</tr>
+<tr>
+<td>Medium</td>
+<td><code>md</code></td>
+<td>&#96;&#96;&gt;&#x3D;768px&#96;</td>
+</tr>
+<tr>
+<td>Large</td>
+<td><code>lg</code></td>
+<td>&#96;&#96;&gt;&#x3D;992px&#96;</td>
+</tr>
+<tr>
+<td>Extra large</td>
+<td><code>xl</code></td>
+<td>&#96;&#96;&gt;&#x3D;1200px&#96;</td>
+</tr>
+<tr>
+<td>Extra extra large</td>
+<td><code>xxl</code></td>
+<td>&#96;&#96;&gt;&#x3D;1400px&#96;</td>
+</tr>
+</tbody></table>
+<p><strong>字体图标</strong>下载<a class="link"   target="_blank" rel="noopener" href="https://github.com/twbs/icons/releases/tag/v1.10.5" >Release v1.10.5 · twbs&#x2F;icons (github.com)<i class="fas fa-external-link-alt"></i></a>，在线演示网址<a class="link"   target="_blank" rel="noopener" href="https://icons.bootcss.com/" >Bootstrap 图标库 · Bootstrap 官方开源图标（icon）库 (bootcss.com)<i class="fas fa-external-link-alt"></i></a></p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">【学习记录】移动WEB学开发</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">maxL</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-06-17 09:05:04</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/06/17/Web开发/【学习记录】移动WEB学开发/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E7%A7%BB%E5%8A%A8WEB/">#移动WEB</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/06/30/%E3%80%90%E6%BA%90%E7%A0%81%E3%80%91%E6%9B%BC%E5%BE%B7%E5%B8%83%E6%B4%9B%E7%89%B9%E9%9B%86%E5%90%88%E7%9A%84JavaScript%E5%AE%9E%E7%8E%B0/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">【源码】曼德布洛特集合的JavaScript实现</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/06/16/Web%E5%BC%80%E5%8F%91/%E5%AE%9E%E6%88%98/%E3%80%90%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5%E3%80%91%E5%B0%8F%E5%85%94%E9%B2%9C%E9%A6%96%E9%A1%B5%E5%88%B6%E4%BD%9C%E7%BB%83%E4%B9%A0/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">小兔鲜首页制作练习</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+                <div class="comment-container">
+                    
+<div class="comments-container">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="twikoo-container">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/twikoo@1.6.16/dist/twikoo.all.min.js"></script>
+        <div id="twikoo-comment"></div>
+        <script data-pjax>
+          function loadTwikoo() {
+            twikoo.init({
+              el: '#twikoo-comment',
+              envId: 'blog-comments-7g8rgfsf1481a6f9',
+              region: 'ap-guangzhou',
+              lang: 'zh-CN' || 'zh-CN'
+            });
+          }
+
+          if ('true' === 'true') {
+            const loadTwikooTimeout = setTimeout(() => {
+              loadTwikoo();
+              clearTimeout(loadTwikooTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadTwikoo);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B9%B3%E9%9D%A2%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.</span> <span class="nav-text">平面转换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B3%E7%A7%BB"><span class="nav-number">1.1.</span> <span class="nav-text">平移</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%8B%E8%BD%AC"><span class="nav-number">1.2.</span> <span class="nav-text">旋转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%A9%E6%94%BE"><span class="nav-number">1.3.</span> <span class="nav-text">缩放</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%80%BE%E6%96%9C"><span class="nav-number">1.4.</span> <span class="nav-text">倾斜</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%90%E5%8F%98"><span class="nav-number">1.5.</span> <span class="nav-text">渐变</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.6.</span> <span class="nav-text">特殊转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B9%E5%8F%98%E8%BD%AC%E6%8D%A2%E5%8E%9F%E7%82%B9"><span class="nav-number">1.6.1.</span> <span class="nav-text">改变转换原点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E9%87%8D%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.6.2.</span> <span class="nav-text">多重转换</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A9%BA%E9%97%B4%E8%BD%AC%E6%8D%A2"><span class="nav-number">2.</span> <span class="nav-text">空间转换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B3%E7%A7%BB-1"><span class="nav-number">2.1.</span> <span class="nav-text">平移</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%86%E8%B7%9D"><span class="nav-number">2.2.</span> <span class="nav-text">视距</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%8B%E8%BD%AC-1"><span class="nav-number">2.3.</span> <span class="nav-text">旋转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AB%8B%E4%BD%93%E5%91%88%E7%8E%B0"><span class="nav-number">2.4.</span> <span class="nav-text">立体呈现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%A9%E6%94%BE-1"><span class="nav-number">2.5.</span> <span class="nav-text">缩放</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E7%94%BB"><span class="nav-number">3.</span> <span class="nav-text">动画</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8%E9%80%82%E9%85%8D"><span class="nav-number">4.</span> <span class="nav-text">移动适配</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%86%E5%8F%A3"><span class="nav-number">4.1.</span> <span class="nav-text">视口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%80%8D%E5%9B%BE"><span class="nav-number">4.2.</span> <span class="nav-text">二倍图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88"><span class="nav-number">4.3.</span> <span class="nav-text">适配方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rem%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88"><span class="nav-number">4.4.</span> <span class="nav-text">rem适配方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Less"><span class="nav-number">4.5.</span> <span class="nav-text">Less</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A"><span class="nav-number">4.5.1.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E7%AE%97"><span class="nav-number">4.5.2.</span> <span class="nav-text">运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B5%8C%E5%A5%97"><span class="nav-number">4.5.3.</span> <span class="nav-text">嵌套</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F"><span class="nav-number">4.5.4.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5"><span class="nav-number">4.5.5.</span> <span class="nav-text">导入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E5%87%BA"><span class="nav-number">4.5.6.</span> <span class="nav-text">导出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vw%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88"><span class="nav-number">4.6.</span> <span class="nav-text">vw适配方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E9%A1%B5"><span class="nav-number">4.7.</span> <span class="nav-text">响应式网页</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2"><span class="nav-number">5.</span> <span class="nav-text">媒体查询</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E5%86%99%E6%B3%95"><span class="nav-number">5.1.</span> <span class="nav-text">完整写法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E8%AF%8D-x2F-%E9%80%BB%E8%BE%91%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">5.2.</span> <span class="nav-text">关键词&#x2F;逻辑操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AA%92%E4%BD%93%E7%B1%BB%E5%9E%8B"><span class="nav-number">5.3.</span> <span class="nav-text">媒体类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AA%92%E4%BD%93%E7%89%B9%E6%80%A7"><span class="nav-number">5.4.</span> <span class="nav-text">媒体特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%96%E9%83%A8CSS"><span class="nav-number">5.5.</span> <span class="nav-text">外部CSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap"><span class="nav-number">5.6.</span> <span class="nav-text">Bootstrap</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2024
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">maxL</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://pages.github.com/">
+                
+                    本站由 <span class="tooltip" data-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="maxL">
+    
+    <title>
+        
+            【学习记录】HTML |
+        
+        Infinite
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"laihandong.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#003366","logo":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","favicon":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","avatar":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"以有涯随无涯，殆已！","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"twikoo","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":"blog-comments-7g8rgfsf1481a6f9","region":"ap-guangzhou","version":"1.6.16"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["追梦人"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Infinite
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >
+                                更新日志
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog">更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">【学习记录】HTML</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">maxL</span>
+                            
+                                <span class="author-label">追梦人</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-06-10 09:05:04</span>
+        <span class="mobile">2023-06-10 09:05</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2024-03-13 00:18:02</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/HTML/">HTML</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>2.1k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>7 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h1 id="Hello-HTML"><a href="#Hello-HTML" class="headerlink" title="Hello, HTML!"></a>Hello, HTML!</h1><p><code>HTML</code>超文本标记语言–<code>HyperText Markup Language</code>，超文本指<a class="link"   target="_blank" rel="noopener" href="https://www.zhihu.com/question/304781566" >链接<i class="fas fa-external-link-alt"></i></a>，标记则是<strong>带尖括号的文本</strong>，尽管<strong>不是编程语言</strong>，但是这样的性质已经<strong>能实现网页展示、跳转从而形成网络</strong>。</p>
+<p><code>html 1.0</code>发布于1991年，<code>html 5</code>发布于2008年，现在仍处于蓬勃的发展时期。</p>
+<p>新建一个以<code>.html</code>为后缀的文件，写下<code>Hello, Html!</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello, Html!</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器中打开的效果如下：</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://images-1258290850.cos.ap-guangzhou.myqcloud.com/blog/202306100957535.webp"
+                      alt="image-20230610095729308"
+                ></p>
+<h1 id="标签语法"><a href="#标签语法" class="headerlink" title="标签语法"></a>标签语法</h1><p>作为标记语言，如何做<strong>标记</strong>是该语言的重点，<strong>即标签</strong>语法：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">标签名</span> <span class="attr">属性名</span>=<span class="string">&quot;属性值&quot;</span>&gt;</span>被包裹的文字内容<span class="tag">&lt;/<span class="name">标签名</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>有的标签不需要去包裹内容，即写成<strong>单个</strong>标签的形式，被称为<strong>单标签 &#x2F; 自闭和标签</strong></p>
+<p>标签中的属性用<strong>空格</strong>隔开，不区分先后顺序</p>
+<p>有的属性，其属性名和属性值相同，则<strong>可以简写为只写属性名，省略属性值</strong></p>
+</blockquote>
+<h1 id="标签性质"><a href="#标签性质" class="headerlink" title="标签性质"></a>标签性质</h1><h1 id="HTML的基本骨架"><a href="#HTML的基本骨架" class="headerlink" title="HTML的基本骨架"></a>HTML的基本骨架</h1><p>规范的网页需要符合既定的标准，即<code>HTML</code>的基本骨架</p>
+<p>VS Code快速生成骨架: 在<code>HTML</code>文件中，<code>!(英文)</code>和<code>Enter / Tab</code>键同时按下，会自动生成如下代码：</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://images-1258290850.cos.ap-guangzhou.myqcloud.com/blog/202306101000087.webp"
+                      alt="image-20230610100040825"
+                ></p>
+<p>可以得出，<code>HTML</code>基本骨架包含如下标签：</p>
+<ul>
+<li><code>html</code>–整个网页</li>
+<li><code>head</code>–网页头部</li>
+<li><code>title</code>–网页标题</li>
+<li><code>body</code>–网页主体</li>
+</ul>
+<blockquote>
+<p>在<code>head</code>标签中还可以添加如下标签：</p>
+<p><code>meta</code>标签提供有关<code>HTML</code>文档的元数据，例如<strong>字符集、页面有效期、页面作者、关键字列表、页面描述</strong>等信息</p>
+<p><code>base</code>标签为页面中所有相对链接指定一个基本链接</p>
+<p><code>link</code>标签常用于<strong>引用外部</strong> <code>CSS </code>样式表</p>
+<p><code>style</code>标签在当前文档中<strong>内嵌</strong><code>CSS</code>样式</p>
+<p><code>script</code>标签在当前文档定义<code>JavaScript </code>脚本</p>
+<p><code>noscript</code>标签定义一些内容来替代不能运行的 <code>JavaScript </code>脚本或者给用户一些提示</p>
+</blockquote>
+<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><p><code>&lt;!--注释说明文字--&gt;</code></p>
+<p><em>PS: 在代码水平有限的情况下，合理地使用注释一定是有积极作用的</em></p>
+<h1 id="标签的关系"><a href="#标签的关系" class="headerlink" title="标签的关系"></a>标签的关系</h1><p>明确标签的书写位置，即相对关系，可以使结构更加整齐</p>
+<ul>
+<li>父子关系（嵌套）</li>
+<li>兄弟关系（并列）</li>
+</ul>
+<p><em>PS: 注意合理使用缩进和对齐，让标签关系一目了然</em></p>
+<h1 id="标题标签"><a href="#标题标签" class="headerlink" title="标题标签"></a>标题标签</h1><p>标签名：<code>h1 / h2 / h3 / h4 / h5 / h6</code>（双标签）</p>
+<p>显示特点：</p>
+<ul>
+<li>文字加粗</li>
+<li>字号逐级递减</li>
+<li>独占一行</li>
+</ul>
+<p><em>PS: <code>h1</code>标签在一个网页只能使用一次，用来放新闻标题或网页的logo</em></p>
+<h1 id="段落标签"><a href="#段落标签" class="headerlink" title="段落标签"></a>段落标签</h1><p>标签名：<code>p</code>（双标签）</p>
+<p>显示特点：</p>
+<ul>
+<li>独占一行</li>
+<li>段落之间存在间隙</li>
+</ul>
+<h1 id="换行标签"><a href="#换行标签" class="headerlink" title="换行标签"></a>换行标签</h1><p>标签名：<code>&lt;br&gt;</code>（<strong>单</strong>标签）</p>
+<p><em>PS: 浏览器不会识别<code>Enter</code>回车键的换行</em></p>
+<h1 id="水平线标签"><a href="#水平线标签" class="headerlink" title="水平线标签"></a>水平线标签</h1><p>标签名：<code>&lt;hr&gt;</code>（<strong>单</strong>标签）</p>
+<h1 id="文本格式化标签"><a href="#文本格式化标签" class="headerlink" title="文本格式化标签"></a>文本格式化标签</h1><p>作用：为文本添加特殊模式，突出重点。包括加粗、倾斜、下划线、删除线</p>
+<p>标签名：</p>
+<ul>
+<li>加粗：<code>strong / b</code></li>
+<li>倾斜：<code>em / i</code></li>
+<li>下划线：<code>ins / u</code></li>
+<li>删除线：<code>del / s</code></li>
+</ul>
+<p>显示特点：<strong>在一行显示</strong></p>
+<p><em>PS: <code>strong</code>表示该文本重要且需要突出，<code>b</code>则表示这需要加粗，两者的机制稍有不同，推荐使用前者，其他3个标签同理</em></p>
+<h1 id="图像标签"><a href="#图像标签" class="headerlink" title="图像标签"></a>图像标签</h1><p>作用：在网页中插入图片</p>
+<p>标签名：<code>img</code>（单标签）</p>
+<p>属性：</p>
+<ul>
+<li><code>src</code>（<strong>必须属性</strong>，用于指定图像来源位置）</li>
+<li><code>title</code>（图片名字）</li>
+<li><code>alt</code>（替换文本–图片无法显示的时候显示的文字）</li>
+<li><code>width</code>（图片的宽度–值为数字且没有单位）</li>
+<li><code>height</code>（图片的高度–值为数字且没有单位）</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&#x27;&#x27;</span> <span class="attr">alt</span>=<span class="string">&#x27;&#x27;</span> <span class="attr">width</span>=<span class="string">&#x27;&#x27;</span> <span class="attr">height</span>=<span class="string">&#x27;&#x27;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="超链接标签"><a href="#超链接标签" class="headerlink" title="超链接标签"></a>超链接标签</h1><p>作用：点击跳转到其他页面</p>
+<p>标签名：<code>a</code>（双标签）</p>
+<p>属性：</p>
+<ul>
+<li><code>href</code>（<strong>必须属性</strong>，跳转的链接）</li>
+<li><code>target</code>（设置为<code>_blank</code>表示打开新页面跳转）</li>
+</ul>
+<p><em>PS: 将<code>href</code>设置为<code>#</code>表示空连接，适合开发初期不确定正式链接时使用</em></p>
+<h1 id="音频标签"><a href="#音频标签" class="headerlink" title="音频标签"></a>音频标签</h1><p>标签名：<code>audio</code>（双标签）</p>
+<p>属性：</p>
+<ul>
+<li><code>src</code>（<strong>必须属性</strong>，音频URL）</li>
+<li><code>controls</code>（显示音频控制面板）</li>
+<li><code>loop</code>（循环播放）</li>
+<li><code>autoplay</code>（自动播放）</li>
+</ul>
+<h1 id="视频标签"><a href="#视频标签" class="headerlink" title="视频标签"></a>视频标签</h1><p>标签名：<code>video</code>（双标签）</p>
+<p>属性：</p>
+<ul>
+<li><code>src</code>（<strong>必须属性</strong>，视频URL）</li>
+<li><code>controls</code></li>
+<li><code>loop</code></li>
+<li><code>muted</code>（静音播放）</li>
+<li><code>autoplay</code>（支持在静音模式下自动播放）</li>
+</ul>
+<h1 id="列表标签"><a href="#列表标签" class="headerlink" title="列表标签"></a>列表标签</h1><p>内容：布局内容<strong>排列整齐</strong>的区域</p>
+<p>标签名：</p>
+<ul>
+<li><code>ul</code>（无序列表）、<code>li</code>（列表条目）–<code>ul</code><strong>嵌套</strong><code>li</code></li>
+<li><code>ol</code>（有序列表）、<code>li</code>（列表条目）–<code>ol</code><strong>嵌套</strong><code>li</code></li>
+<li><code>dl</code>（定义列表）、<code>dt</code>（定义列表的<strong>标题</strong>）、<code>dd</code>（定义列表的<strong>描述 &#x2F; 详情</strong>）–<code>dl</code><strong>嵌套</strong><code>dt</code>和<code>dd</code></li>
+</ul>
+<blockquote>
+<p><code>ul</code>、<code>ol</code>标签里面只能包含<code>li</code>标签，<code>li</code>标签可以包含任何内容</p>
+<p><code>dl</code>标签里面只能包含<code>dt</code>和<code>dd</code>标签，<code>dt</code>和<code>dd</code>标签可以包含任何内容</p>
+</blockquote>
+<h1 id="表格标签"><a href="#表格标签" class="headerlink" title="表格标签"></a>表格标签</h1><p>作用：类似Excel表格，用来展示数据</p>
+<p>标签名：<code>table</code>（表格）、<code>tr</code>（行）、<code>th</code>（<strong>表头</strong>单元格）、<code>td</code>（<strong>内容</strong>单元格）–<code>table</code>嵌套<code>tr</code>，<code>tr</code>嵌套<code>th / td</code></p>
+<p>属性：</p>
+<ul>
+<li><code>border</code>（添加边框线，值为线的宽度）</li>
+</ul>
+<p><strong>表格结构</strong>标签：用于让浏览器清楚表格的结构，了解即可</p>
+<ul>
+<li><code>thead</code>（表格头部）</li>
+<li><code>tbody</code>（表格主体）</li>
+<li><code>tfoot</code>（表格底部）</li>
+</ul>
+<p>合并单元格：将<strong>多</strong>个单元格合并为<strong>一</strong>个单元格</p>
+<ul>
+<li>跨<strong>行</strong>合并：确定目标区域，保留<strong>最上</strong>单元格，添加属性<code>rowspan</code>（值为需要合并的单元格数量），删除其它单元格</li>
+<li>跨<strong>列</strong>合并：确定目标区域，保留<strong>最左</strong>单元格，添加属性<code>colspan</code>（值为需要合并的单元格数量），删除其它单元格</li>
+</ul>
+<blockquote>
+<p>表头单元格默认加粗居中</p>
+<p>表格结构标签嵌套对应的<code>tr</code>标签做标识的作用，告诉浏览器表格结构，对开发过程用处不大，了解即可</p>
+<p>合并单元格<strong>不能跨表格结构合并</strong></p>
+</blockquote>
+<h1 id="表单标签"><a href="#表单标签" class="headerlink" title="表单标签"></a>表单标签</h1><p>作用：<strong>收集用户信息</strong></p>
+<h2 id="input标签"><a href="#input标签" class="headerlink" title="input标签"></a>input标签</h2><p>标签名：<code>input</code>（单标签）</p>
+<p>属性：</p>
+<ul>
+<li><p><code>type</code>（功能）</p>
+<ul>
+<li><p><code>text</code>（文本框用于输入单行文本）</p>
+</li>
+<li><p><code>password</code>（密码框）</p>
+</li>
+<li><p><code>radio</code>（单选框）</p>
+</li>
+<li><p><code>checkbox</code>（多选框）</p>
+</li>
+<li><p><code>file</code>（上传文件）</p>
+</li>
+</ul>
+</li>
+<li><p><code>placeholder</code>（占位文本–用于文本默认显示）</p>
+</li>
+<li><p><code>name</code>（控件名称–用于分组单选框，<strong>同组只能选中一个</strong>）</p>
+</li>
+<li><p><code>checked</code>（默认选中）</p>
+</li>
+<li><p><code>multiple</code>（文件多选–让<code>file</code>功能可以选中多个文件）</p>
+</li>
+</ul>
+<blockquote>
+<p><code>type</code>属性值不同，则功能不同</p>
+<p><code>placeholde</code>对能显示文本的功能适用</p>
+</blockquote>
+<h2 id="下拉菜单"><a href="#下拉菜单" class="headerlink" title="下拉菜单"></a>下拉菜单</h2><p>标签名：<code>select</code>（下拉菜单）、<code>option</code>（菜单项）–<code>select</code><strong>嵌套</strong><code>option</code></p>
+<p>属性：</p>
+<ul>
+<li><code>selected</code>（默认选中）</li>
+</ul>
+<p><em>PS: 文本域右下角有拖拽缩放功能，但一般会禁用</em></p>
+<h2 id="文本域"><a href="#文本域" class="headerlink" title="文本域"></a>文本域</h2><p>作用：<strong>多行</strong>输入文本的表单控件</p>
+<p>标签名：<code>textarea</code>（双标签）</p>
+<p>属性：</p>
+<ul>
+<li>&#96;&#96;</li>
+</ul>
+<h2 id="label标签"><a href="#label标签" class="headerlink" title="label标签"></a>label标签</h2><p>作用：网页中某个标签的说明文本</p>
+<p>用途之一：绑定文字和表单控件的关系，增大表单控件的点击范围</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 方法一：</span></span><br><span class="line"><span class="comment">1. 设置控件的 id 属性</span></span><br><span class="line"><span class="comment">2. 设置`lable`的`for`属性和对应控件的`id`属性一样</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;&quot;</span> <span class="attr">id</span>=<span class="string">&quot;man&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;man&quot;</span>&gt;</span>男<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 方法二：</span></span><br><span class="line"><span class="comment">1. 用`lable`标签直接包裹对应的控件</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;&quot;</span> <span class="attr">id</span>=<span class="string">&quot;woman&quot;</span>&gt;</span>女<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="按钮"><a href="#按钮" class="headerlink" title="按钮"></a>按钮</h2><p>标签名：<code>button</code>（双标签）</p>
+<p>属性：</p>
+<ul>
+<li><code>type</code>（按钮类型）<ul>
+<li><code>submit</code>（提交按钮–点击后可以提交数据到后台）</li>
+<li><code>reset</code>（重置按钮–点击后将表单控件恢复默认值）</li>
+<li><code>button</code>（普通按钮–默认没有功能，一般配合<code>JavaScript</code>使用）</li>
+</ul>
+</li>
+</ul>
+<p><em>PS: 这些功能只在<code>form</code>标签对应的同一表单区域有效</em></p>
+<h2 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h2><p>标签名：<code>form</code></p>
+<p>属性：</p>
+<ul>
+<li><code>method</code>（提交方式–可选<code>POST / GET</code>）</li>
+<li><code>action</code>（提交目标地址）</li>
+</ul>
+<h1 id="div-和-span"><a href="#div-和-span" class="headerlink" title="div 和 span"></a>div 和 span</h1><p><em>它们属于 无语义 标签</em></p>
+<p>作用：布局网页（划分网页区域，摆放内容）</p>
+<p>显示特点：</p>
+<ul>
+<li><code>div</code>独占一行</li>
+<li><code>span</code>不换行</li>
+</ul>
+<blockquote>
+<p>传统布局一般就是<strong>各种设置标签在网页上的位置</strong>，<code>html5</code>专门提出了多个语义更明确的“布局类”标签，比如<code>header nav section article aside footer details summary</code></p>
+</blockquote>
+<h1 id="字符实体"><a href="#字符实体" class="headerlink" title="字符实体"></a>字符实体</h1><p>作用：在网页中显示预留字符</p>
+<p>常用字符实体：</p>
+<table>
+<thead>
+<tr>
+<th>显示字符</th>
+<th>说明</th>
+<th>实体字符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code> </code></td>
+<td>空格</td>
+<td><code>&amp;nbsp;</code></td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>小于号</td>
+<td><code>&amp;lt;</code></td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>大于号</td>
+<td><code>&amp;gt;</code></td>
+</tr>
+</tbody></table>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">【学习记录】HTML</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">maxL</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-06-10 09:05:04</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/06/10/Web开发/【学习记录】HTML/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/HTML/">#HTML</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/06/12/Web%E5%BC%80%E5%8F%91/%E3%80%90%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E3%80%91Emmet%E8%AF%AD%E6%B3%95/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">【学习记录】Emmet语法</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/06/09/%E3%80%90%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E3%80%91%E3%80%8AJavascript%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">【学习记录】《JavaScript权威指南》</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+                <div class="comment-container">
+                    
+<div class="comments-container">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="twikoo-container">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/twikoo@1.6.16/dist/twikoo.all.min.js"></script>
+        <div id="twikoo-comment"></div>
+        <script data-pjax>
+          function loadTwikoo() {
+            twikoo.init({
+              el: '#twikoo-comment',
+              envId: 'blog-comments-7g8rgfsf1481a6f9',
+              region: 'ap-guangzhou',
+              lang: 'zh-CN' || 'zh-CN'
+            });
+          }
+
+          if ('true' === 'true') {
+            const loadTwikooTimeout = setTimeout(() => {
+              loadTwikoo();
+              clearTimeout(loadTwikooTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadTwikoo);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hello-HTML"><span class="nav-number">1.</span> <span class="nav-text">Hello, HTML!</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E8%AF%AD%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">标签语法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E6%80%A7%E8%B4%A8"><span class="nav-number">3.</span> <span class="nav-text">标签性质</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%AA%A8%E6%9E%B6"><span class="nav-number">4.</span> <span class="nav-text">HTML的基本骨架</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A"><span class="nav-number">5.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">6.</span> <span class="nav-text">标签的关系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%87%E9%A2%98%E6%A0%87%E7%AD%BE"><span class="nav-number">7.</span> <span class="nav-text">标题标签</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AE%B5%E8%90%BD%E6%A0%87%E7%AD%BE"><span class="nav-number">8.</span> <span class="nav-text">段落标签</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8D%A2%E8%A1%8C%E6%A0%87%E7%AD%BE"><span class="nav-number">9.</span> <span class="nav-text">换行标签</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B0%B4%E5%B9%B3%E7%BA%BF%E6%A0%87%E7%AD%BE"><span class="nav-number">10.</span> <span class="nav-text">水平线标签</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%A0%87%E7%AD%BE"><span class="nav-number">11.</span> <span class="nav-text">文本格式化标签</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F%E6%A0%87%E7%AD%BE"><span class="nav-number">12.</span> <span class="nav-text">图像标签</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B6%85%E9%93%BE%E6%8E%A5%E6%A0%87%E7%AD%BE"><span class="nav-number">13.</span> <span class="nav-text">超链接标签</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9F%B3%E9%A2%91%E6%A0%87%E7%AD%BE"><span class="nav-number">14.</span> <span class="nav-text">音频标签</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%86%E9%A2%91%E6%A0%87%E7%AD%BE"><span class="nav-number">15.</span> <span class="nav-text">视频标签</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%97%E8%A1%A8%E6%A0%87%E7%AD%BE"><span class="nav-number">16.</span> <span class="nav-text">列表标签</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A1%A8%E6%A0%BC%E6%A0%87%E7%AD%BE"><span class="nav-number">17.</span> <span class="nav-text">表格标签</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A1%A8%E5%8D%95%E6%A0%87%E7%AD%BE"><span class="nav-number">18.</span> <span class="nav-text">表单标签</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#input%E6%A0%87%E7%AD%BE"><span class="nav-number">18.1.</span> <span class="nav-text">input标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E6%8B%89%E8%8F%9C%E5%8D%95"><span class="nav-number">18.2.</span> <span class="nav-text">下拉菜单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E5%9F%9F"><span class="nav-number">18.3.</span> <span class="nav-text">文本域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#label%E6%A0%87%E7%AD%BE"><span class="nav-number">18.4.</span> <span class="nav-text">label标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%89%E9%92%AE"><span class="nav-number">18.5.</span> <span class="nav-text">按钮</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A8%E5%8D%95"><span class="nav-number">18.6.</span> <span class="nav-text">表单</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#div-%E5%92%8C-span"><span class="nav-number">19.</span> <span class="nav-text">div 和 span</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E5%AE%9E%E4%BD%93"><span class="nav-number">20.</span> <span class="nav-text">字符实体</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2024
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">maxL</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://pages.github.com/">
+                
+                    本站由 <span class="tooltip" data-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
