@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="maxL">
+    
+    <title>
+        
+            【调研】测试框架 |
+        
+        Infinite
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"laihandong.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#003366","logo":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","favicon":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","avatar":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"以有涯随无涯，殆已！","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"twikoo","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":"blog-comments-7g8rgfsf1481a6f9","region":"ap-guangzhou","version":"1.6.16"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["追梦人"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Infinite
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >
+                                更新日志
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog">更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">【调研】测试框架</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">maxL</span>
+                            
+                                <span class="author-label">追梦人</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2022-11-10 08:00:00</span>
+        <span class="mobile">2022-11-10 08:00</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2024-10-24 00:28:36</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E8%B0%83%E7%A0%94/">调研</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/">测试框架</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>4.9k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>17 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h1 id="1-功能简介"><a href="#1-功能简介" class="headerlink" title="1. 功能简介"></a>1. 功能简介</h1><p>本测试平台旨在服务于每个项目组，支持Windows PC、Andorid和IOS的游戏测试，且提供接口自动化测试、UI自动化测试、性能自动化测试、压力自动化测试、兼容自动化测试、本地化测试、Mock、测试计划管理、持续测试以及其他有关测试资料汇总。本平台从如何提高测试效率，提高管理效率，提升产品质量的角度出发，分析我司测试工作方面的难点、痛点，结合市场现有的开源技术，合理整合各类资源，独立设计了一系列便捷且强大的功能，以平台的形式提供给我司各项目组使用，帮助我司测试人员在工作中更加游刃有余，从而达到提高产品整体开发效率、提升产品最终交付质量的效果。</p>
+<ul>
+<li>【测试计划管理】</li>
+</ul>
+<p>有序、整洁地制定和管理项目中所有的测试计划，记录每一个测试用例，记录每一次因需求改动的用例变更，让每一次测试都进行得高效、井井有条。</p>
+<ul>
+<li>【接口自动化测试】</li>
+</ul>
+<p>有序地、全面地、自动化地对游戏内外接口进行管理和测试，保障每一个接口的质量</p>
+<ul>
+<li>【UI自动化测试】</li>
+</ul>
+<p>基于图像识别和AI的自动化UI测试框架，测试人员根据测试用例录制游戏场景脚本，上传平台自动执行，可以大大降低繁琐、重复、无聊的测试工作量</p>
+<ul>
+<li>【性能自动化测试】</li>
+</ul>
+<p>对游戏客户端、服务端都能进行有效的性能测试，提供可视化的数据报告，帮助产品优化</p>
+<ul>
+<li>【压力自动化测试】</li>
+</ul>
+<p>对游戏客户端、服务端提供多样的压力测试工具，提供丰富的测试报告，帮助产品优化</p>
+<ul>
+<li>【兼容自动化测试】</li>
+</ul>
+<p>一机多控：一个设备上录制脚本，多台设备都可以执行</p>
+<p>提供云真机支持，让兼容测试变得异常方便</p>
+<ul>
+<li>【本地化自动化化测试】</li>
+</ul>
+<p>针对项目素材进行机器学习，高质量训练模型帮你快速发现本地化测试中的遗漏之处</p>
+<ul>
+<li>【持续测试】</li>
+</ul>
+<p>自动化对项目工程监听、打包、构建测试场景，持续对项目工程进行单元测试，以便尽快发现bug，全程几乎不需要人力参与</p>
+<ul>
+<li>【其它】</li>
+</ul>
+<p>wiki（知识分享）模块：平台会不定期汇总测试有关的学习资料，帮助测试人员提升专业技能；测试人员可以在这交流经验，互相帮助，一起成长。</p>
+<p>人员管理模块：支持用户注册、角色分配、权限修改等功能，方便人员的管理</p>
+<p>平台说明手册模块：提供详细完善的指南，帮助用户使用这个平台</p>
+<p>BUG管理模块：提供更方便顺手的工具帮助测试人员总结BUG，积累经验，定期分析复盘</p>
+<p>系统设置模块：个性化设置一些界面风格、语言、个人信息等等</p>
+<h1 id="2-竞品分析"><a href="#2-竞品分析" class="headerlink" title="2. 竞品分析"></a>2. 竞品分析</h1><h2 id="2-1-自动化测试框架"><a href="#2-1-自动化测试框架" class="headerlink" title="2.1 自动化测试框架"></a>2.1 自动化测试框架</h2><h3 id="2-1-1-流马"><a href="#2-1-1-流马" class="headerlink" title="2.1.1 流马"></a>2.1.1 流马</h3><p>开源</p>
+<h3 id="2-1-2-luckyframe"><a href="#2-1-2-luckyframe" class="headerlink" title="2.1.2 luckyframe"></a>2.1.2 luckyframe</h3><p>开源</p>
+<h3 id="2-1-3-robot"><a href="#2-1-3-robot" class="headerlink" title="2.1.3 robot"></a><strong>2.1.3 robot</strong></h3><p>Robot框架基于Python，但也可以使用Jython（Java）或IronPython（.NET）。</p>
+<p>Robot框架使用关键字驱动的方法来简化测试的创建。</p>
+<p>Robot框架还可以测试MongoDB、FTP、Android、Appium等</p>
+<p>开源</p>
+<h3 id="2-1-4-网络驱动（WebDriverIO）"><a href="#2-1-4-网络驱动（WebDriverIO）" class="headerlink" title="2.1.4 网络驱动（WebDriverIO）"></a><strong>2.1.4 网络驱动（WebDriverIO）</strong></h3><p>WebdriverIO是一个基于Node.js的自动化测试框架。</p>
+<p>由于WebDriverIO是开源的，插件多</p>
+<h3 id="2-1-5-Citrus"><a href="#2-1-5-Citrus" class="headerlink" title="2.1.5 Citrus"></a><strong>2.1.5 Citrus</strong></h3><p>Citrus是一个开源框架，您可以使用它自动化任何消息传递协议或数据格式的集成测试。</p>
+<h3 id="2-1-6-Cypress"><a href="#2-1-6-Cypress" class="headerlink" title="2.1.6 Cypress"></a>2.1.6 Cypress</h3><p>Cypress是一个以开发人员为中心的测试自动化框架，它使测试驱动开发(TDD)成为开发人员的现实。</p>
+<p>Cypress运行在浏览器内部。不需要处理对象序列化或在线协议，同时为您提供对每个对象的本机访问。</p>
+<h3 id="2-1-7-Selenium"><a href="#2-1-7-Selenium" class="headerlink" title="2.1.7 Selenium"></a>2.1.7 Selenium</h3><p>web应用程序最流行的开源测试自动化框架之一。</p>
+<p>它具有跨平台和跨浏览器的功能</p>
+<p>Selenium支持多种编程语言，如Java、C#、PHP、Python、Ruby等。</p>
+<h3 id="2-1-8-Cucumber"><a href="#2-1-8-Cucumber" class="headerlink" title="2.1.8 Cucumber"></a>2.1.8 Cucumber</h3><p>它是一个跨平台的行为驱动开发（BDD）工具，用于编写web应用程序的验收测试。</p>
+<h3 id="2-1-9-Serenity"><a href="#2-1-9-Serenity" class="headerlink" title="2.1.9 Serenity"></a>2.1.9 Serenity</h3><p>与cumber和JBehave等行为驱动开发（BDD）工具集成的基于Java的框架，适用于自动化验收和回归测试更容易。</p>
+<h3 id="2-1-10-Carina"><a href="#2-1-10-Carina" class="headerlink" title="2.1.10 Carina"></a><strong>2.1.10 Carina</strong></h3><p>Carina使用流行的开源解决方案构建，如Appium、TestNG和Selenium，这减少了对特定技术栈的依赖。您可以测试移动应用程序（本机、web、混合）、web应用程序、REST服务和数据库。Carina框架支持MySQL、sqlserver、Oracle、PostgreSQL等不同类型的数据库，提供了MyBatis ORM框架实现DAO层的惊人体验。它支持所有流行的浏览器和移动设备，并且在IOS&#x2F;Android之间重用测试自动化代码高达80%。API测试基于Freemarker模板引擎，它在生成REST请求方面提供了极大的灵活性。Carina是跨平台的，可以在Unix或Windows操作系统上轻松地执行测试。</p>
+<h3 id="2-1-11-ZTF"><a href="#2-1-11-ZTF" class="headerlink" title="2.1.11 ZTF"></a>2.1.11 ZTF</h3><p>Zentao Testing Framework，简称ZTF，是一款开源自动化测试管理框架。更聚焦于自动化测试的管理功能，提供了自动化测试脚本的定义、管理、驱动、执行结果的回传、Bug的创建以及和其他自动化测框架的集成。</p>
+<p>ZTF使用go语言开发，可以支持各种平台。</p>
+<p>ZTF支持常见的编程语言，您可以选择您喜欢用的语言来开发自动化测试脚本</p>
+<h2 id="2-2-测试计划管理（测试平台）"><a href="#2-2-测试计划管理（测试平台）" class="headerlink" title="2.2 测试计划管理（测试平台）"></a>2.2 测试计划管理（测试平台）</h2><blockquote>
+<p> <em>考虑到测试平台一般都应该有测试管理的功能，就不分开调研总结了</em></p>
+</blockquote>
+<h3 id="2-2-1-禅道"><a href="#2-2-1-禅道" class="headerlink" title="2.2.1 禅道"></a>2.2.1 禅道</h3><p>国内开源项目管理软件，基于敏捷方法scrum，现今有产品管理、项目管理、测试管理、计划管理等等</p>
+<h3 id="2-2-2-TESTPAD"><a href="#2-2-2-TESTPAD" class="headerlink" title="2.2.2 TESTPAD"></a>2.2.2 TESTPAD</h3><p>在线工具，可以创建自由形式的结构化检查列表，有助于一系列广泛的测试方法（传统手工、探索型等）。基于JavaScript ui 实现键盘驱动型编辑方式</p>
+<h3 id="2-2-3-Testrail"><a href="#2-2-3-Testrail" class="headerlink" title="2.2.3 Testrail"></a>2.2.3 Testrail</h3><p>提出xmind、excel各有优缺点，支持自定义用例格式配置。是网页式用户界面。屏幕截图、预期结果、跟踪各个测试的状态、信息丰富的仪表盘等等</p>
+<h3 id="2-2-4-Testlink"><a href="#2-2-4-Testlink" class="headerlink" title="2.2.4 Testlink"></a>2.2.4 Testlink</h3><p>难得的开源测试管理工具</p>
+<h3 id="2-2-5-飞蛾"><a href="#2-2-5-飞蛾" class="headerlink" title="2.2.5 飞蛾"></a>2.2.5 飞蛾</h3><p>国内的敏捷测试工具，规范的测试全流程</p>
+<h3 id="2-2-6-junoOne"><a href="#2-2-6-junoOne" class="headerlink" title="2.2.6 junoOne"></a>2.2.6 junoOne</h3><p>Jira集成功能的敏捷测试用例管理和问题追踪工具，提供了很多工具简化测试活动</p>
+<h3 id="2-2-7-jira"><a href="#2-2-7-jira" class="headerlink" title="2.2.7 jira"></a>2.2.7 jira</h3><p>国外产品、一站式管理，目前购买不到本地部署版本，一款项目与事务跟踪工具</p>
+<h3 id="2-2-8-PingCode"><a href="#2-2-8-PingCode" class="headerlink" title="2.2.8 PingCode"></a>2.2.8 PingCode</h3><p>国内一站式软件研发项目管理工具，不仅有需求管理、敏捷&#x2F;瀑布&#x2F;看板项目管理，还有专门的测试管理模块，支持用例创建、用例库、用例评审、测试计划、自动生成报告，测试用例还能关联版本、需求、缺陷等</p>
+<h3 id="2-2-9-PractiTest"><a href="#2-2-9-PractiTest" class="headerlink" title="2.2.9 PractiTest"></a>2.2.9 PractiTest</h3><p>国外，端到端的测试管理系统，提供了手动测试和自动化测试管理选项，还有探索式测试测试管理功能。与缺陷跟踪工具（redmine、jira等）、各种自动化工具（jenkins等）无缝集成</p>
+<h3 id="2-2-10-Kualitee"><a href="#2-2-10-Kualitee" class="headerlink" title="2.2.10 Kualitee"></a>2.2.10 Kualitee</h3><p>可以与很多工具进行集成</p>
+<h3 id="2-2-11-zephyr-enterprise"><a href="#2-2-11-zephyr-enterprise" class="headerlink" title="2.2.11 zephyr enterprise"></a>2.2.11 zephyr enterprise</h3><p>最初是Jira中的一个插件，以增强Jira测试管理的能力，现已开发了企业版，支持Jira、Jenkins、selenium等集成</p>
+<h3 id="2-2-12-Metersphere"><a href="#2-2-12-Metersphere" class="headerlink" title="2.2.12 Metersphere"></a>2.2.12 Metersphere</h3><p>是一站式开源持续测试平台，涵盖测试管理、接口测试、性能测试、团队协作等功能</p>
+<h3 id="2-2-13-bugzilla"><a href="#2-2-13-bugzilla" class="headerlink" title="2.2.13 bugzilla"></a>2.2.13 bugzilla</h3><p>开源的、基于Web界面的缺陷跟踪工具</p>
+<h3 id="2-2-14-Testopia"><a href="#2-2-14-Testopia" class="headerlink" title="2.2.14 Testopia"></a>2.2.14 Testopia</h3><p>一款与bugzilla集成使用的测试用例管理工具，允许用户将缺陷报告与测试用例运行结果集成在一起</p>
+<h3 id="2-2-15-Testmonitor"><a href="#2-2-15-Testmonitor" class="headerlink" title="2.2.15 Testmonitor"></a>2.2.15 Testmonitor</h3><p>在线测试管理，端到端的测试管理工具</p>
+<h3 id="2-2-16-Klaros-testmanagement"><a href="#2-2-16-Klaros-testmanagement" class="headerlink" title="2.2.16 Klaros-testmanagement"></a>2.2.16 Klaros-testmanagement</h3><p>德国，功能范围涵盖测试计划、测试创建、测试执行、测试任务分配和评估，以及测试评估和报告创建。还有支持缺陷管理、需求管理、持续集成、测试自动化和性能分析的接口</p>
+<h3 id="2-2-17-QACoverage"><a href="#2-2-17-QACoverage" class="headerlink" title="2.2.17 QACoverage"></a>2.2.17 QACoverage</h3><p>基于敏捷思想，从需求管理、测试设计、测试执行、缺陷管理以及度量和报告模块</p>
+<h2 id="2-3-接口测试"><a href="#2-3-接口测试" class="headerlink" title="2.3 接口测试"></a>2.3 接口测试</h2><h3 id="2-3-1-Postman"><a href="#2-3-1-Postman" class="headerlink" title="2.3.1 Postman"></a>2.3.1 Postman</h3><p>很好用的一款API&#x2F;接口功能测试工具，很方便的塞数据，查看响应，设置检查点&#x2F;断言，能进行一定程度上的自动化测试</p>
+<p>有免费版、pro版、企业版三个版本。个人学习及日常工作免费版完全够用</p>
+<p>语法基于js</p>
+<h3 id="2-3-2-SoapUI"><a href="#2-3-2-SoapUI" class="headerlink" title="2.3.2 SoapUI"></a>2.3.2 SoapUI</h3><p>SoapUI是一个开放源代码且完全免费的工具，因为是基于Java开发的，因此它可以Windows、Mac和Linux系统上进行了接口测试，在业界被视为API service测试的的标准工具</p>
+<p>支持完整的RESTful API和SOAP Web Service测试，并支持功能测试，性能测试，互操作性测试，回归测试等。</p>
+<h3 id="2-3-3-REST-Assured"><a href="#2-3-3-REST-Assured" class="headerlink" title="2.3.3 REST-Assured"></a>2.3.3 REST-Assured</h3><p>是一套由 Java 实现的轻量级的 REST API 测试框架，可以直接编写代码向服务器端发起 HTTP 请求，并验证返回结果。</p>
+<h3 id="2-3-4-Apifox"><a href="#2-3-4-Apifox" class="headerlink" title="2.3.4 Apifox"></a>2.3.4 Apifox</h3><p>是接口管理、开发、测试全流程集成工具，定位 Postman + Swagger + Mock + JMeter。通过一套系统、一份数据，解决多个系统之间的数据同步问题。只要定义好接口文档，接口调试、数据 Mock、接口测试就可以直接使用，无需再次定义；接口文档和接口开发调试使用同一个工具，接口调试完成后即可保证和接口文档定义完全一致。</p>
+<h3 id="2-3-5-Katalon-Studio"><a href="#2-3-5-Katalon-Studio" class="headerlink" title="2.3.5 Katalon Studio"></a>2.3.5 Katalon Studio</h3><p>免费的自动化测试工具，可以安装在windows、macOS、linux操作系统上，基于selenium 和 Appium 测试框架</p>
+<p>支持Web，Mobile，API 类型的自动化测试，它同时可以管理页面元素、测试数据、测试案例、生成自动化测试报告，可以集成到 CI&#x2F;CD 过程中，兼容流行的质量处理工具，包括qTest，JIRA等</p>
+<h3 id="2-3-6"><a href="#2-3-6" class="headerlink" title="2.3.6"></a>2.3.6</h3><p>开源的Web-API自动化测试框架——Karate<br>Karate是基于另一个BDD测试框架Cucumber来建立的</p>
+<h3 id="2-3-7-WireMock"><a href="#2-3-7-WireMock" class="headerlink" title="2.3.7 WireMock"></a>2.3.7 WireMock</h3><p>模拟 API，进行快速，强大和全面的测试。WireMock 是基于 HTTP 的 API 模拟器</p>
+<h3 id="2-3-8-Hoverfly"><a href="#2-3-8-Hoverfly" class="headerlink" title="2.3.8 Hoverfly"></a>2.3.8 Hoverfly</h3><p>基于java，用于模拟api的工具</p>
+<h3 id="2-3-9-Swagger"><a href="#2-3-9-Swagger" class="headerlink" title="2.3.9 Swagger"></a>2.3.9 Swagger</h3><p>跟据业务代码自动生成相关的<code>api</code>接口文档，尤其用于<code>restful</code>风格中的项目，开发人员几乎可以不用专门去维护<code>rest api</code></p>
+<p>API 开发工具，它遵循 OpenAPI Specification（OpenAPI 规范，也简称 OAS）。<br> Swagger 可以贯穿于整个 API 生态，如 API 的设计、编写 API 文档、测试和部署。<br> Swagger 是一种通用的，和编程语言无关的 API 描述规范。</p>
+<h3 id="2-3-10-YApi"><a href="#2-3-10-YApi" class="headerlink" title="2.3.10 YApi"></a>2.3.10 YApi</h3><p>高效、易用、功能强大的API管理平台</p>
+<p>不仅提供了常用的接口管理功能，还提供了权限管理、Mock数据、Swagger数据导入等功能</p>
+<h2 id="2-4-UI测试"><a href="#2-4-UI测试" class="headerlink" title="2.4 UI测试"></a>2.4 UI测试</h2><h3 id="2-4-1-Instrumentation"><a href="#2-4-1-Instrumentation" class="headerlink" title="2.4.1 Instrumentation"></a>2.4.1 Instrumentation</h3><p>早期Google提供的Android自动化测试工具类</p>
+<p>模拟按键按下、抬起、屏幕点击、滚动等事件，通过将主程序和测试程序运行在同一个进程来实现这些功能</p>
+<p>需要配置AndroidManifest.xml文件，不能跨多个App。</p>
+<h3 id="2-4-2-UiAutomator"><a href="#2-4-2-UiAutomator" class="headerlink" title="2.4.2 UiAutomator"></a>2.4.2 UiAutomator</h3><p>Android提供的自动化测试框架，基本上支持所有的Android事件操作</p>
+<p>可以用UiAutomatorviewer抓去App页面上的控件属性而不看源码</p>
+<p>基于Java</p>
+<h3 id="2-4-3-Espresso"><a href="#2-4-3-Espresso" class="headerlink" title="2.4.3 Espresso"></a>2.4.3 Espresso</h3><p>Google的开源自动化测试框架，规模更小、更简洁，API更加精确</p>
+<p>基于Instrumentation，不能跨App</p>
+<h3 id="2-4-4-Selendroid"><a href="#2-4-4-Selendroid" class="headerlink" title="2.4.4 Selendroid"></a>2.4.4 Selendroid</h3><p>基于Instrumentation的测试框架，可以测试Native App、Hybird App、Web App，但是网上资料较少，社区活跃度也不大</p>
+<h3 id="2-4-5-robotium"><a href="#2-4-5-robotium" class="headerlink" title="2.4.5 robotium"></a>2.4.5 robotium</h3><p>基于Instrumentation的测试框架</p>
+<h3 id="2-4-6-Athrun"><a href="#2-4-6-Athrun" class="headerlink" title="2.4.6 Athrun"></a>2.4.6 Athrun</h3><p>淘宝出的一个移动测试框架&#x2F;平台，同时支持iOS和Android。Android部分也是基于Instrumentation，在Android原有的ActivityInstrumentationTestCase2类基础上进行了扩展，提供一整套面向对象的API。</p>
+<h3 id="2-4-7-Appium"><a href="#2-4-7-Appium" class="headerlink" title="2.4.7 Appium"></a>2.4.7 Appium</h3><p>开源</p>
+<p>Node.js写的，可以直接用NPM来进行安装</p>
+<p>支持native APP、hybrid APP、web APP</p>
+<h3 id="2-4-10-airtest"><a href="#2-4-10-airtest" class="headerlink" title="2.4.10 airtest"></a>2.4.10 airtest</h3><p>开源ui测试工具，可视化编程，支持报告</p>
+<h3 id="2-4-11-poco"><a href="#2-4-11-poco" class="headerlink" title="2.4.11 poco"></a>2.4.11 poco</h3><p>抓取UI控件，目前不算稳定</p>
+<h3 id="2-4-12-airtest-ocr"><a href="#2-4-12-airtest-ocr" class="headerlink" title="2.4.12 airtest-ocr"></a>2.4.12 airtest-ocr</h3><p>识别文本</p>
+<h3 id="2-4-13-solopi"><a href="#2-4-13-solopi" class="headerlink" title="2.4.13 solopi"></a>2.4.13 solopi</h3><p>蚂蚁金服开源的一款移动端APP测试工具，提供脚本录制、编辑、回放，结果展示以及一机多控（即通过设备间的socket通讯实现1台手机可以控制多台手机执行脚本）等功能，其测试用例的录制和执行等操作均在手机端的一个APP中完成。不需要借助电脑软件与测试设备交互，所以通信结构比Appium简单高效，对元素的识别也是使用类似于appium的控件的方式，并且引入了类似于airtest的图像识别的方式</p>
+<h2 id="2-5-性能测试"><a href="#2-5-性能测试" class="headerlink" title="2.5 性能测试"></a>2.5 性能测试</h2><h3 id="2-5-1-perfdog"><a href="#2-5-1-perfdog" class="headerlink" title="2.5.1 perfdog"></a>2.5.1 perfdog</h3><p>腾讯开发（收费很贵）</p>
+<p>是移动全平台Android&#x2F;iOS性能测试和分析工具平台（<a class="link"   target="_blank" rel="noopener" href="https://perfdog.qq.com/mydata/cases" >web可视化数据管理<i class="fas fa-external-link-alt"></i></a>，需<a class="link"   target="_blank" rel="noopener" href="https://perfdog.qq.com/login" >登录<i class="fas fa-external-link-alt"></i></a>），快速定位分析性能问题</p>
+<p>手机无需root或越狱，App应用及游戏也无需做任何修改，极简化即插即用</p>
+<h3 id="2-5-2-LoadRunner"><a href="#2-5-2-LoadRunner" class="headerlink" title="2.5.2 LoadRunner"></a>2.5.2 LoadRunner</h3><p>常用的性能测试工具，支持脚本录制，也支持编程</p>
+<p>本质是通过http协议压测的。模拟多个浏览器发送不同的数据包给服务器</p>
+<h3 id="2-5-6-SilkPerformer"><a href="#2-5-6-SilkPerformer" class="headerlink" title="2.5.6 SilkPerformer"></a>2.5.6 SilkPerformer</h3><p>使用可视化脚本生成技术和对存在成千上万的并发用户的多个应用环境进行测试的能力</p>
+<h3 id="2-5-7-Rational-Performance-Tester"><a href="#2-5-7-Rational-Performance-Tester" class="headerlink" title="2.5.7 Rational Performance Tester"></a>2.5.7 Rational Performance Tester</h3><p>适用于基于 Web 的应用程序的性能和可靠性测试。Rational Performance Tester 将易用性与深入分析功能相结合，从而简化了测试创建、负载生成和数据收集，以帮助确保应用程序具有支持数以千计并发用户并稳定运行的性能。</p>
+<h3 id="2-5-8-游戏引擎自带的的性能分析工具"><a href="#2-5-8-游戏引擎自带的的性能分析工具" class="headerlink" title="2.5.8 游戏引擎自带的的性能分析工具"></a>2.5.8 游戏引擎自带的的性能分析工具</h3><p>Unity Profiler</p>
+<p>Memory Profiler</p>
+<p>URP</p>
+<p>Xcode Frame Capture</p>
+<p>Instrument</p>
+<p>toLua Framework</p>
+<p>UWA（腾讯）</p>
+<h3 id="2-5-9-andorid自带的性能分析工具"><a href="#2-5-9-andorid自带的性能分析工具" class="headerlink" title="2.5.9 andorid自带的性能分析工具"></a>2.5.9 andorid自带的性能分析工具</h3><p>android studio</p>
+<h3 id="2-5-10-Emmagee"><a href="#2-5-10-Emmagee" class="headerlink" title="2.5.10 Emmagee"></a>2.5.10 Emmagee</h3><p>开源</p>
+<p>Emmagee(机关枪)是网易杭州研究院QA团队开发的一个简单易上手的Android性能监测小工具，主要用于监控单个App的CPU，内存，流量，启动耗时，电量，电流等性能状态的变化，且用户可自定义配置监控的频率以及性能的实时显示，并最终生成一份性能统计文件。对于手游实时分析CPU和内存占比帮助非常大</p>
+<h3 id="2-5-10-GT"><a href="#2-5-10-GT" class="headerlink" title="2.5.10 GT"></a>2.5.10 GT</h3><p>腾讯开发</p>
+<p>GT（随身调）安卓&#x2F;IOS手机端调测组件，用于APP的性能测试、竞品测试及仅凭一台手机即可进行App测试。 利用GT，仅凭一部手机，无需连接电脑，您即可对APP进行快速的性能测试(CPU、内存、流量、电量、帧率&#x2F;流畅度等)、 开发日志的查看、Crash日志查看、网络数据包的抓取、APP内部参数的调试、真机代码耗时统计等等</p>
+<h2 id="2-6-压力测试"><a href="#2-6-压力测试" class="headerlink" title="2.6 压力测试"></a>2.6 压力测试</h2><h3 id="2-6-1-JMeter"><a href="#2-6-1-JMeter" class="headerlink" title="2.6.1 JMeter"></a>2.6.1 JMeter</h3><p>能够对HTTP和FTP服务器进行压力和<a class="link"   target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95?fromModule=lemma_inlink" >性能测试<i class="fas fa-external-link-alt"></i></a>， 也可以对任何数据库进行同样的测试（通过JDBC）</p>
+<h3 id="2-6-2-Monkey"><a href="#2-6-2-Monkey" class="headerlink" title="2.6.2 Monkey"></a>2.6.2 Monkey</h3><p>Android SDK自带的测试工具</p>
+<p>对正在开发的应用程序进行压力测试，也有日志输出。实际上该工具只能做程序做一些压力测试，由于测试事件和数据都是随机的，不能自定义，所以有很大的局限性</p>
+<h3 id="2-6-3-MonkeyRunner"><a href="#2-6-3-MonkeyRunner" class="headerlink" title="2.6.3 MonkeyRunner"></a>2.6.3 MonkeyRunner</h3><p>Android SDK提供的测试工具（api包），比Monkey强大，可以编写测试脚本（python）来自定义数据、事件</p>
+<h3 id="2-6-4-LoadRunner"><a href="#2-6-4-LoadRunner" class="headerlink" title="2.6.4 LoadRunner"></a>2.6.4 LoadRunner</h3><p>预测系统行为和性能的负载测试工具，通过模拟实际用户的操作行为进行实时性能监测，来帮助测试人员更快的查找和发现问题</p>
+<h3 id="2-6-5-NeoLoad"><a href="#2-6-5-NeoLoad" class="headerlink" title="2.6.5 NeoLoad"></a>2.6.5 NeoLoad</h3><p>NeoLoad是Neotys出品的一种负载和性能测试工具，可真实地模拟用户活动并监视基础架构运行状态，从而消除所有Web和移动应用程序中的瓶颈。NeoLoad通过使用无脚本GUI和一系列自动化功能，可让测试设计速度提高5-10倍，并将维护的脚本维持在原始设计时间的10％，同时帮助用户使用持续集成系统自动进行测试</p>
+<h3 id="2-6-6-WebLOAD"><a href="#2-6-6-WebLOAD" class="headerlink" title="2.6.6 WebLOAD"></a>2.6.6 WebLOAD</h3><p>来自Radview公司的负载测试工具，它可被用以测试系统性能和弹性，也可被用于正确性验证（验证返回结果的正确性）</p>
+<p>测试脚本用js</p>
+<h3 id="2-6-7-阿里云PTS"><a href="#2-6-7-阿里云PTS" class="headerlink" title="2.6.7 阿里云PTS"></a>2.6.7 阿里云PTS</h3><p>阿里云性能测试（Performance Testing）是一个SaaS性能测试平台，具有强大的分布式压测能力，可模拟海量用户真实的业务场景</p>
+<p>提供压测机</p>
+<h3 id="2-6-8-kylinTOP"><a href="#2-6-8-kylinTOP" class="headerlink" title="2.6.8 kylinTOP"></a>2.6.8 kylinTOP</h3><p><a class="link"   target="_blank" rel="noopener" href="http://www.kylinpet.com/cloud/help/index.html" >自动化测试工具-性能测试工具-kylinTOP测试与监测平台介绍 (kylinpet.com)<i class="fas fa-external-link-alt"></i></a></p>
+<p>奇林测试平台（简称：kylinTOP）是一款国产的集性能测试、自动化测试（UI、接口、APP）、业务&amp;接口监控于一体的产品。kylinTOP是B&#x2F;S架构的分布式系统，支持跨平台（WINDOWS&#x2F;LINUX&#x2F;SOLARIS&#x2F;麒麟&#x2F;MAC等）运行。</p>
+<h2 id="2-7-兼容自动化测试"><a href="#2-7-兼容自动化测试" class="headerlink" title="2.7 兼容自动化测试"></a>2.7 兼容自动化测试</h2><h3 id="2-7-1-TestIn"><a href="#2-7-1-TestIn" class="headerlink" title="2.7.1 TestIn"></a>2.7.1 TestIn</h3><p>基于共享经济的测试众包服务平台，发单接单</p>
+<h3 id="2-7-2-腾讯优测"><a href="#2-7-2-腾讯优测" class="headerlink" title="2.7.2 腾讯优测"></a>2.7.2 腾讯优测</h3><p>拥有千台真实手机，覆盖99%市场主流机型，支持7X24小时设备在线服务，</p>
+<h3 id="2-7-3-百度-MTC"><a href="#2-7-3-百度-MTC" class="headerlink" title="2.7.3 百度 MTC"></a>2.7.3 百度 MTC</h3><p><strong>百度移动云测试中心</strong>简称MTC（Mobile TestingCenter）。 该中心为开发者提供了上百种主流厂商的移动终端设备及增强模拟器，涵盖了Top 100 Android真机和各种配置的模拟器，方便开发者进行实时的手机应用开发和测试工作。</p>
+<h3 id="2-7-4-阿里-MQC"><a href="#2-7-4-阿里-MQC" class="headerlink" title="2.7.4 阿里 MQC"></a>2.7.4 阿里 MQC</h3><p>移动测试（MQC）是为广大企业客户和移动开发者提供真机测试服务的云平台，拥有大量热门机型，提供7x24全天候服务</p>
+<h2 id="2-8-本地化自动化测试"><a href="#2-8-本地化自动化测试" class="headerlink" title="2.8 本地化自动化测试"></a>2.8 本地化自动化测试</h2><h3 id="2-8-1-Digvante"><a href="#2-8-1-Digvante" class="headerlink" title="2.8.1 Digvante"></a>2.8.1 Digvante</h3><p>一个众测社区</p>
+<h2 id="2-9-wiki（知识分享）模块"><a href="#2-9-wiki（知识分享）模块" class="headerlink" title="2.9 wiki（知识分享）模块"></a>2.9 wiki（知识分享）模块</h2><h2 id="2-10-人员管理模块"><a href="#2-10-人员管理模块" class="headerlink" title="2.10 人员管理模块"></a>2.10 人员管理模块</h2><h2 id="2-11-平台说明手册模块"><a href="#2-11-平台说明手册模块" class="headerlink" title="2.11 平台说明手册模块"></a>2.11 平台说明手册模块</h2><h2 id="2-12-BUG管理模块"><a href="#2-12-BUG管理模块" class="headerlink" title="2.12 BUG管理模块"></a>2.12 BUG管理模块</h2><p>redmine</p>
+<p>bugfree</p>
+<p>bugzilla</p>
+<p>quality center</p>
+<p>easybug</p>
+<p>jiar</p>
+<p>禅道</p>
+<p>testdirector</p>
+<p>excel</p>
+<h2 id="2-13-系统设置模块"><a href="#2-13-系统设置模块" class="headerlink" title="2.13 系统设置模块"></a>2.13 系统设置模块</h2><h2 id="2-14-持续测试模块"><a href="#2-14-持续测试模块" class="headerlink" title="2.14 持续测试模块"></a>2.14 持续测试模块</h2><h1 id="3-功能原型"><a href="#3-功能原型" class="headerlink" title="3. 功能原型"></a>3. 功能原型</h1>
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">【调研】测试框架</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">maxL</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2022-11-10 08:00:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2022/11/10/【调研】测试框架/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/">#测试框架</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2022/11/17/%E3%80%90%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5%E3%80%91%E6%89%93%E5%8C%85%E5%8F%91%E5%B8%83%E6%9C%AC%E5%9C%B0python%E6%A8%A1%E5%9D%97/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">【源码】打包发布本地python模块</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2022/11/10/%E3%80%90%E8%B8%A9%E5%9D%91%EF%BC%88%E8%A7%A3%E5%86%B3%EF%BC%89%E3%80%91%E9%87%8D%E7%BC%96%E8%AF%91OpenCV/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">【踩坑（解决）】重编译OpenCV</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+                <div class="comment-container">
+                    
+<div class="comments-container">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="twikoo-container">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/twikoo@1.6.16/dist/twikoo.all.min.js"></script>
+        <div id="twikoo-comment"></div>
+        <script data-pjax>
+          function loadTwikoo() {
+            twikoo.init({
+              el: '#twikoo-comment',
+              envId: 'blog-comments-7g8rgfsf1481a6f9',
+              region: 'ap-guangzhou',
+              lang: 'zh-CN' || 'zh-CN'
+            });
+          }
+
+          if ('true' === 'true') {
+            const loadTwikooTimeout = setTimeout(() => {
+              loadTwikoo();
+              clearTimeout(loadTwikooTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadTwikoo);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E5%8A%9F%E8%83%BD%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">1. 功能简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E7%AB%9E%E5%93%81%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">2. 竞品分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 自动化测试框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-%E6%B5%81%E9%A9%AC"><span class="nav-number">2.1.1.</span> <span class="nav-text">2.1.1 流马</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-luckyframe"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.1.2 luckyframe</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-3-robot"><span class="nav-number">2.1.3.</span> <span class="nav-text">2.1.3 robot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-4-%E7%BD%91%E7%BB%9C%E9%A9%B1%E5%8A%A8%EF%BC%88WebDriverIO%EF%BC%89"><span class="nav-number">2.1.4.</span> <span class="nav-text">2.1.4 网络驱动（WebDriverIO）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-5-Citrus"><span class="nav-number">2.1.5.</span> <span class="nav-text">2.1.5 Citrus</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-6-Cypress"><span class="nav-number">2.1.6.</span> <span class="nav-text">2.1.6 Cypress</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-7-Selenium"><span class="nav-number">2.1.7.</span> <span class="nav-text">2.1.7 Selenium</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-8-Cucumber"><span class="nav-number">2.1.8.</span> <span class="nav-text">2.1.8 Cucumber</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-9-Serenity"><span class="nav-number">2.1.9.</span> <span class="nav-text">2.1.9 Serenity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-10-Carina"><span class="nav-number">2.1.10.</span> <span class="nav-text">2.1.10 Carina</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-11-ZTF"><span class="nav-number">2.1.11.</span> <span class="nav-text">2.1.11 ZTF</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E6%B5%8B%E8%AF%95%E8%AE%A1%E5%88%92%E7%AE%A1%E7%90%86%EF%BC%88%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 测试计划管理（测试平台）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-%E7%A6%85%E9%81%93"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 禅道</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-TESTPAD"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 TESTPAD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-Testrail"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.2.3 Testrail</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-4-Testlink"><span class="nav-number">2.2.4.</span> <span class="nav-text">2.2.4 Testlink</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-5-%E9%A3%9E%E8%9B%BE"><span class="nav-number">2.2.5.</span> <span class="nav-text">2.2.5 飞蛾</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-6-junoOne"><span class="nav-number">2.2.6.</span> <span class="nav-text">2.2.6 junoOne</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-7-jira"><span class="nav-number">2.2.7.</span> <span class="nav-text">2.2.7 jira</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-8-PingCode"><span class="nav-number">2.2.8.</span> <span class="nav-text">2.2.8 PingCode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-9-PractiTest"><span class="nav-number">2.2.9.</span> <span class="nav-text">2.2.9 PractiTest</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-10-Kualitee"><span class="nav-number">2.2.10.</span> <span class="nav-text">2.2.10 Kualitee</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-11-zephyr-enterprise"><span class="nav-number">2.2.11.</span> <span class="nav-text">2.2.11 zephyr enterprise</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-12-Metersphere"><span class="nav-number">2.2.12.</span> <span class="nav-text">2.2.12 Metersphere</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-13-bugzilla"><span class="nav-number">2.2.13.</span> <span class="nav-text">2.2.13 bugzilla</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-14-Testopia"><span class="nav-number">2.2.14.</span> <span class="nav-text">2.2.14 Testopia</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-15-Testmonitor"><span class="nav-number">2.2.15.</span> <span class="nav-text">2.2.15 Testmonitor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-16-Klaros-testmanagement"><span class="nav-number">2.2.16.</span> <span class="nav-text">2.2.16 Klaros-testmanagement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-17-QACoverage"><span class="nav-number">2.2.17.</span> <span class="nav-text">2.2.17 QACoverage</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 接口测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-Postman"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.3.1 Postman</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-SoapUI"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.3.2 SoapUI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-3-REST-Assured"><span class="nav-number">2.3.3.</span> <span class="nav-text">2.3.3 REST-Assured</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-4-Apifox"><span class="nav-number">2.3.4.</span> <span class="nav-text">2.3.4 Apifox</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-5-Katalon-Studio"><span class="nav-number">2.3.5.</span> <span class="nav-text">2.3.5 Katalon Studio</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-6"><span class="nav-number">2.3.6.</span> <span class="nav-text">2.3.6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-7-WireMock"><span class="nav-number">2.3.7.</span> <span class="nav-text">2.3.7 WireMock</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-8-Hoverfly"><span class="nav-number">2.3.8.</span> <span class="nav-text">2.3.8 Hoverfly</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-9-Swagger"><span class="nav-number">2.3.9.</span> <span class="nav-text">2.3.9 Swagger</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-10-YApi"><span class="nav-number">2.3.10.</span> <span class="nav-text">2.3.10 YApi</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-UI%E6%B5%8B%E8%AF%95"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 UI测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-1-Instrumentation"><span class="nav-number">2.4.1.</span> <span class="nav-text">2.4.1 Instrumentation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-2-UiAutomator"><span class="nav-number">2.4.2.</span> <span class="nav-text">2.4.2 UiAutomator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-3-Espresso"><span class="nav-number">2.4.3.</span> <span class="nav-text">2.4.3 Espresso</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-4-Selendroid"><span class="nav-number">2.4.4.</span> <span class="nav-text">2.4.4 Selendroid</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-5-robotium"><span class="nav-number">2.4.5.</span> <span class="nav-text">2.4.5 robotium</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-6-Athrun"><span class="nav-number">2.4.6.</span> <span class="nav-text">2.4.6 Athrun</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-7-Appium"><span class="nav-number">2.4.7.</span> <span class="nav-text">2.4.7 Appium</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-10-airtest"><span class="nav-number">2.4.8.</span> <span class="nav-text">2.4.10 airtest</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-11-poco"><span class="nav-number">2.4.9.</span> <span class="nav-text">2.4.11 poco</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-12-airtest-ocr"><span class="nav-number">2.4.10.</span> <span class="nav-text">2.4.12 airtest-ocr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-13-solopi"><span class="nav-number">2.4.11.</span> <span class="nav-text">2.4.13 solopi</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 性能测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-1-perfdog"><span class="nav-number">2.5.1.</span> <span class="nav-text">2.5.1 perfdog</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-2-LoadRunner"><span class="nav-number">2.5.2.</span> <span class="nav-text">2.5.2 LoadRunner</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-6-SilkPerformer"><span class="nav-number">2.5.3.</span> <span class="nav-text">2.5.6 SilkPerformer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-7-Rational-Performance-Tester"><span class="nav-number">2.5.4.</span> <span class="nav-text">2.5.7 Rational Performance Tester</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-8-%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E8%87%AA%E5%B8%A6%E7%9A%84%E7%9A%84%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7"><span class="nav-number">2.5.5.</span> <span class="nav-text">2.5.8 游戏引擎自带的的性能分析工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-9-andorid%E8%87%AA%E5%B8%A6%E7%9A%84%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7"><span class="nav-number">2.5.6.</span> <span class="nav-text">2.5.9 andorid自带的性能分析工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-10-Emmagee"><span class="nav-number">2.5.7.</span> <span class="nav-text">2.5.10 Emmagee</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-10-GT"><span class="nav-number">2.5.8.</span> <span class="nav-text">2.5.10 GT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 压力测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-1-JMeter"><span class="nav-number">2.6.1.</span> <span class="nav-text">2.6.1 JMeter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-2-Monkey"><span class="nav-number">2.6.2.</span> <span class="nav-text">2.6.2 Monkey</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-3-MonkeyRunner"><span class="nav-number">2.6.3.</span> <span class="nav-text">2.6.3 MonkeyRunner</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-4-LoadRunner"><span class="nav-number">2.6.4.</span> <span class="nav-text">2.6.4 LoadRunner</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-5-NeoLoad"><span class="nav-number">2.6.5.</span> <span class="nav-text">2.6.5 NeoLoad</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-6-WebLOAD"><span class="nav-number">2.6.6.</span> <span class="nav-text">2.6.6 WebLOAD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-7-%E9%98%BF%E9%87%8C%E4%BA%91PTS"><span class="nav-number">2.6.7.</span> <span class="nav-text">2.6.7 阿里云PTS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-8-kylinTOP"><span class="nav-number">2.6.8.</span> <span class="nav-text">2.6.8 kylinTOP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-%E5%85%BC%E5%AE%B9%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 兼容自动化测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-1-TestIn"><span class="nav-number">2.7.1.</span> <span class="nav-text">2.7.1 TestIn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-2-%E8%85%BE%E8%AE%AF%E4%BC%98%E6%B5%8B"><span class="nav-number">2.7.2.</span> <span class="nav-text">2.7.2 腾讯优测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-3-%E7%99%BE%E5%BA%A6-MTC"><span class="nav-number">2.7.3.</span> <span class="nav-text">2.7.3 百度 MTC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-4-%E9%98%BF%E9%87%8C-MQC"><span class="nav-number">2.7.4.</span> <span class="nav-text">2.7.4 阿里 MQC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-8-%E6%9C%AC%E5%9C%B0%E5%8C%96%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 本地化自动化测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-1-Digvante"><span class="nav-number">2.8.1.</span> <span class="nav-text">2.8.1 Digvante</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-9-wiki%EF%BC%88%E7%9F%A5%E8%AF%86%E5%88%86%E4%BA%AB%EF%BC%89%E6%A8%A1%E5%9D%97"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 wiki（知识分享）模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-10-%E4%BA%BA%E5%91%98%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97"><span class="nav-number">2.10.</span> <span class="nav-text">2.10 人员管理模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-11-%E5%B9%B3%E5%8F%B0%E8%AF%B4%E6%98%8E%E6%89%8B%E5%86%8C%E6%A8%A1%E5%9D%97"><span class="nav-number">2.11.</span> <span class="nav-text">2.11 平台说明手册模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-12-BUG%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97"><span class="nav-number">2.12.</span> <span class="nav-text">2.12 BUG管理模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-13-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE%E6%A8%A1%E5%9D%97"><span class="nav-number">2.13.</span> <span class="nav-text">2.13 系统设置模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-14-%E6%8C%81%E7%BB%AD%E6%B5%8B%E8%AF%95%E6%A8%A1%E5%9D%97"><span class="nav-number">2.14.</span> <span class="nav-text">2.14 持续测试模块</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E5%8A%9F%E8%83%BD%E5%8E%9F%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">3. 功能原型</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2024
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">maxL</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://pages.github.com/">
+                
+                    本站由 <span class="tooltip" data-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

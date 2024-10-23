@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="maxL">
+    
+    <title>
+        
+            小兔鲜首页制作练习 |
+        
+        Infinite
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"laihandong.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#003366","logo":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","favicon":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","avatar":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"以有涯随无涯，殆已！","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"twikoo","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":"blog-comments-7g8rgfsf1481a6f9","region":"ap-guangzhou","version":"1.6.16"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["追梦人"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Infinite
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >
+                                更新日志
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog">更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">小兔鲜首页制作练习</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">maxL</span>
+                            
+                                <span class="author-label">追梦人</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-06-16 13:19:29</span>
+        <span class="mobile">2023-06-16 13:19</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2024-10-24 00:28:36</span>
+    </span>
+    
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%89%8D%E7%AB%AF%E7%95%8C%E9%9D%A2%E7%BB%83%E4%B9%A0/">前端界面练习</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>404 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>1 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <p>这是<a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1kM4y127Li" >黑马2023前端Web开发<i class="fas fa-external-link-alt"></i></a>前<strong>131</strong>集的阶段练习，内容为<strong>小兔鲜网站的首页</strong>：<a href="https://laihandong.github.io//code/小兔鲜首页制作练习/index.html" target="_blank">展示地址</a> &#x2F; <a class="link"   href="https://github.com/laihandong/FullStack/tree/main/小兔鲜首页制作练习"  target="_blank">源代码地址<i class="fas fa-external-link-alt"></i></a></p>
+<p>本次练习的特点有：素材划分更细、使用字体图标、<code>SEO</code>优化等</p>
+<h1 id="项目目录"><a href="#项目目录" class="headerlink" title="项目目录"></a>项目目录</h1><ul>
+<li><code>images</code>：存放<strong>固定</strong>使用的图片素材</li>
+<li><code>uploads</code>：存放<strong>非</strong>固定使用的图片素材</li>
+<li><code>iconfont</code>：<strong>字体图标</strong>素材</li>
+<li><code>css</code><ul>
+<li><code>base.css</code>：<strong>基础公共</strong>样式</li>
+<li><code>common.css</code>：各个网页相同模块的<strong>重复</strong>样式</li>
+<li><code>index.css</code>：首页样式</li>
+</ul>
+</li>
+<li><code>index.html</code>：首页<code>HTML</code>文件</li>
+</ul>
+<h1 id="SEO三大标签"><a href="#SEO三大标签" class="headerlink" title="SEO三大标签"></a><code>SEO</code>三大标签</h1><p><code>SEO</code>定义：搜索引擎优化，提升网站百度搜索排名</p>
+<p>提升<code>SEO</code>的常见方法：</p>
+<ul>
+<li>竞价排名</li>
+<li>将网页制作成<code>html</code>后缀</li>
+<li>标签语义化（在合适的地方使用合适的标签）</li>
+<li>……</li>
+</ul>
+<p>网页头部<code>SEO</code>标签：</p>
+<ul>
+<li><code>title</code></li>
+<li><code>description</code></li>
+<li><code>keywords</code></li>
+</ul>
+<h1 id="Favicon图标"><a href="#Favicon图标" class="headerlink" title="Favicon图标"></a><code>Favicon</code>图标</h1><p>定义：网页图标，出现在<strong>浏览器标题栏</strong>，增加网站辨识度</p>
+<p>图标：<code>favicon.ico</code>，一般存放在网站的<strong>根</strong>目录里面</p>
+<h1 id="版心"><a href="#版心" class="headerlink" title="版心"></a>版心</h1><p><code>wrapper</code>宽度：1240<code>px</code></p>
+<h1 id="快捷导航"><a href="#快捷导航" class="headerlink" title="快捷导航"></a>快捷导航</h1><p>结构：通栏&gt;版心&gt;导航<code>ul</code></p>
+<p>布局：<code>flex-end</code></p>
+<h1 id="头部导航"><a href="#头部导航" class="headerlink" title="头部导航"></a>头部导航</h1><p>结构：<code>.header&gt;logo+nav+search+cart</code></p>
+<h1 id="底部区域"><a href="#底部区域" class="headerlink" title="底部区域"></a>底部区域</h1><p>结构：通栏&gt;版心&gt;服务+帮助+版权</p>
+<p>由于是底部区域，不用考虑<code>SEO</code>优化（即不用<code>li</code>标签包裹<code>a</code>标签）</p>
+<h1 id="banner"><a href="#banner" class="headerlink" title="banner"></a>banner</h1><p>结构：通栏&gt;版心&gt;轮播图+侧导航+原点指示器</p>
+<h1 id="新鲜好物区域"><a href="#新鲜好物区域" class="headerlink" title="新鲜好物区域"></a>新鲜好物区域</h1><p>结构：标题+内容</p>
+<p>由于格式重复，使用公共样式</p>
+<h1 id="热门品牌区域"><a href="#热门品牌区域" class="headerlink" title="热门品牌区域"></a>热门品牌区域</h1><p>标题结构：左侧+右侧箭头</p>
+<h1 id="生鲜区域"><a href="#生鲜区域" class="headerlink" title="生鲜区域"></a>生鲜区域</h1><p>标题结构：右侧&gt;菜单+查看全部</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">小兔鲜首页制作练习</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">maxL</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-06-16 13:19:29</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/06/16/【工程实践】小兔鲜首页制作练习@黑马程序员/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E5%89%8D%E7%AB%AF%E7%95%8C%E9%9D%A2%E7%BB%83%E4%B9%A0/">#前端界面练习</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/12/24/%E3%80%90%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E3%80%91%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">【学习记录】版本管理系统</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/06/14/%E3%80%90%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5%E3%80%91%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF%E9%A6%96%E9%A1%B5%E5%88%B6%E4%BD%9C%E7%BB%83%E4%B9%A0@%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">学成在线首页制作练习</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+                <div class="comment-container">
+                    
+<div class="comments-container">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="twikoo-container">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/twikoo@1.6.16/dist/twikoo.all.min.js"></script>
+        <div id="twikoo-comment"></div>
+        <script data-pjax>
+          function loadTwikoo() {
+            twikoo.init({
+              el: '#twikoo-comment',
+              envId: 'blog-comments-7g8rgfsf1481a6f9',
+              region: 'ap-guangzhou',
+              lang: 'zh-CN' || 'zh-CN'
+            });
+          }
+
+          if ('true' === 'true') {
+            const loadTwikooTimeout = setTimeout(() => {
+              loadTwikoo();
+              clearTimeout(loadTwikooTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadTwikoo);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95"><span class="nav-number">1.</span> <span class="nav-text">项目目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SEO%E4%B8%89%E5%A4%A7%E6%A0%87%E7%AD%BE"><span class="nav-number">2.</span> <span class="nav-text">SEO三大标签</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Favicon%E5%9B%BE%E6%A0%87"><span class="nav-number">3.</span> <span class="nav-text">Favicon图标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%89%88%E5%BF%83"><span class="nav-number">4.</span> <span class="nav-text">版心</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%AB%E6%8D%B7%E5%AF%BC%E8%88%AA"><span class="nav-number">5.</span> <span class="nav-text">快捷导航</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%B4%E9%83%A8%E5%AF%BC%E8%88%AA"><span class="nav-number">6.</span> <span class="nav-text">头部导航</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%95%E9%83%A8%E5%8C%BA%E5%9F%9F"><span class="nav-number">7.</span> <span class="nav-text">底部区域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#banner"><span class="nav-number">8.</span> <span class="nav-text">banner</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B0%E9%B2%9C%E5%A5%BD%E7%89%A9%E5%8C%BA%E5%9F%9F"><span class="nav-number">9.</span> <span class="nav-text">新鲜好物区域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%83%AD%E9%97%A8%E5%93%81%E7%89%8C%E5%8C%BA%E5%9F%9F"><span class="nav-number">10.</span> <span class="nav-text">热门品牌区域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%9F%E9%B2%9C%E5%8C%BA%E5%9F%9F"><span class="nav-number">11.</span> <span class="nav-text">生鲜区域</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2024
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">maxL</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://pages.github.com/">
+                
+                    本站由 <span class="tooltip" data-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

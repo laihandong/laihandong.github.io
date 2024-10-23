@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="maxL">
+    
+    <title>
+        
+            【踩坑（解决）】重编译OpenCV |
+        
+        Infinite
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"laihandong.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#003366","logo":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","favicon":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","avatar":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"以有涯随无涯，殆已！","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"twikoo","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":"blog-comments-7g8rgfsf1481a6f9","region":"ap-guangzhou","version":"1.6.16"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["追梦人"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Infinite
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >
+                                更新日志
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog">更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">【踩坑（解决）】重编译OpenCV</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">maxL</span>
+                            
+                                <span class="author-label">追梦人</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2022-11-10 08:00:00</span>
+        <span class="mobile">2022-11-10 08:00</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2024-10-24 00:29:22</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/">踩坑记录</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/OpenCV/">OpenCV</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.4k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>5 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h1 id="一、理论准备"><a href="#一、理论准备" class="headerlink" title="一、理论准备"></a>一、理论准备</h1><blockquote>
+<p>就拿opencv举例，将python的源代码编译为pyd。</p>
+<p>（为什么呢？因为通过pip安装的opencv-python本身就包含一些被编译后的pyd，而不是全都是py源代码文件。）</p>
+</blockquote>
+<h2 id="1-C-x2F-C-编译原理和机制"><a href="#1-C-x2F-C-编译原理和机制" class="headerlink" title="(1)C&#x2F;C++编译原理和机制"></a>(1)C&#x2F;C++编译原理和机制</h2><p>所有高级语言程序想在机器上运行，那么都必须处理成机器能够理解的低级语言（比如二进制的机器语言、嵌入式、汇编语言等），然后再让机器去执行。<br>C&#x2F;C++的编译过程就是把源程序的每一句高级语言编译成机器语言，并保存为二进制文件来给机器运行，具体包括如下几个步骤：</p>
+<ol>
+<li><p>预编译 gcc -E xxx.c -o xxx.i<br><strong>预处理器</strong>会将#*<em><strong>这些命令进行展开，也叫“宏展开”，目的是好在接下来的阶段进行替换。<br>不仅是把define的值展开，也即将include的外部代码加载替换进来了。<br>这时候生成的</strong>临时的预编译文件是以.i为后缀</em>*。<br>当然，类似注释、#pragma等字符也是在预编译里处理的。</p>
+</li>
+<li><p>（正式）编译 gcc -S xxx.i -o xxx.s<br> 这个过程是<strong>编译器</strong>将一个个独立的（高级语言）.c&#x2F;.cpp文件作为基本单元，编译成一个个<strong>汇编代码文件</strong>（编译器是通过后缀名来确定是否编译该文件，比如.h文件就不会进行编译）。<br> <strong>这时候生成的汇编代码文件是以.s为后缀</strong>。</p>
+<p> 在翻译成汇编语言前，工作的内容可以粗略分为两部分：<br> 一是，检验函数或者变量是否存在它们的声明（至于怎么实现函数，要在链接中再去找函数入口地址，include***本质就是提供声明）；二是，检查语句是否符合C&#x2F;C++语法。<br> <strong>拓展</strong>：汇编语言和硬件有很大的关系，所以如何优化生成的汇编代码是一项重要的技术</p>
+</li>
+<li><p>汇编 gcc -C xxx.s -o xxx.o<br> <strong>把汇编语言代码，一条条转化成机器语言（二进制）代码，也就是目标代码</strong>。有汇编语句和机器指令的对照表，翻译即可。<br> <strong>这时候生成的目标代码文件（也叫可重定位目标文件），是以.o(linux)&#x2F;.obj(windows)为后缀的。</strong></p>
+<p> 目标文件中存储了编译后的机器指令代码、数据、符号表、调试信息、字符串等等内容，并把这些信息<strong>按不同的属性以“段”的方式存储，目标文件从结构上说，是已经编译好之后的可执行文件。</strong>，但其实不可以直接执行（二进制可执行文件也是一种目标文件）</p>
+<p> <strong>注意</strong>：但由于之前是以一个个源代码文件进行编译的，所以一个个的目标文件未经过链接之前，有些地址和符号还未调整</p>
+</li>
+<li><p>链接 gcc xxx.o -o xxx<br> 由于目标文件并不能立即被执行，所以这一步主要解决目标文件的互相依赖关系，由<strong>链接器</strong>将各种符号引用和符号定义转化为可执行文件中的合适信息，通常是虚拟地址。<br> <strong>这时候一般生成的可执行文件（也叫可执行目标文件）是以.exe(windows)&#x2F;.out(linux)&#x2F;无后缀(linux)为后缀的</strong></p>
+<p> 还有一种特殊的目标文件叫<strong>共享目标文件（又叫库文件）</strong>，也能<strong>由链接器创建</strong>并通过指定-G选项来生成指定形式。<br> 库文件的一种是静态库（.a(linux)&#x2F;.lib(windows)），<br> 库文件的另一种是动态库（.so(linux)&#x2F;.dll(windows)），</p>
+<p> （这两种库文件还没搞清楚，待更新）</p>
+</li>
+</ol>
+<h2 id="2-C-x2F-C-编译工具和编译器"><a href="#2-C-x2F-C-编译工具和编译器" class="headerlink" title="(2)C&#x2F;C++编译工具和编译器"></a>(2)C&#x2F;C++编译工具和编译器</h2><h2 id="3-C-x2F-C-编译出的东西如何使用"><a href="#3-C-x2F-C-编译出的东西如何使用" class="headerlink" title="(3)C&#x2F;C++编译出的东西如何使用"></a>(3)C&#x2F;C++编译出的东西如何使用</h2><h2 id="4-大型项目需要用到的编译工具"><a href="#4-大型项目需要用到的编译工具" class="headerlink" title="(4)大型项目需要用到的编译工具"></a>(4)大型项目需要用到的编译工具</h2><h2 id="5-不同系统下编译的相通之处"><a href="#5-不同系统下编译的相通之处" class="headerlink" title="(5)不同系统下编译的相通之处"></a>(5)不同系统下编译的相通之处</h2><h1 id="二、资源准备"><a href="#二、资源准备" class="headerlink" title="二、资源准备"></a>二、资源准备</h1><ul>
+<li>编译器：MSVC2019（等于安装Microsoft Visual Studio 2019）</li>
+<li>编译工具：CMake-gui（官网链接）</li>
+<li>python环境：建议使用python3（官网链接）</li>
+<li>opencv源代码包：建议4.0及以上系列（官网链接）</li>
+<li>操作系统：Windows 10</li>
+</ul>
+<h1 id="三、操作步骤"><a href="#三、操作步骤" class="headerlink" title="三、操作步骤"></a>三、操作步骤</h1><h2 id="1-CMake配置"><a href="#1-CMake配置" class="headerlink" title="(1)CMake配置"></a>(1)CMake配置</h2><p>用cmake-gui选定源码包后，在默认的配置上，还需要做的工作如下：</p>
+<ul>
+<li>勾选python3相关的配置</li>
+<li>opencv-contrib配置</li>
+<li>FREExx的配置（可以调用收费算法）</li>
+<li>pydxx的配置（把必要的库一起编译进最终的cv2 pyd文件，以免出现导入库时找不到模块的报错）</li>
+</ul>
+<h2 id="2-Configure-amp-Generate"><a href="#2-Configure-amp-Generate" class="headerlink" title="(2)Configure&amp;Generate"></a>(2)Configure&amp;Generate</h2><p>这一步和（1）交叉进行，直到必要的配置都设定好后，且没有报错与红色区域为止。</p>
+<h2 id="3-生成解决方案"><a href="#3-生成解决方案" class="headerlink" title="(3)生成解决方案"></a>(3)生成解决方案</h2><p>用visual studio打开opencv.sln，对两个文件（xx和xx）进行release重新生成方案。</p>
+<h2 id="4-安装opencv-python和opencv-contrib-python"><a href="#4-安装opencv-python和opencv-contrib-python" class="headerlink" title="(4)安装opencv-python和opencv-contrib-python"></a>(4)安装opencv-python和opencv-contrib-python</h2><p>python版本不要过低即可（本人亲测3.6、3.8、3.10均可），先pip install opencv-python和opencv-contrib-python（版本与用源码编译的opencv保持一致）</p>
+<h2 id="5-替换cv2-pyd"><a href="#5-替换cv2-pyd" class="headerlink" title="(5)替换cv2.pyd"></a>(5)替换cv2.pyd</h2><p>将以源码方式编译出来的cv2.pyd，把python的cv路径里的相同文件给替换掉即可。</p>
+<h2 id="6-验证结果"><a href="#6-验证结果" class="headerlink" title="(6)验证结果"></a>(6)验证结果</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line">img = cv2.imread(<span class="string">&#x27;xx/xx.jpg&#x27;</span>)</span><br><span class="line">cv2.imshow(img)  <span class="comment"># 若正常显示图片，则证明导入成功</span></span><br></pre></td></tr></table></figure>
+
+<p>本文待完善（尽自己可见）</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">【踩坑（解决）】重编译OpenCV</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">maxL</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2022-11-10 08:00:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2022/11/10/【踩坑（解决）】重编译OpenCV/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/OpenCV/">#OpenCV</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2022/11/10/%E3%80%90%E8%B0%83%E7%A0%94%E3%80%91%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">【调研】测试框架</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2022/11/08/%E3%80%90%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E3%80%91git/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">【学习记录】git</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+                <div class="comment-container">
+                    
+<div class="comments-container">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="twikoo-container">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/twikoo@1.6.16/dist/twikoo.all.min.js"></script>
+        <div id="twikoo-comment"></div>
+        <script data-pjax>
+          function loadTwikoo() {
+            twikoo.init({
+              el: '#twikoo-comment',
+              envId: 'blog-comments-7g8rgfsf1481a6f9',
+              region: 'ap-guangzhou',
+              lang: 'zh-CN' || 'zh-CN'
+            });
+          }
+
+          if ('true' === 'true') {
+            const loadTwikooTimeout = setTimeout(() => {
+              loadTwikoo();
+              clearTimeout(loadTwikooTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadTwikoo);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%90%86%E8%AE%BA%E5%87%86%E5%A4%87"><span class="nav-number">1.</span> <span class="nav-text">一、理论准备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-C-x2F-C-%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%92%8C%E6%9C%BA%E5%88%B6"><span class="nav-number">1.1.</span> <span class="nav-text">(1)C&#x2F;C++编译原理和机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-C-x2F-C-%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E5%92%8C%E7%BC%96%E8%AF%91%E5%99%A8"><span class="nav-number">1.2.</span> <span class="nav-text">(2)C&#x2F;C++编译工具和编译器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-C-x2F-C-%E7%BC%96%E8%AF%91%E5%87%BA%E7%9A%84%E4%B8%9C%E8%A5%BF%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8"><span class="nav-number">1.3.</span> <span class="nav-text">(3)C&#x2F;C++编译出的东西如何使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%A4%A7%E5%9E%8B%E9%A1%B9%E7%9B%AE%E9%9C%80%E8%A6%81%E7%94%A8%E5%88%B0%E7%9A%84%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7"><span class="nav-number">1.4.</span> <span class="nav-text">(4)大型项目需要用到的编译工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E4%B8%8D%E5%90%8C%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%BC%96%E8%AF%91%E7%9A%84%E7%9B%B8%E9%80%9A%E4%B9%8B%E5%A4%84"><span class="nav-number">1.5.</span> <span class="nav-text">(5)不同系统下编译的相通之处</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%B5%84%E6%BA%90%E5%87%86%E5%A4%87"><span class="nav-number">2.</span> <span class="nav-text">二、资源准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.</span> <span class="nav-text">三、操作步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-CMake%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.</span> <span class="nav-text">(1)CMake配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Configure-amp-Generate"><span class="nav-number">3.2.</span> <span class="nav-text">(2)Configure&amp;Generate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E7%94%9F%E6%88%90%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">3.3.</span> <span class="nav-text">(3)生成解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%AE%89%E8%A3%85opencv-python%E5%92%8Copencv-contrib-python"><span class="nav-number">3.4.</span> <span class="nav-text">(4)安装opencv-python和opencv-contrib-python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E6%9B%BF%E6%8D%A2cv2-pyd"><span class="nav-number">3.5.</span> <span class="nav-text">(5)替换cv2.pyd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E9%AA%8C%E8%AF%81%E7%BB%93%E6%9E%9C"><span class="nav-number">3.6.</span> <span class="nav-text">(6)验证结果</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2024
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">maxL</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://pages.github.com/">
+                
+                    本站由 <span class="tooltip" data-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

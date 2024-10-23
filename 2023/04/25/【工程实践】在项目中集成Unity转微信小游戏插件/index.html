@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="maxL">
+    
+    <title>
+        
+            【工程实践】Unity转微信小游戏插件 |
+        
+        Infinite
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"laihandong.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#003366","logo":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","favicon":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","avatar":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"以有涯随无涯，殆已！","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"twikoo","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":"blog-comments-7g8rgfsf1481a6f9","region":"ap-guangzhou","version":"1.6.16"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["追梦人"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Infinite
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >
+                                更新日志
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog">更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">【工程实践】Unity转微信小游戏插件</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">maxL</span>
+                            
+                                <span class="author-label">追梦人</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-04-25 08:00:00</span>
+        <span class="mobile">2023-04-25 08:00</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2024-10-24 00:29:22</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/">工程实践</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Unity/">Unity</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%8F%92%E4%BB%B6/">插件</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>821 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>4 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <p>如有开发者想把基于Unity开发的游戏工程想直接转为微信小游戏快速上线，非常推荐使用<code>minigame-unity-webgl-transform</code>这个插件。本文主要总结分析如何将该插件集成到平时的测试和发版流程。</p>
+<p>这是官方文档的原话：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> 脚本调用的话可修改 Assets/WX-WASM-SDK/Editor/MiniGameConfig.asset配置，然后调用WXEditorWindow 的 DoExport方法导出小游戏</span></span><br></pre></td></tr></table></figure>
+<p>我们就分析<code>MiniGameConfig.asset</code>配置文件和类<code>WXEditorWindow.DoExport</code>，来尝试将其集成。</p>
+<h1 id="MiniGameConfig-asset"><a href="#MiniGameConfig-asset" class="headerlink" title="MiniGameConfig.asset"></a>MiniGameConfig.asset</h1><p>这是官方为了将unity工程转为webgl资源和小游戏工程所设计的一个配置文件，几乎包含了所有转换过程中会用到的配置：</p>
+<ul>
+<li>Project Conf</li>
+<li>SDK Options</li>
+<li>Compile Options</li>
+<li>Compress Texture</li>
+<li>Player Prefs Keys<br>就我目前使用情况来看，每次发版只需要修改其中的2~3个值，其余的保持默认就已经能满足集成了</li>
+</ul>
+<p>插件本身也有一个在菜单栏的工具UI入口，可以让人用鼠标点点点就可以发版了，但本文暂不讨论该方式，因为其本质也是调用了<code>DoExport</code>函数</p>
+<h1 id="WXEditorWindow-DoExport"><a href="#WXEditorWindow-DoExport" class="headerlink" title="WXEditorWindow.DoExport"></a>WXEditorWindow.DoExport</h1><p>该方法只接受一个<code>bool</code>参数，<code>true</code>代表“导出WEBGL并转换为小游戏”，<code>false</code>代表“将WEBGL转换为小游戏”，<strong>前者更为常用</strong>。</p>
+<h1 id="编写c-脚本调用DoExport"><a href="#编写c-脚本调用DoExport" class="headerlink" title="编写c#脚本调用DoExport"></a>编写c#脚本调用DoExport</h1><p>由于asset格式的文件只能在unity中修改，所以无法调用其他语言来读取和解析<code>MiniGameConfig.asset</code>配置文件。<br>这是官方代码中<code>Assets/WX-WASM-SDK/Editor/UnityUtil.cs</code>的解析配置部分：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> WXEditorScriptObject <span class="title">GetEditorConf</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> path = <span class="string">&quot;Assets/WX-WASM-SDK/Editor/MiniGameConfig.asset&quot;</span>;</span><br><span class="line">    <span class="keyword">var</span> config = AssetDatabase.LoadAssetAtPath(path, <span class="keyword">typeof</span>(WXEditorScriptObject)) <span class="keyword">as</span> WXEditorScriptObject;</span><br><span class="line">    <span class="keyword">if</span> (config == <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        AssetDatabase.CreateAsset(EditorWindow.CreateInstance&lt;WXEditorScriptObject&gt;(), path);</span><br><span class="line">        config = AssetDatabase.LoadAssetAtPath(path, <span class="keyword">typeof</span>(WXEditorScriptObject)) <span class="keyword">as</span> WXEditorScriptObject;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> config;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对应着官方代码中<code>Assets/WX-WASM-SDK/Editor/WXEditorWindow</code>关于配置读取和保存部分：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">WXEditorWindow</span> : <span class="title">EditorWindow</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> WXEditorScriptObject config;</span><br><span class="line">    <span class="comment">//...//</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LoadData</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        SDKFilePath = Path.Combine(Application.dataPath, <span class="string">&quot;WX-WASM-SDK&quot;</span>, <span class="string">&quot;wechat-default&quot;</span>, <span class="string">&quot;unity-sdk&quot;</span>, <span class="string">&quot;index.js&quot;</span>);</span><br><span class="line">        config = UnityUtil.GetEditorConf();</span><br><span class="line">        projectName = config.ProjectConf.projectName;</span><br><span class="line">        appid = config.ProjectConf.Appid;</span><br><span class="line">        cdn = config.ProjectConf.CDN;</span><br><span class="line">        assetLoadType = config.ProjectConf.assetLoadType;</span><br><span class="line">        videoUrl = config.ProjectConf.VideoUrl;</span><br><span class="line">        orientation = (<span class="built_in">int</span>) config.ProjectConf.Orientation;</span><br><span class="line">        dst = config.ProjectConf.DST;</span><br><span class="line">        <span class="comment">// streamCDN = config.ProjectConf.StreamCDN;</span></span><br><span class="line">        bundleHashLength = config.ProjectConf.bundleHashLength;</span><br><span class="line">        bundlePathIdentifier = config.ProjectConf.bundlePathIdentifier;</span><br><span class="line">        bundleExcludeExtensions = config.ProjectConf.bundleExcludeExtensions;</span><br><span class="line">        preloadFiles = config.ProjectConf.preloadFiles;</span><br><span class="line">        developBuild = config.CompileOptions.DevelopBuild;</span><br><span class="line">        autoProfile = config.CompileOptions.AutoProfile;</span><br><span class="line">        scriptOnly = config.CompileOptions.ScriptOnly;</span><br><span class="line">        profilingFuncs = config.CompileOptions.profilingFuncs;</span><br><span class="line">        profilingMemory = config.CompileOptions.ProfilingMemory;</span><br><span class="line">        deleteStreamingAssets = config.CompileOptions.DeleteStreamingAssets;</span><br><span class="line">        cleanBuild = config.CompileOptions.CleanBuild;</span><br><span class="line">        customNodePath = config.CompileOptions.CustomNodePath;</span><br><span class="line">        webgl2 = config.CompileOptions.Webgl2;</span><br><span class="line">        useAudioApi = config.SDKOptions.UseAudioApi;</span><br><span class="line">        <span class="comment">// audioPrefix = config.ProjectConf.AssetsUrl;</span></span><br><span class="line">        useFriendRelation = config.SDKOptions.UseFriendRelation;</span><br><span class="line">        bgImageSrc = config.ProjectConf.bgImageSrc;</span><br><span class="line">        tex = AssetDatabase.LoadAssetAtPath&lt;Texture&gt;(bgImageSrc);</span><br><span class="line">        memorySize = config.ProjectConf.MemorySize;</span><br><span class="line">        hideAfterCallMain = config.ProjectConf.HideAfterCallMain;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 不常用配置，先只通过MiniGameConfig.assets修改</span></span><br><span class="line">        dataFileSubPrefix = config.ProjectConf.dataFileSubPrefix;</span><br><span class="line">        maxStorage = config.ProjectConf.maxStorage;</span><br><span class="line">        defaultReleaseSize = config.ProjectConf.defaultReleaseSize;</span><br><span class="line">        texturesHashLength = config.ProjectConf.texturesHashLength;</span><br><span class="line">        texturesPath = config.ProjectConf.texturesPath;</span><br><span class="line">        needCacheTextures = config.ProjectConf.needCacheTextures;</span><br><span class="line">        loadingBarWidth = config.ProjectConf.loadingBarWidth;</span><br><span class="line">        needCheckUpdate = config.ProjectConf.needCheckUpdate;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnLostFocus</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        config.ProjectConf.projectName = projectName;</span><br><span class="line">        config.ProjectConf.Appid = appid;</span><br><span class="line">        config.ProjectConf.CDN = cdn;</span><br><span class="line">        config.ProjectConf.assetLoadType = assetLoadType;</span><br><span class="line">        config.ProjectConf.VideoUrl = videoUrl;</span><br><span class="line">        config.ProjectConf.Orientation = (WXScreenOritation) orientation;</span><br><span class="line">        config.ProjectConf.DST = dst;</span><br><span class="line">        <span class="comment">// config.ProjectConf.StreamCDN = streamCDN;</span></span><br><span class="line">        config.ProjectConf.bundleHashLength = bundleHashLength;</span><br><span class="line">        config.ProjectConf.bundlePathIdentifier = bundlePathIdentifier;</span><br><span class="line">        config.ProjectConf.bundleExcludeExtensions = bundleExcludeExtensions;</span><br><span class="line">        config.ProjectConf.preloadFiles = preloadFiles;</span><br><span class="line">        config.CompileOptions.DevelopBuild = developBuild;</span><br><span class="line">        config.CompileOptions.AutoProfile = autoProfile;</span><br><span class="line">        config.CompileOptions.ScriptOnly = scriptOnly;</span><br><span class="line">        config.CompileOptions.profilingFuncs = profilingFuncs;</span><br><span class="line">        config.CompileOptions.ProfilingMemory = profilingMemory;</span><br><span class="line">        config.CompileOptions.DeleteStreamingAssets = deleteStreamingAssets;</span><br><span class="line">        config.CompileOptions.CleanBuild = cleanBuild;</span><br><span class="line">        config.CompileOptions.CustomNodePath = customNodePath;</span><br><span class="line">        config.CompileOptions.Webgl2 = webgl2;</span><br><span class="line">        config.SDKOptions.UseAudioApi = useAudioApi;</span><br><span class="line">        <span class="comment">// config.ProjectConf.AssetsUrl = audioPrefix;</span></span><br><span class="line">        config.SDKOptions.UseFriendRelation = useFriendRelation;</span><br><span class="line">        config.ProjectConf.bgImageSrc = bgImageSrc;</span><br><span class="line">        config.ProjectConf.MemorySize = memorySize;</span><br><span class="line">        config.ProjectConf.HideAfterCallMain = hideAfterCallMain;</span><br><span class="line"></span><br><span class="line">        config.ProjectConf.dataFileSubPrefix = dataFileSubPrefix;</span><br><span class="line">        config.ProjectConf.maxStorage = maxStorage;</span><br><span class="line">        config.ProjectConf.defaultReleaseSize = defaultReleaseSize;</span><br><span class="line">        config.ProjectConf.texturesHashLength = texturesHashLength;</span><br><span class="line">        config.ProjectConf.texturesPath = texturesPath;</span><br><span class="line">        config.ProjectConf.needCacheTextures = needCacheTextures;</span><br><span class="line">        config.ProjectConf.loadingBarWidth = loadingBarWidth;</span><br><span class="line">        config.ProjectConf.needCheckUpdate = needCheckUpdate;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">【工程实践】Unity转微信小游戏插件</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">maxL</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-04-25 08:00:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/04/25/【工程实践】在项目中集成Unity转微信小游戏插件/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Unity/">#Unity</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E6%8F%92%E4%BB%B6/">#插件</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/04/30/%E3%80%90%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E3%80%91%E3%80%8A%E9%9F%A9%E9%A1%BA%E5%B9%B3Linux%E6%95%99%E7%A8%8B%E3%80%8B/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">【学习记录】韩顺平Linux教程</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/04/11/%E3%80%90%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5%E3%80%91airtest%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8A%A5%E5%91%8A%E6%8F%92%E4%BB%B6%E7%BC%96%E5%86%99/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">【工程实践】报告插件编写</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+                <div class="comment-container">
+                    
+<div class="comments-container">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="twikoo-container">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/twikoo@1.6.16/dist/twikoo.all.min.js"></script>
+        <div id="twikoo-comment"></div>
+        <script data-pjax>
+          function loadTwikoo() {
+            twikoo.init({
+              el: '#twikoo-comment',
+              envId: 'blog-comments-7g8rgfsf1481a6f9',
+              region: 'ap-guangzhou',
+              lang: 'zh-CN' || 'zh-CN'
+            });
+          }
+
+          if ('true' === 'true') {
+            const loadTwikooTimeout = setTimeout(() => {
+              loadTwikoo();
+              clearTimeout(loadTwikooTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadTwikoo);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MiniGameConfig-asset"><span class="nav-number">1.</span> <span class="nav-text">MiniGameConfig.asset</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WXEditorWindow-DoExport"><span class="nav-number">2.</span> <span class="nav-text">WXEditorWindow.DoExport</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%96%E5%86%99c-%E8%84%9A%E6%9C%AC%E8%B0%83%E7%94%A8DoExport"><span class="nav-number">3.</span> <span class="nav-text">编写c#脚本调用DoExport</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2024
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">maxL</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://pages.github.com/">
+                
+                    本站由 <span class="tooltip" data-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="maxL">
+    
+    <title>
+        
+            【学习记录】django |
+        
+        Infinite
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"laihandong.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#003366","logo":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","favicon":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","avatar":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"以有涯随无涯，殆已！","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"twikoo","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":"blog-comments-7g8rgfsf1481a6f9","region":"ap-guangzhou","version":"1.6.16"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["追梦人"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Infinite
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >
+                                更新日志
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog">更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">【学习记录】django</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">maxL</span>
+                            
+                                <span class="author-label">追梦人</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2022-11-23 08:00:00</span>
+        <span class="mobile">2022-11-23 08:00</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2024-10-24 00:29:22</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/django/">django</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>3.6k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>14 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h1 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h1><p>Django 是用 Python 开发的一个免费开源的 Web 框架，几乎囊括了 Web 应用的方方面面，可以用于快速搭建高性能、优雅的网站。</p>
+<p>Django 提供了许多网站后台开发经常用到的模块，使开发者能够专注于业务部分</p>
+<h1 id="MTV和MVC"><a href="#MTV和MVC" class="headerlink" title="MTV和MVC"></a>MTV和MVC</h1><p>Web 开发领域还有另外一个非常著名的设计模式——MVC（Modle-View-Controller）</p>
+<p>Django 的设计模式，也就是 MTV（Modle-Template-View），在 Django 是有 Controller 层的，只不过它由框架本身来实现，所以我们不用关心它</p>
+<h1 id="ORM"><a href="#ORM" class="headerlink" title="ORM"></a>ORM</h1><p>Object Realtional Mapping（对象关系映射），基于关系型数据库的程序技术。</p>
+<p>ORM<strong>使用类和对象来操作关系型数据库（MySql、Oracle等）</strong>，避免了直接使用sql语句，底层用映射机制实现的（到一定水平我再去看看）</p>
+<p>映射机制：</p>
+<ul>
+<li>把<strong>类</strong>映射为数据库中的<strong>表</strong></li>
+<li>把<strong>类的实例</strong>映射为数据库的<strong>表的数据行</strong></li>
+<li>把<strong>类的属性</strong>映射为数据库的<strong>表的字段</strong></li>
+</ul>
+<p><strong>表模型</strong>为Model，继承自<code>django.db.models</code>的<code>Model</code>类，所有和表相关的操作，都是继承这个类<br><strong>字段类型</strong>用类似xxxField来描述</p>
+<p>Django提供了基本的CURD（增删改查）和其他API来对数据库表进行操作</p>
+<h1 id="auth模块"><a href="#auth模块" class="headerlink" title="auth模块"></a>auth模块</h1><p>Django提供的 auth 模块能够快速的实现用户模块的基本功能</p>
+<ul>
+<li>实现并维护了用户与用户组的增加、删除、更改功能；</li>
+<li>实现了用户权限与用户组权限的增加、删除、更改；</li>
+<li>实现了可以自定义用户权限与用户组权限功能。</li>
+<li>还提供了权限验证等功能以及一些常用的方法</li>
+</ul>
+<h1 id="Admin后台管理系统"><a href="#Admin后台管理系统" class="headerlink" title="Admin后台管理系统"></a>Admin后台管理系统</h1><p>让不懂编程的人也能快速上手维护后台，配置人员权限</p>
+<h1 id="视图函数（View）"><a href="#视图函数（View）" class="headerlink" title="视图函数（View）"></a>视图函数（View）</h1><ul>
+<li>在 Django 中，视图函数是一个 Python 函数或者类</li>
+<li>视图函数首先接受来自浏览器或者客户端的请求，并最终返回响应</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Hello_my_django</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">&#x27;&lt;html&gt;&lt;body&gt;Hello my Django&lt;/body&gt;&lt;/html&gt;&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>从以上我们可以了解<strong>视图函数工作的关键三点：</strong></p>
+<ul>
+<li>HttpResponse，是一种<strong>视图响应</strong>的类型</li>
+<li>request，Django 规定了，<strong>视图函数至少有一个参数</strong>，第一个参数必须是 <code>request</code></li>
+<li>return，<strong>视图函数要返回响应内容</strong>，这里的响应内容是我们用 HTML 标签编写的，把它作为 HttpResponse 的对象返回给浏览器</li>
+</ul>
+<h1 id="模板系统（Template）"><a href="#模板系统（Template）" class="headerlink" title="模板系统（Template）"></a>模板系统（Template）</h1><p>从上一小节代码中，可以看到竟然将html的代码放到了程序里，势必会有高度耦合、难以维护的隐患，而<strong>模板系统就是将视图函数和html代码解耦的</strong></p>
+<p>在tamplates文件夹（一个项目同级目录，Django会自动识别）下新建hello.html，编写如下代码：</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://images-1258290850.cos.ap-guangzhou.myqcloud.com/blog/202305021838558.webp"
+                      alt="image-20230502183834395"
+                ></p>
+<p><strong>视图函数调用模板，并进行“模板传参”</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render      </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello_my_django</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="keyword">return</span> render(request,<span class="string">&quot;hello.html&quot;</span>,&#123;<span class="string">&quot;vaule&quot;</span>:<span class="string">&quot;hello my Django&quot;</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>另一种是<code>render</code>方法，封装在<code>django.shortcuts</code>中，也很方便</p>
+<h1 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h1><p>URL 的语法格式为：<code>protocol://[username:password@]hostname[:port]/path[?query][#fragment]</code></p>
+<p>示例：<code>https://www.baidu.com/movie/movieshow?id=234&amp;number=1314#name</code></p>
+<p>从中可以了解到URL基本语法，当然还有类似<code>%code</code>机制处理特殊字符的知识，可令开一篇文章总结</p>
+<h1 id="路由系统"><a href="#路由系统" class="headerlink" title="路由系统"></a>路由系统</h1><p>Django通过ROOT_URLCONF构建<strong>URL和视图函数的映射关系</strong>，在<code>urls.py</code>路由配置文件中配置url</p>
+<p>urls.py 文件中定义了一个 <code>urlpatterns</code> 的列表，它是由 <strong>url( ) 实例对象组成的列表</strong>，Django 中 url 的定义就是在这个列表完成的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url</span><br><span class="line">urlpatterns=[</span><br><span class="line">url(r <span class="string">&#x27;^admin/&#x27;</span>,admin.site.urls), <span class="comment"># 后台 Admin 管理系统的路由就定义在了列表第一个位置</span></span><br><span class="line">...</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p><code>url(regex,view,name=None)</code>说明：</p>
+<ul>
+<li>regex，匹配<strong>请求路径</strong>，用正则表达式表示（其用法很丰富，可以单独开一篇博客总结）</li>
+<li>view，指定 regex 匹配路径所对应的<strong>视图函数</strong>的名称</li>
+<li>name，是给 url 地址起个别名，在模板反向解析的时候使用</li>
+</ul>
+<p><a class="link"   target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Learn/Server-side/Django/Introduction" >https://developer.mozilla.org/zh-CN/docs/Learn/Server-side/Django/Introduction<i class="fas fa-external-link-alt"></i></a><br>有张图不错，可以很清晰看出MTV模式</p>
+<h1 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h1><p>中间件是介于 request 与 response 之间的一道处理过程，相对比较轻量级</p>
+<p>我们可以通过中间件来修改请求，例如，被传送到视图函数中的 HttpRequest 对象，也可以修改视图函数返回的 HttpResponse 对象</p>
+<p>中间件作为一个可插拔的组件对外提供服务，每个中间件都负责完成一些特定的功能</p>
+<p>所有中间件都是默认激活的状态。当然你可以通过代码注释，将某个中间件关闭</p>
+<h1 id="Cache缓存系统"><a href="#Cache缓存系统" class="headerlink" title="Cache缓存系统"></a>Cache缓存系统</h1><p>Django 提供了一个健壮的缓存系统，可以保存动态页面，这样就不必每次都把相同的请求进行重复计算。</p>
+<p>并且 Django 还提供了不同级别的缓存粒度，可以缓存特定视图的输出，或者只缓存某些特定的片段，比如网站自动跳出的咨询栏等，或者也可以缓存整个站点</p>
+<p>Memcached 是 Django 支持的最快、最高效的分布式高效缓存系统，它是一种完全基于内存的缓存服务器</p>
+<p><font color=red size=5>至此，当新建一个Django项目后，以上内容就是默认提供的了，而不用自己再去一个个搭建</font></p>
+<h1 id="搭建Djang开发环境"><a href="#搭建Djang开发环境" class="headerlink" title="搭建Djang开发环境"></a>搭建Djang开发环境</h1><ul>
+<li>python 解释器</li>
+<li>MySql数据库（Django自带SQLite数据库，但由于是轻量级的，不太建议用在企业级应用）</li>
+<li>包管理器 <code>python -m pip install -U pip</code></li>
+<li>pycharm IDE（得找个破解的<strong>专业版</strong>）</li>
+<li>Django（注意和python的版本关系），使用pip安装</li>
+</ul>
+<h1 id="Django创建第一个项目"><a href="#Django创建第一个项目" class="headerlink" title="Django创建第一个项目"></a>Django创建第一个项目</h1><p><code>pip install django</code><br><code>cd your_dir</code><br><code>mkdir your_dir2</code><br><code>cd your_dir2</code><br><code>django-admin startproject mytestsite</code><br><code>cd mytestsite</code><br><code>python manager.py runserver</code><br>进入<code>http://127.0.0.1:8000</code>，至此你看到了一个由django打造的示例网站</p>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>我们再来捋一捋django它的整个主要逻辑：</p>
+<p>MTV分别代表模型、模板和视图，分别负责数据库、网页整体框架和动态数据更新</p>
+<p>除此之外</p>
+<ul>
+<li>url路由表负责将客户端的请求连接到相应的视图</li>
+<li>app应用负责划分功能逻辑上的模块（比如同一网站的博客、wiki、主页等等）</li>
+<li>每个应用需要分配指定url，而且还需要在工程中注册</li>
+<li>每次更改模型后都需要执行migrate相关命令</li>
+</ul>
+<h4 id="安装django"><a href="#安装django" class="headerlink" title="安装django"></a>安装django</h4><p>django是可以以pip的方式安装的，但不能就此认为它的结构很简单</p>
+<p>安装好后，除了sitepackage下的源码，还有↓<br><code>python安装目录/Scripts/django-admin.exe</code><br>它提供了一系列的指令集，帮助我们从创建django项目等等</p>
+<p>django的项目也较为复杂，不是flask那种，一个python文件就可以了，所以了解django项目的基本结构很必要</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">myProject</span><br><span class="line">|--manage.py      【项目管理、启动项目、创建app、数据管理等】【一般不要手动修改】【但很常用】</span><br><span class="line">|--myProject</span><br><span class="line">   |--__init__.py </span><br><span class="line">   |--settings.py 【项目配置】            【会经常手动修改】【很常用】</span><br><span class="line">   |--urls.py     【url和函数的对应关系】 【会经常手动修改】【很常用】</span><br><span class="line">   |--asgi.py     【接受网络请求】        【一般不要手动修改】</span><br><span class="line">   |--wsgi.py     【接受网络请求】        【一般不要手动修改】</span><br></pre></td></tr></table></figure>
+
+
+
+<p>除此之外，django中app的概念也是很重要的，进入到我的django目录下执行<code>python manage.py startapp myapp</code>，会生成一个app，它的基本结构也是很重要的</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">myProject</span><br><span class="line">|--manage.py </span><br><span class="line">|--myProject</span><br><span class="line">   |--...(折叠)</span><br><span class="line">|--myApp</span><br><span class="line">   |--__init__.py</span><br><span class="line">   |--admin.py        【一般不要手动修改】django默认提供的admin后台管理</span><br><span class="line">   |--apps.py         【一般不要手动修改】app启动类</span><br><span class="line">   |--migrations      【一般不要手动修改】数据库的变更记录</span><br><span class="line">      |--__init__.py</span><br><span class="line">   |--models.py       【频繁修改】【**重要**】对数据库的操作</span><br><span class="line">   |--tests.py        【不常用】单元测试</span><br><span class="line">   |--views.py        【**重要**】函数</span><br></pre></td></tr></table></figure>
+
+<p>从以上的基本结构中，不难看出，需要开发自己的功能，则需要：</p>
+<ul>
+<li>创建app</li>
+<li>注册app</li>
+<li>编写views（自定义的视图函数）</li>
+<li>绑定url</li>
+</ul>
+<h1 id="快速实践"><a href="#快速实践" class="headerlink" title="快速实践"></a>快速实践</h1><ul>
+<li><input checked="" disabled="" type="checkbox"> 新建一个django项目</li>
+<li><input checked="" disabled="" type="checkbox"> 新建一个app</li>
+<li><input checked="" disabled="" type="checkbox"> 新建一个template</li>
+</ul>
+<ul>
+<li><code>settings.py</code>中的可以设置template的路径</li>
+<li>默认是按照app的注册顺序，依次到他们的文件夹下找template html文件</li>
+<li>在app文件下新建<code>templates</code>文件夹，下面写自己的html文件</li>
+</ul>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 新建静态资源的存储位置（app文件夹下新建<code>static</code>文件夹）</li>
+<li>之所以这样做，得看<code>settings.py</code>中设置的静态文件的路径具体是什么，默认的<code>/static/</code></li>
+</ul>
+<h4 id="django的模板语言的语法"><a href="#django的模板语言的语法" class="headerlink" title="django的模板语言的语法"></a>django的模板语言的语法</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">my_views_func</span>(<span class="params">request</span>):</span><br><span class="line">	<span class="keyword">return</span> render(request,<span class="string">&quot;xxx.html&quot;</span>,&#123;<span class="string">&quot;key1&quot;</span>:<span class="string">&#x27;value1&#x27;</span>,&#125;) 这样就可以将数据传给模板</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://images-1258290850.cos.ap-guangzhou.myqcloud.com/blog/202305021836054.webp"
+                      alt="image-20230502183556755"
+                ></p>
+<p>由此可看出，django中通过<code>client -- urls.py -- views.py -- （含模板语言的）templates -- （完全纯粹的）html -- client</code>这样的流程来给用户展示网页</p>
+<h4 id="django的相应和请求"><a href="#django的相应和请求" class="headerlink" title="django的相应和请求"></a>django的相应和请求</h4><p>请求-request 是客户端的发来的所有数据，发送数据的方式分为GET和POST</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在django语法的判断中，是要大写的</span><br><span class="line">request.method == <span class="string">&quot;GET&quot;</span></span><br><span class="line">request.method == <span class="string">&quot;POST&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>响应-response 则是服务端返回给客户端的所有东西</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HttpResponse(<span class="string">&quot;xxx字符串&quot;</span>)    <span class="comment"># 返回字符串</span></span><br><span class="line">render(request，<span class="string">&quot;xxx.html&quot;</span>)  <span class="comment"># 返回渲染后的html</span></span><br><span class="line">redirect(<span class="string">&quot;xxx-url&quot;</span>)          <span class="comment"># 返回一个重定向网址：告诉客户端你该去访问另一个地方了</span></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="django操作数据库"><a href="#django操作数据库" class="headerlink" title="django操作数据库"></a>django操作数据库</h4><p>操作数据库，使用pymysql对于所有python程序都是可行的，django也不例外，但是django提供了orm框架使我们更方便的去操作数据库<br>由于最新版本的django对pymysql存在底层编码的bug，所以还需要安装mysqlclient</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install mysqlclient</span><br></pre></td></tr></table></figure>
+
+<p>在当前mysql服务中创建好我们的数据库后</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> database web_demo_django <span class="keyword">default</span> charset utf8 <span class="keyword">collate</span> utf8_general_ci;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>settings.py</code>设置我们的数据库</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DATABASES = &#123;  </span><br><span class="line">    <span class="string">&#x27;default&#x27;</span>: &#123;  </span><br><span class="line">        <span class="string">&#x27;ENGINE&#x27;</span>: <span class="string">&#x27;django.db.backends.mysql&#x27;</span>,  </span><br><span class="line">        <span class="string">&#x27;NAME&#x27;</span>: <span class="string">&#x27;web_demo_django&#x27;</span>,  </span><br><span class="line">        <span class="string">&#x27;USER&#x27;</span>: <span class="string">&#x27;root&#x27;</span>,  </span><br><span class="line">        <span class="string">&#x27;PASSWORD&#x27;</span>: <span class="string">&#x27;123456&#x27;</span>,  </span><br><span class="line">        <span class="string">&#x27;HOST&#x27;</span>: <span class="string">&#x27;127.0.0.1&#x27;</span>,  </span><br><span class="line">        <span class="string">&#x27;PORT&#x27;</span>: <span class="number">3306</span>  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>创建表，在<code>models.py</code>写一个类—-和数据库表对应，比如建立一张表<code>UserInfo</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserInfo</span>(models.Model):  </span><br><span class="line">    name = models.CharField(max_length=<span class="number">32</span>)  </span><br><span class="line">    password = models.CharField(max_length=<span class="number">64</span>)  </span><br><span class="line">    age = models.IntegerField()</span><br></pre></td></tr></table></figure>
+<p>然后，在项目的根目录依次执行两个命令↓：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python manage.py makemigrations</span><br><span class="line">python manage.py migrate</span><br></pre></td></tr></table></figure>
+<p>如果是第一次执行，django会将当前注册的所有app它们默认有的表也一起创建了</p>
+<p>之后如果对这些与数据表对应的类进行新建、修改、注释、删除等操作，都需要再次执行↑  这两个指令</p>
+<p>之后如果要对表操作，需要先把对应的类import之后，再根据django的语法去执行，下面是几个基本的语法示例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> myApp.models <span class="keyword">import</span> UserInfo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.新增数据</span></span><br><span class="line">UserInfo.objects.create(name=<span class="string">&#x27;xxx&#x27;</span>,password=<span class="string">&#x27;xxx&#x27;</span>,age=<span class="string">&#x27;xxx&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.删除数据</span></span><br><span class="line">UserInfo.objects.<span class="built_in">filter</span>(<span class="built_in">id</span>=<span class="number">4</span>).delete()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.获取数据</span></span><br><span class="line">data_obj_list = UserInfo.objects.<span class="built_in">all</span>() <span class="comment"># data_obj是QuerySet类型</span></span><br><span class="line"><span class="keyword">for</span> data_obj <span class="keyword">in</span> data_obj_list:</span><br><span class="line">	<span class="built_in">print</span>(data_obj.name,data_obj.password,data_obj.password)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4.更新数据</span></span><br><span class="line">UserInfo.objects.<span class="built_in">filter</span>(<span class="built_in">id</span>=<span class="number">4</span>).update(name=<span class="string">&#x27;xxxx&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="django的路由"><a href="#django的路由" class="headerlink" title="django的路由"></a>django的路由</h4><p>在urls.py 配置路由：url和函数的关系</p>
+<p>在views.py，写（视图）函数，编写业务逻辑，可以在urls.py与某个url相关联</p>
+<h4 id="django的模板"><a href="#django的模板" class="headerlink" title="django的模板"></a>django的模板</h4><p>templates目录，编写html模板（django的模板语法，继承，<img  
+                     lazyload
+                     alt="image"
+                     data-src="https://images-1258290850.cos.ap-guangzhou.myqcloud.com/blog/202305021837060.webp"
+                      alt="image-20230502183714886"
+                ></p>
+<h4 id="django的ModelForm和Form组件"><a href="#django的ModelForm和Form组件" class="headerlink" title="django的ModelForm和Form组件"></a>django的ModelForm和Form组件</h4><ul>
+<li>自动生成HTMl标签（默认属性可以自行修改）</li>
+<li>支持数据进行校验</li>
+<li>支持保存到数据库（ModelForm）</li>
+<li>支持错误信息</li>
+</ul>
+<h4 id="django的Cookie和Session"><a href="#django的Cookie和Session" class="headerlink" title="django的Cookie和Session"></a>django的Cookie和Session</h4><p>将用户的登录信息保存起来</p>
+<h4 id="django的中间件"><a href="#django的中间件" class="headerlink" title="django的中间件"></a>django的中间件</h4><p>基于 process_request，实现用户认证</p>
+<h4 id="ORM操作"><a href="#ORM操作" class="headerlink" title="ORM操作"></a>ORM操作</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">models.User.objects.<span class="built_in">filter</span>(<span class="built_in">id</span>=<span class="string">&quot;xxx&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="django的组件系统–Form"><a href="#django的组件系统–Form" class="headerlink" title="django的组件系统–Form"></a>django的组件系统–Form</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">queryset = models.UserInfo.objects.<span class="built_in">all</span>() <span class="comment"># UserInfo表的外键department_id是department表的id</span></span><br><span class="line">query_object.get_gender_display() <span class="comment"># 直接拿限定范围的字段对应的值</span></span><br><span class="line">query_object.department.title <span class="comment"># 直接拿所外联的表中对应的值</span></span><br></pre></td></tr></table></figure>
+
+<p>数据处理设计思路参考</p>
+<ul>
+<li>用户提交数据没有校验</li>
+<li>用户输入的错误，页面应该有错误提示</li>
+<li>页面上，每一个字段都需要我们在前后端手动重新写一遍</li>
+<li>关联的数据，需要一个一个手动去获取并循环展示在页面<br>因此，学会用组件Form，可以事半功倍</li>
+</ul>
+<h3 id="Form"><a href="#Form" class="headerlink" title="Form"></a>Form</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ---------views.py</span></span><br><span class="line"><span class="keyword">from</span> django.forms <span class="keyword">import</span> Form  </span><br><span class="line"><span class="keyword">from</span> django <span class="keyword">import</span> forms</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserForm</span>(<span class="title class_ inherited__">Form</span>):  </span><br><span class="line">    user_name = forms.CharField(widget=forms.TextInput)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">user_add</span>(<span class="params">request</span>):</span><br><span class="line">	form = UserForm()</span><br><span class="line">	<span class="keyword">return</span> render(request,<span class="string">&#x27;user_add.html&#x27;</span>,&#123;<span class="string">&quot;form&quot;</span>:form&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://images-1258290850.cos.ap-guangzhou.myqcloud.com/blog/202305021837518.webp"
+                      alt="image-20230502183748337"
+                ></p>
+<h3 id="ModelForm"><a href="#ModelForm" class="headerlink" title="ModelForm"></a>ModelForm</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ---------views.py</span></span><br><span class="line"><span class="keyword">from</span> django.forms <span class="keyword">import</span> ModelForm</span><br><span class="line"><span class="keyword">from</span> django <span class="keyword">import</span> forms</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyForm</span>(<span class="title class_ inherited__">ModelForm</span>):  </span><br><span class="line">    xx = forms.CharField(<span class="string">&quot;xxx&quot;</span>)  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">Meta</span>:  </span><br><span class="line">        model = app01.models.UserInfo  </span><br><span class="line">        fields = [<span class="string">&quot;name&quot;</span>, <span class="string">&quot;password&quot;</span>, <span class="string">&quot;age&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># ---------models.py</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserInfo</span>(models.Model):  </span><br><span class="line">    <span class="string">&quot;&quot;&quot;员工表&quot;&quot;&quot;</span></span><br><span class="line">	xx = forms.CharField(<span class="string">&quot;xxx&quot;</span>)  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># </span></span><br></pre></td></tr></table></figure>
+
+<h3 id="修改源码增加需求粒度"><a href="#修改源码增加需求粒度" class="headerlink" title="修改源码增加需求粒度"></a>修改源码增加需求粒度</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ---------models.py</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Department</span>(models.Model):  </span><br><span class="line">    <span class="string">&quot;&quot;&quot;部门表&quot;&quot;&quot;</span>  </span><br><span class="line">    title = models.CharField(verbose_name=<span class="string">&quot;标题&quot;</span>, max_length=<span class="number">32</span>)  </span><br><span class="line"></span><br><span class="line">	<span class="comment"># 前端显示的时候，类的输出打印</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__str__</span>(<span class="params">self</span>):  </span><br><span class="line">        <span class="keyword">return</span> self.title</span><br><span class="line"></span><br><span class="line"><span class="comment"># ---------views.py</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserModelForm</span>(forms.ModelForm):  </span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">Meta</span>:  </span><br><span class="line">        model = models.UserInfo  </span><br><span class="line">        fields = [<span class="string">&quot;name&quot;</span>, <span class="string">&quot;password&quot;</span>, <span class="string">&quot;age&quot;</span>, <span class="string">&quot;department&quot;</span>]  </span><br><span class="line"></span><br><span class="line">	<span class="comment"># 遍历所有插件，都增加一个属性class:form-control</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, *args, **kwargs</span>):  </span><br><span class="line">        <span class="built_in">super</span>().__init__(*args, **kwargs)  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">for</span> name, field <span class="keyword">in</span> self.fields.items():  </span><br><span class="line">            <span class="built_in">print</span>(name, field)  </span><br><span class="line">            field.widget.attrs = &#123;<span class="string">&quot;class&quot;</span>: <span class="string">&quot;form-control&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">user_model_form_add</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&quot;GET&quot;</span>:</span><br><span class="line">        form = UserModelForm()</span><br><span class="line">        <span class="keyword">return</span> render(request, <span class="string">&quot;user_model_form_add.html&quot;</span>, &#123;<span class="string">&quot;form&quot;</span>: form&#125;)</span><br><span class="line"></span><br><span class="line">    form = UserModelForm(data=request.POST)</span><br><span class="line">    <span class="keyword">if</span> form.is_valid():</span><br><span class="line">        form.save()</span><br><span class="line">        <span class="keyword">return</span> redirect(<span class="string">&quot;/user/show/&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> render(request, <span class="string">&quot;user_model_form_add.html&quot;</span>, &#123;<span class="string">&quot;form&quot;</span>: form&#125;) <span class="comment"># 发生错误时，把用户数据返回，同时form中也有错误返回</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://images-1258290850.cos.ap-guangzhou.myqcloud.com/blog/202305021838796.webp"
+                      alt="image-20230502183814573"
+                ></p>
+<h2 id="django的静态资源管理系统–Media"><a href="#django的静态资源管理系统–Media" class="headerlink" title="django的静态资源管理系统–Media"></a>django的静态资源管理系统–Media</h2><p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://images-1258290850.cos.ap-guangzhou.myqcloud.com/blog/202304301153168.webp"
+                      alt="Pasted image 20230311201608"
+                ></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ---------------urls.py</span></span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path,re_path  </span><br><span class="line"><span class="keyword">from</span> django.views.static <span class="keyword">import</span> serve  </span><br><span class="line"><span class="keyword">from</span> django.conf <span class="keyword">import</span> settings</span><br><span class="line"></span><br><span class="line">re_path(<span class="string">r&#x27;^media/(?P&lt;path&gt;.*)$&#x27;</span>, serve, &#123;<span class="string">&#x27;document_root&#x27;</span>: settings.MEDIA_ROOT&#125;, name=<span class="string">&quot;media&quot;</span>),</span><br><span class="line"></span><br><span class="line"><span class="comment"># ---------------settings.py</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">MEDIA_ROOT = os.path.join(BASE_DIR, <span class="string">&quot;media&quot;</span>)  </span><br><span class="line">MEDIA_URL = <span class="string">&quot;/media/&quot;</span></span><br></pre></td></tr></table></figure>
+<p>手动上传：手动去声明file对象，拿到file对象，任意处理（具体文件操作还是手动）</p>
+<p>form组件：有表单验证，拿到file对象，任意处理（具体文件操作还是手动）</p>
+<p>ModelForm组件：有表单验证，file对象自动保存，同名自动处理</p>
+<ul>
+<li>要求配置media文件夹</li>
+<li>定义model时，声明类型为FileField，填写upload_to参数</li>
+</ul>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">【学习记录】django</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">maxL</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2022-11-23 08:00:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2022/11/23/【学习记录】django/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/django/">#django</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/04/11/%E3%80%90%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5%E3%80%91airtest%20%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8A%A5%E5%91%8A%E6%8F%92%E4%BB%B6%E7%BC%96%E5%86%99/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">【工程实践】报告插件编写</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2022/11/21/%E3%80%90%E8%B0%83%E7%A0%94%E3%80%91%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">【调研】如何搭建网站</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+                <div class="comment-container">
+                    
+<div class="comments-container">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="twikoo-container">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/twikoo@1.6.16/dist/twikoo.all.min.js"></script>
+        <div id="twikoo-comment"></div>
+        <script data-pjax>
+          function loadTwikoo() {
+            twikoo.init({
+              el: '#twikoo-comment',
+              envId: 'blog-comments-7g8rgfsf1481a6f9',
+              region: 'ap-guangzhou',
+              lang: 'zh-CN' || 'zh-CN'
+            });
+          }
+
+          if ('true' === 'true') {
+            const loadTwikooTimeout = setTimeout(() => {
+              loadTwikoo();
+              clearTimeout(loadTwikooTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadTwikoo);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">概要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MTV%E5%92%8CMVC"><span class="nav-number">2.</span> <span class="nav-text">MTV和MVC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ORM"><span class="nav-number">3.</span> <span class="nav-text">ORM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#auth%E6%A8%A1%E5%9D%97"><span class="nav-number">4.</span> <span class="nav-text">auth模块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Admin%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="nav-number">5.</span> <span class="nav-text">Admin后台管理系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE%E5%87%BD%E6%95%B0%EF%BC%88View%EF%BC%89"><span class="nav-number">6.</span> <span class="nav-text">视图函数（View）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E7%B3%BB%E7%BB%9F%EF%BC%88Template%EF%BC%89"><span class="nav-number">7.</span> <span class="nav-text">模板系统（Template）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#URL"><span class="nav-number">8.</span> <span class="nav-text">URL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E7%B3%BB%E7%BB%9F"><span class="nav-number">9.</span> <span class="nav-text">路由系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="nav-number">10.</span> <span class="nav-text">中间件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cache%E7%BC%93%E5%AD%98%E7%B3%BB%E7%BB%9F"><span class="nav-number">11.</span> <span class="nav-text">Cache缓存系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%90%AD%E5%BB%BADjang%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="nav-number">12.</span> <span class="nav-text">搭建Djang开发环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Django%E5%88%9B%E5%BB%BA%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE"><span class="nav-number">13.</span> <span class="nav-text">Django创建第一个项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">14.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85django"><span class="nav-number">14.0.0.1.</span> <span class="nav-text">安装django</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E5%AE%9E%E8%B7%B5"><span class="nav-number">15.</span> <span class="nav-text">快速实践</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#django%E7%9A%84%E6%A8%A1%E6%9D%BF%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95"><span class="nav-number">15.0.0.1.</span> <span class="nav-text">django的模板语言的语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#django%E7%9A%84%E7%9B%B8%E5%BA%94%E5%92%8C%E8%AF%B7%E6%B1%82"><span class="nav-number">15.0.0.2.</span> <span class="nav-text">django的相应和请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#django%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">15.0.0.3.</span> <span class="nav-text">django操作数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#django%E7%9A%84%E8%B7%AF%E7%94%B1"><span class="nav-number">15.0.0.4.</span> <span class="nav-text">django的路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#django%E7%9A%84%E6%A8%A1%E6%9D%BF"><span class="nav-number">15.0.0.5.</span> <span class="nav-text">django的模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#django%E7%9A%84ModelForm%E5%92%8CForm%E7%BB%84%E4%BB%B6"><span class="nav-number">15.0.0.6.</span> <span class="nav-text">django的ModelForm和Form组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#django%E7%9A%84Cookie%E5%92%8CSession"><span class="nav-number">15.0.0.7.</span> <span class="nav-text">django的Cookie和Session</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#django%E7%9A%84%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="nav-number">15.0.0.8.</span> <span class="nav-text">django的中间件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ORM%E6%93%8D%E4%BD%9C"><span class="nav-number">15.0.0.9.</span> <span class="nav-text">ORM操作</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#django%E7%9A%84%E7%BB%84%E4%BB%B6%E7%B3%BB%E7%BB%9F%E2%80%93Form"><span class="nav-number">15.1.</span> <span class="nav-text">django的组件系统–Form</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Form"><span class="nav-number">15.1.1.</span> <span class="nav-text">Form</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ModelForm"><span class="nav-number">15.1.2.</span> <span class="nav-text">ModelForm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%BA%90%E7%A0%81%E5%A2%9E%E5%8A%A0%E9%9C%80%E6%B1%82%E7%B2%92%E5%BA%A6"><span class="nav-number">15.1.3.</span> <span class="nav-text">修改源码增加需求粒度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#django%E7%9A%84%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E2%80%93Media"><span class="nav-number">15.2.</span> <span class="nav-text">django的静态资源管理系统–Media</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2024
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">maxL</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://pages.github.com/">
+                
+                    本站由 <span class="tooltip" data-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

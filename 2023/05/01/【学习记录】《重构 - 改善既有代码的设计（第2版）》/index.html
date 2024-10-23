@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="maxL">
+    
+    <title>
+        
+            【学习记录】重构 |
+        
+        Infinite
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"laihandong.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#003366","logo":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","favicon":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","avatar":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"以有涯随无涯，殆已！","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"twikoo","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":"blog-comments-7g8rgfsf1481a6f9","region":"ap-guangzhou","version":"1.6.16"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["追梦人"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Infinite
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >
+                                更新日志
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog">更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">【学习记录】重构</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">maxL</span>
+                            
+                                <span class="author-label">追梦人</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-05-01 08:00:00</span>
+        <span class="mobile">2023-05-01 08:00</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2024-10-24 00:29:22</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E9%87%8D%E6%9E%84/">重构</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>4.4k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>20 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <p>我在阅读《重构·改善既有代码的设计》（第二版）之前，总是很随意地使用“重构”这个词。</p>
+<p> 重构可以作为名词，也可以当作动词。前者指<strong>对软件内部的一种调整，目的是在不改变软件可观察行为的前提下，提高其可理解性，降低其修改成本</strong>。后者指<strong>使用一系列手法，在不改变软件可观察行为的前提下，调整其结构。</strong>（–均摘自书中原话）</p>
+<p>重构应该是一系列（能完美彼此组合的）小步骤构成的，是一类特定的结构调整。<strong>重构期间不会导致代码处于不可用状态，否则就不是在进行重构。</strong></p>
+<p>重构vs.性能优化：</p>
+<p>两者区别在于<strong>目的不同</strong>，前者旨在“让代码更容易理解，更易于修改”，<strong>但可能会造成程序运行的更慢或者更快</strong>。后者旨在“让程序运行得更快”，<strong>但可能会造成程序更难理解和维护</strong>。</p>
+<p>既有代码场景：</p>
+<ol>
+<li>客户(&#96;&#96;customer<code>)**指定几出剧目(</code>play&#96;)让剧团表演**</li>
+<li>剧团根据<strong>观众人数</strong>(<code>audience</code>)及<strong>剧目类型</strong>（悲剧&#96;&#96;tragedy<code>和喜剧</code>comedy&#96;）来向客户<strong>收费</strong></li>
+<li>发放<strong>账单</strong></li>
+<li>剧团根据<strong>到场观众数量</strong>累计<strong>积分优惠</strong>(&#96;&#96;volume credit&#96;)，下次观演可使用此积分进行抵扣</li>
+</ol>
+<p> 既有代码方案（以JavaScript实现为例）：</p>
+<p><code>plays.json</code>：存放剧团已有的剧目</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;hamlet&quot;</span>: &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;Hamlet&quot;</span>,<span class="string">&quot;type&quot;</span>:<span class="string">&quot;tragedy&quot;</span>&#125;,</span><br><span class="line">    <span class="string">&quot;as-like&quot;</span>: &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;As You Like It&quot;</span>,<span class="string">&quot;type&quot;</span>:<span class="string">&quot;comedy&quot;</span>&#125;,</span><br><span class="line">    <span class="string">&quot;othello&quot;</span>: &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;Othello&quot;</span>,<span class="string">&quot;type&quot;</span>:<span class="string">&quot;tragedy&quot;</span>&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><code>invoices.json</code>：存放开出的账单</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;customer&quot;</span>: <span class="string">&quot;BigCo&quot;</span>,</span><br><span class="line">        <span class="string">&quot;performances&quot;</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="string">&quot;playID&quot;</span>:<span class="string">&quot;hamlet&quot;</span>,</span><br><span class="line">                <span class="string">&quot;audience&quot;</span><span class="number">55</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="string">&quot;playID&quot;</span>:<span class="string">&quot;as-like&quot;</span>,</span><br><span class="line">                <span class="string">&quot;audience&quot;</span><span class="number">35</span>   </span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="string">&quot;playID&quot;</span>:<span class="string">&quot;othello&quot;</span>,</span><br><span class="line">                <span class="string">&quot;audience&quot;</span><span class="number">40</span>   </span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>既有代码：只有一个打印账单详情的函数，效果如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Statement for BigCo</span><br><span class="line">  Hamlet: $650.00 (55 seats)</span><br><span class="line">  As You Like It: $580.00 (35 seats)</span><br><span class="line">  Othello: $500.00 (40 seats)</span><br><span class="line">Amount owed is $1,730.00</span><br><span class="line">You earned 47 credits</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">statement</span> (invoice,plays)&#123;</span><br><span class="line">    <span class="keyword">let</span> totalAmount = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> volumeCredits = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="string">`Statement for <span class="subst">$&#123;invoice.customer&#125;</span>\n`</span>;</span><br><span class="line">    <span class="keyword">const</span> format = <span class="keyword">new</span> <span class="title class_">Intl</span>.<span class="title class_">NumberFormat</span>(<span class="string">&quot;en-US&quot;</span>,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">style</span>:<span class="string">&quot;currency&quot;</span>,<span class="attr">currency</span>:<span class="string">&quot;USD&quot;</span>,</span><br><span class="line">        <span class="attr">minimumFractionDigits</span>:<span class="number">2</span></span><br><span class="line">    &#125;).<span class="property">format</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> perf <span class="keyword">of</span> invoice.<span class="property">performances</span>)&#123;</span><br><span class="line">        <span class="keyword">const</span> play = plays[perf.<span class="property">playID</span>];</span><br><span class="line">        <span class="keyword">let</span> thisAmount=<span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">switch</span>(play.<span class="property">type</span>)&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;tragedy&quot;</span>:</span><br><span class="line">                thisAmount = <span class="number">40000</span>;</span><br><span class="line">                <span class="keyword">if</span>(perf.<span class="property">audience</span>&gt;<span class="number">30</span>)&#123;</span><br><span class="line">                    thisAmount+=<span class="number">1000</span>*(perf.<span class="property">audience</span>-<span class="number">30</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;comedy&quot;</span>:</span><br><span class="line">                thisAmount=<span class="number">30000</span>;</span><br><span class="line">                <span class="keyword">if</span>(perf.<span class="property">audience</span>&gt;<span class="number">20</span>)&#123;</span><br><span class="line">                    thisAmount+=<span class="number">10000</span>+<span class="number">500</span>*(perf.<span class="property">audience</span>-<span class="number">20</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                thisAmount+=<span class="number">300</span>*perf.<span class="property">audience</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="attr">default</span>:</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">`unknown type: <span class="subst">$&#123;play.type&#125;</span>`</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// add volume credits</span></span><br><span class="line">        volumeCredits += <span class="title class_">Math</span>.<span class="title function_">max</span>(perf.<span class="property">audience</span>-<span class="number">30</span>,<span class="number">0</span>);</span><br><span class="line">        <span class="comment">//add extra credit for every ten comedy attendees</span></span><br><span class="line">        <span class="keyword">if</span>(<span class="string">&quot;comedy&quot;</span>===play.<span class="property">type</span>)volumeCredits+=<span class="title class_">Math</span>.<span class="title function_">floor</span>(perf.<span class="property">audience</span>/<span class="number">5</span>);</span><br><span class="line">        <span class="comment">//print line for this order</span></span><br><span class="line">        result += <span class="string">`<span class="subst">$&#123;play.name&#125;</span>: <span class="subst">$&#123;format(thisAmount/<span class="number">100</span>)&#125;</span> (<span class="subst">$&#123;perf.audience&#125;</span> seats)\n`</span></span><br><span class="line">        totalAmount += thisAmount;</span><br><span class="line">    &#125;</span><br><span class="line">    result += <span class="string">`Amount owed is <span class="subst">$&#123;format(totalAmount/<span class="number">100</span>)&#125;</span>\n`</span></span><br><span class="line">    result += <span class="string">`You earned <span class="subst">$&#123;volumeCredits&#125;</span> credits\n`</span>;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看出这段代码组织的不够清晰，但也可以容忍（毕竟只是这么小的一个程序），但如果这个函数是处于一个庞大的系统中，类似这样把所有代码放在一个函数里就很难理解了。让人困惑的同时也让人难以修改和添加新功能。</p>
+<h1 id="重构第一步"><a href="#重构第一步" class="headerlink" title="重构第一步"></a>重构第一步</h1><p><strong>确保修改的代码拥有一组可靠的测试</strong></p>
+<p>对于这个函数，他的输入是账单（invoice）和剧目单，返回的是一个字符串。我只需要新建几个账单，并手动计算出最终字符串，然后与每次代码生成的字符串进行对比校验即可</p>
+<p>而这一步骤，可以通过测试框架来配置好</p>
+<p>接下来我们来关注代码：</p>
+<h1 id="重构-–-小步前进"><a href="#重构-–-小步前进" class="headerlink" title="重构 – 小步前进"></a>重构 – 小步前进</h1><h2 id="提炼函数（106）"><a href="#提炼函数（106）" class="headerlink" title="提炼函数（106）"></a>提炼函数（106）</h2><p>要将<strong>我的理解</strong>转化到代码里，得先<strong>将这块代码抽取成一个独立的函数，按它所干的事情给它命名</strong>，比如叫 amountFor(performance)。每次想将一块代码抽取成一个函数时，我都会遵循一个标准流程，最大程度减少犯错的可能。我把这个流程记录了下来，并将它命名为<strong>提炼函数（106）</strong>，以便日后可以方便地引用</p>
+<p> <strong>注意作用域（以JavaScript举例），子函数位于父函数作用于下，那么子函数用到父函数的参数时，不用再写进函数声明了。</strong></p>
+<p>第一个引起我注意的就是中间那段 <strong>switch</strong> 语句，以我的理解他就是计算费用的，可以提炼成一个函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ================= 提炼函数（106） ================</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">amountFor</span>(<span class="params">perf, play</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> thisAmount = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">switch</span> (play.<span class="property">type</span>) &#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">&quot;tragedy&quot;</span>:</span><br><span class="line">    thisAmount = <span class="number">40000</span>;</span><br><span class="line">    <span class="keyword">if</span> (perf.<span class="property">audience</span> &gt; <span class="number">30</span>) &#123;</span><br><span class="line">      thisAmount += <span class="number">1000</span> * (perf.<span class="property">audience</span> - <span class="number">30</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">&quot;comedy&quot;</span>:</span><br><span class="line">    thisAmount = <span class="number">30000</span>;</span><br><span class="line">    <span class="keyword">if</span> (perf.<span class="property">audience</span> &gt; <span class="number">20</span>) &#123;</span><br><span class="line">      thisAmount += <span class="number">10000</span> + <span class="number">500</span> * (perf.<span class="property">audience</span> - <span class="number">20</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    thisAmount += <span class="number">300</span> * perf.<span class="property">audience</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="attr">default</span>:</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">`unknown type: <span class="subst">$&#123;play.type&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> thisAmount;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ================= statement ================</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">statement</span> (invoice, plays) &#123;</span><br><span class="line">  <span class="keyword">let</span> totalAmount = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> volumeCredits = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="string">`Statement for <span class="subst">$&#123;invoice.customer&#125;</span>\n`</span>;</span><br><span class="line">  <span class="keyword">const</span> format = <span class="keyword">new</span> <span class="title class_">Intl</span>.<span class="title class_">NumberFormat</span>(<span class="string">&quot;en-US&quot;</span>,</span><br><span class="line">                        &#123; <span class="attr">style</span>: <span class="string">&quot;currency&quot;</span>, <span class="attr">currency</span>: <span class="string">&quot;USD&quot;</span>,</span><br><span class="line">                          <span class="attr">minimumFractionDigits</span>: <span class="number">2</span> &#125;).<span class="property">format</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> perf <span class="keyword">of</span> invoice.<span class="property">performances</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> play = plays[perf.<span class="property">playID</span>];</span><br><span class="line">    <span class="keyword">let</span> thisAmount = <span class="title function_">amountFor</span>(perf, play);<span class="comment">//提炼函数（106） </span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// add volume credits</span></span><br><span class="line">    volumeCredits += <span class="title class_">Math</span>.<span class="title function_">max</span>(perf.<span class="property">audience</span> - <span class="number">30</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="comment">// add extra credit for every ten comedy attendees</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="string">&quot;comedy&quot;</span> === play.<span class="property">type</span>) volumeCredits += <span class="title class_">Math</span>.<span class="title function_">floor</span>(perf.<span class="property">audience</span> / <span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// print line for this order</span></span><br><span class="line">    result += <span class="string">` <span class="subst">$&#123;play.name&#125;</span>: <span class="subst">$&#123;format(thisAmount/<span class="number">100</span>)&#125;</span> (<span class="subst">$&#123;perf.audience&#125;</span> seats)\n`</span>;</span><br><span class="line">    totalAmount += thisAmount;</span><br><span class="line">  &#125;</span><br><span class="line">  result += <span class="string">`Amount owed is <span class="subst">$&#123;format(totalAmount/<span class="number">100</span>)&#125;</span>\n`</span>;</span><br><span class="line">  result += <span class="string">`You earned <span class="subst">$&#123;volumeCredits&#125;</span> credits\n`</span>;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br></pre></td></tr></table></figure>
+
+<p><strong>‘编译’、测试、提交代码</strong>（建议每次重构后，都要进行一遍这个流程）</p>
+<h3 id="提炼函数（106）–-增加表达能力-–-改名"><a href="#提炼函数（106）–-增加表达能力-–-改名" class="headerlink" title="提炼函数（106）– 增加表达能力 – 改名"></a>提炼函数（106）– 增加表达能力 – 改名</h3><p>完成提炼函数（106）手法后，我会看看提炼出来的函数，看是否能进一步提升其表达能力。一般我做的第一件事就是给一些变量改名，使它们更简洁，比如将 thisAmount 重命名为 <strong>result</strong>。</p>
+<p><strong>这是我个人的编码风格：永远将函数的返回值命名为“result”，这样我一眼就能知道它的作用。</strong></p>
+<p>使用一门动态类型语言（如 JavaScript）时，跟踪变量的类型很有意义。<strong>因此，我为参数取名时都默认带上其类型名。一般我会使用不定冠词修饰它，除非命名中另有解释其角色的相关信息，这是我的另一个代码风格</strong>，这里将<code>perf</code>改为了<code>aPerformance</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">amountFor</span>(<span class="params">aPerformance, play</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">switch</span> (play.<span class="property">type</span>) &#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">&quot;tragedy&quot;</span>:</span><br><span class="line">    result = <span class="number">40000</span>;</span><br><span class="line">    <span class="keyword">if</span> (aPerformance.<span class="property">audience</span> &gt; <span class="number">30</span>) &#123;</span><br><span class="line">      result += <span class="number">1000</span> * (aPerformance.<span class="property">audience</span> - <span class="number">30</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">&quot;comedy&quot;</span>:</span><br><span class="line">    result = <span class="number">30000</span>;</span><br><span class="line">    <span class="keyword">if</span> (aPerformance.<span class="property">audience</span> &gt; <span class="number">20</span>) &#123;</span><br><span class="line">      result += <span class="number">10000</span> + <span class="number">500</span> * (aPerformance.<span class="property">audience</span> - <span class="number">20</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    result += <span class="number">300</span> * aPerformance.<span class="property">audience</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="attr">default</span>:</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">`unknown type: <span class="subst">$&#123;play.type&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="以查询取代临时变量（178）"><a href="#以查询取代临时变量（178）" class="headerlink" title="以查询取代临时变量（178）"></a>以查询取代临时变量（178）</h2><p>当我分解一个长函数时，我喜欢将<code>play</code>这样的变量移除掉，因为<strong>它们创建了很多具有局部作用域的临时变量，这会使提炼函数更加复杂</strong>。<code>play </code>变量是由 <code>performance</code> 变量计算得到的，因此<em>根本没必要将它作为参数传入</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ================= 以查询取代临时变量（178） ================</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">playFor</span>(<span class="params">aPerformance</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> plays[aPerformance.<span class="property">playID</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ================= 提炼函数（106）: amountFor(aPerformance) ================</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">amountFor</span>(<span class="params">aPerformance,play</span>)&#123;...&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">// ================= 以查询取代临时变量（178） ================</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">statement</span> (invoice, plays) &#123;</span><br><span class="line">  <span class="keyword">let</span> totalAmount = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> volumeCredits = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="string">`Statement for <span class="subst">$&#123;invoice.customer&#125;</span>\n`</span>;</span><br><span class="line">  <span class="keyword">const</span> format = <span class="keyword">new</span> <span class="title class_">Intl</span>.<span class="title class_">NumberFormat</span>(<span class="string">&quot;en-US&quot;</span>,</span><br><span class="line">                        &#123; <span class="attr">style</span>: <span class="string">&quot;currency&quot;</span>, <span class="attr">currency</span>: <span class="string">&quot;USD&quot;</span>,</span><br><span class="line">                          <span class="attr">minimumFractionDigits</span>: <span class="number">2</span> &#125;).<span class="property">format</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> perf <span class="keyword">of</span> invoice.<span class="property">performances</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> play = <span class="title function_">playFor</span>(perf);<span class="comment">//以查询取代临时变量（178）</span></span><br><span class="line">    <span class="keyword">let</span> thisAmount = <span class="title function_">amountFor</span>(perf, play);<span class="comment">//提炼函数（106） </span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// add volume credits</span></span><br><span class="line">    volumeCredits += <span class="title class_">Math</span>.<span class="title function_">max</span>(perf.<span class="property">audience</span> - <span class="number">30</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="comment">// add extra credit for every ten comedy attendees</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="string">&quot;comedy&quot;</span> === play.<span class="property">type</span>) volumeCredits += <span class="title class_">Math</span>.<span class="title function_">floor</span>(perf.<span class="property">audience</span> / <span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// print line for this order</span></span><br><span class="line">    result += <span class="string">` <span class="subst">$&#123;play.name&#125;</span>: <span class="subst">$&#123;format(thisAmount/<span class="number">100</span>)&#125;</span> (<span class="subst">$&#123;perf.audience&#125;</span> seats)\n`</span>;</span><br><span class="line">    totalAmount += thisAmount;</span><br><span class="line">  &#125;</span><br><span class="line">  result += <span class="string">`Amount owed is <span class="subst">$&#123;format(totalAmount/<span class="number">100</span>)&#125;</span>\n`</span>;</span><br><span class="line">  result += <span class="string">`You earned <span class="subst">$&#123;volumeCredits&#125;</span> credits\n`</span>;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用内联变量（123）"><a href="#使用内联变量（123）" class="headerlink" title="使用内联变量（123）"></a>使用内联变量（123）</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ================= 以查询取代临时变量（178） ================</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">playFor</span>(<span class="params">aPerformance</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> plays[aPerformance.<span class="property">playID</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ================= 提炼函数（106）: amountFor(aPerformance)， 使用内联变量（123） ================</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">amountFor</span>(<span class="params">aPerformance , play </span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">switch</span> (<span class="title function_">playFor</span>(aPerformance).<span class="property">type</span>) &#123;<span class="comment">// 使用内联变量（123）</span></span><br><span class="line">  <span class="keyword">case</span> <span class="string">&quot;tragedy&quot;</span>:</span><br><span class="line">    result = <span class="number">40000</span>;</span><br><span class="line">    <span class="keyword">if</span> (aPerformance.<span class="property">audience</span> &gt; <span class="number">30</span>) &#123;</span><br><span class="line">      result += <span class="number">1000</span> * (aPerformance.<span class="property">audience</span> - <span class="number">30</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">&quot;comedy&quot;</span>:</span><br><span class="line">    result = <span class="number">30000</span>;</span><br><span class="line">    <span class="keyword">if</span> (aPerformance.<span class="property">audience</span> &gt; <span class="number">20</span>) &#123;</span><br><span class="line">      result += <span class="number">10000</span> + <span class="number">500</span> * (aPerformance.<span class="property">audience</span> - <span class="number">20</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    result += <span class="number">300</span> * aPerformance.<span class="property">audience</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="attr">default</span>:</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">`unknown type: <span class="subst">$&#123;playFor(aPerformance).type&#125;</span>`</span>);<span class="comment">// 使用内联变量（123）</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ================= 以查询取代临时变量（178） ================</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">statement</span> (invoice, plays) &#123;</span><br><span class="line">  <span class="keyword">let</span> totalAmount = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> volumeCredits = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="string">`Statement for <span class="subst">$&#123;invoice.customer&#125;</span>\n`</span>;</span><br><span class="line">  <span class="keyword">const</span> format = <span class="keyword">new</span> <span class="title class_">Intl</span>.<span class="title class_">NumberFormat</span>(<span class="string">&quot;en-US&quot;</span>,</span><br><span class="line">                        &#123; <span class="attr">style</span>: <span class="string">&quot;currency&quot;</span>, <span class="attr">currency</span>: <span class="string">&quot;USD&quot;</span>,</span><br><span class="line">                          <span class="attr">minimumFractionDigits</span>: <span class="number">2</span> &#125;).<span class="property">format</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> perf <span class="keyword">of</span> invoice.<span class="property">performances</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> play = <span class="title function_">playFor</span>(perf);<span class="comment">//以查询取代临时变量（178）</span></span><br><span class="line">    <span class="keyword">let</span> thisAmount = <span class="title function_">amountFor</span>(perf, <span class="title function_">playFor</span>(perf));<span class="comment">//提炼函数（106） 使用内联变量（123）</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// add volume credits</span></span><br><span class="line">    volumeCredits += <span class="title class_">Math</span>.<span class="title function_">max</span>(perf.<span class="property">audience</span> - <span class="number">30</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="comment">// add extra credit for every ten comedy attendees</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="string">&quot;comedy&quot;</span> === play.<span class="property">type</span>) volumeCredits += <span class="title class_">Math</span>.<span class="title function_">floor</span>(perf.<span class="property">audience</span> / <span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// print line for this order</span></span><br><span class="line">    result += <span class="string">` <span class="subst">$&#123;play.name&#125;</span>: <span class="subst">$&#123;format(thisAmount/<span class="number">100</span>)&#125;</span> (<span class="subst">$&#123;perf.audience&#125;</span> seats)\n`</span>;</span><br><span class="line">    totalAmount += thisAmount;</span><br><span class="line">  &#125;</span><br><span class="line">  result += <span class="string">`Amount owed is <span class="subst">$&#123;format(totalAmount/<span class="number">100</span>)&#125;</span>\n`</span>;</span><br><span class="line">  result += <span class="string">`You earned <span class="subst">$&#123;volumeCredits&#125;</span> credits\n`</span>;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br></pre></td></tr></table></figure>
+
+<h2 id="改变函数声明（124）"><a href="#改变函数声明（124）" class="headerlink" title="改变函数声明（124）"></a>改变函数声明（124）</h2><h3 id="amountFor"><a href="#amountFor" class="headerlink" title="amountFor"></a>amountFor</h3><p>我可以对 amountFor 函数应用改变函数声明（124），移除 play 参数</p>
+<p>第一步是在amountFor内使用新提炼的playFor函数进行内联</p>
+<p>第二步是在statement内有关amountFor的调用点进行内联</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">statement</span> (invoice, plays) &#123;</span><br><span class="line">  <span class="keyword">let</span> totalAmount = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> volumeCredits = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="string">`Statement for <span class="subst">$&#123;invoice.customer&#125;</span>\n`</span>;</span><br><span class="line">  <span class="keyword">const</span> format = <span class="keyword">new</span> <span class="title class_">Intl</span>.<span class="title class_">NumberFormat</span>(<span class="string">&quot;en-US&quot;</span>,</span><br><span class="line">                        &#123; <span class="attr">style</span>: <span class="string">&quot;currency&quot;</span>, <span class="attr">currency</span>: <span class="string">&quot;USD&quot;</span>,</span><br><span class="line">                          <span class="attr">minimumFractionDigits</span>: <span class="number">2</span> &#125;).<span class="property">format</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> perf <span class="keyword">of</span> invoice.<span class="property">performances</span>) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// add volume credits</span></span><br><span class="line">    volumeCredits += <span class="title class_">Math</span>.<span class="title function_">max</span>(perf.<span class="property">audience</span> - <span class="number">30</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="comment">// add extra credit for every ten comedy attendees</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="string">&quot;comedy&quot;</span> === <span class="title function_">playFor</span>(perf).<span class="property">type</span>) volumeCredits += <span class="title class_">Math</span>.<span class="title function_">floor</span>(perf.<span class="property">audience</span> / <span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// print line for this order</span></span><br><span class="line">    result += <span class="string">` <span class="subst">$&#123;playFor(perf).name&#125;</span>: <span class="subst">$&#123;format(amountFor(perf)/<span class="number">100</span>)&#125;</span> (<span class="subst">$&#123;perf.audience&#125;</span> seats)\n`</span>;<span class="comment">//使用内联变量（123）</span></span><br><span class="line">    totalAmount += <span class="title function_">amountFor</span>(perf);</span><br><span class="line">  &#125;</span><br><span class="line">  result += <span class="string">`Amount owed is <span class="subst">$&#123;format(totalAmount/<span class="number">100</span>)&#125;</span>\n`</span>;</span><br><span class="line">  result += <span class="string">`You earned <span class="subst">$&#123;volumeCredits&#125;</span> credits\n`</span>;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="volumeCreditsFor"><a href="#volumeCreditsFor" class="headerlink" title="volumeCreditsFor"></a>volumeCreditsFor</h3><p>提炼计算观众量积分的逻辑</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">volumeCreditsFor</span>(<span class="params">aPerformance</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="number">0</span>;</span><br><span class="line">  result += <span class="title class_">Math</span>.<span class="title function_">max</span>(aPerformance.<span class="property">audience</span> - <span class="number">30</span>, <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">if</span> (<span class="string">&quot;comedy&quot;</span> === <span class="title function_">playFor</span>(aPerformance).<span class="property">type</span>)</span><br><span class="line">    result += <span class="title class_">Math</span>.<span class="title function_">floor</span>(aPerformance.<span class="property">audience</span> / <span class="number">5</span>);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="format"><a href="#format" class="headerlink" title="format"></a>format</h3><p>移除函数变量format，改为函数声明。但是要注意函数命名，比如format 未能<strong>清晰地描述其作用</strong>，formatAsUSD 很表意，但又太长，特别它<strong>仅是小范围地</strong>被用在一个字符串模板中。</p>
+<p>我认为这里<strong>真正需要强调的是</strong>，它格式化的是一个货币数字，因此我选取了一个能体现此意图的命名，并应用了改变函数声明（124）手法。</p>
+<p><strong>即要注意，强调的重点是什么，适用范围在哪里，才能更好的命名</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">usd</span>(<span class="params">aNumber</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Intl</span>.<span class="title class_">NumberFormat</span>(<span class="string">&quot;en-US&quot;</span>, &#123;</span><br><span class="line">    <span class="attr">style</span>: <span class="string">&quot;currency&quot;</span>,</span><br><span class="line">    <span class="attr">currency</span>: <span class="string">&quot;USD&quot;</span>,</span><br><span class="line">    <span class="attr">minimumFractionDigits</span>: <span class="number">2</span>,</span><br><span class="line">  &#125;).<span class="title function_">format</span>(aNumber / <span class="number">100</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="拆分循环（227）"><a href="#拆分循环（227）" class="headerlink" title="拆分循环（227）"></a>拆分循环（227）</h2><p>我的下一个重构目标是 volumeCredits。处理这个变量更加微妙，因为它是在循环的迭代过程中累加得到的。第一步，就是应用拆分循环（227）<strong>将 volumeCredits 的累加过程分离出来。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">statement</span> (invoice, plays) &#123;</span><br><span class="line">  <span class="keyword">let</span> totalAmount = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> volumeCredits = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="string">`Statement for <span class="subst">$&#123;invoice.customer&#125;</span>\n`</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> perf <span class="keyword">of</span> invoice.<span class="property">performances</span>) &#123;<span class="comment">//拆分循环（227）</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// print line for this order</span></span><br><span class="line">    result += <span class="string">` <span class="subst">$&#123;playFor(perf).name&#125;</span>: <span class="subst">$&#123;usd(amountFor(perf))&#125;</span> (<span class="subst">$&#123;perf.audience&#125;</span> seats)\n`</span>;</span><br><span class="line">    totalAmount += <span class="title function_">amountFor</span>(perf);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> perf <span class="keyword">of</span> invoice.<span class="property">performances</span>) &#123;<span class="comment">//拆分循环（227）</span></span><br><span class="line">    volumeCredits += <span class="title function_">volumeCreditsFor</span>(perf);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">result += <span class="string">`Amount owed is <span class="subst">$&#123;usd(totalAmount)&#125;</span>\n`</span>;</span><br><span class="line">result += <span class="string">`You earned <span class="subst">$&#123;volumeCredits&#125;</span> credits\n`</span>;</span><br><span class="line"><span class="keyword">return</span> result;</span><br></pre></td></tr></table></figure>
+
+<h2 id="移动语句（223）"><a href="#移动语句（223）" class="headerlink" title="移动语句（223）"></a>移动语句（223）</h2><p><strong>将变量声明挪动到紧邻循环的位置</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">statement</span> (invoice, plays) &#123;</span><br><span class="line">  <span class="keyword">let</span> totalAmount = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="string">`Statement for <span class="subst">$&#123;invoice.customer&#125;</span>\n`</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> perf <span class="keyword">of</span> invoice.<span class="property">performances</span>) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// print line for this order</span></span><br><span class="line">    result += <span class="string">` <span class="subst">$&#123;playFor(perf).name&#125;</span>: <span class="subst">$&#123;usd(amountFor(perf))&#125;</span> (<span class="subst">$&#123;perf.audience&#125;</span> seats)\n`</span>;</span><br><span class="line">    totalAmount += <span class="title function_">amountFor</span>(perf);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> volumeCredits = <span class="number">0</span>;<span class="comment">//移动语句（223）</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> perf <span class="keyword">of</span> invoice.<span class="property">performances</span>) &#123;</span><br><span class="line">    volumeCredits += <span class="title function_">volumeCreditsFor</span>(perf);</span><br><span class="line">  &#125;</span><br><span class="line">  result += <span class="string">`Amount owed is <span class="subst">$&#123;usd(totalAmount)&#125;</span>\n`</span>;</span><br><span class="line">  result += <span class="string">`You earned <span class="subst">$&#123;volumeCredits&#125;</span> credits\n`</span>;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br></pre></td></tr></table></figure>
+
+<p>把与更新 volumeCredits 变量相关的代码都集中到一起，有利于以查询取代临时变量（178）手法的施展</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">totalVolumeCredits</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> volumeCredits = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> perf <span class="keyword">of</span> invoice.<span class="property">performances</span>) &#123;</span><br><span class="line">    volumeCredits += <span class="title function_">volumeCreditsFor</span>(perf);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> volumeCredits;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同样是先对变量的计算过程应用提炼函数（106）手法、再以查询取代临时变量（178），然后使用内联变量（123）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">statement</span> (invoice, plays) &#123;</span><br><span class="line">  <span class="keyword">let</span> totalAmount = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="string">`Statement for <span class="subst">$&#123;invoice.customer&#125;</span>\n`</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> perf <span class="keyword">of</span> invoice.<span class="property">performances</span>) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// print line for this order</span></span><br><span class="line">    result += <span class="string">` <span class="subst">$&#123;playFor(perf).name&#125;</span>: <span class="subst">$&#123;usd(amountFor(perf))&#125;</span> (<span class="subst">$&#123;perf.audience&#125;</span> seats)\n`</span>;</span><br><span class="line">    totalAmount += <span class="title function_">amountFor</span>(perf);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  result += <span class="string">`Amount owed is <span class="subst">$&#123;usd(totalAmount)&#125;</span>\n`</span>;</span><br><span class="line">  result += <span class="string">`You earned <span class="subst">$&#123;totalVolumeCredits()&#125;</span> credits\n`</span>;<span class="comment">//使用内联变量（123）</span></span><br><span class="line">  <span class="keyword">return</span> result;</span><br></pre></td></tr></table></figure>
+
+<p>类似的，对totalAmount进行提炼、取代临时变量、内联</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">totalAmount</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> perf <span class="keyword">of</span> invoice.<span class="property">performances</span>) &#123;</span><br><span class="line">    result += <span class="title function_">amountFor</span>(perf);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">totalVolumeCredits</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> perf <span class="keyword">of</span> invoice.<span class="property">performances</span>) &#123;</span><br><span class="line">    result += <span class="title function_">volumeCreditsFor</span>(perf);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="初步成果-–-大量嵌套函数"><a href="#初步成果-–-大量嵌套函数" class="headerlink" title="初步成果 – 大量嵌套函数"></a>初步成果 – 大量嵌套函数</h2><p><strong>到目前为止，我的重构主要是为原函数添加足够的结构，以便我能更好地理解它，看清它的逻辑结构。这也是重构早期的一般步骤。把复杂的代码块分解为更小的单元，与好的命名一样都很重要。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">statement</span> (invoice, plays) &#123;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="string">`Statement for <span class="subst">$&#123;invoice.customer&#125;</span>\n`</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> perf <span class="keyword">of</span> invoice.<span class="property">performances</span>) &#123;</span><br><span class="line">    result += <span class="string">` <span class="subst">$&#123;playFor(perf).name&#125;</span>: <span class="subst">$&#123;usd(amountFor(perf))&#125;</span> (<span class="subst">$&#123;perf.audience&#125;</span> seats)\n`</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  result += <span class="string">`Amount owed is <span class="subst">$&#123;usd(totalAmount())&#125;</span>\n`</span>;</span><br><span class="line">  result += <span class="string">`You earned <span class="subst">$&#123;totalVolumeCredits()&#125;</span> credits\n`</span>;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">totalAmount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> perf <span class="keyword">of</span> invoice.<span class="property">performances</span>) &#123;</span><br><span class="line">      result += <span class="title function_">amountFor</span>(perf);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">totalVolumeCredits</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> perf <span class="keyword">of</span> invoice.<span class="property">performances</span>) &#123;</span><br><span class="line">      result += <span class="title function_">volumeCreditsFor</span>(perf);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">usd</span>(<span class="params">aNumber</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Intl</span>.<span class="title class_">NumberFormat</span>(<span class="string">&quot;en-US&quot;</span>,</span><br><span class="line">                        &#123; <span class="attr">style</span>: <span class="string">&quot;currency&quot;</span>, <span class="attr">currency</span>: <span class="string">&quot;USD&quot;</span>,</span><br><span class="line">                          <span class="attr">minimumFractionDigits</span>: <span class="number">2</span> &#125;).<span class="title function_">format</span>(aNumber/<span class="number">100</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">volumeCreditsFor</span>(<span class="params">aPerformance</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="number">0</span>;</span><br><span class="line">    result += <span class="title class_">Math</span>.<span class="title function_">max</span>(aPerformance.<span class="property">audience</span> - <span class="number">30</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span> (<span class="string">&quot;comedy&quot;</span> === <span class="title function_">playFor</span>(aPerformance).<span class="property">type</span>) result += <span class="title class_">Math</span>.<span class="title function_">floor</span>(aPerformance.<span class="property">audience</span> / <span class="number">5</span>);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">playFor</span>(<span class="params">aPerformance</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> plays[aPerformance.<span class="property">playID</span>];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">amountFor</span>(<span class="params">aPerformance</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">switch</span> (<span class="title function_">playFor</span>(aPerformance).<span class="property">type</span>) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;tragedy&quot;</span>:</span><br><span class="line">      result = <span class="number">40000</span>;</span><br><span class="line">      <span class="keyword">if</span> (aPerformance.<span class="property">audience</span> &gt; <span class="number">30</span>) &#123;</span><br><span class="line">        result += <span class="number">1000</span> * (aPerformance.<span class="property">audience</span> - <span class="number">30</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;comedy&quot;</span>:</span><br><span class="line">      result = <span class="number">30000</span>;</span><br><span class="line">      <span class="keyword">if</span> (aPerformance.<span class="property">audience</span> &gt; <span class="number">20</span>) &#123;</span><br><span class="line">        result += <span class="number">10000</span> + <span class="number">500</span> * (aPerformance.<span class="property">audience</span> - <span class="number">20</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      result += <span class="number">300</span> * aPerformance.<span class="property">audience</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="attr">default</span>:</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">`unknown type: <span class="subst">$&#123;playFor(aPerformance).type&#125;</span>`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="重构-–-拆分阶段（154）"><a href="#重构-–-拆分阶段（154）" class="headerlink" title="重构 – 拆分阶段（154）"></a>重构 – 拆分阶段（154）</h1><p>如何让这些函数能够<strong>复用</strong>，最常见的方法就是<strong>拆分阶段（154）</strong></p>
+<p>这里我的目标是将逻辑分成两部分：一部分计算详单所需的数据，另一部分将数据渲染成文本或 HTML。第一阶段会创建一个中转数据结构，再把它传递给第二阶段。</p>
+<p>生成数据createStatementData，可单独放在另一个js文件</p>
+<p>将数据进行渲染renderPlainText、renderHtml，和statement放在同一个文件</p>
+<h1 id="重构-–-以多态取代条件表达式（272）"><a href="#重构-–-以多态取代条件表达式（272）" class="headerlink" title="重构 – 以多态取代条件表达式（272）"></a>重构 – 以多态取代条件表达式（272）</h1><p>我的设想是先建立一个继承体系，它有“喜剧”（comedy）和“悲剧”（tragedy）两个子类，子类各自包含独立的计算逻辑。</p>
+<p>调用者通过调用一个多态的 amount 函数，让语言帮你分发到不同的子类的计算过程中。volumeCredits 函数的处理也是如法炮制。</p>
+<p>为此我需要用到多种重构方法，其中最核心的一招是以多态取代条件表达式（272），将多个同样的类型码分支用多态取代。</p>
+<p>但在施展以多态取代条件表达式（272）之前，我得先创建一个基本的继承结构。我需要先创建一个类，并将价格计算函数和观众量积分计算函数放进去。</p>
+<p>我已将全部计算逻辑搬移到一个类中，是时候将它多态化了。第一步是应用<strong>以子类取代类型码（362）引入子类</strong>，弃用类型代码。为此，我需要为演出计算器创建子类，并在 createStatementData 中获取对应的子类。要得到正确的子类，我需要将构造函数调用替换为一个普通的函数调用，因为 JavaScript 的构造函数里无法返回子类。于是我使用<strong>以工厂函数取代构造函数（334）</strong>。</p>
+<p>最终成果</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">createStatementData</span>(<span class="params">invoice, plays</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> result = &#123;&#125;;</span><br><span class="line">  result.<span class="property">customer</span> = invoice.<span class="property">customer</span>;</span><br><span class="line">  result.<span class="property">performances</span> = invoice.<span class="property">performances</span>.<span class="title function_">map</span>(enrichPerformance);</span><br><span class="line">  result.<span class="property">totalAmount</span> = <span class="title function_">totalAmount</span>(result);</span><br><span class="line">  result.<span class="property">totalVolumeCredits</span> = <span class="title function_">totalVolumeCredits</span>(result);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">enrichPerformance</span>(<span class="params">aPerformance</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> calculator = <span class="title function_">createPerformanceCalculator</span>(aPerformance, <span class="title function_">playFor</span>(aPerformance));</span><br><span class="line">    <span class="keyword">const</span> result = <span class="title class_">Object</span>.<span class="title function_">assign</span>(&#123;&#125;, aPerformance);</span><br><span class="line">    result.<span class="property">play</span> = calculator.<span class="property">play</span>;</span><br><span class="line">    result.<span class="property">amount</span> = calculator.<span class="property">amount</span>;</span><br><span class="line">    result.<span class="property">volumeCredits</span> = calculator.<span class="property">volumeCredits</span>;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">playFor</span>(<span class="params">aPerformance</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> plays[aPerformance.<span class="property">playID</span>]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">totalAmount</span>(<span class="params">data</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> data.<span class="property">performances</span></span><br><span class="line">      .<span class="title function_">reduce</span>(<span class="function">(<span class="params">total, p</span>) =&gt;</span> total + p.<span class="property">amount</span>, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">totalVolumeCredits</span>(<span class="params">data</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> data.<span class="property">performances</span></span><br><span class="line">      .<span class="title function_">reduce</span>(<span class="function">(<span class="params">total, p</span>) =&gt;</span> total + p.<span class="property">volumeCredits</span>, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">createPerformanceCalculator</span>(<span class="params">aPerformance, aPlay</span>) &#123;</span><br><span class="line">    <span class="keyword">switch</span>(aPlay.<span class="property">type</span>) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;tragedy&quot;</span>: <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">TragedyCalculator</span>(aPerformance, aPlay);</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;comedy&quot;</span> : <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ComedyCalculator</span>(aPerformance, aPlay);</span><br><span class="line">    <span class="attr">default</span>:</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">`unknown type: <span class="subst">$&#123;aPlay.type&#125;</span>`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PerformanceCalculator</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">aPerformance, aPlay</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">performance</span> = aPerformance;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">play</span> = aPlay;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">get</span> <span class="title function_">amount</span>() &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;subclass responsibility&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">get</span> <span class="title function_">volumeCredits</span>() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Math</span>.<span class="title function_">max</span>(<span class="variable language_">this</span>.<span class="property">performance</span>.<span class="property">audience</span> - <span class="number">30</span>, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TragedyCalculator</span> <span class="keyword">extends</span> <span class="title class_ inherited__">PerformanceCalculator</span> &#123;</span><br><span class="line">  <span class="keyword">get</span> <span class="title function_">amount</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="number">40000</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">performance</span>.<span class="property">audience</span> &gt; <span class="number">30</span>) &#123;</span><br><span class="line">      result += <span class="number">1000</span> * (<span class="variable language_">this</span>.<span class="property">performance</span>.<span class="property">audience</span> - <span class="number">30</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ComedyCalculator</span> <span class="keyword">extends</span> <span class="title class_ inherited__">PerformanceCalculator</span> &#123;</span><br><span class="line">  <span class="keyword">get</span> <span class="title function_">amount</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="number">30000</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">performance</span>.<span class="property">audience</span> &gt; <span class="number">20</span>) &#123;</span><br><span class="line">      result += <span class="number">10000</span> + <span class="number">500</span> * (<span class="variable language_">this</span>.<span class="property">performance</span>.<span class="property">audience</span> - <span class="number">20</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    result += <span class="number">300</span> * <span class="variable language_">this</span>.<span class="property">performance</span>.<span class="property">audience</span>;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">get</span> <span class="title function_">volumeCredits</span>() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">super</span>.<span class="property">volumeCredits</span> + <span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="variable language_">this</span>.<span class="property">performance</span>.<span class="property">audience</span> / <span class="number">5</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码量仍然有所增加，因为我再次整理了代码结构。新结构带来的好处是，不同戏剧种类的计算各自集中到了一处地方。如果大多数修改都涉及特定类型的计算，像这样按类型进行分离就很有意义。当添加新剧种时，只需要添加一个子类，并在创建函数中返回它。</p>
+<p>这个示例还揭示了一些关于此类继承方案何时适用的洞见。上面我将条件分支的查找从两个不同的函数（amountFor 和 volumeCreditsFor）搬移到一个集中的构造函数 createPerformanceCalculator 中。<strong>有越多的函数依赖于同一套类型进行多态，这种继承方案就越有益处</strong></p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">【学习记录】重构</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">maxL</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2023-05-01 08:00:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2023/05/01/【学习记录】《重构 - 改善既有代码的设计（第2版）》/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E9%87%8D%E6%9E%84/">#重构</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/05/02/%E3%80%90%E8%B0%83%E7%A0%94%E3%80%91Laya%E5%BC%95%E6%93%8E/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">【调研】Laya引擎</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/04/30/%E3%80%90%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E3%80%91Mysql/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">【学习记录】Mysql</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+                <div class="comment-container">
+                    
+<div class="comments-container">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="twikoo-container">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/twikoo@1.6.16/dist/twikoo.all.min.js"></script>
+        <div id="twikoo-comment"></div>
+        <script data-pjax>
+          function loadTwikoo() {
+            twikoo.init({
+              el: '#twikoo-comment',
+              envId: 'blog-comments-7g8rgfsf1481a6f9',
+              region: 'ap-guangzhou',
+              lang: 'zh-CN' || 'zh-CN'
+            });
+          }
+
+          if ('true' === 'true') {
+            const loadTwikooTimeout = setTimeout(() => {
+              loadTwikoo();
+              clearTimeout(loadTwikooTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadTwikoo);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E6%9E%84%E7%AC%AC%E4%B8%80%E6%AD%A5"><span class="nav-number">1.</span> <span class="nav-text">重构第一步</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E6%9E%84-%E2%80%93-%E5%B0%8F%E6%AD%A5%E5%89%8D%E8%BF%9B"><span class="nav-number">2.</span> <span class="nav-text">重构 – 小步前进</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%90%E7%82%BC%E5%87%BD%E6%95%B0%EF%BC%88106%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">提炼函数（106）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E7%82%BC%E5%87%BD%E6%95%B0%EF%BC%88106%EF%BC%89%E2%80%93-%E5%A2%9E%E5%8A%A0%E8%A1%A8%E8%BE%BE%E8%83%BD%E5%8A%9B-%E2%80%93-%E6%94%B9%E5%90%8D"><span class="nav-number">2.1.1.</span> <span class="nav-text">提炼函数（106）– 增加表达能力 – 改名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E6%9F%A5%E8%AF%A2%E5%8F%96%E4%BB%A3%E4%B8%B4%E6%97%B6%E5%8F%98%E9%87%8F%EF%BC%88178%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">以查询取代临时变量（178）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%86%85%E8%81%94%E5%8F%98%E9%87%8F%EF%BC%88123%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">使用内联变量（123）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B9%E5%8F%98%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%EF%BC%88124%EF%BC%89"><span class="nav-number">2.4.</span> <span class="nav-text">改变函数声明（124）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#amountFor"><span class="nav-number">2.4.1.</span> <span class="nav-text">amountFor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#volumeCreditsFor"><span class="nav-number">2.4.2.</span> <span class="nav-text">volumeCreditsFor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#format"><span class="nav-number">2.4.3.</span> <span class="nav-text">format</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%86%E5%88%86%E5%BE%AA%E7%8E%AF%EF%BC%88227%EF%BC%89"><span class="nav-number">2.5.</span> <span class="nav-text">拆分循环（227）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8%E8%AF%AD%E5%8F%A5%EF%BC%88223%EF%BC%89"><span class="nav-number">2.6.</span> <span class="nav-text">移动语句（223）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E6%AD%A5%E6%88%90%E6%9E%9C-%E2%80%93-%E5%A4%A7%E9%87%8F%E5%B5%8C%E5%A5%97%E5%87%BD%E6%95%B0"><span class="nav-number">2.7.</span> <span class="nav-text">初步成果 – 大量嵌套函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E6%9E%84-%E2%80%93-%E6%8B%86%E5%88%86%E9%98%B6%E6%AE%B5%EF%BC%88154%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">重构 – 拆分阶段（154）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E6%9E%84-%E2%80%93-%E4%BB%A5%E5%A4%9A%E6%80%81%E5%8F%96%E4%BB%A3%E6%9D%A1%E4%BB%B6%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%88272%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">重构 – 以多态取代条件表达式（272）</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2024
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">maxL</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://pages.github.com/">
+                
+                    本站由 <span class="tooltip" data-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

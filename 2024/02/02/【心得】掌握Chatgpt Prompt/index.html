@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="maxL">
+    
+    <title>
+        
+            【学习记录】掌握Chatgpt Prompt |
+        
+        Infinite
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"laihandong.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#003366","logo":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","favicon":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","avatar":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"以有涯随无涯，殆已！","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"twikoo","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":"blog-comments-7g8rgfsf1481a6f9","region":"ap-guangzhou","version":"1.6.16"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["追梦人"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Infinite
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >
+                                更新日志
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog">更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">【学习记录】掌握Chatgpt Prompt</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">maxL</span>
+                            
+                                <span class="author-label">追梦人</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2024-02-02 08:00:00</span>
+        <span class="mobile">2024-02-02 08:00</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2024-10-24 00:28:36</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Chatgpt/">Chatgpt</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Prompt/">Prompt</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.3k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>4 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <p>想让<code>Chatgpt</code>等一类AI生成式工具<strong>有效地回答</strong>我的问题，我得学会<strong>提问</strong>（<code>Prompt</code>）。一是<strong>让AI告诉我们如何提问</strong>，一劳永逸；二是<strong>总结提问的规律法则</strong>，以不变应万变；三是<strong>积累</strong>一些好用的<code>prompt</code><strong>公式</strong>，现拿现套。</p>
+<h1 id="一劳永逸"><a href="#一劳永逸" class="headerlink" title="一劳永逸"></a>一劳永逸</h1><h2 id="ChatGPT超级Prompt"><a href="#ChatGPT超级Prompt" class="headerlink" title="ChatGPT超级Prompt"></a>ChatGPT超级Prompt</h2><p>我想让你成为我的 Prompt 创作者。你的目标是帮助我创建最佳的 Prompt，这个 Prompt 将由你ChatGPT 使用。你将遵循以下过程：<br>1.首先，你会问我 Prompt 是关于什么的。我会告诉你，但我们需要通过不断的重复来改它，通过则进行下一步。<br>2.根据我的输入，你会创建三个部分:<br>a)修订后的 Prompt(你编写修订后的 Prompt，应该清晰、精确、易于理解)<br>b)建议(你提出建议，哪些细节应该包含在 Prompt 中，以使其更好)<br>c)问题(你提出相关问题，询问我需要哪些额外信息来改进 Prompt)<br>3.你提供的 Prompt 应该采用我发出请求的形式，由ChatGPT 执行。<br>4.我们将继续这个选代过程，我会提供更多的信息，你会更新“修订后的Prompt”部分的请求，直到它完整为止。</p>
+<h2 id="用一套Prompt寻找一套最优解决方案"><a href="#用一套Prompt寻找一套最优解决方案" class="headerlink" title="用一套Prompt寻找一套最优解决方案"></a>用一套Prompt寻找一套最优解决方案</h2><p>你需要应用连续问题解决系统(CPSS)来通过不断重复寻找我的问题，并通过深度解析后提供解决方案。CPSS的工作原理如下:<br>1.你将采用六个步的问题解决过程来评估我的初始问题: )确定题 2定3)生成决案(最多3个)4)评估并选择解决方案5)实施解决方案6)下一个问题<br>2.在“生成解决方案”的步骤中，应列出最多3个解决方案:在“评估和选择解决方案”的步骤中，应提供精确和具体的解决方案。在“实施解决方案”的步骤中，应提供所选解决方案付诸实施的具体方法。<br>3.”下一个问题“部分应包含你可以向我提出的最重要的问题，以获取进一步的信息，这些信息对于问题解决过程的继续非常重要。每个问题的数量最多为3个。<br>4.你的回答应该简洁明了，使用Markdown格式撰写，其中每个步骤的名称以粗体显示，并且所有文字包括标签的字体大小应具有一致性。<br>5.在你回答了我的第一个问题之后，CPSS过程的下一个迭代开始。<br>6.系统将整合我的最后一个回答，并通过每个选代逐渐提供更加深入的回答，你可以通过向我提出新的问题来引导它。<br>你的第一个回答应该只是一个问候，提醒对方你是一个连续问题解决系统（CPSS)。不要在第一个回答中开始CPSS过程，你的第一个回答只包括问候和要求提出的要解决的问题。之后，我会为你提供信息，请在你的下一个回答中开始CPSS过程。</p>
+<h2 id="通用万能公式"><a href="#通用万能公式" class="headerlink" title="通用万能公式"></a>通用万能公式</h2><blockquote>
+<p>写在前面，这套万能公式已经内置在了chatgpt的官网中，可以参考如下逻辑补充信息，然后完成个性化配置。</p>
+</blockquote>
+<h3 id="告诉ChatGPT我是谁"><a href="#告诉ChatGPT我是谁" class="headerlink" title="告诉ChatGPT我是谁"></a>告诉ChatGPT我是谁</h3><p>职业&#x2F;角色</p>
+<p>具体兴趣</p>
+<p>价值观&#x2F;原则</p>
+<p>学习风格</p>
+<p>个人背景</p>
+<p>目标</p>
+<p>偏好</p>
+<p>主要语言</p>
+<p>专业知识</p>
+<p>沟通风格</p>
+<p>等等等等…</p>
+<h3 id="ChatGPT回复问题要求"><a href="#ChatGPT回复问题要求" class="headerlink" title="ChatGPT回复问题要求"></a>ChatGPT回复问题要求</h3><p>回复格式</p>
+<p>语气</p>
+<p>详细程度</p>
+<p>建议类型</p>
+<p>问题类型</p>
+<p>资源参考核查</p>
+<p>批判性思维</p>
+<p>创意水平</p>
+<p>解决问题方法</p>
+<p>偏见意识</p>
+<p>语言偏好</p>
+<p>推理框架</p>
+<p>等等等等…</p>
+<h1 id="规律法则"><a href="#规律法则" class="headerlink" title="规律法则"></a>规律法则</h1><p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://images-1258290850.cos.ap-guangzhou.myqcloud.com/blog/202403021746533.webp"
+                      alt="image-20240302174636292"
+                ></p>
+<p><code>ChatGPT</code>的底层原理是文字推断，根据“上一句”的内容，给出“下一句”。因此，我们给到的内容的越精准，就与能得到符合预期的回答。想要做到这点，有如下几个可供参考的思路和方法。</p>
+<h2 id="指令词-背景-输入-输出要求"><a href="#指令词-背景-输入-输出要求" class="headerlink" title="指令词+背景+输入+输出要求"></a>指令词+背景+输入+输出要求</h2><p>指令词：精准任务（命令）</p>
+<p>背景：补充信息</p>
+<p>输入：输入数据（具体内容）</p>
+<p>输出要求：结果格式</p>
+<h1 id="好用的公式-x2F-插件"><a href="#好用的公式-x2F-插件" class="headerlink" title="好用的公式&#x2F;插件"></a>好用的公式&#x2F;插件</h1><blockquote>
+<p>写在前面，公式好用与否，很大一部分取决于个人使用体验，即主观感受。其次，公式中<code>[]</code>的内容才是重点。最后，不同的公式组合（即插件）才能应对更复杂的需求。</p>
+</blockquote>
+<h2 id="多角度"><a href="#多角度" class="headerlink" title="多角度"></a>多角度</h2><p>请用多个角度来思考[主题内容]。（从[角度1]、[角度2]、[角度3]…多个角度来思考）</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>基于[主题内容]中的主要观点，请给出[格式]</p>
+<h2 id="个性"><a href="#个性" class="headerlink" title="个性"></a>个性</h2><p>请以[参考对象或风格]的风格，为我撰写[话题]内容</p>
+<h2 id="示例询问"><a href="#示例询问" class="headerlink" title="示例询问"></a>示例询问</h2><p>请按照以下格式，给出[主题内容]的信息。[示例格式]</p>
+<h2 id="能力与角色"><a href="#能力与角色" class="headerlink" title="能力与角色"></a>能力与角色</h2><p>你是具有[主题]专业知识的[角色]。请提供关于[主题]的[格式]</p>
+<h2 id="分隔符"><a href="#分隔符" class="headerlink" title="分隔符"></a>分隔符</h2><p>[分隔符]括起来的内容，[需求提示]</p>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>更新中…</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">【学习记录】掌握Chatgpt Prompt</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">maxL</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2024-02-02 08:00:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2024/02/02/【心得】掌握Chatgpt Prompt/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Chatgpt/">#Chatgpt</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Prompt/">#Prompt</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2024/02/04/%E3%80%90%E5%BF%83%E5%BE%97%E3%80%91%E4%BF%A1%E6%81%AF%E6%90%9C%E7%B4%A2%E8%83%BD%E5%8A%9B/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">【心得】信息搜索能力</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2024/01/24/%E3%80%90%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E3%80%91%E3%80%8A%E8%B5%84%E6%9C%AC%E8%AE%BA%E3%80%8B/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">【阅读笔记】《资本论》</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+                <div class="comment-container">
+                    
+<div class="comments-container">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="twikoo-container">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/twikoo@1.6.16/dist/twikoo.all.min.js"></script>
+        <div id="twikoo-comment"></div>
+        <script data-pjax>
+          function loadTwikoo() {
+            twikoo.init({
+              el: '#twikoo-comment',
+              envId: 'blog-comments-7g8rgfsf1481a6f9',
+              region: 'ap-guangzhou',
+              lang: 'zh-CN' || 'zh-CN'
+            });
+          }
+
+          if ('true' === 'true') {
+            const loadTwikooTimeout = setTimeout(() => {
+              loadTwikoo();
+              clearTimeout(loadTwikooTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadTwikoo);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E5%8A%B3%E6%B0%B8%E9%80%B8"><span class="nav-number">1.</span> <span class="nav-text">一劳永逸</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ChatGPT%E8%B6%85%E7%BA%A7Prompt"><span class="nav-number">1.1.</span> <span class="nav-text">ChatGPT超级Prompt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E4%B8%80%E5%A5%97Prompt%E5%AF%BB%E6%89%BE%E4%B8%80%E5%A5%97%E6%9C%80%E4%BC%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">1.2.</span> <span class="nav-text">用一套Prompt寻找一套最优解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E7%94%A8%E4%B8%87%E8%83%BD%E5%85%AC%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">通用万能公式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%8A%E8%AF%89ChatGPT%E6%88%91%E6%98%AF%E8%B0%81"><span class="nav-number">1.3.1.</span> <span class="nav-text">告诉ChatGPT我是谁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ChatGPT%E5%9B%9E%E5%A4%8D%E9%97%AE%E9%A2%98%E8%A6%81%E6%B1%82"><span class="nav-number">1.3.2.</span> <span class="nav-text">ChatGPT回复问题要求</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%84%E5%BE%8B%E6%B3%95%E5%88%99"><span class="nav-number">2.</span> <span class="nav-text">规律法则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E8%AF%8D-%E8%83%8C%E6%99%AF-%E8%BE%93%E5%85%A5-%E8%BE%93%E5%87%BA%E8%A6%81%E6%B1%82"><span class="nav-number">2.1.</span> <span class="nav-text">指令词+背景+输入+输出要求</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A5%BD%E7%94%A8%E7%9A%84%E5%85%AC%E5%BC%8F-x2F-%E6%8F%92%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">好用的公式&#x2F;插件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E8%A7%92%E5%BA%A6"><span class="nav-number">3.1.</span> <span class="nav-text">多角度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">3.2.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AA%E6%80%A7"><span class="nav-number">3.3.</span> <span class="nav-text">个性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E8%AF%A2%E9%97%AE"><span class="nav-number">3.4.</span> <span class="nav-text">示例询问</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%BD%E5%8A%9B%E4%B8%8E%E8%A7%92%E8%89%B2"><span class="nav-number">3.5.</span> <span class="nav-text">能力与角色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E9%9A%94%E7%AC%A6"><span class="nav-number">3.6.</span> <span class="nav-text">分隔符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%90%8E"><span class="nav-number">4.</span> <span class="nav-text">最后</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2024
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">maxL</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://pages.github.com/">
+                
+                    本站由 <span class="tooltip" data-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

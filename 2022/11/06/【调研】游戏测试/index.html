@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="maxL">
+    
+    <title>
+        
+            【调研】游戏测试 |
+        
+        Infinite
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"laihandong.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#003366","logo":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","favicon":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","avatar":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"以有涯随无涯，殆已！","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"twikoo","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":"blog-comments-7g8rgfsf1481a6f9","region":"ap-guangzhou","version":"1.6.16"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["追梦人"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Infinite
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >
+                                更新日志
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog">更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">【调研】游戏测试</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">maxL</span>
+                            
+                                <span class="author-label">追梦人</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2022-11-06 08:00:00</span>
+        <span class="mobile">2022-11-06 08:00</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2024-10-24 00:28:36</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E8%B0%83%E7%A0%94/">调研</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E6%B8%B8%E6%88%8F%E6%B5%8B%E8%AF%95/">游戏测试</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>5.8k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>20 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h1 id="1-游戏测试现状"><a href="#1-游戏测试现状" class="headerlink" title="1. 游戏测试现状"></a>1. 游戏测试现状</h1><p>UI 自动化开发和维护成本高，投入性价比很低，而游戏又是一种界面千奇百怪又元素布局纷繁复杂的软件</p>
+<p>游戏测试落后于现代互联网软件测试</p>
+<p>游戏的cs通信所用协议通常为tcp，而不是http，常用协议测试工具是没法用的，同时也缺乏相关工具</p>
+<p>游戏行业的测试广泛取决于具体公司的文化</p>
+<p>游戏立项时一般不考虑给之后测试自动化</p>
+<p>写个客户端作为测试工具？<img  
+                     lazyload
+                     alt="image"
+                     data-src="/..%5Cassets%5C10002.png"
+                      alt="10002"
+                ></p>
+<p>游戏测试环境的搭建和测试数据的构造比传统软件测试领域要复杂</p>
+<p>游戏测试不仅要测开发上的bug，还有策划上的bug，是因为游戏作为一种特殊的软件，需求变化大、不确定因素多 。</p>
+<h1 id="2-测试平台常见需求"><a href="#2-测试平台常见需求" class="headerlink" title="2. 测试平台常见需求"></a>2. 测试平台常见需求</h1><h2 id="2-1-前端web界面"><a href="#2-1-前端web界面" class="headerlink" title="2.1 前端web界面"></a>2.1 前端web界面</h2><p>提供公共组件：实时查看后台的测试执行情况、展示日周月的后台统计信息（访问量、执行失败数、用例数等等）、图像算法的识别结果统计分析、测试中的bug汇总分析展示、测试数据的一键生成、测试教程（上手、入门、进阶、高级）、平台使用教程等等<br>提供环境管理：类似unity.exe路径、unity项目路径、测试引擎等<br>提供用例中心：可以查看已有测试用例、可以上传测试用例等<br>提供计划管理：可以查看已有测试计划、可以上传测试计划（包括计划发起者、执行者、关联人员规模、进度显示、等级安排、计划-子计划结构、开始时间、关联脚本、关联用例、关联需求、关联需求变动、关联表单、关联的自动化测试任务）、可以更新测试计划（更新人员、更新需求、更新状态、更新关联需求、更新测试报告）<br>提供自动化测试任务管理：可以查看已有测试任务、上传测试脚本、上传自动化测试任务、查看测试报告、查看任务执行情况<br>提供测试追踪：可以查看测试的执行情况、可以追踪测试的所有历史信息（比如执行时间、重复执行次数、每次所用到的脚本、所依据的用例、所测试的项目svn版本号、由谁发起的、发现的bug、bug对应的提单、单子的历史情况等等）、查看自动化测试任务的<br>提供系统管理：支持用户注册（工号、邮箱、昵称等等）、支持项目注册（往平台接入项目，不同项目组的数据要隔离等等）、支持角色权限配置（系统管理员、项目管理员、普通成员等）</p>
+<h2 id="2-2-服务端"><a href="#2-2-服务端" class="headerlink" title="2.2 服务端"></a>2.2 服务端</h2><p>有数据库统一管理所有数据，表结构设计合理<br>对前端传来的数据做验证（部分用JavaScript在前端验证）<br>有接口管理自动化测试引擎，并发送测试请求，接受测试结果，同时能合理分配执行资源</p>
+<h2 id="2-3-测试引擎"><a href="#2-3-测试引擎" class="headerlink" title="2.3 测试引擎"></a>2.3 测试引擎</h2><p>让测试执行更加灵活，不受限于资源和网络，不用排队等待或者是和他人竞争资源，用户通过配置来获取自己的执行资源（资源包括服务器权限、包括时间，比如我的定时计划不一定就能被满足，可能是其他人也想在这个时间段跟我占用同一台机子。所以可以把引擎部署到远程服务器，也可以部署到本地）<br>支持接口自动化测试（游戏内的各种接口、第三方skd的接口）<br>支持<em>云真机</em>移动端（Android和Ios）AppUI，app指打包出来的游戏（暂不支持真机）<br>支持PC（Windows、OS）应用UI，应用指Unity、ue、模拟器</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>流马、lunkyframe、禅道</p>
+<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><p>UI自动化、并发、收集测试用例收集、客户端平台、前后端、报告、云真机、测试追踪、低代码、分布式、APP测试、游戏、快速上手、测试用例管理、方便调试、定位问题、架构、测试报告、测试日志、测试环境、测试数据、测试用例、设计模式、测试用例标准制定（参考）、测试执行、插件、测试执行、分布式、跨环境执行、使用手册、测试数据可回收、集成CI&#x2F;CD、数据前置处理、测试关键字驱动、QA日常数据收集、webUI（能用吗？录制回放都不怎么用）、APPUI、数据库、mock、工具定位（会替代研发的部分任务吗？有这个能力吗？还是说融入研发体系而不是替代）、封装深度和泛用性、耦合强度和拓展性、原型设计、如何实操（从0开始？先抄一个）、测试数据的准备和销毁（能重复自动化吗？每次都要填新数据？）、接口测试数据验证（仅验证返回值？还要验证数据库？）、unity项目自动打包</p>
+<h2 id="思维借鉴和总结"><a href="#思维借鉴和总结" class="headerlink" title="思维借鉴和总结"></a>思维借鉴和总结</h2><p>1、减少流程性的测试：把被测的产品功能打碎了，切成一块一块的个体。一个脚本中只测试一个 feature。杜绝了互相影响的同时也简化的 bug 定位的成本，因为你脚本里只测试了这个 feature，失败了就肯定是这个 feature 的问题了，再去看产品源码定位bug。<br>2、测试脚本本身也要有质量，不能无限制地为了没有代码基础的QA而去降低学习要求，以至于牺牲最终质量和效率。<br>3、任何脚本都不做任何持久化的操作，也就是说测试脚本执行前数据库和文件系统是什么样子，执行之后也是什么样子。<strong>环境始终是干净的</strong>，对每个测试脚本都是一样的。<br>   做法： 在测试脚本运行中创建的什么数据，你在结束后就删除什么数据。<br>   反思：效率如何保证？压力负载被减轻了，可能会有影响。<br>4、</p>
+<h1 id="3-游戏测试细分领域"><a href="#3-游戏测试细分领域" class="headerlink" title="3. 游戏测试细分领域"></a>3. 游戏测试细分领域</h1><h3 id="3-1-服务器2性能测试"><a href="#3-1-服务器2性能测试" class="headerlink" title="3.1 服务器2性能测试"></a>3.1 服务器2性能测试</h3><h2 id="3-2-游戏客户端（APK-amp-IPA）性能测试"><a href="#3-2-游戏客户端（APK-amp-IPA）性能测试" class="headerlink" title="3.2 游戏客户端（APK&amp;IPA）性能测试"></a>3.2 游戏客户端（APK&amp;IPA）性能测试</h2><p>android: CPU 内存 流量 耗电量 FPS 显存 GPU 流量 电量</p>
+<h2 id="3-3-移动设备兼容适配测试"><a href="#3-3-移动设备兼容适配测试" class="headerlink" title="3.3 移动设备兼容适配测试"></a>3.3 移动设备兼容适配测试</h2><p>特别是andorid</p>
+<h2 id="3-4-安全测试"><a href="#3-4-安全测试" class="headerlink" title="3.4 安全测试"></a>3.4 安全测试</h2><p>内存修改、配置表修改、hook游戏动态修改、代码逆向分析、网络协议攻击</p>
+<h2 id="3-5-网络适应性测试"><a href="#3-5-网络适应性测试" class="headerlink" title="3.5 网络适应性测试"></a>3.5 网络适应性测试</h2><p>弱网测试、延迟、断网频率、丢包率、上下行带宽</p>
+<h1 id="4-测试工具"><a href="#4-测试工具" class="headerlink" title="4. 测试工具"></a>4. 测试工具</h1><p>一般都是讲自动化测试框架，且一般需要满足三个条件：</p>
+<ul>
+<li>稳定系统：已上线的或者需求变动较少的</li>
+<li>周期长：长期运行的，开发周期长的</li>
+<li>脚本复用：脚本可以重复使用以降低维护成本</li>
+</ul>
+<h2 id="4-1-UFT（QTP）！"><a href="#4-1-UFT（QTP）！" class="headerlink" title="4.1 UFT（QTP）！"></a>4.1 UFT（QTP）！</h2><p>QTP是一种基于GUI录制的自动化测试工具，用于在回归测试阶段的时候自动批量执行回归测试用例，QTP是记录用户浏览器的操作步骤数据等去达到录制回放的功能，主要应用于：功能测试、回归测试、service testing.使用UFT、你可以在网页或者基于客户端PC应用程序上、自动模拟用户行为、在不同windows操作系统以及不同的浏览器间、为不同的用户和数据集测试相同的动作行为。当有计划并且适当的方式使用UFT时、可以节省大量的时间和成本。随着11.50版本的发布、QTP 和 Service Test 成为了UFT11.50软件组件中的一部分</p>
+<h2 id="4-2-Selenium"><a href="#4-2-Selenium" class="headerlink" title="4.2 Selenium"></a>4.2 Selenium</h2><p>它是一个web自动化测试工具，免费小巧，支持分布式测试用例的执行，可以把测试用例分布到不同的测试机器执行，相当于分发机的功能。Selenium测试直接运行在浏览器中，就像真正的用户在操作一样。完全开源</p>
+<h2 id="4-3-Appium"><a href="#4-3-Appium" class="headerlink" title="4.3 Appium"></a>4.3 Appium</h2><p>appium是移动端最主流的开源自动化测试框架。开源，免费，跨平台（IOS、Android、H5、Windows）。基于Selenium实现、基于JDK+SDK环境运行、现只有Desktop版。支持多语言，因为选择cs设计模式，靠c发送http请求给s即可。</p>
+<h2 id="4-4-Postman"><a href="#4-4-Postman" class="headerlink" title="4.4 Postman"></a>4.4 Postman</h2><p>Postman是一个接口测试工具，在做接口测试的时候，Postman相当于一个客户端，它可以模拟用户发起的各类HTTP请求，将请求数据发送至服务端，获取对应的响应结果，</p>
+<h2 id="4-5-JMeter"><a href="#4-5-JMeter" class="headerlink" title="4.5 JMeter"></a>4.5 JMeter</h2><p>Apache JMeter是Apache组织开发的基于Java的压力测试工具。用于对软件做压力测试，它最初被设计用于Web应用测试，但后来扩展到其他测试领域。能够对HTTP和FTP服务器进行压力和性能测试， 也可以对任何数据库进行同样的测试（通过JDBC）。</p>
+<h2 id="4-6-Katalon-Studio"><a href="#4-6-Katalon-Studio" class="headerlink" title="4.6 Katalon Studio"></a>4.6 Katalon Studio</h2><p>Katalon是在Selemium相同的内核上构建起来的一个自动化测试工具，用的是Java和Apache Groovy作为其脚本开发语言<br>涵盖的测试范围广：</p>
+<ul>
+<li>Web 的UI自动化</li>
+<li>API自动化</li>
+<li>移动客户端（手机APP）自动化</li>
+<li>桌面客户端自动化</li>
+</ul>
+<p>可视化操作，内部集成多，外部集成多，主流框架</p>
+<h2 id="4-7-TestComplete！"><a href="#4-7-TestComplete！" class="headerlink" title="4.7 TestComplete！"></a>4.7 TestComplete！</h2><p>Testcomplete是SmartBear公司开发的一款自动化测试工具，主要应用于UI的自动化测试，收费的。利用自动化测试工具和人工智能支持的混合对象识别引擎，轻松检测和测试每个桌面，Web和移动应用程序。支持.NET,Java,Visual C++, Visual Basic, Delphi, C++Builder 和web应用程序</p>
+<h2 id="4-8-SoapUI"><a href="#4-8-SoapUI" class="headerlink" title="4.8 SoapUI"></a>4.8 SoapUI</h2><p>SoapUI是用于Webservice接口的测试工具，可以是SOAP Webservice以及RESTful Webservice或基于HTTP的服务，SoapUI是一个开放源代码且完全免费的工具，因为是基于Java开发的，因此它可以Windows、Mac和Linux系统上进行了接口测试，在业界被视为API service测试的的标准工具。<br>它通过soap&#x2F;http来检查、调用、实现Web Service的功能&#x2F;负载&#x2F;符合性测试。SoapUI可用于完整的RESTful API和SOAP Web Service测试。您可以进行功能测试，性能测试，互操作性测试，回归测试等等。</p>
+<h2 id="4-9-PerfDog！"><a href="#4-9-PerfDog！" class="headerlink" title="4.9 PerfDog！"></a>4.9 PerfDog！</h2><p>PerfDog性能狗是移动全平台iOS\Android性能测试工具平台，快速定位分析性能问题，提升APP应用及游戏性能和品质，收集无需ROOT&#x2F;越狱，手机硬件、游戏及应用无需做任何更改，极简化即插即用。</p>
+<h2 id="4-10-mobileperf"><a href="#4-10-mobileperf" class="headerlink" title="4.10 mobileperf"></a>4.10 mobileperf</h2><p>mobileperf是阿里开源的一个python PC 工具，可以收集Android性能数据: cpu、内存、流畅度、fps、logcat日志、流量、进程线程数、进程启动日志，mobileperf也支持原生monkey test。</p>
+<h2 id="4-11-PyAutoGUI"><a href="#4-11-PyAutoGUI" class="headerlink" title="4.11 PyAutoGUI"></a>4.11 PyAutoGUI</h2><p>PyAutoGUI允许Python脚本控制鼠标和键盘，并自动与其他应用程序交互。PyAutoGUI的API设计很简单，非常容易上手，PyAutoGUI适用于 Windows、macOS和Linux系统，支持在Python2和3上运行。PyAutoGUI安装很简单。</p>
+<ul>
+<li>移动鼠标并单击其他应用程序的窗口。</li>
+<li>向应用程序发送击键信号，如填写表格。</li>
+<li>截取屏幕截图，并给出一个图像（例如，按钮或复选框的图像），然后在屏幕上找到它。</li>
+<li>找到应用程序的窗口，移动、调整大小、最大化、最小化或关闭它（目前仅适用于 Windows）。</li>
+<li>显示警报和消息框</li>
+<li>PyAutoGUI只能处理主屏幕，双屏幕不支持。也无法确定当前键盘某个键是否被按下</li>
+</ul>
+<h2 id="4-12-pywinauto"><a href="#4-12-pywinauto" class="headerlink" title="4.12 pywinauto"></a>4.12 pywinauto</h2><p>Pywinauto是基于Python开发的，用于自动化测试的脚本模块，主要操作于Windows标准图形界面。它可以允许你很容易的发送鼠标、键盘动作给Windows的对话框和控件。</p>
+<h2 id="4-13-k6"><a href="#4-13-k6" class="headerlink" title="4.13 k6"></a>4.13 k6</h2><p>k6是高性能的负载测试工具，也是一种高性能工具，旨在在预生产和QA环境中以高负载运行测试<br>K6是一个开源的测试工具，底层用GO语言编写，测试代码是采用javascript编写，可以灵活的配置，是一款针对开发人员和测试人员都很友好的命令行性能测试工具</p>
+<h2 id="4-14-Locust"><a href="#4-14-Locust" class="headerlink" title="4.14 Locust"></a>4.14 Locust</h2><p>Locust是开源的使用Python开发，基于事件，支持分布式并且提供Web UI进行测试执行和结果展示的性能测试工具。<br>locust是一款完全基于事件的负载测试工具，做性能测试使用的‘协程’方式，有webui图形界面、无图形界面、分布式等多种运行方式</p>
+<h2 id="4-15-Mimesis"><a href="#4-15-Mimesis" class="headerlink" title="4.15 Mimesis"></a>4.15 Mimesis</h2><p>用于 Python 的高性能假数据生成器，它以多种语言提供用于多种用途的数据，用于安全测试</p>
+<h2 id="4-16-冰狐辅助"><a href="#4-16-冰狐辅助" class="headerlink" title="4.16 冰狐辅助"></a>4.16 冰狐辅助</h2><p>在移动端上提供js版本的辅助api,支持在线实时调试。支持多台设备同时在线调试脚本，在线实时获取所有设备的UI树和log信息。不再需要掌握android那套复杂的调试方法。支持通过“搭积木”、配置参数的方式构建辅助脚本.在后端支持SaaS服务,支持微服务</p>
+<h2 id="4-17-Auto-js"><a href="#4-17-Auto-js" class="headerlink" title="4.17 Auto.js"></a>4.17 Auto.js</h2><p>Auto.js是开源软件，支持自定义编写脚本 ，所运行的脚本代码全部可见，可在一定程度上保障安全性，也因此它备受用户的推崇。</p>
+<ul>
+<li>悬浮窗录制和运行</li>
+<li>更专业&amp;强大的选择器API，提供对屏幕上的控件的寻找、遍历、获取信息、操作等。类似于Google的UI测试框架UiAutomator，您也可以把他当做移动版UI测试框架使用</li>
+<li>采用JavaScript为脚本语言，并支持代码补全、变量重命名、代码格式化、查找替换等功能，可以作为一个JavaScript IDE使用</li>
+<li>支持使用e4x编写界面，并可以将JavaScript打包为apk文件，您可以用它来开发小工具应用</li>
+<li>支持使用Root权限以提供更强大的屏幕点击、滑动、录制功能和运行shell命令。录制录制可产生js文件或二进制文件，录制动作的回放比较流畅</li>
+<li>提供截取屏幕、保存截图、图片找色、找图等函数</li>
+<li>可作为Tasker插件使用，结合Tasker可胜任日常工作流</li>
+<li>带有界面分析工具，类似Android Studio的LayoutInspector，可以分析界面层次和范围、获取界面上的控件信息</li>
+</ul>
+<h1 id="5-测试框架"><a href="#5-测试框架" class="headerlink" title="5. 测试框架"></a>5. 测试框架</h1><h2 id="5-1-TestNG"><a href="#5-1-TestNG" class="headerlink" title="5.1 TestNG"></a>5.1 TestNG</h2><p>TestNG脱胎于业界标杆的JUnit，但比JUnit更加强大和易于使用。TestNG涵盖几乎所有类型的测试：单元、组件、集成和前端（Selenium+TestNG）等。</p>
+<h2 id="5-2-unittest"><a href="#5-2-unittest" class="headerlink" title="5.2 unittest"></a>5.2 unittest</h2><p>unittest是Python自带的一个单元测试框架, 它可以做单元测试, 也能用于编写和运行重复的测试工作.<br>它给自动化测试用例开发和执行提供了丰富的断言方法, 判断测试用例是否通过, 并最终生成测试结果.</p>
+<h2 id="5-3-pytest"><a href="#5-3-pytest" class="headerlink" title="5.3 pytest"></a>5.3 pytest</h2><p>Pytest 是一个比较成熟且功能完备的 Python 测试框架。其提供完善的在线文档，并有着大量的第三方插件和内置帮助，适用于许多小型或大型项目。Pytest 灵活易学，打印调试和测试执行期间可以捕获标准输出，适合简单的单元测试到复杂的功能测试。还可以执行 nose, unittest 和 doctest 风格的测试用例，甚至 Django 和 trial。支持良好的集成实践， 支持扩展的 xUnit 风格 setup，支持非 python 测试。支持生成测试覆盖率报告，支持 PEP8 兼容的编码风格。</p>
+<ul>
+<li>能够支持简单的单元测试和复杂的功能测试，还可以用来做selenium&#x2F;appnium等自动化测试、接口自动化测试（pytest+requests）;</li>
+<li>pytest具有很多第三方插件，并且可以自定义扩展，比较好用的如pytest-selenium（集成selenium）、pytest-html（完美html测试报告生成）、pytest-rerunfailures（失败case重复执行）、+ + + pytest-xdist（多CPU分发）等；</li>
+<li>测试用例的skip和xfail处理；</li>
+<li>可以很好的和CI工具结合，例如jenkins</li>
+<li>report框架—-allure 也支持了pytest（allure是一个能生成漂亮测试报告的开源框架）</li>
+</ul>
+<h2 id="5-4-Robot-Framework"><a href="#5-4-Robot-Framework" class="headerlink" title="5.4 Robot Framework"></a>5.4 Robot Framework</h2><p>诺基亚-西门子开发的一款基于python的开源自动化测试框架。<br>官方介绍：Robot Framework是用于验收测试和验收测试驱动开发（ATDD）的通用开源测试自动化框架。它具有易于使用的表格测试数据语法，并使用关键字驱动的测试方法。它的测试功能可以通过用Python或Java实现的测试库进行扩展，用户可以使用与创建测试用例相同的语法从现有的关键字创建新的更高级别的关键字。<br>Robot Framework框架是跨平台的，独立于操作系统和应用程序。核心框架使用Python实现，支持Python 2和Python 3，并且还可以在Jython（JVM）， IronPython（.NET）和PyPy上运行。该框架有丰富的测试库生态，由各种通用测试库（包括内置库、扩展库和自定义库）和工具组成，这些库被作为单独的项目开发。</p>
+<h2 id="5-5-Airtest！"><a href="#5-5-Airtest！" class="headerlink" title="5.5 Airtest！"></a>5.5 Airtest！</h2><p>Airtest是一款跨平台的UI自动化测试框架，基于图像识别原理，适用于游戏和App<br>Poco：基于UI控件搜索的自动化测试框架，其核心优势是除了对Android、iOS之外，对游戏也是支持的，同时也支持微信小程序、微信小游戏和H5应用</p>
+<h2 id="5-6-Mock"><a href="#5-6-Mock" class="headerlink" title="5.6 Mock"></a>5.6 Mock</h2><p>在面向对象程序设计中，模拟对象（英语：mock object，也译作模仿对象）是以可控的方式模拟真实对象行为的假的对象。程序员通常创造模拟对象（mock object）来测试其他对象的行为，很类似汽车设计者使用碰撞测试假人来模拟车辆碰撞中人的动态行为。<br>在单元测试中，模拟对象可以模拟复杂的、真实的（非模拟）对象的行为， 如果真实的对象无法放入单元测试中，使用模拟对象就很有帮助</p>
+<h2 id="5-7-Mockito"><a href="#5-7-Mockito" class="headerlink" title="5.7 Mockito"></a>5.7 Mockito</h2><p>Mockito是GitHub上使用最广泛的Mock框架,并与JUnit（java单元测试框架）结合使用。Mockito框架可以创建和配置mock对象.使用Mockito简化了具有外部依赖的类的测试开发!</p>
+<h2 id="5-8-WireMock"><a href="#5-8-WireMock" class="headerlink" title="5.8 WireMock"></a>5.8 WireMock</h2><p>WireMock是一个开源的测试工具，支持HTTP响应存根、请求验证、代理&#x2F;拦截、记录和回放<br>WireMock 是一个 HTTP 模拟服务器。它的核心是 Web 服务器，它可以准备好为特定请求（存根）提供罐头响应，并捕获传入的请求，以便以后检查它们（验证）。<br>它还具有各种其他有用的功能，包括与其他 API 交互的记录&#x2F;回放、故障和延迟的注入、有状态行为的模拟。<br>它可以被任何 JVM 应用程序用作库，也可以作为独立进程在与被测系统或远程服务器相同的主机上运行。<br>WireMock 的所有功能都可以通过其 REST (JSON) 接口和 Java API 访问。此外，可以通过 JSON 文件配置存根</p>
+<h2 id="5-9-pytest-mock"><a href="#5-9-pytest-mock" class="headerlink" title="5.9 pytest-mock"></a>5.9 pytest-mock</h2><p>unittest中存在mock模块，那么pytest中也存在mock模块，pytest中的mock使用第三方库：pytest-mock<br>Mock是Python中一个用于支持单元测试的库，它的主要功能是使用mock对象替代掉指定的Python对象，以达到模拟对象的行为。<br>python3.3 以前，mock是第三方库，需要安装之后才能使用。python3.3之后，mock作为标准库内置到 unittest。</p>
+<h2 id="5-10-Robolectric"><a href="#5-10-Robolectric" class="headerlink" title="5.10 Robolectric"></a>5.10 Robolectric</h2><p>Robolectric 是基于 Junit 的单元测试框架，实现了在 JVM 上测试 Android 代码的功能。</p>
+<h2 id="5-11-taurus"><a href="#5-11-taurus" class="headerlink" title="5.11 taurus"></a>5.11 taurus</h2><p>Taurus是 BlazeMeter 的核心组件，其是一个开源自动化框架，用于运行各种开源负载测试工具和功能测试工具，支持的最流行开源压测工具有 JMeter、Selenum、Gatling、The Grnder、Locust 等</p>
+<h2 id="5-12-Junit"><a href="#5-12-Junit" class="headerlink" title="5.12 Junit"></a>5.12 Junit</h2><p>Junit 是 Java 语言的单元测试框架，理论上基于 JVM 的语言都可以使用</p>
+<h1 id="6-测试管理工具"><a href="#6-测试管理工具" class="headerlink" title="6. 测试管理工具"></a>6. 测试管理工具</h1><h2 id="6-1-AgileTC"><a href="#6-1-AgileTC" class="headerlink" title="6.1 AgileTC"></a>6.1 AgileTC</h2><p>AgileTC是一套敏捷的测试用例管理平台，支持测试用例管理、执行计划管理、进度计算、多人实时协同等能力，方便测试人员对用例进行管理和沉淀。产品以<strong>脑图方式</strong>编辑可快速上手，用例关联需求形成流程闭环，并支持组件化引用，可在各个平台嵌入使用，是测试人员的贴心助手！</p>
+<h2 id="6-2-TestLink"><a href="#6-2-TestLink" class="headerlink" title="6.2 TestLink"></a>6.2 TestLink</h2><p>TestLink用于进行测试过程中的管理，通过使用TestLink提供的功能，可以将测试过程从测试需求、测试设计、到测试执行完整的管理起来，同时，它还提供了好多种测试结果的统计和分析，使我们能够简单的开始测试工作和分析测试结果。 TestLink 是sourceforge的开放源代码项目之一。</p>
+<h2 id="6-3-Kiwi"><a href="#6-3-Kiwi" class="headerlink" title="6.3 Kiwi"></a>6.3 Kiwi</h2><p>Kiwi 是一个适用于iOS开发的行为驱动测试框架,旨在提供一个足够简单易用的BDD库.</p>
+<h2 id="6-4-MeterSphere"><a href="#6-4-MeterSphere" class="headerlink" title="6.4 MeterSphere"></a>6.4 MeterSphere</h2><p>MeterSphere（发音：&#x2F;ˈmitərˌsfɪər&#x2F;） 是一站式开源持续测试平台，涵盖测试跟踪、接口测试、性能测试、团队协作等功能，兼容JMeter 等开源标准，有效助力开发和测试团队充分利用云弹性进行高度可扩展的自动化测试，加速高质量软件的交付。</p>
+<h2 id="6-5-ZTF"><a href="#6-5-ZTF" class="headerlink" title="6.5 ZTF"></a>6.5 ZTF</h2><p>Zentao Testing Framework，简称ZTF，是一款开源自动化测试管理框架。与市面上已有的自动化测试框架相比，ZTF更聚焦于自动化测试的管理功能。ZTF提供了自动化测试脚本的定义、管理、驱动、执行结果的回传、Bug的创建以及和其他自动化测框架的集成。ZTF使用go语言开发，可以支持各种平台。ZTF支持常见的编程语言，您可以选择您喜欢用的语言来开发自动化测试脚本。通过禅道自研的ZTF自动化测试工具，可很好地驱动8种单元测试框架、3种自动化测试框架来执行测试，并把最终结果回传给禅道，进行统一的报告展示。禅道ZTF打通了项目管理和持续集成工具之间的沟壑，贯穿持续集成、持续测试、持续部署等DevOps生命周期的不同阶段。</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">【调研】游戏测试</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">maxL</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2022-11-06 08:00:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2022/11/06/【调研】游戏测试/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E6%B8%B8%E6%88%8F%E6%B5%8B%E8%AF%95/">#游戏测试</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2022/11/08/%E3%80%90%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5%E3%80%91%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6airtest%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90%E6%80%BB%E7%BB%93/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">【源码】airtest整体框架总结</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                </div>
+            
+
+            
+                <div class="comment-container">
+                    
+<div class="comments-container">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="twikoo-container">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/twikoo@1.6.16/dist/twikoo.all.min.js"></script>
+        <div id="twikoo-comment"></div>
+        <script data-pjax>
+          function loadTwikoo() {
+            twikoo.init({
+              el: '#twikoo-comment',
+              envId: 'blog-comments-7g8rgfsf1481a6f9',
+              region: 'ap-guangzhou',
+              lang: 'zh-CN' || 'zh-CN'
+            });
+          }
+
+          if ('true' === 'true') {
+            const loadTwikooTimeout = setTimeout(() => {
+              loadTwikoo();
+              clearTimeout(loadTwikooTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadTwikoo);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E6%B8%B8%E6%88%8F%E6%B5%8B%E8%AF%95%E7%8E%B0%E7%8A%B6"><span class="nav-number">1.</span> <span class="nav-text">1. 游戏测试现状</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E5%B8%B8%E8%A7%81%E9%9C%80%E6%B1%82"><span class="nav-number">2.</span> <span class="nav-text">2. 测试平台常见需求</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E5%89%8D%E7%AB%AFweb%E7%95%8C%E9%9D%A2"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 前端web界面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 服务端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E6%B5%8B%E8%AF%95%E5%BC%95%E6%93%8E"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 测试引擎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">2.4.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">2.5.</span> <span class="nav-text">关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E7%BB%B4%E5%80%9F%E9%89%B4%E5%92%8C%E6%80%BB%E7%BB%93"><span class="nav-number">2.6.</span> <span class="nav-text">思维借鉴和总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E6%B8%B8%E6%88%8F%E6%B5%8B%E8%AF%95%E7%BB%86%E5%88%86%E9%A2%86%E5%9F%9F"><span class="nav-number">3.</span> <span class="nav-text">3. 游戏测试细分领域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%9C%8D%E5%8A%A1%E5%99%A82%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="nav-number">3.0.1.</span> <span class="nav-text">3.1 服务器2性能测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E6%B8%B8%E6%88%8F%E5%AE%A2%E6%88%B7%E7%AB%AF%EF%BC%88APK-amp-IPA%EF%BC%89%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="nav-number">3.1.</span> <span class="nav-text">3.2 游戏客户端（APK&amp;IPA）性能测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-%E7%A7%BB%E5%8A%A8%E8%AE%BE%E5%A4%87%E5%85%BC%E5%AE%B9%E9%80%82%E9%85%8D%E6%B5%8B%E8%AF%95"><span class="nav-number">3.2.</span> <span class="nav-text">3.3 移动设备兼容适配测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95"><span class="nav-number">3.3.</span> <span class="nav-text">3.4 安全测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-%E7%BD%91%E7%BB%9C%E9%80%82%E5%BA%94%E6%80%A7%E6%B5%8B%E8%AF%95"><span class="nav-number">3.4.</span> <span class="nav-text">3.5 网络适应性测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="nav-number">4.</span> <span class="nav-text">4. 测试工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-UFT%EF%BC%88QTP%EF%BC%89%EF%BC%81"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 UFT（QTP）！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-Selenium"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 Selenium</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-Appium"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 Appium</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-Postman"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 Postman</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5-JMeter"><span class="nav-number">4.5.</span> <span class="nav-text">4.5 JMeter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-6-Katalon-Studio"><span class="nav-number">4.6.</span> <span class="nav-text">4.6 Katalon Studio</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-7-TestComplete%EF%BC%81"><span class="nav-number">4.7.</span> <span class="nav-text">4.7 TestComplete！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-8-SoapUI"><span class="nav-number">4.8.</span> <span class="nav-text">4.8 SoapUI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-9-PerfDog%EF%BC%81"><span class="nav-number">4.9.</span> <span class="nav-text">4.9 PerfDog！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-10-mobileperf"><span class="nav-number">4.10.</span> <span class="nav-text">4.10 mobileperf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-11-PyAutoGUI"><span class="nav-number">4.11.</span> <span class="nav-text">4.11 PyAutoGUI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-12-pywinauto"><span class="nav-number">4.12.</span> <span class="nav-text">4.12 pywinauto</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-13-k6"><span class="nav-number">4.13.</span> <span class="nav-text">4.13 k6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-14-Locust"><span class="nav-number">4.14.</span> <span class="nav-text">4.14 Locust</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-15-Mimesis"><span class="nav-number">4.15.</span> <span class="nav-text">4.15 Mimesis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-16-%E5%86%B0%E7%8B%90%E8%BE%85%E5%8A%A9"><span class="nav-number">4.16.</span> <span class="nav-text">4.16 冰狐辅助</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-17-Auto-js"><span class="nav-number">4.17.</span> <span class="nav-text">4.17 Auto.js</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6"><span class="nav-number">5.</span> <span class="nav-text">5. 测试框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-TestNG"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 TestNG</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-unittest"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 unittest</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-pytest"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 pytest</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-Robot-Framework"><span class="nav-number">5.4.</span> <span class="nav-text">5.4 Robot Framework</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-5-Airtest%EF%BC%81"><span class="nav-number">5.5.</span> <span class="nav-text">5.5 Airtest！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-6-Mock"><span class="nav-number">5.6.</span> <span class="nav-text">5.6 Mock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-7-Mockito"><span class="nav-number">5.7.</span> <span class="nav-text">5.7 Mockito</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-8-WireMock"><span class="nav-number">5.8.</span> <span class="nav-text">5.8 WireMock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-9-pytest-mock"><span class="nav-number">5.9.</span> <span class="nav-text">5.9 pytest-mock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-10-Robolectric"><span class="nav-number">5.10.</span> <span class="nav-text">5.10 Robolectric</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-11-taurus"><span class="nav-number">5.11.</span> <span class="nav-text">5.11 taurus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-12-Junit"><span class="nav-number">5.12.</span> <span class="nav-text">5.12 Junit</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-%E6%B5%8B%E8%AF%95%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7"><span class="nav-number">6.</span> <span class="nav-text">6. 测试管理工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1-AgileTC"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 AgileTC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2-TestLink"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 TestLink</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-3-Kiwi"><span class="nav-number">6.3.</span> <span class="nav-text">6.3 Kiwi</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-4-MeterSphere"><span class="nav-number">6.4.</span> <span class="nav-text">6.4 MeterSphere</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-5-ZTF"><span class="nav-number">6.5.</span> <span class="nav-text">6.5 ZTF</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2024
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">maxL</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://pages.github.com/">
+                
+                    本站由 <span class="tooltip" data-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
