@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
     <meta name="description" content="Hexo Theme Keep">
-    <meta name="author" content="行勉">
+    <meta name="author" content="maxL">
     
     <title>
         
-        Lai HanDong&#39;s Blog
+        Infinite
     </title>
     
 <link rel="stylesheet" href="/css/style.css">
@@ -22,7 +22,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"laihandong.github.io","root":"/","language":"zh-CN","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#003366","logo":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","favicon":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","avatar":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"The world is beautiful I want to see || Reach the furthest in a limited life","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"twikoo","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":"blog-comments-7g8rgfsf1481a6f9","region":"ap-guangzhou","version":"1.6.16"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["小白","小萌新","小菜鸡","实习生","打工人","小工程师","老油条","大法师","巨佬","老萌新"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#003366","logo":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","favicon":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","avatar":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"以有涯随无涯，殆已！","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"twikoo","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":"blog-comments-7g8rgfsf1481a6f9","region":"ap-guangzhou","version":"1.6.16"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["追梦人"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
     KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
@@ -62,7 +62,7 @@
                 </a>
             
             <a class="logo-title" href="/">
-               Lai HanDong&#39;s Blog
+               Infinite
             </a>
         </div>
 
@@ -80,9 +80,9 @@
                     
                         <li class="menu-item">
                             <a class=""
-                               href="/archives"
+                               href="/categories"
                             >
-                                归档
+                                分类
                             </a>
                         </li>
                     
@@ -96,17 +96,25 @@
                     
                         <li class="menu-item">
                             <a class=""
-                               href="/categories"
+                               href="/links"
                             >
-                                分类
+                                友链
                             </a>
                         </li>
                     
                         <li class="menu-item">
                             <a class=""
-                               href="/links"
+                               href="/archives"
                             >
-                                友链
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >
+                                更新日志
                             </a>
                         </li>
                     
@@ -138,7 +146,7 @@
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/archives">归档</a>
+                       href="/categories">分类</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
@@ -148,12 +156,17 @@
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/categories">分类</a>
+                       href="/links">友链</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/links">友链</a>
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog">更新日志</a>
                 </li>
             
         </ul>
@@ -179,18 +192,16 @@
                 
 
                 <h3 class="home-article-title">
-                    <a href="/2023/04/07/Airtest/airtest-html%E6%8A%A5%E5%91%8A%E6%A8%A1%E6%9D%BF%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/">
-                        airtest 测试报告 模块源码解析
+                    <a href="/2023/12/27/%E3%80%90%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E3%80%91%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        【学习记录】关系型数据库
                     </a>
                 </h3>
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        airtest调用了原生jinja2模板来渲染html，下面仅讨论被jinja2模板控制的区域部分
-
-由于liquid语法限制，block相关的语法块都会被jekkly识别到所以所有的{ 和 %中间都用-分隔
-
-head部分脚本&#123;&#123...
+                        Relational Database Management System - RDBMS的特点：
+1.数据以表格的形式出现2.每行为各种记录名称3.每列为记录名称所对应的数据域4.许多的行和列组成一张表单5.若干的表单组成database
+RDBM...
                     
                 </div>
 
@@ -198,8 +209,8 @@ head部分脚本&#123;&#123...
     <div class="home-article-meta-info">
         <span>
             <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Fri May 26 2023 16:34:54 GMT+0800">
-                2023-05-26
+            <span class="home-article-date" data-updated="Wed Mar 06 2024 23:55:09 GMT+0800">
+                2024-03-06
             </span>
         </span>
         
@@ -208,19 +219,7 @@ head部分脚本&#123;&#123...
                     
                         <li>
                             
-                            <a href="/categories/Python/">Python</a>&nbsp;
-                        </li>
-                    
-                    
-                        <li>
-                            &gt; 
-                            <a href="/categories/Python/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/">第三方库</a>&nbsp;
-                        </li>
-                    
-                    
-                        <li>
-                            &gt; 
-                            <a href="/categories/Python/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/airtest/">airtest</a>&nbsp;
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a>&nbsp;
                         </li>
                     
                     
@@ -234,7 +233,7 @@ head部分脚本&#123;&#123...
                     
                         <li>
                             
-                            <a href="/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/">源码解析</a>&nbsp;
+                            <a href="/tags/%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/">关系型数据库</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -242,7 +241,7 @@ head部分脚本&#123;&#123...
         
     </div>
 
-    <a class="read-more" href="/2023/04/07/Airtest/airtest-html%E6%8A%A5%E5%91%8A%E6%A8%A1%E6%9D%BF%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a class="read-more" href="/2023/12/27/%E3%80%90%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E3%80%91%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -252,15 +251,14 @@ head部分脚本&#123;&#123...
                 
 
                 <h3 class="home-article-title">
-                    <a href="/2023/04/07/Airtest/airtest_log%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/">
-                        airtest 日志模块源码解析
+                    <a href="/2023/12/24/%E3%80%90%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E3%80%91%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">
+                        【学习记录】版本管理系统
                     </a>
                 </h3>
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        airtest除了标准的运行日志，还有一套专门用来记录测试数据并生成报告的日志格式，主要的接口有如下几个：
-airtest.core.helper类仅有一个类，名为G其中有一个用AirtestLogger实例化的成员对象，以及一些记录日志相关信息的常...
+                        什么是版本控制系统版本控制系统（Version Control System - VCS）最基本的功能是版本控制，在文件的修改历程中保留修改历史，让使用者可以更方便地选择对每个版本进行合理的处理。此外，VCS需要使用者做到主动提交文本的修改记录，让V...
                     
                 </div>
 
@@ -268,8 +266,8 @@ airtest.core.helper类仅有一个类，名为G其中有一个用AirtestLogger�
     <div class="home-article-meta-info">
         <span>
             <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Fri May 26 2023 16:34:28 GMT+0800">
-                2023-05-26
+            <span class="home-article-date" data-updated="Wed Mar 06 2024 23:54:59 GMT+0800">
+                2024-03-06
             </span>
         </span>
         
@@ -278,19 +276,7 @@ airtest.core.helper类仅有一个类，名为G其中有一个用AirtestLogger�
                     
                         <li>
                             
-                            <a href="/categories/Python/">Python</a>&nbsp;
-                        </li>
-                    
-                    
-                        <li>
-                            &gt; 
-                            <a href="/categories/Python/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/">第三方库</a>&nbsp;
-                        </li>
-                    
-                    
-                        <li>
-                            &gt; 
-                            <a href="/categories/Python/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/airtest/">airtest</a>&nbsp;
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a>&nbsp;
                         </li>
                     
                     
@@ -304,7 +290,7 @@ airtest.core.helper类仅有一个类，名为G其中有一个用AirtestLogger�
                     
                         <li>
                             
-                            <a href="/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/">源码解析</a>&nbsp;
+                            <a href="/tags/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/">版本管理</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -312,7 +298,7 @@ airtest.core.helper类仅有一个类，名为G其中有一个用AirtestLogger�
         
     </div>
 
-    <a class="read-more" href="/2023/04/07/Airtest/airtest_log%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a class="read-more" href="/2023/12/24/%E3%80%90%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E3%80%91%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -322,15 +308,18 @@ airtest.core.helper类仅有一个类，名为G其中有一个用AirtestLogger�
                 
 
                 <h3 class="home-article-title">
-                    <a href="/2023/04/04/Airtest/airtest_report%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/">
-                        airtest report 模块源码解析
+                    <a href="/2023/06/16/%E3%80%90%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5%E3%80%91%E5%B0%8F%E5%85%94%E9%B2%9C%E9%A6%96%E9%A1%B5%E5%88%B6%E4%BD%9C%E7%BB%83%E4%B9%A0@%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/">
+                        小兔鲜首页制作练习
                     </a>
                 </h3>
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        airtest_report源码阅读airtest任务生成的一份报告，它的目录结构大致如下：
-12345678910111213141516171819202122232425262728|-&lt;sript_name_without_ext&gt...
+                        这是黑马2023前端Web开发前131集的阶段练习，内容为小兔鲜网站的首页：展示地址 &#x2F; 源代码地址
+本次练习的特点有：素材划分更细、使用字体图标、SEO优化等
+项目目录
+images：存放固定使用的图片素材
+uploads：存放非固定使用...
                     
                 </div>
 
@@ -338,34 +327,10 @@ airtest.core.helper类仅有一个类，名为G其中有一个用AirtestLogger�
     <div class="home-article-meta-info">
         <span>
             <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Fri May 26 2023 16:33:11 GMT+0800">
-                2023-05-26
+            <span class="home-article-date" data-updated="Fri Jun 16 2023 17:04:22 GMT+0800">
+                2023-06-16
             </span>
         </span>
-        
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/Python/">Python</a>&nbsp;
-                        </li>
-                    
-                    
-                        <li>
-                            &gt; 
-                            <a href="/categories/Python/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/">第三方库</a>&nbsp;
-                        </li>
-                    
-                    
-                        <li>
-                            &gt; 
-                            <a href="/categories/Python/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/airtest/">airtest</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
         
         
             <span class="home-article-tag">
@@ -374,7 +339,7 @@ airtest.core.helper类仅有一个类，名为G其中有一个用AirtestLogger�
                     
                         <li>
                             
-                            <a href="/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/">源码解析</a>&nbsp;
+                            <a href="/tags/%E5%89%8D%E7%AB%AF%E7%95%8C%E9%9D%A2%E7%BB%83%E4%B9%A0/">前端界面练习</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -382,7 +347,7 @@ airtest.core.helper类仅有一个类，名为G其中有一个用AirtestLogger�
         
     </div>
 
-    <a class="read-more" href="/2023/04/04/Airtest/airtest_report%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a class="read-more" href="/2023/06/16/%E3%80%90%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5%E3%80%91%E5%B0%8F%E5%85%94%E9%B2%9C%E9%A6%96%E9%A1%B5%E5%88%B6%E4%BD%9C%E7%BB%83%E4%B9%A0@%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -392,18 +357,17 @@ airtest.core.helper类仅有一个类，名为G其中有一个用AirtestLogger�
                 
 
                 <h3 class="home-article-title">
-                    <a href="/2023/01/02/Jekyll/jekyll%E6%98%AF%E4%BB%80%E4%B9%88/">
-                        Jekyll 概念篇
+                    <a href="/2023/06/14/%E3%80%90%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5%E3%80%91%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF%E9%A6%96%E9%A1%B5%E5%88%B6%E4%BD%9C%E7%BB%83%E4%B9%A0@%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/">
+                        学成在线首页制作练习
                     </a>
                 </h3>
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        Q&amp;A
-jekyll是什么？
-它是一个网站生成工具，需要使用者按照其规范提供有有层次有一定格式（比如markdown）的文件，便可帮助你生成静态网站。
-同时它还提供可自行定义的配置文件和Liquid模板引擎对页面进行自定义渲染。
-但是，过程本...
+                        这是黑马2023前端Web开发前94集的阶段练习，内容为学成在线网站的首页：展示地址 &#x2F; 源代码地址
+布局思路先整体再局部，从外到内，从上到下，从左到右
+CSS实现思路1. 画盒子，调整盒子范围 → 宽高背景色
+2. 调整盒子位置 → fl...
                     
                 </div>
 
@@ -411,323 +375,27 @@ jekyll是什么？
     <div class="home-article-meta-info">
         <span>
             <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Fri May 26 2023 17:11:09 GMT+0800">
-                2023-05-26
+            <span class="home-article-date" data-updated="Fri Jun 16 2023 10:23:27 GMT+0800">
+                2023-06-16
             </span>
         </span>
         
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
                 <ul>
                     
                         <li>
                             
-                            <a href="/categories/Jekyll/">Jekyll</a>&nbsp;
+                            <a href="/tags/%E5%89%8D%E7%AB%AF%E7%95%8C%E9%9D%A2%E7%BB%83%E4%B9%A0/">前端界面练习</a>&nbsp;
                         </li>
-                    
                     
                 </ul>
             </span>
         
-        
     </div>
 
-    <a class="read-more" href="/2023/01/02/Jekyll/jekyll%E6%98%AF%E4%BB%80%E4%B9%88/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/12/02/Python/python-lambda/">
-                        lambda 基本概念
-                    </a>
-                </h3>
-
-                <div class="home-article-content keep-markdown-body">
-                    
-                        简介
-lambda 是一种小的匿名函数
-lambda 这个函数可以接受任意数量的参数，但只能有一个表达式，形势如下：  1lambda arguments : expression  # 理解了这个基本就能对付一半以上的lambda使用场景
-
-结合其...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span>
-            <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Fri May 26 2023 16:49:21 GMT+0800">
-                2023-05-26
-            </span>
-        </span>
-        
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/Python/">Python</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
-        
-        
-    </div>
-
-    <a class="read-more" href="/2022/12/02/Python/python-lambda/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/12/02/Python/python%E4%BF%AE%E9%A5%B0%E5%99%A8/">
-                        修饰器 基本概念
-                    </a>
-                </h3>
-
-                <div class="home-article-content keep-markdown-body">
-                    
-                        在函数中定义函数python是可以在函数内定义函数的，虽然不能在外部调用，但可以在函数内调用，举个例子。
-123456789def hi(name):    print(&quot;hi, my name is &#123;&#125;&quot;....
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span>
-            <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Fri May 26 2023 16:50:54 GMT+0800">
-                2023-05-26
-            </span>
-        </span>
-        
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/Python/">Python</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
-        
-        
-    </div>
-
-    <a class="read-more" href="/2022/12/02/Python/python%E4%BF%AE%E9%A5%B0%E5%99%A8/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/12/02/Python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
-                        Python 入门篇
-                    </a>
-                </h3>
-
-                <div class="home-article-content keep-markdown-body">
-                    
-                        python标识符
-标识符由字母、数字、下划线组成
-不能以数字开头
-区分大小写
-以下划线开头的标识符由特殊意义：
-以单下划线开头代表不能直接访问的类属性，需通过接口来访问，也不能通过from xxx import *导入
-以双下划线开头的代表类的私有...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span>
-            <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Fri May 26 2023 16:50:30 GMT+0800">
-                2023-05-26
-            </span>
-        </span>
-        
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/Python/">Python</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
-        
-        
-    </div>
-
-    <a class="read-more" href="/2022/12/02/Python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/11/27/Html/Html%E6%98%AF%E4%BB%80%E4%B9%88/">
-                        Html 概念篇
-                    </a>
-                </h3>
-
-                <div class="home-article-content keep-markdown-body">
-                    
-                        这篇总结均来自C语言中文网：HTML教程)
-HTML入门快问快答
-网页是什么？
-
-网页能被人通过浏览器访问并解析的服务器上的一个&#x2F;多个文件的，网页文件有多种（html、php、jsp、asp）
-
-
-网站是什么？
-
-网站是一组有逻辑的网页组合...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span>
-            <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Fri May 26 2023 17:19:30 GMT+0800">
-                2023-05-26
-            </span>
-        </span>
-        
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/Html/">Html</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
-        
-        
-    </div>
-
-    <a class="read-more" href="/2022/11/27/Html/Html%E6%98%AF%E4%BB%80%E4%B9%88/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/11/23/Django/Django%E6%98%AF%E4%BB%80%E4%B9%88/">
-                        Django 入门篇
-                    </a>
-                </h3>
-
-                <div class="home-article-content keep-markdown-body">
-                    
-                        概要Django 是用 Python 开发的一个免费开源的 Web 框架，几乎囊括了 Web 应用的方方面面，可以用于快速搭建高性能、优雅的网站。
-Django 提供了许多网站后台开发经常用到的模块，使开发者能够专注于业务部分
-MTV和MVCWeb ...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span>
-            <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Fri May 26 2023 17:08:55 GMT+0800">
-                2023-05-26
-            </span>
-        </span>
-        
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/Django/">Django</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
-        
-        
-    </div>
-
-    <a class="read-more" href="/2022/11/23/Django/Django%E6%98%AF%E4%BB%80%E4%B9%88/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/11/21/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/%E7%BD%91%E7%AB%99%E8%AE%BE%E8%AE%A1%E6%98%AF%E4%BB%80%E4%B9%88/">
-                        搭建博客网站 调研篇
-                    </a>
-                </h3>
-
-                <div class="home-article-content keep-markdown-body">
-                    
-                        接下来会调研一下想做个自己的网站，可能会用到的技术方案，比如服务器、前后端框架、编程语言等等
-我目前对网站设计的所有认知：
-
-网站是一系列网页，别人通过浏览器访问，在你的网页引导下浏览具体信息
-网站能展示的内容都是存储在服务器上的，需要一个web服务...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span>
-            <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Fri May 26 2023 17:28:33 GMT+0800">
-                2023-05-26
-            </span>
-        </span>
-        
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/">搭建博客网站</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
-        
-        
-    </div>
-
-    <a class="read-more" href="/2022/11/21/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/%E7%BD%91%E7%AB%99%E8%AE%BE%E8%AE%A1%E6%98%AF%E4%BB%80%E4%B9%88/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a class="read-more" href="/2023/06/14/%E3%80%90%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5%E3%80%91%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF%E9%A6%96%E9%A1%B5%E5%88%B6%E4%BD%9C%E7%BB%83%E4%B9%A0@%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -767,10 +435,10 @@ MTV和MVCWeb ...
             
                 <span>2020</span> -
             
-            2023
+            2025
             
                 &nbsp;<i class="fas fa-heart icon-animate"></i>
-                &nbsp;<a href="/">行勉</a>
+                &nbsp;<a href="/">maxL</a>
             
         </div>
         

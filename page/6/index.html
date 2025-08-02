@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
     <meta name="description" content="Hexo Theme Keep">
-    <meta name="author" content="行勉">
+    <meta name="author" content="maxL">
     
     <title>
         
-        Lai HanDong&#39;s Blog
+        Infinite
     </title>
     
 <link rel="stylesheet" href="/css/style.css">
@@ -22,7 +22,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"laihandong.github.io","root":"/","language":"zh-CN","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#003366","logo":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","favicon":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","avatar":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"The world is beautiful I want to see || Reach the furthest in a limited life","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"twikoo","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":"blog-comments-7g8rgfsf1481a6f9","region":"ap-guangzhou","version":"1.6.16"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["小白","小萌新","小菜鸡","实习生","打工人","小工程师","老油条","大法师","巨佬","老萌新"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#003366","logo":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","favicon":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","avatar":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"以有涯随无涯，殆已！","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"twikoo","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":"blog-comments-7g8rgfsf1481a6f9","region":"ap-guangzhou","version":"1.6.16"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["追梦人"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
     KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
@@ -62,7 +62,7 @@
                 </a>
             
             <a class="logo-title" href="/">
-               Lai HanDong&#39;s Blog
+               Infinite
             </a>
         </div>
 
@@ -80,9 +80,9 @@
                     
                         <li class="menu-item">
                             <a class=""
-                               href="/archives"
+                               href="/categories"
                             >
-                                归档
+                                分类
                             </a>
                         </li>
                     
@@ -96,17 +96,25 @@
                     
                         <li class="menu-item">
                             <a class=""
-                               href="/categories"
+                               href="/links"
                             >
-                                分类
+                                友链
                             </a>
                         </li>
                     
                         <li class="menu-item">
                             <a class=""
-                               href="/links"
+                               href="/archives"
                             >
-                                友链
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >
+                                更新日志
                             </a>
                         </li>
                     
@@ -138,7 +146,7 @@
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/archives">归档</a>
+                       href="/categories">分类</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
@@ -148,12 +156,17 @@
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/categories">分类</a>
+                       href="/links">友链</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/links">友链</a>
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog">更新日志</a>
                 </li>
             
         </ul>
@@ -179,17 +192,14 @@
                 
 
                 <h3 class="home-article-title">
-                    <a href="/2022/11/21/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%98%AF%E4%BB%80%E4%B9%88/">
-                        静态博客 概念篇
+                    <a href="/2023/06/09/%E3%80%90%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E3%80%91%E3%80%8AJavascript%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B/">
+                        【学习记录】《JavaScript权威指南》
                     </a>
                 </h3>
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        以下内容来自这篇博文
-什么是静态博客
-所谓静态博客，即通过生成工具（eg：Hexo、Hugo、Jekyll等），直接将作者所书写的博文编译成最终的 html；css；js 等静态文件。
-作者&#x2F;博主只需将生成的文件部署在静态 server 上...
+                        hello,javascript!1995年，javaScript作为网景的Netscape Navigator 2的脚本语言问世（当时java正火，取名蹭蹭热度）。网景的成功促使微软在其后不久发布了IE3，其中包含自己名为JScript的javaS...
                     
                 </div>
 
@@ -197,8 +207,8 @@
     <div class="home-article-meta-info">
         <span>
             <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Fri May 26 2023 17:25:39 GMT+0800">
-                2023-05-26
+            <span class="home-article-date" data-updated="Wed Mar 06 2024 23:52:44 GMT+0800">
+                2024-03-06
             </span>
         </span>
         
@@ -207,115 +217,7 @@
                     
                         <li>
                             
-                            <a href="/categories/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/">搭建博客网站</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
-        
-        
-    </div>
-
-    <a class="read-more" href="/2022/11/21/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%98%AF%E4%BB%80%E4%B9%88/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/11/17/Python/python%E6%89%93%E5%8C%85%E6%9C%AC%E5%9C%B0%E6%A8%A1%E5%9D%97/">
-                        打包模块
-                    </a>
-                </h3>
-
-                <div class="home-article-content keep-markdown-body">
-                    
-                        python打包发布说明我们在开发中，有时会遇到需要将在本地开发的python工程代码中的一些模块分享给同事或者其它社区开发者的情况，为了让他们可以通过pip的方式（从本地文件或者云端）将包导入到他们python环境中，我们则需要将我们的模块“打包”...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span>
-            <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Fri May 26 2023 16:48:48 GMT+0800">
-                2023-05-26
-            </span>
-        </span>
-        
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/Python/">Python</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
-        
-        
-    </div>
-
-    <a class="read-more" href="/2022/11/17/Python/python%E6%89%93%E5%8C%85%E6%9C%AC%E5%9C%B0%E6%A8%A1%E5%9D%97/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/11/10/Airtest/airtest-aricv/">
-                        aircv 模块源码解析
-                    </a>
-                </h3>
-
-                <div class="home-article-content keep-markdown-body">
-                    
-                        aircv简介aircv作为airtest的图像识别模块，封装了多种图像识别算法，可分为模板匹配和基于特征点的图像识别两类，各有优缺点，旨在根据不同场合使用不同算法。
-
-模板匹配：
-
-无法跨分辨率识别 
-一定有相对较佳的结果（即使目标不存在） 
-方法...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span>
-            <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Fri May 26 2023 16:33:18 GMT+0800">
-                2023-05-26
-            </span>
-        </span>
-        
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/Python/">Python</a>&nbsp;
-                        </li>
-                    
-                    
-                        <li>
-                            &gt; 
-                            <a href="/categories/Python/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/">第三方库</a>&nbsp;
-                        </li>
-                    
-                    
-                        <li>
-                            &gt; 
-                            <a href="/categories/Python/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/airtest/">airtest</a>&nbsp;
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a>&nbsp;
                         </li>
                     
                     
@@ -329,7 +231,7 @@
                     
                         <li>
                             
-                            <a href="/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/">源码解析</a>&nbsp;
+                            <a href="/tags/JavaScript/">JavaScript</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -337,7 +239,7 @@
         
     </div>
 
-    <a class="read-more" href="/2022/11/10/Airtest/airtest-aricv/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a class="read-more" href="/2023/06/09/%E3%80%90%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E3%80%91%E3%80%8AJavascript%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -347,14 +249,17 @@
                 
 
                 <h3 class="home-article-title">
-                    <a href="/2022/11/10/%E6%B8%B8%E6%88%8F%E6%B5%8B%E8%AF%95/%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6%E6%98%AF%E4%BB%80%E4%B9%88/">
-                        测试框架 调研篇
+                    <a href="/2023/06/05/%E3%80%90%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5%E3%80%91%E5%9F%BA%E4%BA%8Ehexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
+                        【工程实践】基于hexo搭建博客
                     </a>
                 </h3>
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        1. 功能简介本测试平台旨在服务于每个项目组，支持Windows PC、Andorid和IOS的游戏测试，且提供接口自动化测试、UI自动化测试、性能自动化测试、压力自动化测试、兼容自动化测试、本地化测试、Mock、测试计划管理、持续测试以及其他有关测...
+                        本着想把使用hexo搭建博客网站的过程做个记录，删删改改一大段发现，其实和官网的教程别无二致，索性贴上官网的链接，以备之后查询。
+Hexo官方文档
+Easy Hexo 👨‍💻是一个对小白友好的入门hexo教程，很赞！
+Keep 主题使用指南 | ...
                     
                 </div>
 
@@ -362,8 +267,8 @@
     <div class="home-article-meta-info">
         <span>
             <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Fri May 26 2023 17:32:46 GMT+0800">
-                2023-05-26
+            <span class="home-article-date" data-updated="Thu Oct 24 2024 00:28:06 GMT+0800">
+                2024-10-24
             </span>
         </span>
         
@@ -372,113 +277,7 @@
                     
                         <li>
                             
-                            <a href="/categories/%E6%B8%B8%E6%88%8F%E6%B5%8B%E8%AF%95/">游戏测试</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
-        
-        
-    </div>
-
-    <a class="read-more" href="/2022/11/10/%E6%B8%B8%E6%88%8F%E6%B5%8B%E8%AF%95/%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6%E6%98%AF%E4%BB%80%E4%B9%88/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/11/10/Practices/solved/%E9%87%8D%E7%BC%96%E8%AF%91OpenCV/">
-                        重编译 Opencv
-                    </a>
-                </h3>
-
-                <div class="home-article-content keep-markdown-body">
-                    
-                        一、理论准备
-就拿opencv举例，将python的源代码编译为pyd。
-（为什么呢？因为通过pip安装的opencv-python本身就包含一些被编译后的pyd，而不是全都是py源代码文件。）
-
-(1)C&#x2F;C++编译原理和机制所有高级语言...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span>
-            <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Fri May 26 2023 17:39:32 GMT+0800">
-                2023-05-26
-            </span>
-        </span>
-        
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/Practices/">Practices</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
-        
-        
-    </div>
-
-    <a class="read-more" href="/2022/11/10/Practices/solved/%E9%87%8D%E7%BC%96%E8%AF%91OpenCV/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/11/08/Airtest/airtest%E6%A1%86%E6%9E%B6%E7%AE%80%E8%A6%81%E5%89%96%E6%9E%90%E6%80%BB%E7%BB%93/">
-                        airtest 源码解析
-                    </a>
-                </h3>
-
-                <div class="home-article-content keep-markdown-body">
-                    
-                        简略介绍airtest是由网易airtest团队制作的一个跨平台的UI测试框架，也是他们开源的自动化测试框架之一（还有Poco框架、airtest- selenium框架、airtestIDE编辑器、deviceFarm集群方案和airlab云测平台...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span>
-            <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Fri May 26 2023 16:33:23 GMT+0800">
-                2023-05-26
-            </span>
-        </span>
-        
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/Python/">Python</a>&nbsp;
-                        </li>
-                    
-                    
-                        <li>
-                            &gt; 
-                            <a href="/categories/Python/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/">第三方库</a>&nbsp;
-                        </li>
-                    
-                    
-                        <li>
-                            &gt; 
-                            <a href="/categories/Python/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/airtest/">airtest</a>&nbsp;
+                            <a href="/categories/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/">工程实践</a>&nbsp;
                         </li>
                     
                     
@@ -492,7 +291,12 @@
                     
                         <li>
                             
-                            <a href="/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/">源码解析</a>&nbsp;
+                            <a href="/tags/hexo/">hexo</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -500,7 +304,7 @@
         
     </div>
 
-    <a class="read-more" href="/2022/11/08/Airtest/airtest%E6%A1%86%E6%9E%B6%E7%AE%80%E8%A6%81%E5%89%96%E6%9E%90%E6%80%BB%E7%BB%93/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a class="read-more" href="/2023/06/05/%E3%80%90%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5%E3%80%91%E5%9F%BA%E4%BA%8Ehexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -510,16 +314,18 @@
                 
 
                 <h3 class="home-article-title">
-                    <a href="/2022/11/08/Git/git%E4%BD%BF%E7%94%A8/">
-                        git 入门篇
+                    <a href="/2023/05/27/%E3%80%90%E8%B8%A9%E5%9D%91%EF%BC%88%E8%A7%A3%E5%86%B3%EF%BC%89%E3%80%91hexo%E9%83%A8%E7%BD%B2%E5%90%8E%E9%A1%B5%E9%9D%A2%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD%E5%A4%B1%E8%B4%A5/">
+                        【踩坑（解决）】hexo部署后页面资源加载失败
                     </a>
                 </h3>
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        简介git是一个开源的分布式版本控制系统，用于敏捷高效地处理任何大小的项目，是Linux Torvalds为了帮助管理Linux内核开发的一个开放源码的版本控制系统，来源颇有趣味，建议上网查看版本控制工具简介
-git和svn的区别
-git不仅是版本控...
+                        当我修改了hexo项目根目录下的_config.yml_配置中的# Site 和# URL中的几个选项后，重新部署发现我的网站页面是如下这种效果：
+
+看样子是加载不到相应的静态资源导致的：
+
+猜测是跟url相关的配置没有设置合理的值所导致的，我修改过...
                     
                 </div>
 
@@ -527,8 +333,8 @@ git不仅是版本控...
     <div class="home-article-meta-info">
         <span>
             <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Fri May 26 2023 16:55:46 GMT+0800">
-                2023-05-26
+            <span class="home-article-date" data-updated="Wed Mar 06 2024 23:42:56 GMT+0800">
+                2024-03-06
             </span>
         </span>
         
@@ -537,7 +343,7 @@ git不仅是版本控...
                     
                         <li>
                             
-                            <a href="/categories/Git/">Git</a>&nbsp;
+                            <a href="/categories/%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/">踩坑记录</a>&nbsp;
                         </li>
                     
                     
@@ -545,9 +351,21 @@ git不仅是版本控...
             </span>
         
         
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/hexo/">hexo</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
     </div>
 
-    <a class="read-more" href="/2022/11/08/Git/git%E4%BD%BF%E7%94%A8/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a class="read-more" href="/2023/05/27/%E3%80%90%E8%B8%A9%E5%9D%91%EF%BC%88%E8%A7%A3%E5%86%B3%EF%BC%89%E3%80%91hexo%E9%83%A8%E7%BD%B2%E5%90%8E%E9%A1%B5%E9%9D%A2%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD%E5%A4%B1%E8%B4%A5/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -557,15 +375,15 @@ git不仅是版本控...
                 
 
                 <h3 class="home-article-title">
-                    <a href="/2022/11/08/Javascript/Javascript%20%E6%A6%82%E5%BF%B5%E7%AF%87/">
-                        Javascript 入门篇
+                    <a href="/2023/05/27/%E3%80%90%E8%B8%A9%E5%9D%91%EF%BC%88%E8%A7%A3%E5%86%B3%EF%BC%89%E3%80%91Git%E6%8F%90%E4%BA%A4%E6%97%B6%E6%8F%90%E7%A4%BA%E6%8D%A2%E8%A1%8C%E7%AC%A6%E8%BD%AC%E6%8D%A2%E9%97%AE%E9%A2%98/">
+                        【踩坑（解决）】Git提交时提示换行符转换问题
                     </a>
                 </h3>
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        1. JavaScript简介首先，它和java基本是没有关系的。之所以名字会有java，是因为当年网景公司在那个java火遍全球的时代，推广他们自己的语言（1995），所以在名字里加上了java，也在一些语法上碰瓷java，仅此而已。
-javaSc...
+                        当我是使用hexo d -g部署博客时，在INFO  Copying files from extend dirs...这一步会弹出很多类似以下语句的警告：
+warning: in the working copy of &#39;index.htm...
                     
                 </div>
 
@@ -573,8 +391,8 @@ javaSc...
     <div class="home-article-meta-info">
         <span>
             <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Fri May 26 2023 16:44:47 GMT+0800">
-                2023-05-26
+            <span class="home-article-date" data-updated="Wed Mar 06 2024 23:42:48 GMT+0800">
+                2024-03-06
             </span>
         </span>
         
@@ -583,7 +401,7 @@ javaSc...
                     
                         <li>
                             
-                            <a href="/categories/Javascript/">Javascript</a>&nbsp;
+                            <a href="/categories/%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/">踩坑记录</a>&nbsp;
                         </li>
                     
                     
@@ -591,103 +409,21 @@ javaSc...
             </span>
         
         
-    </div>
-
-    <a class="read-more" href="/2022/11/08/Javascript/Javascript%20%E6%A6%82%E5%BF%B5%E7%AF%87/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/11/08/Linux/Linux%E6%B5%8B%E8%AF%95%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">
-                        Linux 常用指令（测试向）
-                    </a>
-                </h3>
-
-                <div class="home-article-content keep-markdown-body">
-                    
-                        总结测试中常用到的linux指令（相比在linux下开发，还远远不够，移步计算机系统&#x2F;linux总结文档）
-基础命令123456789101112131415161718pwd:查看当前位置，当前所在路径/:表示根目录，为绝对路径~:表示当...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span>
-            <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Fri May 26 2023 16:47:16 GMT+0800">
-                2023-05-26
-            </span>
-        </span>
-        
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
                 <ul>
                     
                         <li>
                             
-                            <a href="/categories/Linux/">Linux</a>&nbsp;
+                            <a href="/tags/git/">git</a>&nbsp;
                         </li>
-                    
                     
                 </ul>
             </span>
         
-        
     </div>
 
-    <a class="read-more" href="/2022/11/08/Linux/Linux%E6%B5%8B%E8%AF%95%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2022/11/08/Svn/svn%E4%BD%BF%E7%94%A8/">
-                        svn 入门篇
-                    </a>
-                </h3>
-
-                <div class="home-article-content keep-markdown-body">
-                    
-                        简介SVN(Apache Subversion)是一个开源的版本控制系统
-暂时还没总结全面，先看这篇文章
-Tortoise SVNTortoiseSVN是subversion版本控制系统的一个免费开源客户端，可以超越时间地管理文件和目录
-安装（一直n...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span>
-            <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Fri May 26 2023 16:56:12 GMT+0800">
-                2023-05-26
-            </span>
-        </span>
-        
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/Svn/">Svn</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
-        
-        
-    </div>
-
-    <a class="read-more" href="/2022/11/08/Svn/svn%E4%BD%BF%E7%94%A8/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a class="read-more" href="/2023/05/27/%E3%80%90%E8%B8%A9%E5%9D%91%EF%BC%88%E8%A7%A3%E5%86%B3%EF%BC%89%E3%80%91Git%E6%8F%90%E4%BA%A4%E6%97%B6%E6%8F%90%E7%A4%BA%E6%8D%A2%E8%A1%8C%E7%AC%A6%E8%BD%AC%E6%8D%A2%E9%97%AE%E9%A2%98/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -727,10 +463,10 @@ Tortoise SVNTortoiseSVN是subversion版本控制系统的一个免费开源客�
             
                 <span>2020</span> -
             
-            2023
+            2025
             
                 &nbsp;<i class="fas fa-heart icon-animate"></i>
-                &nbsp;<a href="/">行勉</a>
+                &nbsp;<a href="/">maxL</a>
             
         </div>
         

@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="maxL">
+    
+    <title>
+        
+            【Godot】学习Godot第0天 |
+        
+        Infinite
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"laihandong.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#003366","logo":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","favicon":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","avatar":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"以有涯随无涯，殆已！","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"twikoo","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":"blog-comments-7g8rgfsf1481a6f9","region":"ap-guangzhou","version":"1.6.16"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["追梦人"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Infinite
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >
+                                更新日志
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog">更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">【Godot】学习Godot第0天</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">maxL</span>
+                            
+                                <span class="author-label">追梦人</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2025-07-23 11:20:00</span>
+        <span class="mobile">2025-07-23 11:20</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2025-08-02 12:24:13</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/Godot/">Godot</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Godot1000%E5%A4%A9%E6%89%93%E5%8D%A1%E8%AE%A1%E5%88%92/">Godot1000天打卡计划</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>3k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>10 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h1 id="Godot开发的（部分）基础逻辑"><a href="#Godot开发的（部分）基础逻辑" class="headerlink" title="Godot开发的（部分）基础逻辑"></a>Godot开发的（部分）基础逻辑</h1><p>结点组成场景<br>预加载场景<br>把场景实例化为结点，找到结点，添加节点，给节点赋值<br>动画就用动画节点</p>
+<h1 id="SOLID五大编程原则"><a href="#SOLID五大编程原则" class="headerlink" title="SOLID五大编程原则"></a>SOLID五大编程原则</h1><p>继承之里氏替换原则Liskov Substitution Principle<br>继承要避免简单映射到现实世界的层次结构，而是要从需求出发，注重抽象和特化，将继承当成重构工具，而不是编码起点。<br>继承要保持子类与其超类的客户端（对象）的兼容性<br>继承可以增加甚至改写超类的接口实现，是一种多态性。</p>
+<p>多态性也是鸭子类型的核心，它避免寻找特定的对象或数据类型，而是更加关注于对象所具有的方法和属性，而非对象的类型或继承关系。也就是说，我们应用组合优于继承。<br>Godot <code>has_method() has_node()</code></p>
+<p>SOLID五大原则：</p>
+<ul>
+<li>单一职责 SRP</li>
+<li>开闭——软件实体应该对扩展开放，但对修改关闭；不修改源代码的情况下拓展类行为；事件驱动编程；多态性；不要过度抽象，而是寻找平衡。</li>
+<li>里氏替换——子类的可互换性；设计子类方法时不应加强前置条件或削弱后置条件。这意味着子类不应要求比其超类更严格的输入条件，也不应产生比超类更不精确的结果；<ul>
+<li>本质上，你可以将LSP视为重写任何方法时的双向检查清单：<ul>
+<li>该方法是否需要更多泛型类型作为参数？</li>
+<li>这种方法返回的类型是否比原始方法的返回类型更具体？</li>
+</ul>
+</li>
+<li>这说得通吧？为了保持超类的契约，子类需要能够与超类互换。所以，当重写一个函数时，它不能要求一个更具体的类型，因为这样会阻止超类的用户传递正确的类型。它也应该返回相同或更具体的类型，因为用户类期望能够访问从返回类型中得到的一些方法和属性。如果你返回一个更通用的类型，它可能不具备用户类所要求的所有功能。</li>
+</ul>
+</li>
+<li>接口隔离——一个类不应该被迫实现它不需要的接口；要对每个组件或类所需的功能进行细致分析和理解；</li>
+<li>依赖倒置——主张高层不应该依赖于低层模块，而应共同依赖于抽象（或基类），而非具体的实现；这样做既能提升系统的可测试性，也能提升可维护性；此外，它使系统能更灵活地适应新的需求或游戏设计的变化，因为实现这些接口的新模块可以在不修改现有高层模块的情况下被引入</li>
+</ul>
+<h1 id="优先选择组合而非继承"><a href="#优先选择组合而非继承" class="headerlink" title="优先选择组合而非继承"></a>优先选择组合而非继承</h1><h1 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h1><p>单例模式是一种创建型模式，它使开发者能够确保在应用程序的整个生命周期内，某个类只有一个实例，并且该实例对所有其他类都是全局可访问的。至于如何做到这一点，一般会将构造方法设为私有，然后提供一个可替代的静态方法来充当构造方法，这样就不会总是返回一个新的实例，而是总返回同一个实例。如果你有需求要在游戏运行中持久存储信息，那么可以考虑单例模式。</p>
+<p>举个例子，场景内发送一个传送信号——比如待会传送到哪个新地图——给一个类的全局单例（比如开发一个“门系统”或“地图管理系统”或“传送系统”），然后就被引擎回收关闭了，接着切换到另一个地图。由这个我们开发的类，又发送给这个新加载的地图，这样新地图加载前可以决定是否使用这个数据，并将角色生成在这个地点上。所以，稍微延伸一下，凡是会在回收后，下个加载的地图用到的数据（玩家得分、buff状态等等），是不是都可以考虑考虑单例模式呢。</p>
+<p>再举个例子，结合之前的组合优于继承的概念，来简单设计一个分数系统。设计一个类A（场景），专门接收得分数值，并显示该分数对应的动画（无关计算）。设计一个类B（单例场景），只有一个全局变量存储玩家总分数。再设计一个类C，两个函数，一个接收分数数值，然后访问单例B修改分数，一个调用接收分数数值，然后调用类A（场景）弹出动画。<br>分成三个类，那么第一，弹分数动画这个类A（场景）可以被任何其它场景调用——捡道具、攻击敌人、触发机关等等。第二，单例B只保存全局分数，那么无论场景如何切换，总能在保持唯一性的同时，使分数被修改和访问。第三，单例C（场景）同样可以被任何需要与分数挂钩的其它场景调——宝箱、道具、npc、怪物等等——这样无论添加多少游戏元素，如果需要有类似“拾取&#x2F;攻击&#x2F;击败则是玩家得分”的机制，那么就直接调用类C（场景）即可。</p>
+<h1 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h1><p>观察者模式的核心思想，从某个角度，将涉及到的所有类分成很多观察者和一个被观察者，被观察者会根据自身状态发出相应信号，而观察者则关注它们想关心的信号（类似粉丝订阅博主等视频更新一样，视频更新在这就是博主发出的信号，也是粉丝留意的信号），从而在信号发生时，观察者们开始根据自身需求相应做出各自的后续行动。那这就需要对象可以通过创建一个共同的接口，并通过该接口中的方法来获取其他对象的状态变化通知，从而实现松散的引用。这就涉及如何实现这种机制，是观察者每一帧都要查询被观察者的状态吗？还是只需要被观察者告诉它们即可？大多情况是后者更优。同样显然的是，观察者也可以被观察，被观察者也可以观察它者，所以这样的信号订阅系统是对所有（参与信号系统的）类都适用的。如此，不论Unity（C#）还是Godot都会提供已经实现好的内置信号系统，开发者直接调用即可。这与直接在类中定义一个另一个类对象不同，而是仅通过信号实现部分逻辑的关联，实现最大程度的解耦。</p>
+<p>至于应用场景，举两个例子：一个是，玩家和怪物，玩家可以获得无敌buff，那么怪物攻击玩家是否有效呢，就得先订阅玩家的无敌buff的状态，如果玩家获得无敌，更新状态并发出信号，那么怪物就会得到状态更新信号，再根据各自策略做抉择。第二个例子是，UI界面的各种状态显示，就非常依赖观察者模式，即UI系统就相当于游戏的一系列观察者，观察游戏内几乎所有物体（尤其是角色）的状态变化，来更新自己的UI显示。</p>
+<p>破坏封装原则&amp;观察者模式举例：<br>现有结点A、B、C，C是A、B的公共祖先，A有信号变量、B有函数，在C中访问A的信号，并绑定到B中的函数。这样虽破坏了封装，但好处是通过C这个类进行中介通信，保持解耦状态（A、B双方胡不知道对方的存在），有助于为高级游戏逻辑创造良好的抽象（确保了一部分游戏的修改不需要影响其他部分）。就好像观察与被观察者组成的系统之上，再选一个作为信号调度者。</p>
+<h1 id="工厂（生成器）模式"><a href="#工厂（生成器）模式" class="headerlink" title="工厂（生成器）模式"></a>工厂（生成器）模式</h1><p>工厂（生成器）模式，这是一种创建型设计模式，允许我们在超类中建立一个默认接口，从而允许他创建新的对象，以此解耦对象的创建责任。工厂模式最基本的一个方面是，它不应该是一个单独的类来处理所有类型的对象实例化。相反，它提供了一个通用接口，使得用户类可以与工厂的所有子类（也是工厂）进行通信。</p>
+<p>在 Godot 引擎中，我们可以使用 PackedScene 资源作为产品的基础对产品进行序列化，使得工厂模式的实现变得更加简单。<br>举几个例子：在某个区域某段时间生成某些npc或者怪物，音游根据节拍生成音符，战斗中生成魔法技能、开枪生成子弹。而生成不同的对象，就是更换不同的工厂类。</p>
+<h1 id="状态模式"><a href="#状态模式" class="headerlink" title="状态模式"></a>状态模式</h1><p>状态模式，通常和有限状态机的概念一并提到，前者是面向对象编程的一种方法——用于将对象的状态抽象为对象，后者是一种计算的数学模型——一组帮助我们创建可能状态的模型的抽象。<br>我们可以（从概念上）实现一个有限状态机来整合这些状态，并添加彼此的转换。同时将对象的状态封装到一个新的类中，明确地给特定状态命名并赋予意义，以实现在运行时改变对象的行为的同时并跟踪一系列的变更，<br>但并不是所有的对象状态都需要实现状态模式，选择对象的一个方面，将相关属性转换为独立的状态，其他属性和行为则允许与我们即将创建的的严格状态重叠。比如战斗系统中，受伤、攻击、移动、空闲、冲刺这五个状态则可以用状态模式实现，并设计有限状态机进行管理。而受治疗（一般情况下）会与前面的状态不在同一纬度，不需要作为一个严格的独立状态进行转化。<br>除此以外，位置、生命值、动画帧都不适合抽象为状态，但动画作为整体可以抽象（除非需要混合其它动画）。<br>同样的，在实现状态模式，仍遵循SOLID员则，将状态抽象为一个类，声明在上下文中，同时对上下文进行初始化。这个状态抽象类派生出一组状态类家族。</p>
+<h1 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h1><p>命令模式的核心思想是能够将方法调用或请求视为对象。命令模式是一种行为设计模式，解决对象行为和职责相关的问题，处理对象如何对其他对象调用方法的问题，通过增加一层间接性，防止了硬耦合，并封装了可能影响代码健康状态的变更。这样可以将方法调用进行排队、延迟、存储和序列化请求，应用场景比如撤销和重做、回合制的技能释放。</p>
+<p>命令模式的典型实现包括三个方面：<br>执行方法，被使用来有效执行请求<br>发送者对象<br>接收者对象</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">【Godot】学习Godot第0天</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">maxL</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2025-07-23 11:20:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2025/07/23/【Godot】学习Godot第0天/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Godot1000%E5%A4%A9%E6%89%93%E5%8D%A1%E8%AE%A1%E5%88%92/">#Godot1000天打卡计划</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2025/07/24/%E3%80%90Godot%E3%80%91%E5%AD%A6%E4%B9%A0Godot%E7%AC%AC1%E5%A4%A9/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">【Godot】学习Godot第1天</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2024/07/19/%E6%95%B0%E5%AD%A6/%E3%80%90%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E3%80%91%E5%A5%87%E5%BC%82%E7%9F%A9%E9%98%B5%E7%9A%84%E5%90%8D%E5%AD%97%E7%94%B1%E6%9D%A5/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">【线性代数】奇异矩阵的名字由来</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+                <div class="comment-container">
+                    
+<div class="comments-container">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="twikoo-container">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/twikoo@1.6.16/dist/twikoo.all.min.js"></script>
+        <div id="twikoo-comment"></div>
+        <script data-pjax>
+          function loadTwikoo() {
+            twikoo.init({
+              el: '#twikoo-comment',
+              envId: 'blog-comments-7g8rgfsf1481a6f9',
+              region: 'ap-guangzhou',
+              lang: 'zh-CN' || 'zh-CN'
+            });
+          }
+
+          if ('true' === 'true') {
+            const loadTwikooTimeout = setTimeout(() => {
+              loadTwikoo();
+              clearTimeout(loadTwikooTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadTwikoo);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Godot%E5%BC%80%E5%8F%91%E7%9A%84%EF%BC%88%E9%83%A8%E5%88%86%EF%BC%89%E5%9F%BA%E7%A1%80%E9%80%BB%E8%BE%91"><span class="nav-number">1.</span> <span class="nav-text">Godot开发的（部分）基础逻辑</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SOLID%E4%BA%94%E5%A4%A7%E7%BC%96%E7%A8%8B%E5%8E%9F%E5%88%99"><span class="nav-number">2.</span> <span class="nav-text">SOLID五大编程原则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%98%E5%85%88%E9%80%89%E6%8B%A9%E7%BB%84%E5%90%88%E8%80%8C%E9%9D%9E%E7%BB%A7%E6%89%BF"><span class="nav-number">3.</span> <span class="nav-text">优先选择组合而非继承</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">单例模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">观察者模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B7%A5%E5%8E%82%EF%BC%88%E7%94%9F%E6%88%90%E5%99%A8%EF%BC%89%E6%A8%A1%E5%BC%8F"><span class="nav-number">6.</span> <span class="nav-text">工厂（生成器）模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F"><span class="nav-number">7.</span> <span class="nav-text">状态模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F"><span class="nav-number">8.</span> <span class="nav-text">命令模式</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2025
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">maxL</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://pages.github.com/">
+                
+                    本站由 <span class="tooltip" data-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

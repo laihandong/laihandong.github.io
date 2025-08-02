@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="maxL">
+    
+    <title>
+        
+            【Godot】学习Godot第5、6、7、8、9天 |
+        
+        Infinite
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"laihandong.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#003366","logo":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","favicon":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg","avatar":"https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"以有涯随无涯，殆已！","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"twikoo","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":"blog-comments-7g8rgfsf1481a6f9","region":"ap-guangzhou","version":"1.6.16"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["追梦人"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/favicon.5bbytxoftdc0.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Infinite
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >
+                                更新日志
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog">更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">【Godot】学习Godot第5、6、7、8、9天</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="https://cdn.staticaly.com/gh/laihandong/picx-images-hosting@master/20230527/avatar.646v06j8csg0.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">maxL</span>
+                            
+                                <span class="author-label">追梦人</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2025-07-28 08:00:00</span>
+        <span class="mobile">2025-07-28 08:00</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2025-08-02 12:24:43</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/Godot/">Godot</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Godot1000%E5%A4%A9%E6%89%93%E5%8D%A1%E8%AE%A1%E5%88%92/">Godot1000天打卡计划</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>5.8k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>20 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <p>接下来几天打算把GdScript编程的基础知识和使用经验，按自己的理解大致整理一下，一是怕有些东西一直不用就忘了，二是也提高查文档解决问题的效率。<br>更高阶的知识，比如设计模式、具体功能实现等，等之后再慢慢开新帖更新。</p>
+<h1 id="使用Godot-Engine的准备工作"><a href="#使用Godot-Engine的准备工作" class="headerlink" title="使用Godot Engine的准备工作"></a>使用Godot Engine的准备工作</h1><p>下面是我自认为还比较顺畅的上手步骤，从打印一行Hello World开始！哈哈哈哈。</p>
+<h2 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h2><p>在<a class="link"   target="_blank" rel="noopener" href="https://docs.godotengine.org/zh-cn/4.x/about/system_requirements.html" >这里<i class="fas fa-external-link-alt"></i></a>检查你的设备是否能运行Godot Engine和Godot的导出项目，然后到电脑官网<a class="link"   target="_blank" rel="noopener" href="https://godotengine.org/download/windows/" >Download for Windows – Godot Engine<i class="fas fa-external-link-alt"></i></a>（或安卓商店）搜索Godot Engine，找到它并下载安装就可以了。</p>
+<blockquote>
+<p>顺嘴找到了引擎的名字来源，它来源于Samuel Beckett的戏剧《<a class="link"   target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Waiting_for_Godot" >Waiting for Godot - Wikipedia<i class="fas fa-external-link-alt"></i></a>》。而选择这个名字是因为人们永远在等待下一个版本或新功能，形成了一个无尽的等待循环。颇具浪漫，不是吗？</p>
+<p>还有一点也很有趣，就是Godot Editor本身就是用Godot Engine开发的，就跟Qt一样。</p>
+</blockquote>
+<h2 id="新建项目（Hello-World）"><a href="#新建项目（Hello-World）" class="headerlink" title="新建项目（Hello World）"></a>新建项目（Hello World）</h2><p>这个我感觉，只有新建项目界面上那个渲染器（renderer）的选项，会让初学者有点迷糊。其实，这个选兼容模式（compatibility）就行了，另外两个是分别针对好显卡和移动设备的选项，兼容则旨在确保我们的游戏能够在各种硬件上运行，并支持旧款显卡和网络导出。</p>
+<blockquote>
+<p>进入到项目后，我能想象到初学者看到大大小小这么多窗口、控件和选项卡的时候，多少会有点犯怵哈哈哈。我是先学的Unity，当时一看编辑器界面，密密麻麻这么排满了这么多内容，头都大了一圈。还有学PS的时候，也是这样。这巨人的肩膀，光爬上去就不容易呀。<br>不过别慌，学软件就跟打游戏开地图一样，一点一点探索，到后期就非常熟练了，跟回家一样。</p>
+</blockquote>
+<h3 id="创建场景"><a href="#创建场景" class="headerlink" title="创建场景"></a>创建场景</h3><p>注意看，软件左侧有创建根节点（Create Root Node）的窗口和几个选项，随便选一个创建并保存，如有需要可以重命名一下。另一种创建方式，在编辑器左下角的文件栏，可以右键菜单中创建场景，新场景会自动加载到编辑器中，编辑器中间窗口也可能会发生变化。</p>
+<p>我们刚刚添加的是一个节点。这些节点代表 Godot 中的一切。图像、声音、菜单、特效——所有这些都是节点。你可以将它们视为游戏对象，每个对象在游戏中都有其独特的功能。玩家可以是一个节点，就像敌人或金币一样。</p>
+<p>另一方面，场景是节点或游戏对象的集合。目前，你可以将场景视为关卡。对于一个关卡，你需要一个玩家节点、一些敌人节点和许多金币节点；这些集合构成一个场景。节点就像颜料，场景则是我们的画布。</p>
+<p>节点和场景，场景和节点，这是贯穿Godot游戏开发过程的话题。场景是一个可以执行的独立文件，它包含一组节点组成的节点树，仅有一个根节点。有多个场景的存在下，若要运行当前场景，点击右上角项目调试运行一栏的第五个按钮（运行当前场景F6）。</p>
+<h3 id="简述编辑器界面"><a href="#简述编辑器界面" class="headerlink" title="简述编辑器界面"></a>简述编辑器界面</h3><p>刚安装，没有更改布局的话，UI应该如下描述：<br>左上：场景树区域，显示当前场景中的所有节点<br>左下：文件系统区域，提供了对项目文件夹内文件的访问<br>中间：当前活动的主编辑器。比如 2D 编辑器——可以在场景中的 2D 空间放置节点。<br>右侧：检查器（Inspector）区域，显示当前选中节点的属性。脚本（GDSript）也可以作为属性，添加给节点，用来拓展节点的功能。</p>
+<h3 id="给节点添加脚本"><a href="#给节点添加脚本" class="headerlink" title="给节点添加脚本"></a>给节点添加脚本</h3><p>一个比较基础的操作，就是只需要在场景树区域右键某个节点，在右键菜单中选择添加脚本，填好设置再点确定即可。<br>这就不得不q一个经典的例子啦：尝试在_ready()函数体内（记得缩进），编写代码print(“Hello World”)，然后保存并运行项目，这样你将会在编辑器的底部输出栏看到打印出的Hello World字样哈哈哈。</p>
+<h2 id="Godot文档"><a href="#Godot文档" class="headerlink" title="Godot文档"></a>Godot文档</h2><p>之后会慢慢添加整理更多有关Godot的文档链接<br><a class="link"   target="_blank" rel="noopener" href="https://docs.godotengine.org/en/stable/" >Godot Docs – 4.4 branch — Godot Engine (stable) documentation in English<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="Godot社区"><a href="#Godot社区" class="headerlink" title="Godot社区"></a>Godot社区</h2><p>之后也慢慢添加整理更多Godot社区<br><a class="link"   target="_blank" rel="noopener" href="https://godotengine.org/community/" >Community – Godot Engine<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="变量、数据类型、流程控制等等"><a href="#变量、数据类型、流程控制等等" class="headerlink" title="变量、数据类型、流程控制等等"></a>变量、数据类型、流程控制等等</h1><blockquote>
+<p>光讲定义太枯燥了，与游戏里的事物结合起来讲吧</p>
+</blockquote>
+<h2 id="变量及命名"><a href="#变量及命名" class="headerlink" title="变量及命名"></a>变量及命名</h2><p>玩家所控制的角色的位置、队友的名字、音量大小、buff最大持续时间、玩家右键鼠标在屏幕上的位置等等数据片段都可以用变量表示。这很基础，是的，需要注意一下游戏工程中，变量的命名有些技巧可以使用、也有些基础的注意事项：</p>
+<p>一是变量名不能有空格，只能由字母数字和下划线字符组成，且不能以数字开头，这串字符是合法的字符的集合abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_；二是变量名最好不要和内置关键字重名；三是推荐使用snake_case风格来给变量命名；四是推荐使用描述性的名称，比如number_of_lives来命名角色有几条命，而不是用lives、l或shengmingzhi等等。不用担心变量名的长度，担心担心过了一周甚至一月你还能不能看懂你的数据和怎么用它最重要，再强迫症也要在此基础上才去精简；</p>
+<p>然后，在GDSript中，最通用的是以var关键字来声明变量，比如<code>var number_of_lives = 5</code>，这里顺便用等号赋值了个5给它。这里的等号可以理解一个动作，把右边的值赋给左边的变量，这与数学里的表示两边相等的等号意义不同（刚学计算机时，我在这老是没转过弯）。再举例一个很简单的受击后计算生命值：<code>number_of_lives = number_of_lives - damage</code>，等价的简化版是这样：<code>number_of_lives -= damage</code>。所以，再多认识些运算符<a class="link"   target="_blank" rel="noopener" href="https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_basics.html#operators" >GDScript reference — Godot Engine (stable) documentation in English<i class="fas fa-external-link-alt"></i></a>，这小节就算过了。</p>
+<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p>其实也可以归为变量，一种在程序执行过程中，你不能改变它的特殊变量。其实就是（语言设计之初时）主观上的用法划分，不然和变量没什么区别，关键字是const。在命名上，所有字母大写，且同样snake_case风格。</p>
+<p>常量有个好处，就是将一些零零散散的数字，用命名将其更方便代码的阅读和理解，同时也使代码整洁。比如<code>number_of_lives -= 5</code>和<code>FIRE_BALL_DAMAGE = 5 number_of_lives -= FIRE_BALL_DAMAGE</code>的区别</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>整数-9223372036854775808 and 9223372036854775807（64位二进制表示范围）</p>
+<p>浮点数（包含小数点的数字），GDScript 中的浮点数精度最高可达 14 位小数</p>
+<blockquote>
+<p>整数可以存储在浮点数中，只要它们足够小，就不会有问题。然而，当我们把浮点数存储在整数中时，小数点后的所有内容都会被丢弃！这被称为隐式类型转换，因为我们隐式地将浮点数转换为整数。</p>
+<p>而且，由于计算机总会在某个时刻对小数进行四舍五入，即无法精确表示每一位可能的数，我们不得不在有些特殊的场景，留意这个问题。不过但多数时候，我们不需要担心。 </p>
+</blockquote>
+<p>字符串<br>非数字的数据类型，可以理解为文本。在GDScript中，用一对双引号或一对单引号括起来表示，在范围上覆盖了所有的Unicode字符。字符串没有长度限制，只要你&#x2F;玩家电脑内存装得下。</p>
+<h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><p>这个更是老生常谈，if else match 和 <code>_</code>等<a class="link"   target="_blank" rel="noopener" href="https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_basics.html#match" >GDScript reference — match<i class="fas fa-external-link-alt"></i></a>，感觉没啥好讲的，高级一点就for while。<br>就是有时候不要过于依赖这个流程控制，导致一个类中高度耦合了很多其它类的事务。就比如你在角色类里，写满了各种情况下，伤害处理的业务逻辑（超级长的一段if elif else代码），但其实这应该用其它合理的模式解耦开来。</p>
+<p>三元条件语句只有一个判断语句，一个目标被赋值，两个赋值，这样记忆会方便一些，个人觉得。比如&#96;var amount_of_damage &#x3D; 5 if damage_type &#x3D;&#x3D; “fire” else &#x3D; 1;</p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>不要过分依赖注释，合理命名与编写代码才是正道。对了，Godot编辑器里Ctrl（Cmd）+K是注释片段的快捷键。</p>
+<h2 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h2><p>GDScript是严格向右缩进识别代码层级关系的，推荐用tab制表符而不是4个及4个整数倍的空格来输入缩进。</p>
+<h2 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h2><p>与或非关键字and or not，或&amp;&amp; || !，这些GDScript都支持</p>
+<h1 id="数组、字典和循环"><a href="#数组、字典和循环" class="headerlink" title="数组、字典和循环"></a>数组、字典和循环</h1><p>处理一系列数据的时候，一般就会用到这种数据“容器”，我们可以在其中存储和检索其他数据类型的片段，例如整数、字符串、布尔值等。建议一个数组仅存放同一数据类型的数据元素。</p>
+<p>编码风格上，多用换行与缩进去排版对齐：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var inventory = [</span><br><span class="line">	&quot;Key&quot;,</span><br><span class="line">	&quot;Potion&quot;,</span><br><span class="line">	&quot;Red Flower&quot;,</span><br><span class="line">	&quot;Book&quot;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>数组是以0 1 2 …顺序计数的，以-1 -2 -3 …倒序计数的。没错，字符串也可以看成数组，或者说它就是个（隐藏的）数组。  </p>
+<p> 循环，字面意思，对容器内所有元素重复执行其代码块。至于for和while、continue和break的语法及用法，在此不讲。</p>
+<p>字典（有的语言也叫地图），它使用键值对存储数据，且不要求特定顺序存储。不过需要注意，我们必须自己定义键，并且键对数据类型也有一定要求，只能使用简单的字符串、浮点数和整数这几种数据类型作为键，而不能使用数组或字典。键值对的值则可以是任何数据类型。<br>硬要和数组联系的话，你可以把键值对的键看成数组的下标（0…∞ 或 -∞…-1），字典值的访问就是靠键。从</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var item = &#123;</span><br><span class="line">	&quot;name&quot;: &quot;Boots&quot;,</span><br><span class="line">	&quot;price&quot;: 5,</span><br><span class="line">	&quot;weight&quot;: 3.9</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>null，也算一种数据类型吧，独一无二的。就是字面意思，表示不包含任何信息，开发项目报错时经常遇到它哈哈。</p>
+<h1 id="类、方法-x2F-函数"><a href="#类、方法-x2F-函数" class="headerlink" title="类、方法&#x2F;函数"></a>类、方法&#x2F;函数</h1><p>方法是可以重复使用的代码片段，它与函数十分相似，但在应用方式上有所不同。就这么说，绑定到类的函数称为方法，绑定到类的变量称为属性。</p>
+<p>GDScript中对函数的定义大抵如此：<code>func &lt;function_name&gt;(&lt;parameter1&gt;,&lt;parameter2&gt;)-&gt;&lt;return_type&gt;:    &lt;code_block&gt;</code><br>结尾可以接<code>return sth.</code>，用来返回值，和大多数语言一致。<br>用关键字func声明，冒号结束，再接换行与缩进，再写代码块。<br>函数命名原则同变量。</p>
+<p>关键字pass，一般用来创建空函数（什么都不做的函数），不然引擎会报错。比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">func _ready():</span><br><span class="line">	pass</span><br></pre></td></tr></table></figure>
+
+<p>可选参数（也就是在声明时给定了默认值的参数），比如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">func lower_player_health(amount = 1):</span><br><span class="line">	player_health -= amount</span><br></pre></td></tr></table></figure>
+
+
+<p>讲完了数据、函数，你会发现类其实就是把两者紧密地组合在了一起。在游戏开发里，你能看到的，比如敌人、背包、障碍等，你不能看到的，比如敌人AI策略、声音管理、动作切换等，都可以用各种各样的类去组合实现。</p>
+<p>用关键字class去声明，然后内部编写代码块。<br>用<code>&lt;class_name&gt;.new()</code>去实例化一个类，可以理解为，就像是你拿着食谱让厨师照着做一份给你。</p>
+<p>类名的命名原则基本与变量相同，但推荐用Pascal_case或PascalCase风格（整个项目统一即可）。</p>
+<p>拓展类用关键字extends，比如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class BuffEnemy extends Enemy:</span><br><span class="line">	func _init():</span><br><span class="line">		health = 100</span><br><span class="line"></span><br><span class="line">	func die():</span><br><span class="line">		print(&quot;Ahhhhhh~&quot;)</span><br></pre></td></tr></table></figure>
+<p>也就是类的继承，需要注意的是，<code>_init()</code>函数是构造函数，在类被创建时开始调用，这也是为什么，构造函数中一般都要做好初始化对象的工作，使之方便被使用。<br>至于，拓展后的类，它的变量和函数是如何覆盖，调用上的优先顺序等，请移步看更专业的介绍。</p>
+<p>你在Godot编辑器里，每创建一个GDScirpt，其实就是在创建一个Node类的拓展类。Node类是Godot引擎中每种节点类型的基类，我们一般接触最多的就是其生命周期方法——节点在创建、销毁、更新等等时机被执行的一类方法。</p>
+<p>而接着，我们把脚本挂载到某个节点的时候——即附加脚本的节点会与该脚本配对，与脚本的数据和逻辑相关联，为了好理解，当节点有了脚本的数据和逻辑加持，基本上就可以当成该·脚本的一个实例化对象。</p>
+<p>节点挂载脚本的本质是<strong>将逻辑（脚本）绑定到实体（节点）​</strong>，通过引擎的生命周期管理、属性暴露、通信机制实现动态交互。</p>
+<p>变量的访问级别，就是“可不可以用这个变量”的问题，一般可以分成五种情况：<br>变量在相同代码块中定义、变量在当前代码块的父级代码块中定义、变量在当前类中定义、变量是全局定义、变量是引擎内置的<a class="link"   target="_blank" rel="noopener" href="https://docs.godotengine.org/en/stable/classes/class_%40globalscope.html" >@GlobalScope — Godot Engine (stable) documentation in English<i class="fas fa-external-link-alt"></i></a>。<br>变量的可访问范围，就叫变量的作用域。同一作用域不能有重名变量，但当一个作用域被完全包含于另一作用域时，是可以定义两个同名变量的，但会发生遮蔽现象——默认调用就近的。这不是个好习惯，不推荐这样做。</p>
+<p>同样的，函数也有作用域这说法。大概分为三种，函数定义在我们正在使用的类内部、函数定义在我们类所继承的任何父类内部、函数是引擎内置的（任何地方都可以使用）。<br>实例化的对象，它的类函数的作用域和它一样大。</p>
+<h1 id="类型提示"><a href="#类型提示" class="headerlink" title="类型提示"></a>类型提示</h1><p>GDScript是种弱类型语言，相反，C++、C#、Java、Golang 和 Rust，它们通过在变量定义的瞬间隐式指定其将携带的数据类型，且在程序执行过程中（一般）不能更改。</p>
+<p>GDScipt可以这样做，在变量名后接<code>: &lt;type&gt;</code>，但总的来说限制较少。比如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var number_of_lives: int = 5</span><br><span class="line">var player_name: String = &quot;Erik&quot;</span><br><span class="line">var invetory: Array = [&quot;Cola&quot;, &quot;Juice&quot;]</span><br></pre></td></tr></table></figure>
+
+<p>还有一个好玩的，就是指定数组的值的类型，比如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var invetory: Array[String] = [&quot;Cola&quot;, &quot;Juice&quot;]</span><br></pre></td></tr></table></figure>
+
+<p>GDSripnt会有数据类型的隐式转换，比如浮点数和整数之间，GDScript 会将浮点数向下舍入到最近的整数值。</p>
+<p>函数也可以接类型，不过是用<code>-&gt; &lt;type&gt;</code>，比如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">func subtract_amount_from_health(amount: int) -&gt; void:</span><br><span class="line">	player_health -= amount</span><br></pre></td></tr></table></figure>
+
+<p>除了显式指明类型，还有一种推断类型，比如<code>var number_of_lives := 5</code>，看着像未指定类型的变量定义，但我们在等号前加了一个冒号，这将锁定变量的类型为我们分配给它的值的类型。<br>不过，这只能在定义时用，不然就会报错，比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var number_of_lives</span><br><span class="line">number_of_lives := 5 # 会报错</span><br></pre></td></tr></table></figure>
+
+<p>还可以自己定义一种类型（就比如自己定义的类），来作为类型提示，比如<code>var an_instance: &lt;MyClassName&gt; = &lt;MyClassName&gt;.new()</code></p>
+<p>总的来说，如果你用了类型提示，那么引擎不需要检查变量是否能够执行某些操作，因此它每秒可以执行更多的这些操作。在某些情况下，这将使您的代码速度提高一倍，提高性能。</p>
+<h1 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h1><p>面向对象编程有四个关键原则，抽象、封装、多态和继承，但实际应用中远不止如此，尤其是游戏编程。</p>
+<p>这里的抽象，更多是指一个类隐藏其内部实现，仅通过暴露高级函数来抽象其功能，常用做法比如划分私有公有成员。然而，在 GDScript 中，没有明确的方法来标记变量或函数为公共或私有。一切默认为公共，并且可以被外部世界访问。但GDScript 将下划线（<code>_</code>）放在预期为私有的变量和函数名称前，表示一个变量或方法是私有的，不应该被类外部任何东西使用。但，你还是可以用的哈哈哈，不过那会非常难看，极不推荐。</p>
+<p>封装和抽象类似，是抽象的延伸，专注于类的数据。外界越少直接处理类的成员变量，而更多地处理成员函数，就越好。</p>
+<p>多态、继承和方法重写、变量覆盖，这都是一整套的，移步更专业的介绍。</p>
+<h1 id="代码整洁"><a href="#代码整洁" class="headerlink" title="代码整洁"></a>代码整洁</h1><p>很多人说这优先级不高，先把功能做出来再说。我觉得，至少也得了解一些基本的代码整洁原则，习惯使用它们，然后贯穿整个编码过程，而非搞个谁先谁后的顺序。我可不想昨晚某个功能，在几个月后又得花好几天的时间去看懂它们。</p>
+<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><p>主要讲变量（常量）、函数和类（节点）的命名：<br>变量和函数用snake_case风格；常量用SNAKE_CASE风格；类（节点）用PascalCase风格。我建议使用这一套，让团队所有人都用着顺手才好。</p>
+<p>函数也可以看成变量，所以命名规范一致。</p>
+<p>命名是有技巧的：</p>
+<h3 id="意义和描述性"><a href="#意义和描述性" class="headerlink" title="意义和描述性"></a>意义和描述性</h3><p>有些人说短变量名会导致游戏性能更好，但在现在，这纯属无稽之谈。编程语言会在代码中对变量进行标记化处理，使得任何变量名称的执行速度都相同，无论多长。所以我们要做的事情之一，在于让变量的、方法的或类的名称具有<strong>意义和描述性</strong>。如何做到这点呢？可以在命名前，完成下列问题清单：</p>
+<ul>
+<li>变量：<ul>
+<li>变量将包含什么类型的数据</li>
+<li>这份数据应该如何使用</li>
+</ul>
+</li>
+<li>函数：<ul>
+<li>函数的作用是什么</li>
+<li>函数返回什么数据</li>
+<li>函数需要什么类型的参数才能工作</li>
+</ul>
+</li>
+<li>类：<ul>
+<li>类将用于什么</li>
+<li>类负责哪些数据</li>
+</ul>
+</li>
+</ul>
+<h3 id="减少填充词"><a href="#减少填充词" class="headerlink" title="减少填充词"></a>减少填充词</h3><p>比如the、a、object，不然只会徒增长度</p>
+<h3 id="保持名称易于发音"><a href="#保持名称易于发音" class="headerlink" title="保持名称易于发音"></a>保持名称易于发音</h3><p>就像读书一样，不要老整些晦涩难懂的高级词汇，就算是缩写，也用最常用的，大家都看得懂的，但尽量还是用完整单词。</p>
+<h3 id="保持一致性"><a href="#保持一致性" class="headerlink" title="保持一致性"></a>保持一致性</h3><p>整个项目的命名风格应该一致，就算有时违反了你一贯的风格，也要一致地违反下去。</p>
+<h3 id="公有私有"><a href="#公有私有" class="headerlink" title="公有私有"></a>公有私有</h3><p>明确指出类的哪些成员是私有的且不应被访问仍然非常重要。这将帮助你自己或其他后续使用该类的程序员。</p>
+<h3 id="编写短函数"><a href="#编写短函数" class="headerlink" title="编写短函数"></a>编写短函数</h3><p>一个函数尝试做的事情越多，该函数内的代码就越多，理解它所做的事情就越困难。因此，为了保持函数易于理解，一个很好的经验法则是将行数控制在 20 行以内。这样你可以快速理解发生了什么以及如何有效地使用该函数。</p>
+<p>当然，你可以调用不同的函数。将长函数拆分成多个具有良好描述性名称的小函数将为你节省许多时间来弄清楚代码的作用。 游戏项目中，这很常见。比如之前负责过的上线项目，游戏启动的主流程全部编写在一个main函数中，但里面90%的内容都是对其他函数的调用，一眼就能看出整个游戏背后的大致流程，也方便排查bug。</p>
+<h3 id="不要重复代码（DRY）"><a href="#不要重复代码（DRY）" class="headerlink" title="不要重复代码（DRY）"></a>不要重复代码（DRY）</h3><p>当然，若非设计如此，尽量不要有一模一样的大段大段的代码出现在同一项目中。而应该只编写一次代码，然后尽可能多地重用它。</p>
+<p>上面提到“设计如此”，我指的是，有时候，针对特定场景量身定制的重复代码是没问题的（比如某些解耦合的设计），而不是将多个场景硬塞进一个代码片段中。</p>
+<h3 id="只做一件事（KISS）"><a href="#只做一件事（KISS）" class="headerlink" title="只做一件事（KISS）"></a>只做一件事（KISS）</h3><p>将解决方案保持在最简状态，这意味着不要解决还不存在的问题。这样，你不会开发不需要的功能，也不会浪费时间创造没人会使用的东西。（我就经常会考虑没发生的事，但实际上在项目组其他人，特别是领导看来，你就是在摸鱼和磨洋工，产出少。）</p>
+<p>总之，不要让你的代码变得复杂。复杂的代码难以维护和理解。</p>
+<h3 id="防御式编程"><a href="#防御式编程" class="headerlink" title="防御式编程"></a>防御式编程</h3><p>你通过尽可能检查代码中的各种情况和边界条件来确保安全。例如，在函数中，你可以在函数开始时检查参数是否正确。这样，你将长期避免许多报错。<br>就算你不这样做，你也会被游戏测试逼着这样做的哈哈哈，他们最喜欢测这种边界条件了。</p>
+<h2 id="编程风格"><a href="#编程风格" class="headerlink" title="编程风格"></a>编程风格</h2><p>这里推荐参考参考GDScript官方的风格指南<a class="link"   target="_blank" rel="noopener" href="https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html" >GDScript style guide — Godot Engine (stable) documentation in English<i class="fas fa-external-link-alt"></i></a><br>不是说全部照搬，而是一点一点去搬，去慢慢融入到你个人的编程习惯，并推广到全项目组。</p>
+<h3 id="空格（和换行）"><a href="#空格（和换行）" class="headerlink" title="空格（和换行）"></a>空格（和换行）</h3><p>尽量把按空格这个习惯，养成跟呼吸一样自然，因为GDScript中貌似没有一键风格化。</p>
+<p>还有换行，逻辑相同的成一组，不同的用行隔开。</p>
+<p>合理使用空格、换行，看起来真的会舒服很多。</p>
+<h3 id="行长度"><a href="#行长度" class="headerlink" title="行长度"></a>行长度</h3><p>不要太长了，最长不要超过你的竖屏显示器的宽度就OK。</p>
+<h2 id="利用文档"><a href="#利用文档" class="headerlink" title="利用文档"></a>利用文档</h2><h3 id="Godot编辑器内置文档"><a href="#Godot编辑器内置文档" class="headerlink" title="Godot编辑器内置文档"></a>Godot编辑器内置文档</h3><p>ctrl+鼠标左键单击，可以访问任何内部类的文档，也可以跳转到函数或变量的定义处。</p>
+<p>按F1或编辑器中间窗口的右上角“搜索帮助”，可以输入任何你想搜索的类、函数或变量。</p>
+<h3 id="在线文档"><a href="#在线文档" class="headerlink" title="在线文档"></a>在线文档</h3><p>编辑器中间窗口的右上角“在线文档”<a class="link"   target="_blank" rel="noopener" href="https://docs.godotengine.org/en/stable/" >Godot Docs – 4.4 branch — Godot Engine (stable) documentation in English<i class="fas fa-external-link-alt"></i></a></p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">【Godot】学习Godot第5、6、7、8、9天</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">maxL</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2025-07-28 08:00:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2025/07/28/【Godot】学习Godot第5天/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Godot1000%E5%A4%A9%E6%89%93%E5%8D%A1%E8%AE%A1%E5%88%92/">#Godot1000天打卡计划</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2025/07/27/%E3%80%90Godot%E3%80%91%E5%AD%A6%E4%B9%A0Godot%E7%AC%AC4%E5%A4%A9/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">【Godot】学习Godot第4天</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+                <div class="comment-container">
+                    
+<div class="comments-container">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;评论
+    </div>
+    
+        
+            
+
+    <div class="twikoo-container">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/twikoo@1.6.16/dist/twikoo.all.min.js"></script>
+        <div id="twikoo-comment"></div>
+        <script data-pjax>
+          function loadTwikoo() {
+            twikoo.init({
+              el: '#twikoo-comment',
+              envId: 'blog-comments-7g8rgfsf1481a6f9',
+              region: 'ap-guangzhou',
+              lang: 'zh-CN' || 'zh-CN'
+            });
+          }
+
+          if ('true' === 'true') {
+            const loadTwikooTimeout = setTimeout(() => {
+              loadTwikoo();
+              clearTimeout(loadTwikooTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadTwikoo);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Godot-Engine%E7%9A%84%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">使用Godot Engine的准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">下载安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE%EF%BC%88Hello-World%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">新建项目（Hello World）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%9C%BA%E6%99%AF"><span class="nav-number">1.2.1.</span> <span class="nav-text">创建场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E7%BC%96%E8%BE%91%E5%99%A8%E7%95%8C%E9%9D%A2"><span class="nav-number">1.2.2.</span> <span class="nav-text">简述编辑器界面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%99%E8%8A%82%E7%82%B9%E6%B7%BB%E5%8A%A0%E8%84%9A%E6%9C%AC"><span class="nav-number">1.2.3.</span> <span class="nav-text">给节点添加脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Godot%E6%96%87%E6%A1%A3"><span class="nav-number">1.3.</span> <span class="nav-text">Godot文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Godot%E7%A4%BE%E5%8C%BA"><span class="nav-number">1.4.</span> <span class="nav-text">Godot社区</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E3%80%81%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E7%AD%89%E7%AD%89"><span class="nav-number">2.</span> <span class="nav-text">变量、数据类型、流程控制等等</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E5%8F%8A%E5%91%BD%E5%90%8D"><span class="nav-number">2.1.</span> <span class="nav-text">变量及命名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F"><span class="nav-number">2.2.</span> <span class="nav-text">常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.3.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="nav-number">2.4.</span> <span class="nav-text">流程控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A"><span class="nav-number">2.5.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%A9%E8%BF%9B"><span class="nav-number">2.6.</span> <span class="nav-text">缩进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E5%80%BC"><span class="nav-number">2.7.</span> <span class="nav-text">布尔值</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E3%80%81%E5%AD%97%E5%85%B8%E5%92%8C%E5%BE%AA%E7%8E%AF"><span class="nav-number">3.</span> <span class="nav-text">数组、字典和循环</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B1%BB%E3%80%81%E6%96%B9%E6%B3%95-x2F-%E5%87%BD%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">类、方法&#x2F;函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E6%8F%90%E7%A4%BA"><span class="nav-number">5.</span> <span class="nav-text">类型提示</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B"><span class="nav-number">6.</span> <span class="nav-text">面向对象编程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81"><span class="nav-number">7.</span> <span class="nav-text">代码整洁</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="nav-number">7.1.</span> <span class="nav-text">命名规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%84%8F%E4%B9%89%E5%92%8C%E6%8F%8F%E8%BF%B0%E6%80%A7"><span class="nav-number">7.1.1.</span> <span class="nav-text">意义和描述性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%8F%E5%B0%91%E5%A1%AB%E5%85%85%E8%AF%8D"><span class="nav-number">7.1.2.</span> <span class="nav-text">减少填充词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%9D%E6%8C%81%E5%90%8D%E7%A7%B0%E6%98%93%E4%BA%8E%E5%8F%91%E9%9F%B3"><span class="nav-number">7.1.3.</span> <span class="nav-text">保持名称易于发音</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%9D%E6%8C%81%E4%B8%80%E8%87%B4%E6%80%A7"><span class="nav-number">7.1.4.</span> <span class="nav-text">保持一致性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AC%E6%9C%89%E7%A7%81%E6%9C%89"><span class="nav-number">7.1.5.</span> <span class="nav-text">公有私有</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E7%9F%AD%E5%87%BD%E6%95%B0"><span class="nav-number">7.1.6.</span> <span class="nav-text">编写短函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E8%A6%81%E9%87%8D%E5%A4%8D%E4%BB%A3%E7%A0%81%EF%BC%88DRY%EF%BC%89"><span class="nav-number">7.1.7.</span> <span class="nav-text">不要重复代码（DRY）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AA%E5%81%9A%E4%B8%80%E4%BB%B6%E4%BA%8B%EF%BC%88KISS%EF%BC%89"><span class="nav-number">7.1.8.</span> <span class="nav-text">只做一件事（KISS）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%B2%E5%BE%A1%E5%BC%8F%E7%BC%96%E7%A8%8B"><span class="nav-number">7.1.9.</span> <span class="nav-text">防御式编程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E7%A8%8B%E9%A3%8E%E6%A0%BC"><span class="nav-number">7.2.</span> <span class="nav-text">编程风格</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A9%BA%E6%A0%BC%EF%BC%88%E5%92%8C%E6%8D%A2%E8%A1%8C%EF%BC%89"><span class="nav-number">7.2.1.</span> <span class="nav-text">空格（和换行）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%8C%E9%95%BF%E5%BA%A6"><span class="nav-number">7.2.2.</span> <span class="nav-text">行长度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A9%E7%94%A8%E6%96%87%E6%A1%A3"><span class="nav-number">7.3.</span> <span class="nav-text">利用文档</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Godot%E7%BC%96%E8%BE%91%E5%99%A8%E5%86%85%E7%BD%AE%E6%96%87%E6%A1%A3"><span class="nav-number">7.3.1.</span> <span class="nav-text">Godot编辑器内置文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E7%BA%BF%E6%96%87%E6%A1%A3"><span class="nav-number">7.3.2.</span> <span class="nav-text">在线文档</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2025
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">maxL</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    <a target="_blank" rel="nofollow" href="https://pages.github.com/">
+                
+                    本站由 <span class="tooltip" data-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                
+                    </a>
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
